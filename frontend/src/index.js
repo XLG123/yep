@@ -1,14 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Provider } from "react-redux";
 // import { BrowserRouter } from "react-router-dom";
-// import configureStore from './store';
 import { restoreSession } from './store/csrf';
-import { createUser, loginUser, logoutUser } from './store/userReducer';
+import { createUser, loginUser, logoutUser } from './store/usersReducer';
+import configureStore from './store';
 
-restoreSession().then(initializeApp)
 
 // function Root() {
 //   return (
@@ -24,6 +23,7 @@ window.createUser = createUser
 window.loginUser = loginUser
 window.logoutUser = logoutUser
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const initializeApp = () => {
   let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
   let initialState = {};
@@ -36,12 +36,16 @@ const initializeApp = () => {
     };
   };
 
-  ReactDOM.render(
+  const store = configureStore(initialState);
+  // window.store = store;
+
+  root.render(
     <React.StrictMode>
-      <Provider store={store}>
+      <Provider store = {store}>
         <App />
       </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
   );
 }
+
+restoreSession().then(initializeApp)

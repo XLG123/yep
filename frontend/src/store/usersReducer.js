@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf.js';
+
 // ACTION TYPES
 const RECEIVE_USER = 'users/RECEIVE_USER';
 const REMOVE_USER = 'users/REMOVE_USER';
@@ -21,7 +23,7 @@ export const loginUser = user => async dispatch => {
   });
   let data = await res.json();
   sessionStorage.setItem('currentUser', JSON.stringify(data.user));
-  debugger
+  // debugger
   dispatch(receiveUser(data.user))
 };
 
@@ -45,16 +47,16 @@ export const createUser = user => async dispatch => {
 
 // REDUCER
 const userReducer = (state = {}, action) => {
-  const nextState = { ...state };
+  const newState = { ...Object.freeze(state) };
 
   switch (action.type) {
     case RECEIVE_USER:
       // debugger
-      nextState[action.payload.id] = action.payload;
-      return nextState;
+      newState[action.payload.id] = action.payload;
+      return newState;
     case REMOVE_USER:
-      delete nextState[action.userId];
-      return nextState;
+      delete newState[action.userId];
+      return newState;
     default:
       return state;
   }

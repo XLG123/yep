@@ -1,9 +1,12 @@
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import userReducer from "./usersReducer";
 import thunk from 'redux-thunk';
 
-const rootReducer = combineReducers({
-  user: userReducer
-});
+const rootReducer = (state = {}, action) => {
+  return {
+    users: userReducer(state.users, action)
+  };
+};
 
 const logger = require("redux-logger").default;
 const composeEnhancers =

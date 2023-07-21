@@ -1,6 +1,6 @@
 function App() {
   return (
-    <h1>Hello from yep</h1> //testing purposes
+    <h1>jo</h1> //testing purposes
   );
 }
 

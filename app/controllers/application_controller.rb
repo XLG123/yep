@@ -7,7 +7,6 @@ class ApplicationController < ActionController::API
 
   private
   def snake_case_params
-    debugger
     params.deep_transform_keys!(&:underscore)
   end
 
@@ -37,11 +36,11 @@ class ApplicationController < ActionController::API
   end
 
   def login(user)
-    session[:session_token] = user.reset_session_token!
+    session[:session_token] = user.restore_session_token!
   end
 
   def logout
-    current_user.reset_session_token!
+    current_user.restore_session_token!
     session[:session_token] = nil
     @current_user = nil
   end
