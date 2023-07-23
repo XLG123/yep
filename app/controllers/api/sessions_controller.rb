@@ -26,6 +26,6 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     logout
-    head :no_content # populate http response with no content => no body
+    head :no_content
   end
 end

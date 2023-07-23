@@ -1,0 +1,151 @@
+#nav-bar {
+  font-family: Helvetica, sans-serif;
+  position: relative;
+  z-index: 10;
+}
+
+#nav-bar-content {
+  margin: 0px 2vw;
+  padding-top: 1.5vw;
+  color: white;
+}
+
+#app-title {
+  font-size: 2vw;
+  font-weight: 600;
+  display: inline-block;
+}
+
+#app-logo {
+  width: 2vw;
+}
+
+#category-btn {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(200, 201, 202, 1);
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 1vw;
+  margin-left: 10vw;
+  margin-right: 5vw;
+  padding: 0px 0.6vw;
+  height: 2.5vw;
+  position: absolute;
+  top: 1.5vw;
+  left: 8vw;
+}
+
+#category-btn span {
+  margin-right: 0.6vw;
+}
+
+#search-bar {
+  width: 30vw;
+  height: 2.5vw;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 1vw;
+  padding: 0px 0.2vw;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  position: absolute;
+  left: 30vw;
+  top: 1.5vw;
+}
+
+#search-bar:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#search-bar-btn {
+  background-color: rgba(224, 7, 7, 1);
+  width: 2.5vw;
+  height: 2.5vw;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 1.2vw;
+  cursor: pointer;
+  position: absolute;
+  top: 1.5vw;
+  left: 60vw;
+  text-align: center;
+}
+
+.fa-search {
+  position: relative;
+  top: 25%;
+}
+
+.contact-info-btn{
+  display: inline-block;
+  font-size: 2vw;
+  margin-left: 10vw;
+}
+
+.contact-info-btn span {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.contact-info-btn span:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.fa-linkedin-square {
+  position: absolute;
+  top: 1.65vw;
+  right: 26vw;
+}
+
+.fa-github {
+  position: absolute;
+  top: 1.65vw;
+  right: 23vw;
+}
+
+.nav-bar-btn {
+  display: inline-block;
+  font-size: 1vw;
+  border: 1px solid gray;
+}
+
+.auth-btn {
+  padding: 1vh;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  width: 5.3vw;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#demo-btn {
+  position: absolute;
+  right: 14vw;
+  border: 2px solid rgba(200, 201, 202, 1);
+}
+
+#login-btn {
+  position: absolute;
+  right: 8vw;
+  border: 2px solid rgba(200, 201, 202, 1);
+}
+
+#signup-btn {
+  background-color: rgba(224, 7, 7, 1);
+  position: absolute;
+  right: 2vw;
+  border: 2px solid transparent;
+}
+
+.red-btn:hover {
+  filter: brightness(1.1);
+}
+
+.gray-btn:hover, #category-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
