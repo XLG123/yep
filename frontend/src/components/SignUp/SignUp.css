@@ -1,0 +1,210 @@
+.sign-up-page {
+  font-family: Helvetica, sans-serif;
+  position: relative;
+}
+
+.back-to-hp-link {
+  text-decoration: none;
+  color: black;
+}
+
+#app-title-container {
+  position: absolute;
+  top: 2vw;
+  left: 3vw;
+}
+
+#signup-app-title {
+  font-size: 2vw;
+  font-weight: 600;
+  display: inline-block;
+}
+
+#signup-app-logo {
+  width: 2vw;
+  filter: brightness(1.3);
+}
+
+.line-break {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid rgba(200, 201, 202, 1);
+  top: 7vw;
+}
+
+#sign-up-form-container {
+  position: absolute;
+  top: 20vh;
+  left: 23vw;
+  text-align: center;
+  width: 20vw;
+}
+
+#sign-up-title, #login-title {
+  font-size: 1.55vw;
+  font-weight: bold;
+  color: #d32323;
+  margin-bottom: 1.2vh;
+}
+
+#sub-title {
+  font-weight: bold;
+  font-size: 1vw;
+  margin-bottom: 1.35vh;
+}
+
+#yep-msg {
+  font-size: 0.8vw;
+  line-height: 1.5em;
+  margin-bottom: 6vh;
+}
+
+#yep-msg a {
+  text-decoration: none;
+}
+
+#yep-msg a:visited {
+  color: #0073bb;
+}
+
+.signup-input {
+  height: 3vh;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0.5vh 0.5vw;
+  font-size: 1vw;
+}
+
+.signup-input:focus {
+  outline: none;
+}
+
+#username {
+  position: relative;
+}
+
+#firstname, #lastname {
+  width: 10vw;
+  position: absolute;
+}
+
+#firstname {
+  left: -2vw;
+}
+
+#user-email {
+  position: relative;
+  top: 6vh;
+  right: 2vw;
+}
+
+#email {
+  width: 22vw;
+}
+
+#user-password {
+  position: relative;
+  top: 8vh;
+  right: 2vw;
+}
+
+#password {
+  width: 22vw;
+}
+
+#user-zipcode {
+  position: relative;
+  top: 10vh;
+  right: 2vw;
+}
+
+#zipcode {
+  width: 22vw;
+}
+
+#user-dob {
+  position: relative;
+  top: 12vh;
+  right: 2vw;
+}
+
+#user-dob p {
+  margin-bottom: 1vh;
+  position: relative;
+  right: 5.7vw;
+  font-size: 1.1vw;
+}
+
+#user-dob p span:first-child {
+  font-weight: bold;
+}
+
+#user-dob p span:nth-child(2) {
+  color:#999;
+  font-size: 1vw;
+}
+
+.dropdown-btn {
+  height: 3.8vh;
+  width: 7.4vw;
+}
+
+#dob-month {
+  position: absolute;
+  left: 0px;
+}
+
+#dob-day {
+  position: absolute;
+  left: 7.85vw;
+}
+
+#dob-year {
+  position: absolute;
+  left: 15.7vw;
+}
+
+#submit-signup-btn {
+  position: absolute;
+  top: 53vh;
+  font-size: 1.2vw;
+  left: -2vw;
+  width: 23.1vw;
+  padding: 1vh 0px;
+  border: none;
+  background-color: #d32323;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+#submit-signup-btn:hover {
+  background-color: #dc4f4f;
+  cursor: pointer;
+}
+
+.login-link {
+  text-decoration: none;
+  color: #0073bb;
+}
+
+#login-link-1 {
+  position: absolute;
+  top: 59vh;
+  right: -1vw;
+  font-size: 0.9vw;
+}
+
+#login-link-1 span {
+  color: #999;
+}
+
+#sign-up-form-pic, #login-form-pic {
+  position: absolute;
+  top: 30vh;
+  left: 53vw;
+}
+
+#sign-up-form-pic img, #login-form-pic img {
+  width: 25vw;
+}

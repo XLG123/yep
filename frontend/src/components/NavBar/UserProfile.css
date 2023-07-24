@@ -1,0 +1,12 @@
+#user-pic {
+  position: absolute;
+  top: 1.5vw;
+  right: 5vw;
+  width: 2vw;
+  height: 2vw;
+}
+
+#user-profile {
+  position: absolute;
+  right: 2vw;
+}
