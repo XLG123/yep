@@ -14,20 +14,64 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [erros, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const [errorMsgBtn, setErrorMsgBtn] = useState(false);
 
   if (sessionUser) return <Navigate to="/" />;
-
+  
   const handleSignUp = (e) => {
     e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.signup({ 
-      firstName, lastName, email, zipCode, password }));
+    let signUpErrors = [];
+    
+    // Frontend Sign Up Form Validation
+    // Before validating all the data in the backend
+    if (!firstName) {
+      signUpErrors.push("First Name can't be blank");
+    } 
 
-    // TODO: validating all the inputs errors
-    // if (firstName === "") {
+    if (!lastName) {
+      signUpErrors.push("Last Name can't be blank");
+    }
 
-    // }
+    let email_regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|([]!#-[^-~\\t]|(\\[\\t -~]))+)@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\\t -Z^-~]*])");
+    if (!email_regex.test(email)) {
+      signUpErrors.push("Email is blank and/or the format is incorrect");
+    } 
+
+    if (password.length < 8) {
+      signUpErrors.push("Password length can't be less than 8 characters");
+    }
+
+    if (zipCode.length < 5) {
+      signUpErrors.push("Zipcode must be 5 digits");
+    }
+
+    setErrors(signUpErrors);
+
+    if (signUpErrors.length > 0) {
+      setErrorMsgBtn(true);
+    } else {
+      setErrorMsgBtn(false);
+    }
+
+    // Backend Sign Up Form Validation
+    if (signUpErrors.length === 0) {
+      setErrors([]);
+      return dispatch(sessionActions.signup({ 
+        firstName, lastName, email, zipCode, password }))
+        .catch(async (res) => {
+          let data;
+          try {
+            // .clone() essentially allows you to read the response body twice
+            data = await res.clone().json();
+          } catch {
+            data = await res.text(); // Will hit this case if, e.g., server is down
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
+        });
+    }
   }
 
   const months = ['Month', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
@@ -89,6 +133,14 @@ const SignUp = () => {
 
         <div className="line-break"></div>
 
+        {errorMsgBtn && <div id="sign-up-errors">
+          <button></button>
+          <ul>
+            {errors.map((error) => <li key={error}>{error}</li>)}
+          </ul>
+        </div>}
+
+
         <div id="sign-up-form-container">
           <h1 id="sign-up-title">Sign Up For Yep!</h1>
 
@@ -104,23 +156,23 @@ const SignUp = () => {
             <div className="line-break"></div>
 
             <div id="username">
-              <input type="text" name="firstname" placeholder="First Name" required="required" value={firstName} onChange={(e) => {setFirstName(e.target.value)}} id="firstname" className="signup-input"/>
+              <input type="text" name="firstname" placeholder="First Name"  value={firstName} onChange={(e) => {setFirstName(e.target.value)}} id="firstname" className="signup-input"/>
 
-              <input type="text" name="lastname" placeholder="Last Name" required="required" value={lastName} onChange={(e) => {setLastName(e.target.value)}} id="lastname" className="signup-input"/>
+              <input type="text" name="lastname" placeholder="Last Name"  value={lastName} onChange={(e) => {setLastName(e.target.value)}} id="lastname" className="signup-input"/>
             </div>
 
             <div id="user-email">
-              <input type="email" name="email" placeholder="Email" required="required" value={email} onChange={(e) => {setEmail(e.target.value)}} id="email" className="signup-input"/>
+              <input type="email" name="email" placeholder="Email"  value={email} onChange={(e) => {setEmail(e.target.value)}} id="email" className="signup-input"/>
             </div>
 
             <div id="user-password">
               <input type="password" name="password" placeholder="Password"
-              minLength="8" value={password} onChange={(e) => {setPassword(e.target.value)}} required="required" id="password" className="signup-input" />
+              minLength="8" value={password} onChange={(e) => {setPassword(e.target.value)}} id="password" className="signup-input" />
             </div>
 
             <div id="user-zipcode">
               <input type="text" name="zipcode" placeholder="ZIP Code"
-              minLength="5" maxLength="5" value={zipCode} onChange={(e) => {setZipCode(e.target.value)}} required="required" id="zipcode" 
+              minLength="5" maxLength="5" value={zipCode} onChange={(e) => {setZipCode(e.target.value)}} id="zipcode" 
               className="signup-input" />
             </div>
 

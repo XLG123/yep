@@ -51,10 +51,13 @@
   border-radius: 4px;
   padding: 0.5vh 0.5vw;
   font-size: 1vw;
+  color: #333;
 }
 
 .login-input:focus {
   outline: none;
+  border: 1px solid #0073bb;
+  box-shadow: 0 0 4px rgba(0, 115, 187, 0.3);
 }
 
 #login-user-email {

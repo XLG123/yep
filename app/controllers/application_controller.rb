@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
   end
 
   def require_logged_in
-    if !logged_in?
+    unless current_user
       render json: { errors: ['Must be logged in'] }, status: :unauthorized
     end
   end
@@ -36,12 +36,12 @@ class ApplicationController < ActionController::API
   end
 
   def login(user)
-    session[:session_token] = user.restore_session_token!
+    session[:session_token] = user.reset_session_token
   end
 
   def logout
-    current_user.restore_session_token!
-    session[:session_token] = nil
-    @current_user = nil
+    current_user.reset_session_token
+    self.session[:session_token] = nil
+    # @current_user = nil
   end
 end

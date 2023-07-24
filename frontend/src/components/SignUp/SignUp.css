@@ -34,7 +34,7 @@
 
 #sign-up-form-container {
   position: absolute;
-  top: 20vh;
+  top: 30vh;
   left: 23vw;
   text-align: center;
   width: 20vw;
@@ -73,10 +73,13 @@
   border-radius: 4px;
   padding: 0.5vh 0.5vw;
   font-size: 1vw;
+  color: #333;
 }
 
 .signup-input:focus {
   outline: none;
+  border: 1px solid #0073bb;
+  box-shadow: 0 0 4px rgba(0, 115, 187, 0.3)
 }
 
 #username {
@@ -201,7 +204,7 @@
 
 #sign-up-form-pic, #login-form-pic {
   position: absolute;
-  top: 30vh;
+  top: 38vh;
   left: 53vw;
 }
 
