@@ -12,7 +12,7 @@ const NavBar = () => {
 
   const demoLogin = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({
+    return dispatch(sessionActions.login({
       email: "demoUser@login.com",
       password: "imademouser",
     }));
