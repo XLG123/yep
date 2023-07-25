@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./UserProfile.css";
@@ -8,21 +8,8 @@ const UserProfile = ({user}) => {
   const [userProfile, setUserProfile] = useState(false);
 
   const showProfile = () => {
-    if (userProfile) return;
-    setUserProfile(true);
+    setUserProfile(!userProfile);
   }
-
-  useEffect(()=>{
-    if (!userProfile) return;
-
-    const hideProfile = () => {
-      setUserProfile(false);
-    }
-
-    document.addEventListener('click', hideProfile);
-
-    return() => document.removeEventListener('click', hideProfile);
-  }, [userProfile]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -32,18 +19,18 @@ const UserProfile = ({user}) => {
   return (
     <>
       <button id="user-pic" onClick={showProfile}>
-        <i className="fa-solid fa-user-circle" />
+        <div><i className="fa fa-user"></i></div>
       </button>
 
-      {showProfile && (
+      { userProfile && (
         <ul id="user-profile">
           <li>{user.firstName} {user.lastName[0]}.</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button className="logout-btn" onClick={logout}>Log Out</button>
           </li>
         </ul>
-      )}
+      ) }
     </>
   );
 }

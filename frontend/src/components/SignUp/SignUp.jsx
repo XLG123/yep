@@ -4,6 +4,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import yepLogo from "../../assets/images/yepLogo2.png";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
+import PasswordStrengthBar from 'react-password-strength-bar';
 import './SignUp.css';
 
 const SignUp = () => {
@@ -33,17 +34,17 @@ const SignUp = () => {
       signUpErrors.push("Last Name can't be blank");
     }
 
-    let email_regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|([]!#-[^-~\\t]|(\\[\\t -~]))+)@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\\t -Z^-~]*])");
-    if (!email_regex.test(email)) {
-      signUpErrors.push("Email is blank and/or the format is incorrect");
+    let emailRegex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|([]!#-[^-~\\t]|(\\[\\t -~]))+)@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\\t -Z^-~]*])");
+    if (!emailRegex.test(email)) {
+      signUpErrors.push("Email is blank or the format is incorrect");
     } 
 
     if (password.length < 8) {
-      signUpErrors.push("Password length can't be less than 8 characters");
+      signUpErrors.push("Please choose a password of at least 8 characters");
     }
 
-    if (zipCode.length < 5) {
-      signUpErrors.push("Zipcode must be 5 digits");
+    if (!/^[0-9]+$/.test(zipCode)) {
+      signUpErrors.push("Oops, looks like an invalid ZIP code");
     }
 
     setErrors(signUpErrors);
@@ -67,11 +68,22 @@ const SignUp = () => {
           } catch {
             data = await res.text(); // Will hit this case if, e.g., server is down
           }
-          if (data?.errors) setErrors(data.errors);
-          else if (data) setErrors([data]);
-          else setErrors([res.statusText]);
+          if (data?.errors) {
+            setErrors(data.errors);
+            setErrorMsgBtn(true);
+          } else if (data) {
+            setErrors([data]);
+            setErrorMsgBtn(true);
+          } else {
+            setErrors([res.statusText]);
+            setErrorMsgBtn(true);
+          }
         });
     }
+  }
+
+  const closeErrorMsg = (e) => {
+    setErrorMsgBtn(false);
   }
 
   const months = ['Month', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
@@ -133,13 +145,13 @@ const SignUp = () => {
 
         <div className="line-break"></div>
 
-        {errorMsgBtn && <div id="sign-up-errors">
-          <button></button>
-          <ul>
-            {errors.map((error) => <li key={error}>{error}</li>)}
-          </ul>
-        </div>}
-
+        { errorMsgBtn && 
+          <div id="sign-up-errors">
+            <i className="fa fa-close" onClick={(e) => closeErrorMsg(e)}></i>
+            <ul>
+              {errors.map((error) => <li key={error}>{error}</li>)}
+            </ul>
+          </div> }
 
         <div id="sign-up-form-container">
           <h1 id="sign-up-title">Sign Up For Yep!</h1>
@@ -168,6 +180,7 @@ const SignUp = () => {
             <div id="user-password">
               <input type="password" name="password" placeholder="Password"
               minLength="8" value={password} onChange={(e) => {setPassword(e.target.value)}} id="password" className="signup-input" />
+              <PasswordStrengthBar password={password} minLength={3} scoreWords={['too weak', 'weak', 'okay', 'good', 'strong']} className="password-bar"/>
             </div>
 
             <div id="user-zipcode">

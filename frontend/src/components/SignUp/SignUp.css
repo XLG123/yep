@@ -34,7 +34,7 @@
 
 #sign-up-form-container {
   position: absolute;
-  top: 30vh;
+  top: 35vh;
   left: 23vw;
   text-align: center;
   width: 20vw;
@@ -89,6 +89,7 @@
 #firstname, #lastname {
   width: 10vw;
   position: absolute;
+  top: -2vh;
 }
 
 #firstname {
@@ -97,7 +98,7 @@
 
 #user-email {
   position: relative;
-  top: 6vh;
+  top: 4vh;
   right: 2vw;
 }
 
@@ -107,7 +108,7 @@
 
 #user-password {
   position: relative;
-  top: 8vh;
+  top: 6vh;
   right: 2vw;
 }
 
@@ -115,9 +116,14 @@
   width: 22vw;
 }
 
+.password-bar {
+  margin-top: 1.5vh;
+  width: 23vw;
+}
+
 #user-zipcode {
   position: relative;
-  top: 10vh;
+  top: 7vh;
   right: 2vw;
 }
 
@@ -127,7 +133,7 @@
 
 #user-dob {
   position: relative;
-  top: 12vh;
+  top: 9vh;
   right: 2vw;
 }
 
@@ -204,10 +210,45 @@
 
 #sign-up-form-pic, #login-form-pic {
   position: absolute;
-  top: 38vh;
+  top: 42vh;
   left: 53vw;
 }
 
 #sign-up-form-pic img, #login-form-pic img {
   width: 25vw;
+}
+
+#sign-up-errors, #login-errors {
+  position: absolute;
+  top: 15.5vh;
+  left: 21vw;
+  font-size: 0.9vw;
+  background: #fcd6d3;
+  padding-top: 1.5vh;
+  padding-right: 8vw;
+  padding-bottom: 1.5vh;
+  padding-left: 2vw;
+  color: #333;
+  line-height: 1.5em;
+  border-radius: 4px;
+  width: 47vw;
+}
+
+#sign-up-errors li::before, #login-errors li::before {
+  content: '➣ ';
+  margin-right: 0.6vw;
+}
+
+.fa-close {
+  color: #666;
+  position: absolute;
+  top: 1.3vh;
+  right: 2vw;
+  font-size: 1.3vw;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.fa-close:hover {
+  opacity: 1;
 }

@@ -1,12 +1,50 @@
 #user-pic {
   position: absolute;
   top: 1.5vw;
-  right: 5vw;
+  right: 6vw;
   width: 2vw;
   height: 2vw;
+  cursor: pointer;
+  opacity: 0.7;
+  text-align: center;
+}
+
+#user-pic div {
+  position: relative;
+}
+
+#user-pic:hover, #user-pic:active {
+  opacity: 1;
 }
 
 #user-profile {
   position: absolute;
+  top: 7.5vh;
   right: 2vw;
+  background-color: rgba(102, 102, 102, 0.7);
+  line-height: 2em;
+  border-radius: 4px;
+  padding: 1vh 1vw;
+  width: 8vw;
+  font-size: 0.8vw;
+}
+
+.logout-btn {
+  font-size: 0.8vw;
+  width: 5vw;
+  border-radius: 4px;
+  border: 1px solid #666;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  opacity: 1;
+}
+
+.fa-user {
+  font-size: 1.5vw;
+  position: absolute;
+  right: -0.05vw;
+  top: -1.2vh;
 }

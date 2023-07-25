@@ -12,16 +12,60 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({email, password}));
-
-    // TODO: validating email and password errors 
-  }
+  const [errorMsgBtn, setErrorMsgBtn] = useState(false);
 
   if (sessionUser) return <Navigate to="/" />;
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+    let loginErrors = [];
+
+    // Frontend Log In Form Validation
+    // Before validating the email and password in the backend
+    if (!email) {
+      loginErrors.push("Email is blank or the format is incorrect");
+    }
+
+    if (!password) {
+      loginErrors.push("Password is blank");
+    }
+
+    setErrors(loginErrors);
+
+    if (loginErrors.length > 0) {
+      setErrorMsgBtn(true);
+    } else {
+      setErrorMsgBtn(false);
+    }
+
+    if (loginErrors.length === 0) {
+      setErrors([]);
+      return dispatch(sessionActions.login({ email, password }))
+        .catch (async (res) => {
+          let data;
+          try {
+            // .clone() essentially allows you to read the response body twice
+            data = await res.clone().json();
+          } catch {
+            data = await res.text(); // Will hit this case if, e.g., server is down
+          }
+          if (data?.errors) {
+            setErrors(data.errors);
+            setErrorMsgBtn(true);
+          } else if (data) {
+            setErrors([data]);
+            setErrorMsgBtn(true);
+          } else {
+            setErrors([res.statusText]);
+            setErrorMsgBtn(true);
+          }
+        });
+    }
+  }
+
+  const closeErrorMsg = (e) => {
+    setErrorMsgBtn(false);
+  }
 
   return (
     <>
@@ -35,6 +79,14 @@ const Login = () => {
         </NavLink>
 
         <div className="line-break"></div>
+
+        { errorMsgBtn &&
+          <div id="login-errors">
+            <i className="fa fa-close" onClick={(e) => closeErrorMsg(e)}></i>
+            <ul>
+              {errors.map((error) => <li key={error}>{error}</li>)}
+            </ul>
+          </div> } 
 
         <div id="login-form-container">
           <h1 id="login-title">Log In To Yep!</h1>
@@ -51,12 +103,13 @@ const Login = () => {
             <div className="line-break" id="login-line-break"></div>
 
             <div id="login-user-email">
-              <input type="email" name="email" placeholder="Email" required="required" value={email} onChange={(e) => { setEmail(e.target.value) }} id="login-email" className="login-input" />
+              <input type="email" name="email" placeholder="Email"
+               value={email} onChange={(e) => { setEmail(e.target.value) }} id="login-email" className="login-input" />
             </div>
 
             <div id="login-user-password">
               <input type="password" name="password" placeholder="Password"
-                minLength="8" value={password} onChange={(e) => { setPassword(e.target.value) }} required="required" id="login-password" className="login-input" />
+                minLength="8" value={password} onChange={(e) => { setPassword(e.target.value) }} id="login-password" className="login-input" />
             </div>
 
             <button id="submit-login-btn">Log In</button>
