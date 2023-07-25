@@ -19,5 +19,5 @@ class Business < ApplicationRecord
   validates :name, :city, :state, presence: true
   validates :zip_code, length: { is: 5 }
   validates :phone_number, length: { is: 9 }
-  validates :latitude, presence: true, 
+  validates :latitude, presence: true
 end
