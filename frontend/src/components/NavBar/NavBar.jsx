@@ -13,8 +13,8 @@ const NavBar = () => {
   const demoLogin = (e) => {
     e.preventDefault();
     return dispatch(sessionActions.login({
-      email: "demoUser@login.com",
-      password: "imademouser",
+      email: "demoUser@gmail.com",
+      password: "12345678",
     }));
   }
 
