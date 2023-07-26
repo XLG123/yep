@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import './NavBar.css';
-import yepLogo from '../../assets/images/yepLogo1.png';
+import yepLogo1 from '../../assets/images/yepLogo1.png';
+import yepLogo2 from '../../assets/images/yepLogo2.png';
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session';
 // import SignUp from "../SignUp/SignUp";
 import UserProfile from "./UserProfile";
 import { NavLink } from "react-router-dom";
+import CategoryMenu from "../Category/Category";
 
-const NavBar = () => {
+const NavBar = ({location}) => {
   const dispatch = useDispatch();
 
   const demoLogin = (e) => {
@@ -39,21 +41,29 @@ const NavBar = () => {
     );
   }
 
+  const [dropdown, setDropdown] = useState(false);
+
+  const showDropdown = (e) => {
+    setDropdown(!dropdown);
+  }
+
   return (
-    <div id="nav-bar">
+    <div className={location === "/" ? "hp" : "non-hp"} id="nav-bar">
 
       <div id="nav-bar-content">
 
-        <span id="refresh-hp" onClick={() => {window.location.reload(false)}}>
-          <h1 id="app-title">yep!</h1>
-
-          <img src={yepLogo} alt="Yep Logo" id="app-logo"/>
+        <span id="back-to-hp">
+          <NavLink to="/" className="title-nav-link">
+            <h1 id="app-title">yep!</h1>
+            <img src={location === "/" ? yepLogo1 : yepLogo2} alt="Yep Logo" className={location === "/" ? "hp-logo" : "non-hp-logo"} id="app-logo"/>
+          </NavLink>
         </span>
 
-        <button id="category-btn">
+        <button id="category-btn" onClick={(e) => {showDropdown()}}>
           <span>Restaurants</span>
           <i className="fa fa-caret-down"></i>
         </button>
+        { dropdown && <CategoryMenu location={location}/> }
 
         <span id="search-bar-content">
           <input type="text" placeholder="Pizza, Ramen, Sushi..." id="search-bar"/>
@@ -64,8 +74,15 @@ const NavBar = () => {
         </span>
 
         <div className="contact-info-btn">
-          <span><i className="fa fa-linkedin-square"></i></span>
-          <span><i className="fa fa-github"></i></span>
+          <span>
+            <a href="https://www.linkedin.com/in/xiaolinguan" target="_blank" rel="noreferrer"><i className="fa fa-linkedin-square"></i></a>
+          </span>
+          
+          <span>
+            <a href="https://github.com/XLG123/yep" target="_blank" rel="noreferrer">
+              <i className="fa fa-github"></i>
+            </a>
+          </span>
         </div>
 
         {sessionLinks}

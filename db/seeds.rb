@@ -30,6 +30,10 @@ ApplicationRecord.transaction do
         password: '12345678',
         zip_code: '12345'
       })
+
+    Business.create!(
+      name: ''
+    )
     end
     puts "Done!"
   end

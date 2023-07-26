@@ -20,4 +20,6 @@ class Business < ApplicationRecord
   validates :zip_code, length: { is: 5 }
   validates :phone_number, length: { is: 9 }
   validates :latitude, presence: true
+
+  has_one_attached :picture
 end
