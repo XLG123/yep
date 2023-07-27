@@ -33,7 +33,7 @@ const renderApplication = () => {
   root.render(
     <React.StrictMode>
       <Root />
-    </React.StrictMode>,
+    </React.StrictMode>
   );
 }
 

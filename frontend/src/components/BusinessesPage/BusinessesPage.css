@@ -80,6 +80,11 @@
   font-weight: bold;
 }
 
+.scrollable-result-container {
+  overflow-y: auto;
+  height: 80vh;
+  background-color: lightsalmon;
+}
 
 
 

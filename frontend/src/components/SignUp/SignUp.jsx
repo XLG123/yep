@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Navigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import yepLogo from "../../assets/images/yepLogo2.png";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
 import PasswordStrengthBar from 'react-password-strength-bar';
 import './SignUp.css';
@@ -135,13 +134,6 @@ const SignUp = () => {
   return (
     <>
       <div className="sign-up-page">
-
-        <NavLink to="/" className="back-to-hp-link">
-          <div id="app-title-container">
-            <h1 id="signup-app-title">yep!</h1>
-            <img src={yepLogo} alt="Yep Logo" id="signup-app-logo"/>
-          </div>
-        </NavLink>
 
         <div className="line-break"></div>
 

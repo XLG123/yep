@@ -14,12 +14,20 @@
 #  category     :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  address      :string           not null
 #
 class Business < ApplicationRecord
   validates :name, :city, :state, presence: true
-  validates :zip_code, length: { is: 5 }
-  validates :phone_number, length: { is: 9 }
-  validates :latitude, presence: true
+  validates :zip_code, presence: true, length: { is: 5 }
+  validates :latitude, :longitude, presence: true
+  validates :price_range, presence: true, length: { in: 1..4 }
+  validates :phone_number, presence: true, length: { is: 10 }
+  validates :category, presence: true
 
   has_one_attached :picture
+
+  has_many :reviews, 
+    primary_key: :id,
+    foreign_key: :business_id,
+    class_name: :Review
 end

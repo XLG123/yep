@@ -4,13 +4,14 @@ import yepLogo1 from '../../assets/images/yepLogo1.png';
 import yepLogo2 from '../../assets/images/yepLogo2.png';
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../store/session';
-// import SignUp from "../SignUp/SignUp";
 import UserProfile from "./UserProfile";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import CategoryMenu from "../Category/Category";
 
-const NavBar = ({location}) => {
+const NavBar = () => {
   const dispatch = useDispatch();
+  let location = useLocation();
+  let location_path = location.pathname;
 
   const demoLogin = (e) => {
     e.preventDefault();
@@ -41,6 +42,13 @@ const NavBar = ({location}) => {
     );
   }
 
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate('/restaurants', {replace: false});
+  }
+
   const [dropdown, setDropdown] = useState(false);
 
   const showDropdown = (e) => {
@@ -48,22 +56,22 @@ const NavBar = ({location}) => {
   }
 
   return (
-    <div className={location === "/" ? "hp" : "non-hp"} id="nav-bar">
+    <div className={location_path === "/" ? "hp" : "non-hp"} id="nav-bar">
 
       <div id="nav-bar-content">
 
         <span id="back-to-hp">
           <NavLink to="/" className="title-nav-link">
             <h1 id="app-title">yep!</h1>
-            <img src={location === "/" ? yepLogo1 : yepLogo2} alt="Yep Logo" className={location === "/" ? "hp-logo" : "non-hp-logo"} id="app-logo"/>
+            <img src={location_path === "/" ? yepLogo1 : yepLogo2} alt="Yep Logo" className={location_path === "/" ? "hp-logo" : "non-hp-logo"} id="app-logo"/>
           </NavLink>
         </span>
 
-        <button id="category-btn" onClick={(e) => {showDropdown()}}>
+        <button id="category-btn" onClick={(e) => { handleClick(e) }} onMouseEnter={(e) => { showDropdown(e) }}>
           <span>Restaurants</span>
           <i className="fa fa-caret-down"></i>
         </button>
-        { dropdown && <CategoryMenu location={location}/> }
+        { dropdown && <CategoryMenu location={location_path}/> }
 
         <span id="search-bar-content">
           <input type="text" placeholder="Pizza, Ramen, Sushi..." id="search-bar"/>
