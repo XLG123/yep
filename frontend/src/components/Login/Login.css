@@ -15,17 +15,16 @@
   margin-bottom: 3vh;
 }
 
-#login-line-break {
-  margin: 4vh;
-  right: -2vw;
-}
-
 #login-form-container {
   position: absolute;
   top: 28vh;
   left: 23vw;
   text-align: center;
   width: 20vw;
+}
+
+.login-form-lb {
+  top: 9.5vw;
 }
 
 .login-input {

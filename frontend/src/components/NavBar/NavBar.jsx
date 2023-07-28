@@ -71,7 +71,7 @@ const NavBar = () => {
           <span>Restaurants</span>
           <i className="fa fa-caret-down"></i>
         </button>
-        { dropdown && <CategoryMenu location={location_path}/> }
+        { dropdown && <CategoryMenu location={location_path} /> }
 
         <span id="search-bar-content">
           <input type="text" placeholder="Pizza, Ramen, Sushi..." id="search-bar"/>

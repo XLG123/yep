@@ -7,12 +7,16 @@
   position: absolute;
   width: 100%;
   border-top: 1px solid rgba(200, 201, 202, 1);
+  top: 3.2vw;
+}
+
+.sign-up-form-lb{
   top: 7vw;
 }
 
 #sign-up-form-container {
   position: absolute;
-  top: 35vh;
+  top: 28vh;
   left: 23vw;
   text-align: center;
   width: 20vw;
@@ -28,7 +32,7 @@
 #sub-title {
   font-weight: bold;
   font-size: 1vw;
-  margin-bottom: 1.35vh;
+  margin-bottom: 1.50vh;
 }
 
 #yep-msg {
@@ -153,7 +157,7 @@
 
 #submit-signup-btn {
   position: absolute;
-  top: 53vh;
+  top: 54vh;
   font-size: 1.2vw;
   left: -2vw;
   width: 23.1vw;
@@ -177,7 +181,7 @@
 
 #login-link-1 {
   position: absolute;
-  top: 59vh;
+  top: 60vh;
   right: -1vw;
   font-size: 0.9vw;
 }
@@ -188,7 +192,7 @@
 
 #sign-up-form-pic, #login-form-pic {
   position: absolute;
-  top: 42vh;
+  top: 34vh;
   left: 53vw;
 }
 
@@ -198,7 +202,7 @@
 
 #sign-up-errors, #login-errors {
   position: absolute;
-  top: 15.5vh;
+  top: 9vh;
   left: 21vw;
   font-size: 0.9vw;
   background: #fcd6d3;

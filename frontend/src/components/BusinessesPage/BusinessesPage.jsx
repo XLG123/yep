@@ -44,7 +44,7 @@ const BusinessesPage = () => {
         <div className="main-content">
           <div className="search-result-container">
             <h1 className="search-result-title">
-              {searchItem} Cuisine </h1>
+              {searchItem ? `${searchItem} Cuisine` : "Restaurants"}</h1>
             <div className="scrollable-result-container">
               {restaurants.map((restaurant) => 
               <Restaurant key={restaurant.id} restaurant = {restaurant} /> )}

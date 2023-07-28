@@ -131,6 +131,10 @@ const SignUp = () => {
     );
   }
 
+  const strengthBarStyle = {
+    fontSize: "1vw",
+  };
+
   return (
     <>
       <div className="sign-up-page">
@@ -157,7 +161,7 @@ const SignUp = () => {
 
           <form onSubmit={handleSignUp}>
 
-            <div className="line-break"></div>
+            <div className="line-break sign-up-form-lb"></div>
 
             <div id="username">
               <input type="text" name="firstname" placeholder="First Name"  value={firstName} onChange={(e) => {setFirstName(e.target.value)}} id="firstname" className="signup-input"/>
@@ -172,7 +176,7 @@ const SignUp = () => {
             <div id="user-password">
               <input type="password" name="password" placeholder="Password"
               minLength="8" value={password} onChange={(e) => {setPassword(e.target.value)}} id="password" className="signup-input" />
-              <PasswordStrengthBar password={password} minLength={3} scoreWords={['too weak', 'weak', 'okay', 'good', 'strong']} className="password-bar"/>
+              <PasswordStrengthBar password={password} minLength={3} scoreWordStyle={strengthBarStyle} scoreWords={['too weak', 'weak', 'okay', 'good', 'strong']} className="password-bar"/>
             </div>
 
             <div id="user-zipcode">

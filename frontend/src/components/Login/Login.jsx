@@ -92,7 +92,7 @@ const Login = () => {
 
           <form onSubmit={handleLogin}>
 
-            <div className="line-break" id="login-line-break"></div>
+            <div className="line-break login-form-lb"></div>
 
             <div id="login-user-email">
               <input type="email" name="email" placeholder="Email"

@@ -41,6 +41,7 @@
   top: 1.5vw;
   left: 8vw;
   outline: none;
+  font-family: inherit;
 }
 
 .hp #category-btn {

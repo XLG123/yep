@@ -8,6 +8,7 @@
 .business-page-container {
   color: #2D2E2F;
   position: relative;
+  font-family: Helvetica, sans-serif;
 }
 
 .left-side-bar {
@@ -20,6 +21,7 @@
 
 .filter-bar-container {
   color: inherit;
+  font-family: inherit;
 }
 
 .filter-title {
@@ -39,6 +41,8 @@
   transition-property: background-color;
   transition-duration: 0.8s;
   cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.1em;
 }
 
 .filter-btn-group:hover {
@@ -78,13 +82,20 @@
   color: inherit;
   font-size: 1.5vw;
   font-weight: bold;
+  margin-bottom: 1.1vh;
 }
 
 .scrollable-result-container {
   overflow-y: auto;
   height: 80vh;
-  background-color: lightsalmon;
+  padding-left: 0px;
 }
+
+.scrollable-result-container::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 
 
