@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-require "aws-sdk-s3"
 require "open-uri"
 
 ApplicationRecord.transaction do
@@ -60,8 +59,9 @@ italian_1 = Business.create!(
   phone_number: '2123671979',
   category: 'Italian'
 )
-italian_1.picture.attach(io: URI.open("https://yep-dev.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
-# attach aws img here
+# italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
+# italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_1.jpg"), filename: "italian_1_dish_1.jpg")
+# italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_2.jpg"), filename: "italian_1_dish_2.jpg")
 
 italian_2 = Business.create!(
   name: 'Olio e Più',
@@ -115,7 +115,7 @@ italian_5 = Business.create!(
   longitude: -74.0041939,
   price_range: '$$$',
   phone_number: '9295246682',
-  category: 'Pizza'
+  category: 'Italian'
 )
 # attach aws img here
 
@@ -443,6 +443,76 @@ japanese_6 = Business.create!(
 )
 # attach aws img here
 
+japenese_7 = Business.create!(
+  name: 'Ippudo NY',
+  city: 'New York City',
+  state: 'New York',
+  address: '65 4th Ave',
+  zip_code: '10003',
+  latitude: 40.730952,
+  longitude: -73.9928619,
+  price_range: '$$',
+  phone_number: '2123880088',
+  category: 'Japanese_Ramen'
+)
+# attach aws img here
+
+japanese_8 = Business.create!(
+  name: 'Oramen',
+  city: 'New York City',
+  state: 'New York',
+  address: '579 6th Ave',
+  zip_code: '10011',
+  latitude: 40.7390167,
+  longitude: -73.9985751,
+  price_range: '$$',
+  phone_number: '6469985754',
+  category: 'Japanese_Ramen'
+)
+# attach aws img here
+
+japanese_9 = Business.create!(
+  name: 'Kyuramen',
+  city: 'New York City',
+  state: 'New York',
+  address: '210 E 14th St',
+  zip_code: '10003',
+  latitude: 40.7328248,
+  longitude: -73.9893834,
+  price_range: '$$',
+  phone_number: '3477050847',
+  category: 'Japanese_Ramen'
+)
+# attach aws img here
+
+japanese_10 = Business.create!(
+  name: 'MIkado',
+  city: 'New York City',
+  state: 'New York',
+  address: '109 W 14th St',
+  zip_code: '10011',
+  latitude: 40.7377777,
+  longitude: -73.9999869,
+  price_range: '$$',
+  phone_number: '2122559981',
+  category: 'Japanese_Sushi'
+)
+# attach aws img here
+
+japanese_11 = Business.create!(
+  name: 'Sushi Nakazawa',
+  city: 'New York City',
+  state: 'New York',
+  address: '23 Commerce St',
+  zip_code: '10011',
+  latitude: 40.7318086,
+  longitude: -74.0071242,
+  price_range: '$$$$',
+  phone_number: '2129242212',
+  category: 'Japanese_Sushi'
+)
+# attach aws img here
+
 # Thai Restaurants
 thai_1 = Business.create!(
   name: 'Pranakhon Thai Restaurant',
@@ -613,78 +683,6 @@ mexican_5 = Business.create!(
 )
 # attach aws img here
 
-# Ramen stores
-ramen_1 = Business.create!(
-  name: 'Ippudo NY',
-  city: 'New York City',
-  state: 'New York',
-  address: '65 4th Ave',
-  zip_code: '10003',
-  latitude: 40.730952,
-  longitude: -73.9928619,
-  price_range: '$$',
-  phone_number: '2123880088',
-  category: 'Ramen'
-)
-# attach aws img here
-
-ramen_2 = Business.create!(
-  name: 'Oramen',
-  city: 'New York City',
-  state: 'New York',
-  address: '579 6th Ave',
-  zip_code: '10011',
-  latitude: 40.7390167,
-  longitude: -73.9985751,
-  price_range: '$$',
-  phone_number: '6469985754',
-  category: 'Ramen'
-)
-# attach aws img here
-
-ramen_3 = Business.create!(
-  name: 'Kyuramen',
-  city: 'New York City',
-  state: 'New York',
-  address: '210 E 14th St',
-  zip_code: '10003',
-  latitude: 40.7328248,
-  longitude: -73.9893834,
-  price_range: '$$',
-  phone_number: '3477050847',
-  category: 'Ramen'
-)
-# attach aws img here
-
-# Sushi Stores
-sushi_1 = Business.create!(
-  name: 'MIkado',
-  city: 'New York City',
-  state: 'New York',
-  address: '109 W 14th St',
-  zip_code: '10011',
-  latitude: 40.7377777,
-  longitude: -73.9999869,
-  price_range: '$$',
-  phone_number: '2122559981',
-  category: 'Sushi'
-)
-# attach aws img here
-
-sushi_2 = Business.create!(
-  name: 'Sushi Nakazawa',
-  city: 'New York City',
-  state: 'New York',
-  address: '23 Commerce St',
-  zip_code: '10011',
-  latitude: 40.7318086,
-  longitude: -74.0071242,
-  price_range: '$$$$',
-  phone_number: '2129242212',
-  category: 'Sushi'
-)
-# attach aws img here
-
 # Milk Tea Stores
 milk_tea_1 = Business.create!(
   name: 'Wanpo Tea Shop',
@@ -741,5 +739,15 @@ milk_tea_4 = Business.create!(
   category: 'Milk Tea'
 )
 # attach aws img here
+
+# Attaching Thumbnails for Italian Restaurants
+Business.first(11).each_with_index do |restaurant, index|
+  restaurant.picture.attach(io: 
+    URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_#{index+1}.jpg"), 
+    filename: "italian_#{index+1}.jpg")
+end
+
+# Attaching Thumbnails for Chinese Restaurants
+# (12..)
 
 puts "Done!"

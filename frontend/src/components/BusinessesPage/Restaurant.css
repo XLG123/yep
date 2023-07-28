@@ -20,6 +20,7 @@
 .restaurant-img img {
   display: inline-block;
   width: 18vw;
+  height: 13vw;
 }
 
 .restaurant-info {

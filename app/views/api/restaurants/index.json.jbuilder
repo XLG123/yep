@@ -5,7 +5,7 @@ json.restaurants do
       :latitude, :longitude, :price_range, :phone_number, :category,
       :address
       # debugger
-      json.pictureUrl restaurant.picture.attached? ? restaurant.picture.url : nil
+      json.pictureUrls restaurant.picture.map { |file| file.url }
     end
   end
 end

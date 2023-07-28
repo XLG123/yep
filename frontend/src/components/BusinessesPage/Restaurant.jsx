@@ -9,7 +9,7 @@ const Restaurant = ({restaurant}) => {
 
         <span className="restaurant-img">
           {/* <img src="https://img-16.stickers.cloud/packs/fcdf27ab-ba83-432f-a5fe-46e0c7f99df3/webp/adac529c-5360-4ebf-8554-13439160ecd4.webp" alt="image"/> */}
-          <img src={restaurant.pictureUrl} alt="img"/>
+          <img src={restaurant.pictureUrls[0]} alt="img"/>
         </span>
 
         <span className="restaurant-info">
