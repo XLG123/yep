@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 require "open-uri"
 
 ApplicationRecord.transaction do
@@ -75,7 +67,6 @@ italian_2 = Business.create!(
   phone_number: '2122436546',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_3 = Business.create!(
   name: 'Rubirosa',
@@ -89,7 +80,6 @@ italian_3 = Business.create!(
   phone_number: '2129650500',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_4 = Business.create!(
   name: 'Paesano',
@@ -103,7 +93,6 @@ italian_4 = Business.create!(
   phone_number: '2129651188',
   category: 'Italian'
 )
-# attach aws img here
 
 italian_5 = Business.create!(
   name: "L'Antica Pizzeria Da Michele NYC",
@@ -117,7 +106,6 @@ italian_5 = Business.create!(
   phone_number: '9295246682',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_6 = Business.create!(
   name: 'La Lanterna Di Vittorio',
@@ -131,7 +119,6 @@ italian_6 = Business.create!(
   phone_number: '9176393236',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_7 = Business.create!(
   name: 'Trapizzino',
@@ -145,7 +132,6 @@ italian_7 = Business.create!(
   phone_number: '3474674362',
   category: 'Italian'
 )
-# attach aws img here
 
 italian_8 = Business.create!(
   name: 'Babbo',
@@ -159,7 +145,6 @@ italian_8 = Business.create!(
   phone_number: '2127770303',
   category: 'Italian'
 )
-# attach aws img here
 
 italian_9 = Business.create!(
   name: 'Ribalta Pizza',
@@ -173,7 +158,6 @@ italian_9 = Business.create!(
   phone_number: '2127777781',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_10 = Business.create!(
   name: "Lil Frankie's",
@@ -187,7 +171,6 @@ italian_10 = Business.create!(
   phone_number: '2124204900',
   category: 'Italian_Pizza'
 )
-# attach aws img here
 
 italian_11 = Business.create!(
   name: "Joe's Pizza",
@@ -215,7 +198,6 @@ chinese_1 = Business.create!(
   phone_number: '2129019971',
   category: 'Chinese'
 )
-# attach aws img here
 
 chinese_2 = Business.create!(
   name: 'Shu Jiao Fu Zhou',
@@ -229,7 +211,6 @@ chinese_2 = Business.create!(
   phone_number: '2126252532',
   category: 'Chinese'
 )
-# attach aws img here
 
 chinese_3 = Business.create!(
   name: 'Chow House',
@@ -243,7 +224,6 @@ chinese_3 = Business.create!(
   phone_number: '2128371021',
   category: 'Chinese'
 )
-# attach aws img here
 
 chinses_4 = Business.create!(
   name: "Joe's Shanghai",
@@ -257,7 +237,6 @@ chinses_4 = Business.create!(
   phone_number: '2122338888',
   category: 'Chinese'
 )
-# attach aws img here
 
 chinses_5 = Business.create!(
   name: 'Han Dynasty',
@@ -271,7 +250,6 @@ chinses_5 = Business.create!(
   phone_number: '2123908685',
   category: 'Chinese'
 )
-# attach aws img here
 
 # French Restaurants
 french_1 = Business.create!(
@@ -286,7 +264,6 @@ french_1 = Business.create!(
   phone_number: '2125332962',
   category: 'French'
 )
-# attach aws img here
 
 french_2 = Business.create!(
   name: 'La Sirene',
@@ -300,7 +277,6 @@ french_2 = Business.create!(
   phone_number: '2129253061',
   category: 'French'
 )
-# attach aws img here
 
 french_3 = Business.create!(
   name: 'Claudette',
@@ -314,7 +290,6 @@ french_3 = Business.create!(
   phone_number: '2128682424',
   category: 'French'
 )
-# attach aws img here
 
 french_4 = Business.create!(
   name: 'Boucherie Union Square',
@@ -328,7 +303,6 @@ french_4 = Business.create!(
   phone_number: '2123530200',
   category: 'French'
 )
-# attach aws img here
 
 french_5 = Business.create!(
   name: 'Buvette',
@@ -342,7 +316,6 @@ french_5 = Business.create!(
   phone_number: '2122553590',
   category: 'French'
 )
-# attach aws img here
 
 french_6 = Business.create!(
   name: 'Mino Brasserie',
@@ -356,7 +329,6 @@ french_6 = Business.create!(
   phone_number: '8455249006',
   category: 'French'  
 )
-# attach aws img here
 
 # Japanese Restaurants
 japanese_1 = Business.create!(
@@ -371,7 +343,6 @@ japanese_1 = Business.create!(
   phone_number: '2126143006',
   category: 'Japanese'
 )
-# attach aws img here
 
 japanese_2 = Business.create!(
   name: 'Tsuru Ton Tan',
@@ -385,7 +356,6 @@ japanese_2 = Business.create!(
   phone_number: '2129891000',
   category: 'Japanese_Ramen'
 )
-# attach aws img here
 
 japanese_3 = Business.create!(
   name: 'Raku',
@@ -399,7 +369,6 @@ japanese_3 = Business.create!(
   phone_number: '2122281324',
   category: 'Japanese_Ramen'
 )
-# attach aws img here
 
 japanese_4 = Business.create!(
   name: 'Maison Kintaro',
@@ -413,7 +382,6 @@ japanese_4 = Business.create!(
   phone_number: '3152304533',
   category: 'Japanese'
 )
-# attach aws img here
 
 japanese_5 = Business.create!(
   name: 'Maki Kosaka',
@@ -427,7 +395,6 @@ japanese_5 = Business.create!(
   phone_number: '9172615538',
   category: 'Japanese_Sushi'
 )
-# attach aws img here
 
 japanese_6 = Business.create!(
   name: 'Ootoya Chelsea',
@@ -441,7 +408,6 @@ japanese_6 = Business.create!(
   phone_number: '2122550018',
   category: 'Japanese_Sushi'
 )
-# attach aws img here
 
 japenese_7 = Business.create!(
   name: 'Ippudo NY',
@@ -455,7 +421,6 @@ japenese_7 = Business.create!(
   phone_number: '2123880088',
   category: 'Japanese_Ramen'
 )
-# attach aws img here
 
 japanese_8 = Business.create!(
   name: 'Oramen',
@@ -469,7 +434,6 @@ japanese_8 = Business.create!(
   phone_number: '6469985754',
   category: 'Japanese_Ramen'
 )
-# attach aws img here
 
 japanese_9 = Business.create!(
   name: 'Kyuramen',
@@ -483,7 +447,6 @@ japanese_9 = Business.create!(
   phone_number: '3477050847',
   category: 'Japanese_Ramen'
 )
-# attach aws img here
 
 japanese_10 = Business.create!(
   name: 'MIkado',
@@ -497,7 +460,6 @@ japanese_10 = Business.create!(
   phone_number: '2122559981',
   category: 'Japanese_Sushi'
 )
-# attach aws img here
 
 japanese_11 = Business.create!(
   name: 'Sushi Nakazawa',
@@ -511,7 +473,6 @@ japanese_11 = Business.create!(
   phone_number: '2129242212',
   category: 'Japanese_Sushi'
 )
-# attach aws img here
 
 # Thai Restaurants
 thai_1 = Business.create!(
@@ -526,7 +487,6 @@ thai_1 = Business.create!(
   phone_number: '2127866789',
   category: 'Thai'
 )
-# attach aws img here
 
 thai_2 = Business.create!(
   name: 'Thai Villa',
@@ -540,7 +500,6 @@ thai_2 = Business.create!(
   phone_number: '2128029999',
   category: 'Thai'
 )
-# attach aws img here
 
 thai_3 = Business.create!(
   name: 'Soothr',
@@ -554,7 +513,6 @@ thai_3 = Business.create!(
   phone_number: '2128449789',
   category: 'Thai'
 )
-# attach aws img here
 
 thai_4 = Business.create!(
   name: 'LoveMama',
@@ -568,7 +526,6 @@ thai_4 = Business.create!(
   phone_number: '2122545370',
   category: 'Thai',
 )
-# attach aws img here
 
 thai_5 = Business.create!(
   name: 'Top Thai Vintage',
@@ -582,7 +539,6 @@ thai_5 = Business.create!(
   phone_number: '6466092272',
   category: 'Thai'
 )
-# attach aws img here
 
 thai_6 = Business.create!(
   name: 'Top Thai Greenwich',
@@ -596,7 +552,6 @@ thai_6 = Business.create!(
   phone_number: '6467264418',
   category: 'Thai'
 )
-# attach aws img here
 
 thai_7 = Business.create!(
   name: 'Laut',
@@ -610,7 +565,6 @@ thai_7 = Business.create!(
   phone_number: '2122068989',
   category: 'Thai'
 )
-# attach aws img here
 
 # Mexican Restaurants
 mexican_1 = Business.create!(
@@ -625,7 +579,6 @@ mexican_1 = Business.create!(
   phone_number: '2125332233',
   category: 'Mexican'
 )
-# attach aws img here
 
 mexican_2 = Business.create!(
   name: 'La Contenta',
@@ -639,7 +592,6 @@ mexican_2 = Business.create!(
   phone_number: '2124324180',
   category: 'Mexican'
 )
-# attach aws img here
 
 mexican_3 = Business.create!(
   name: 'Rosa Mexicano',
@@ -653,7 +605,6 @@ mexican_3 = Business.create!(
   phone_number: '2125333350',
   category: 'Mexican',
 )
-# attach aws img here
 
 mexican_4 = Business.create!(
   name: 'Tortaria',
@@ -667,7 +618,6 @@ mexican_4 = Business.create!(
   phone_number: '2127761830',
   category: 'Mexican'
 )
-# attach aws img here
 
 mexican_5 = Business.create!(
   name: 'El Cantinero',
@@ -681,7 +631,6 @@ mexican_5 = Business.create!(
   phone_number: '2122559378',
   category: 'Mexican' 
 )
-# attach aws img here
 
 # Milk Tea Stores
 milk_tea_1 = Business.create!(
@@ -696,7 +645,6 @@ milk_tea_1 = Business.create!(
   phone_number: '2129958349',
   category: 'Milk Tea'
 )
-# attach aws img here
 
 milk_tea_2 = Business.create!(
   name: 'Teazzi Tea Shop',
@@ -710,7 +658,6 @@ milk_tea_2 = Business.create!(
   phone_number: '9172681999',
   category: 'Milk Tea'
 )
-# attach aws img here
 
 milk_tea_3 = Business.create!(
   name: 'Jooy Tea Shoppe',
@@ -724,7 +671,6 @@ milk_tea_3 = Business.create!(
   phone_number: '2123816193',
   category: 'Milk Tea'
 )
-# attach aws img here
 
 milk_tea_4 = Business.create!(
   name: 'ViVi Bubble Tea',
@@ -738,7 +684,6 @@ milk_tea_4 = Business.create!(
   phone_number: '6466827784',
   category: 'Milk Tea'
 )
-# attach aws img here
 
 # Business.first(11).each_with_index do |restaurant, index|
 #   restaurant.picture.attach(io: 
@@ -756,30 +701,30 @@ end
 
 # Attaching Thumbnails to Italian Restaurants
 italian_restaurants = Business.where("category Like ?", "Italian%")
-attach_thumbnail(italian_restaurants, "italian")
+# attach_thumbnail(italian_restaurants, "italian")
 
 # Attaching Thumbnails to Chinese Restaurants
 chinese_restaurants = Business.where("category Like ?", "Chinese%")
-attach_thumbnail(chinese_restaurants, "chinese")
+# attach_thumbnail(chinese_restaurants, "chinese")
 
 # Attaching Thumbnails to French Restaurants
 french_restaurants = Business.where("category Like ?", "French%")
-attach_thumbnail(french_restaurants, "french")
+# attach_thumbnail(french_restaurants, "french")
 
 # Attaching Thumbnails to Japanese Restaurants
 japanese_restaurants = Business.where("category Like ?", "Japanese%")
-attach_thumbnail(japanese_restaurants, "japanese")
+# attach_thumbnail(japanese_restaurants, "japanese")
 
 # Attaching Thumbnails to Thai Restaurants
 thai_restaurants = Business.where("category Like ?", "Thai%")
-attach_thumbnail(thai_restaurants, "thai")
+# attach_thumbnail(thai_restaurants, "thai")
 
 # Attaching Thumbnails to Mexican Restaurants
 mexican_restaurants = Business.where("category Like ?", "Mexican%")
-attach_thumbnail(mexican_restaurants, "mexican")
+# attach_thumbnail(mexican_restaurants, "mexican")
 
 # Attaching Thumbnails to Milk Tea Stores
 milk_tea_stores = Business.where("category Like ?", "Milk Tea%")
-attach_thumbnail(milk_tea_stores, "milk_tea")
+# attach_thumbnail(milk_tea_stores, "milk_tea")
 
 puts "Done!"

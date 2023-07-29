@@ -1,36 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./UserProfile.css";
 
 const UserProfile = ({user}) => {
   const dispatch = useDispatch();
+  const ref = useRef();
+
   const [userProfile, setUserProfile] = useState(false);
 
-  const showProfile = () => {
-    setUserProfile(!userProfile);
-  }
+  useEffect(() => {
+    const closeProfile = (e) => {
+      if (userProfile && ref.current && !ref.current.contains(e.target)) {
+        setUserProfile(false);
+      }
+    };
+
+    document.addEventListener("click", closeProfile);
+
+    return () => {document.removeEventListener("click", closeProfile)};
+  }, [userProfile]);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-  }
+  };
 
   return (
     <>
-      <button id="user-pic" onClick={showProfile}>
-        <div><i className="fa fa-user"></i></div>
-      </button>
+      <span ref={ref}>
+        <button id="user-pic" onClick={() => setUserProfile((show) => !show)}>
+          <div><i className="fa fa-user"></i></div>
+        </button>
 
-      { userProfile && (
-        <ul id="user-profile">
-          <li>{user.firstName} {user.lastName[0]}.</li>
-          <li>{user.email}</li>
-          <li>
-            <button className="logout-btn" onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      ) }
+        { userProfile && (
+          <ul id="user-profile">
+            <li>{user.firstName} {user.lastName[0]}.</li>
+            <li>{user.email}</li>
+            <li>
+              <button className="logout-btn" onClick={logout}>Log Out</button>
+            </li>
+          </ul>
+        ) }
+      </span>
     </>
   );
 }
