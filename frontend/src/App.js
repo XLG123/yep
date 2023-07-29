@@ -1,7 +1,7 @@
 import React from "react";
 import HomePage from './components/HomePage/HomePage';
 import NavBar from "./components/NavBar/NavBar";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import BusinessesPage from "./components/BusinessesPage/BusinessesPage";

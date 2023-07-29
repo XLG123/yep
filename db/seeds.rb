@@ -57,7 +57,7 @@ italian_1 = Business.create!(
   longitude: -73.9958515,
   price_range: '$$',
   phone_number: '2123671979',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_1.jpg"), filename: "italian_1_dish_1.jpg")
@@ -73,7 +73,7 @@ italian_2 = Business.create!(
   longitude: -74.0048117,
   price_range: "$$",
   phone_number: '2122436546',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -87,7 +87,7 @@ italian_3 = Business.create!(
   longitude: -73.9988491,
   price_range: "$$",
   phone_number: '2129650500',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -115,7 +115,7 @@ italian_5 = Business.create!(
   longitude: -74.0041939,
   price_range: '$$$',
   phone_number: '9295246682',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -129,7 +129,7 @@ italian_6 = Business.create!(
   longitude: -74.0026245,
   price_range: '$$',
   phone_number: '9176393236',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -171,7 +171,7 @@ italian_9 = Business.create!(
   longitude: -73.9941344,
   price_range: '$$',
   phone_number: '2127777781',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -185,7 +185,7 @@ italian_10 = Business.create!(
   longitude: -73.9910543,
   price_range: '$$',
   phone_number: '2124204900',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 # attach aws img here
 
@@ -199,7 +199,7 @@ italian_11 = Business.create!(
   longitude: -73.9902601,
   price_range: '$',
   phone_number: '2123889474',
-  category: 'Italian'
+  category: 'Italian_Pizza'
 )
 
 # Chinese Restaurants
@@ -740,14 +740,46 @@ milk_tea_4 = Business.create!(
 )
 # attach aws img here
 
-# Attaching Thumbnails for Italian Restaurants
-Business.first(11).each_with_index do |restaurant, index|
-  restaurant.picture.attach(io: 
-    URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_#{index+1}.jpg"), 
-    filename: "italian_#{index+1}.jpg")
+# Business.first(11).each_with_index do |restaurant, index|
+#   restaurant.picture.attach(io: 
+#     URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_#{index+1}.jpg"), 
+#     filename: "italian_#{index+1}.jpg")
+# end
+
+def attach_thumbnail(restaurants, category)
+  restaurants.each_with_index do |restaurant, index|
+    restaurant.picture.attach(io:
+      URI.open("https://yep-app-seeds.s3.amazonaws.com/#{category}_#{index+1}.jpg"),
+      filename: "#{category}_#{index+1}.jpg")
+  end
 end
 
-# Attaching Thumbnails for Chinese Restaurants
-# (12..)
+# Attaching Thumbnails to Italian Restaurants
+italian_restaurants = Business.where("category Like ?", "Italian%")
+attach_thumbnail(italian_restaurants, "italian")
+
+# Attaching Thumbnails to Chinese Restaurants
+chinese_restaurants = Business.where("category Like ?", "Chinese%")
+attach_thumbnail(chinese_restaurants, "chinese")
+
+# Attaching Thumbnails to French Restaurants
+french_restaurants = Business.where("category Like ?", "French%")
+attach_thumbnail(french_restaurants, "french")
+
+# Attaching Thumbnails to Japanese Restaurants
+japanese_restaurants = Business.where("category Like ?", "Japanese%")
+attach_thumbnail(japanese_restaurants, "japanese")
+
+# Attaching Thumbnails to Thai Restaurants
+thai_restaurants = Business.where("category Like ?", "Thai%")
+attach_thumbnail(thai_restaurants, "thai")
+
+# Attaching Thumbnails to Mexican Restaurants
+mexican_restaurants = Business.where("category Like ?", "Mexican%")
+attach_thumbnail(mexican_restaurants, "mexican")
+
+# Attaching Thumbnails to Milk Tea Stores
+milk_tea_stores = Business.where("category Like ?", "Milk Tea%")
+attach_thumbnail(milk_tea_stores, "milk_tea")
 
 puts "Done!"

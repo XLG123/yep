@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './NavBar.css';
 import yepLogo1 from '../../assets/images/yepLogo1.png';
 import yepLogo2 from '../../assets/images/yepLogo2.png';
@@ -49,12 +49,6 @@ const NavBar = () => {
     navigate('/restaurants', {replace: false});
   }
 
-  const [dropdown, setDropdown] = useState(false);
-
-  const showDropdown = (e) => {
-    setDropdown(!dropdown);
-  }
-
   return (
     <div className={location_path === "/" ? "hp" : "non-hp"} id="nav-bar">
 
@@ -67,11 +61,11 @@ const NavBar = () => {
           </NavLink>
         </span>
 
-        <button id="category-btn" onClick={(e) => { handleClick(e) }} onMouseEnter={(e) => { showDropdown(e) }}>
+        <button id="category-btn" onClick={(e) => handleClick(e)}>
           <span>Restaurants</span>
           <i className="fa fa-caret-down"></i>
         </button>
-        { dropdown && <CategoryMenu location={location_path} /> }
+        <CategoryMenu location={location_path} />
 
         <span id="search-bar-content">
           <input type="text" placeholder="Pizza, Ramen, Sushi..." id="search-bar"/>

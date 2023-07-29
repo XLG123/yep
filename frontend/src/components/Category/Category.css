@@ -10,6 +10,11 @@
   border-radius: 4px;
   background-color: rgba(102, 102, 102, 0.7);
   box-sizing: border-box;
+  display: none;
+}
+
+.hp-category-container:hover, .non-hp-category-container:hover {
+  display: grid;
 }
 
 .non-hp-category-container {
@@ -69,3 +74,7 @@
   content: '🌮';
 }
 
+#category-btn:hover + .hp-category-container,
+#category-btn:hover + .non-hp-category-container {
+  display: grid;
+}
