@@ -49,7 +49,8 @@ italian_1 = Business.create!(
   longitude: -73.9958515,
   price_range: '$$',
   phone_number: '2123671979',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_1.jpg"), filename: "italian_1_dish_1.jpg")
@@ -65,7 +66,8 @@ italian_2 = Business.create!(
   longitude: -74.0048117,
   price_range: "$$",
   phone_number: '2122436546',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_3 = Business.create!(
@@ -78,7 +80,8 @@ italian_3 = Business.create!(
   longitude: -73.9988491,
   price_range: "$$",
   phone_number: '2129650500',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_4 = Business.create!(
@@ -91,7 +94,8 @@ italian_4 = Business.create!(
   longitude: -74.0000215,
   price_range: '$$',
   phone_number: '2129651188',
-  category: 'Italian'
+  category: 'Italian',
+  average_rating: 0
 )
 
 italian_5 = Business.create!(
@@ -104,7 +108,8 @@ italian_5 = Business.create!(
   longitude: -74.0041939,
   price_range: '$$$',
   phone_number: '9295246682',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_6 = Business.create!(
@@ -117,7 +122,8 @@ italian_6 = Business.create!(
   longitude: -74.0026245,
   price_range: '$$',
   phone_number: '9176393236',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_7 = Business.create!(
@@ -130,7 +136,8 @@ italian_7 = Business.create!(
   longitude: -73.9992217,
   price_range: '$$',
   phone_number: '3474674362',
-  category: 'Italian'
+  category: 'Italian',
+  average_rating: 0
 )
 
 italian_8 = Business.create!(
@@ -143,7 +150,8 @@ italian_8 = Business.create!(
   longitude: -74.0041494,
   price_range: '$$$$',
   phone_number: '2127770303',
-  category: 'Italian'
+  category: 'Italian',
+  average_rating: 0
 )
 
 italian_9 = Business.create!(
@@ -156,7 +164,8 @@ italian_9 = Business.create!(
   longitude: -73.9941344,
   price_range: '$$',
   phone_number: '2127777781',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_10 = Business.create!(
@@ -169,11 +178,12 @@ italian_10 = Business.create!(
   longitude: -73.9910543,
   price_range: '$$',
   phone_number: '2124204900',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 italian_11 = Business.create!(
-  name: "Joe's Pizza",
+  name: "Lil Frankie's",
   city: 'New York City',
   state: 'New York',
   address: '150 E 14th St',
@@ -182,7 +192,8 @@ italian_11 = Business.create!(
   longitude: -73.9902601,
   price_range: '$',
   phone_number: '2123889474',
-  category: 'Italian_Pizza'
+  category: 'Italian_Pizza',
+  average_rating: 0
 )
 
 # Chinese Restaurants
@@ -196,7 +207,8 @@ chinese_1 = Business.create!(
   longitude: -73.9942782,
   price_range: '$$$',
   phone_number: '2129019971',
-  category: 'Chinese'
+  category: 'Chinese',
+  average_rating: 0
 )
 
 chinese_2 = Business.create!(
@@ -209,7 +221,8 @@ chinese_2 = Business.create!(
   longitude: -73.9946625,
   price_range: '$',
   phone_number: '2126252532',
-  category: 'Chinese'
+  category: 'Chinese',
+  average_rating: 0
 )
 
 chinese_3 = Business.create!(
@@ -222,7 +235,8 @@ chinese_3 = Business.create!(
   longitude: -74.003301,
   price_range: '$$',
   phone_number: '2128371021',
-  category: 'Chinese'
+  category: 'Chinese',
+  average_rating: 0
 )
 
 chinses_4 = Business.create!(
@@ -235,7 +249,8 @@ chinses_4 = Business.create!(
   longitude: -73.9992737,
   price_range: '$$',
   phone_number: '2122338888',
-  category: 'Chinese'
+  category: 'Chinese',
+  average_rating: 0
 )
 
 chinses_5 = Business.create!(
@@ -248,7 +263,8 @@ chinses_5 = Business.create!(
   longitude: -73.9931225,
   price_range: '$$',
   phone_number: '2123908685',
-  category: 'Chinese'
+  category: 'Chinese',
+  average_rating: 0
 )
 
 # French Restaurants
@@ -262,7 +278,8 @@ french_1 = Business.create!(
   longitude: -74.0002429,
   price_range: '$$$',
   phone_number: '2125332962',
-  category: 'French'
+  category: 'French',
+  average_rating: 0
 )
 
 french_2 = Business.create!(
@@ -275,7 +292,8 @@ french_2 = Business.create!(
   longitude: 74.0082419,
   price_range: '$$$',
   phone_number: '2129253061',
-  category: 'French'
+  category: 'French',
+  average_rating: 0
 )
 
 french_3 = Business.create!(
@@ -288,7 +306,8 @@ french_3 = Business.create!(
   longitude: -73.9985695,
   price_range: '$$$',
   phone_number: '2128682424',
-  category: 'French'
+  category: 'French',
+  average_rating: 0
 )
 
 french_4 = Business.create!(
@@ -301,7 +320,8 @@ french_4 = Business.create!(
   longitude: 73.9907995,
   price_range: '$$$',
   phone_number: '2123530200',
-  category: 'French'
+  category: 'French',
+  average_rating: 0
 )
 
 french_5 = Business.create!(
@@ -314,7 +334,8 @@ french_5 = Business.create!(
   longitude: -74.0069033,
   price_range: '$$',
   phone_number: '2122553590',
-  category: 'French'
+  category: 'French',
+  average_rating: 0
 )
 
 french_6 = Business.create!(
@@ -327,7 +348,8 @@ french_6 = Business.create!(
   longitude: -74.0041992,
   price_range: '$$$',
   phone_number: '8455249006',
-  category: 'French'  
+  category: 'French',
+  average_rating: 0  
 )
 
 # Japanese Restaurants
@@ -341,7 +363,8 @@ japanese_1 = Business.create!(
   longitude: -73.9909319,
   price_range: '$$',
   phone_number: '2126143006',
-  category: 'Japanese'
+  category: 'Japanese',
+  average_rating: 0
 )
 
 japanese_2 = Business.create!(
@@ -354,7 +377,8 @@ japanese_2 = Business.create!(
   longitude: -73.9938438,
   price_range: '$$',
   phone_number: '2129891000',
-  category: 'Japanese_Ramen'
+  category: 'Japanese_Ramen',
+  average_rating: 0
 )
 
 japanese_3 = Business.create!(
@@ -367,7 +391,8 @@ japanese_3 = Business.create!(
   longitude: -73.9892508,
   price_range: '$$',
   phone_number: '2122281324',
-  category: 'Japanese_Ramen'
+  category: 'Japanese_Ramen',
+  average_rating: 0
 )
 
 japanese_4 = Business.create!(
@@ -380,7 +405,8 @@ japanese_4 = Business.create!(
   longitude: -74.0038072,
   price_range: '$$',
   phone_number: '3152304533',
-  category: 'Japanese'
+  category: 'Japanese',
+  average_rating: 0
 )
 
 japanese_5 = Business.create!(
@@ -393,7 +419,8 @@ japanese_5 = Business.create!(
   longitude: -73.9963973,
   price_range: '$$',
   phone_number: '9172615538',
-  category: 'Japanese_Sushi'
+  category: 'Japanese_Sushi',
+  average_rating: 0
 )
 
 japanese_6 = Business.create!(
@@ -406,7 +433,8 @@ japanese_6 = Business.create!(
   longitude: -73.9953542,
   price_range: '$$',
   phone_number: '2122550018',
-  category: 'Japanese_Sushi'
+  category: 'Japanese_Sushi',
+  average_rating: 0
 )
 
 japenese_7 = Business.create!(
@@ -419,7 +447,8 @@ japenese_7 = Business.create!(
   longitude: -73.9928619,
   price_range: '$$',
   phone_number: '2123880088',
-  category: 'Japanese_Ramen'
+  category: 'Japanese_Ramen',
+  average_rating: 0
 )
 
 japanese_8 = Business.create!(
@@ -432,7 +461,8 @@ japanese_8 = Business.create!(
   longitude: -73.9985751,
   price_range: '$$',
   phone_number: '6469985754',
-  category: 'Japanese_Ramen'
+  category: 'Japanese_Ramen',
+  average_rating: 0
 )
 
 japanese_9 = Business.create!(
@@ -445,7 +475,8 @@ japanese_9 = Business.create!(
   longitude: -73.9893834,
   price_range: '$$',
   phone_number: '3477050847',
-  category: 'Japanese_Ramen'
+  category: 'Japanese_Ramen',
+  average_rating: 0
 )
 
 japanese_10 = Business.create!(
@@ -458,7 +489,8 @@ japanese_10 = Business.create!(
   longitude: -73.9999869,
   price_range: '$$',
   phone_number: '2122559981',
-  category: 'Japanese_Sushi'
+  category: 'Japanese_Sushi',
+  average_rating: 0
 )
 
 japanese_11 = Business.create!(
@@ -471,7 +503,8 @@ japanese_11 = Business.create!(
   longitude: -74.0071242,
   price_range: '$$$$',
   phone_number: '2129242212',
-  category: 'Japanese_Sushi'
+  category: 'Japanese_Sushi',
+  average_rating: 0
 )
 
 # Thai Restaurants
@@ -485,7 +518,8 @@ thai_1 = Business.create!(
   longitude: -73.9958372,
   price_range: '$$',
   phone_number: '2127866789',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 thai_2 = Business.create!(
@@ -498,7 +532,8 @@ thai_2 = Business.create!(
   longitude: -73.9955413,
   price_range: '$$',
   phone_number: '2128029999',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 thai_3 = Business.create!(
@@ -511,7 +546,8 @@ thai_3 = Business.create!(
   longitude: -73.9899166,
   price_range: '$$',
   phone_number: '2128449789',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 thai_4 = Business.create!(
@@ -525,6 +561,7 @@ thai_4 = Business.create!(
   price_range: '$$',
   phone_number: '2122545370',
   category: 'Thai',
+  average_rating: 0
 )
 
 thai_5 = Business.create!(
@@ -537,7 +574,8 @@ thai_5 = Business.create!(
   longitude: -74.0068115,
   price_range: '$$',
   phone_number: '6466092272',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 thai_6 = Business.create!(
@@ -550,7 +588,8 @@ thai_6 = Business.create!(
   longitude: -74.0020226,
   price_range: '$$',
   phone_number: '6467264418',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 thai_7 = Business.create!(
@@ -563,7 +602,8 @@ thai_7 = Business.create!(
   longitude: -73.9958627,
   price_range: '$$',
   phone_number: '2122068989',
-  category: 'Thai'
+  category: 'Thai',
+  average_rating: 0
 )
 
 # Mexican Restaurants
@@ -577,7 +617,8 @@ mexican_1 = Business.create!(
   longitude: -74.0030297,
   price_range: '$$',
   phone_number: '2125332233',
-  category: 'Mexican'
+  category: 'Mexican',
+  average_rating: 0
 )
 
 mexican_2 = Business.create!(
@@ -590,7 +631,8 @@ mexican_2 = Business.create!(
   longitude: -73.9896442,
   price_range: '$$',
   phone_number: '2124324180',
-  category: 'Mexican'
+  category: 'Mexican',
+  average_rating: 0
 )
 
 mexican_3 = Business.create!(
@@ -604,6 +646,7 @@ mexican_3 = Business.create!(
   price_range: '$$',
   phone_number: '2125333350',
   category: 'Mexican',
+  average_rating: 0
 )
 
 mexican_4 = Business.create!(
@@ -616,7 +659,8 @@ mexican_4 = Business.create!(
   longitude: -73.9956149,
   price_range: '$$',
   phone_number: '2127761830',
-  category: 'Mexican'
+  category: 'Mexican',
+  average_rating: 0
 )
 
 mexican_5 = Business.create!(
@@ -629,7 +673,8 @@ mexican_5 = Business.create!(
   longitude: -73.998169,
   price_range: '$$',
   phone_number: '2122559378',
-  category: 'Mexican' 
+  category: 'Mexican',
+  average_rating: 0 
 )
 
 # Milk Tea Stores
@@ -643,7 +688,8 @@ milk_tea_1 = Business.create!(
   longitude: -73.9967351,
   price_range: '$$',
   phone_number: '2129958349',
-  category: 'Milk Tea'
+  category: 'Milk Tea',
+  average_rating: 0
 )
 
 milk_tea_2 = Business.create!(
@@ -656,7 +702,8 @@ milk_tea_2 = Business.create!(
   longitude: -73.9982954,
   price_range: '$',
   phone_number: '9172681999',
-  category: 'Milk Tea'
+  category: 'Milk Tea',
+  average_rating: 0
 )
 
 milk_tea_3 = Business.create!(
@@ -669,7 +716,8 @@ milk_tea_3 = Business.create!(
   longitude: -73.9950816,
   price_range: '$',
   phone_number: '2123816193',
-  category: 'Milk Tea'
+  category: 'Milk Tea',
+  average_rating: 0
 )
 
 milk_tea_4 = Business.create!(
@@ -682,7 +730,8 @@ milk_tea_4 = Business.create!(
   longitude: -73.9973951,
   price_range: '$',
   phone_number: '6466827784',
-  category: 'Milk Tea'
+  category: 'Milk Tea',
+  average_rating: 0
 )
 
 # Business.first(11).each_with_index do |restaurant, index|

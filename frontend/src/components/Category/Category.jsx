@@ -7,12 +7,21 @@ const CategoryMenu = ({location}) => {
   const searchItems = ['Italian', 'Chinese', 'French', 'Japanese', 'Thai', 
   'Mexican'];
 
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   navigate('')
+  // }
+
   return (
     <div className={location === "/" ? "hp-category-container" 
     : "non-hp-category-container"}>
       {searchItems.map((item) => 
-        <NavLink to={`/search/${item}`} 
-          key={item} className={location === "/" ? "hp-category-dropdown" : "non-hp-category-dropdown"}> {item} </NavLink>)}
+        <NavLink to={`/restaurants?category=${item.toLowerCase()}`} 
+          key={item} 
+          className={location === "/" ? "hp-category-dropdown" : "non-hp-category-dropdown"}
+          > 
+          {item}   
+        </NavLink>)}
     </div>
   );
 }

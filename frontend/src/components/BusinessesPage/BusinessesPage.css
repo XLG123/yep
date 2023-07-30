@@ -12,66 +12,15 @@
 }
 
 .left-side-bar {
-  width: 25vw;
+  width: 20vw;
   position: absolute;
   color: inherit;
   top: 8.5vh;
   left: 2vw;
 }
 
-.filter-bar-container {
-  color: inherit;
-  font-family: inherit;
-}
-
-.filter-title {
-  margin-bottom: 2vh;
-  font-weight: bold;
-  font-size: 1.3vw;
-  color: inherit;
-}
-
-.filter-btn-group {
-  color: inherit;
-  font-size: 1vw;
-  text-align: center;
-  padding: 0.5vh 1.2vw;
-  border: none;
-  background-color: transparent;
-  transition-property: background-color;
-  transition-duration: 0.8s;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.1em;
-}
-
-.filter-btn-group:hover {
-  background-color:rgb(226, 226, 230);
-}
-
-#filter-btn-1 {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border: 1px solid rgba(200, 201, 202, 1);
-}
-
-#filter-btn-2 {
-  border-right: 1px solid rgba(200, 201, 202, 1);
-}
-
-#filter-btn-2, #filter-btn-3 {
-  border-bottom: 1px solid rgba(200, 201, 202, 1);
-  border-top: 1px solid rgba(200, 201, 202, 1);
-}
-
-#filter-btn-4 {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: 1px solid rgba(200, 201, 202, 1);
-}
-
 .main-content {
-  width: 40vw;
+  width: 45vw;
   position: absolute;
   color: inherit;
   top: 8.5vh;
@@ -87,7 +36,7 @@
 
 .scrollable-result-container {
   overflow-y: auto;
-  height: 80vh;
+  height: 78vh;
   padding-left: 0px;
 }
 
@@ -95,19 +44,13 @@
   display: none;
 }
 
-
-
-
-
-
-
-
 .right-side-bar {
   width: 35vw;
+  position: absolute;
+  left: 71vw;
+  top: 8.5vh;
 }
 
-
-
-
-
-
+.google-map {
+  height: 82vh;
+}

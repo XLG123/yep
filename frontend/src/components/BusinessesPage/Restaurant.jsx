@@ -1,5 +1,6 @@
 import React from "react";
 import "./Restaurant.css";
+import AverageRating from "./AverageRating";
 
 const Restaurant = ({restaurant}) => {
 
@@ -18,17 +19,22 @@ const Restaurant = ({restaurant}) => {
 
           <div className="restaurant-name">{restaurant.name}</div>
 
+          <div className="bp-average-rating">
+            <AverageRating averageRating = {restaurant.averageRating}/>
+          </div>
+
           <div className="restaurant-details">
             <div className="restaurant-bg-details">
               {categories.map((category) => 
               <span key={category} className="restaurant-category">{category}
               </span>)}
+              <span className="restaurant-price-range">{restaurant.priceRange}</span>
             </div>
 
             <div className="restaurant-location">
               <span className="city">{restaurant.city}, </span>
               <span className="state">{restaurant.state}, </span>
-              <span>{restaurant.zipCode}</span>
+              <span className="zip-code">{restaurant.zipCode}</span>
             </div>
 
             <div className="restaurant-phone-number">

@@ -1,0 +1,11 @@
+.average-rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.average-rating-num {
+  font-size: 1.2vw;
+  color: "#2D2E2F";
+  margin-left: 1.1vw;
+  padding-bottom: 0.5vh;
+}

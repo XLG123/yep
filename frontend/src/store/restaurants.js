@@ -40,6 +40,16 @@ export const fetchRestaurants = () => async (dispatch) => {
   });
 }
 
+export const fetchRestaurantsWithFilter = (query) => async (dispatch) => {
+  const response = await csrfFetch(`/api/restaurants/${query}`);
+  const data = await response.json();
+
+  dispatch({
+    type: RECEIVE_RESTAURANTS,
+    restaurants: data.restaurants,
+  })
+}
+
 export const fetchRestaurant = (restaurantId) => async (dispatch) => {
   const response = await csrfFetch(`/api/restaurants/${restaurantId}`);
   const data = await response.json();

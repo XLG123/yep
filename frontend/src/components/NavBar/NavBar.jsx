@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import './NavBar.css';
 import yepLogo1 from '../../assets/images/yepLogo1.png';
 import yepLogo2 from '../../assets/images/yepLogo2.png';
@@ -7,6 +7,7 @@ import * as sessionActions from '../../store/session';
 import UserProfile from "./UserProfile";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import CategoryMenu from "../Category/Category";
+import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const NavBar = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate('/restaurants', {replace: false});
+    navigate('/restaurants', {replace: true});
   }
 
   return (
@@ -67,13 +68,7 @@ const NavBar = () => {
         </button>
         <CategoryMenu location={location_path} />
 
-        <span id="search-bar-content">
-          <input type="text" placeholder="Pizza, Ramen, Sushi..." id="search-bar"/>
-
-          <div className="nav-bar-btn red-btn" id="search-bar-btn">
-            <i className="fa fa-search"></i>
-          </div>
-        </span>
+        <SearchBar/>
 
         <div className="contact-info-btn">
           <span>

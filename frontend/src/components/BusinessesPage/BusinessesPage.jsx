@@ -3,8 +3,10 @@ import "./BusinessesPage.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurants, fetchRestaurants } from "../../store/restaurants";
-import Restaurant from './Restaurant';
 import Loading from '../Loading/Loading';
+import Filter from "./Filter/Filter";
+import Restaurant from './Restaurant';
+import MapBuilder from "../MapBuilder/MapBuilder";
 
 const BusinessesPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const BusinessesPage = () => {
     setTimeout(() => {
       setFinishLoading(true);
     }, 2000);
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
@@ -35,20 +37,7 @@ const BusinessesPage = () => {
         <div className="business-page-container">
 
           <div className="left-side-bar">
-            <div className="filter-bar-container">
-              <div className="filter-title">Price Range Filter</div>
-              <div className="filter">
-                <button className="filter-btn-group" id="filter-btn-1">
-                  $</button>
-                <button className="filter-btn-group" id="filter-btn-2">
-                  $$</button>
-                <button className="filter-btn-group" id="filter-btn-3">
-                  $$$</button>
-                <button className="filter-btn-group" id="filter-btn-4">
-                  $$$$</button>
-              </div>
-            </div>
-
+            <Filter restaurants = {restaurants}/>
             <div className="recommendation-container">
 
             </div>
@@ -66,7 +55,8 @@ const BusinessesPage = () => {
           </div>
 
           <div className="right-side-bar">
-            <div className="search-result-googlemap">
+            <div className="google-map">
+              <MapBuilder restaurants={restaurants}/>
             </div>
           </div>
         </div>

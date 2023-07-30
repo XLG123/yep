@@ -13,10 +13,6 @@
   border-right: 1px solid #EBEBEB;
 }
 
-.restaurant-img {
-
-}
-
 .restaurant-img img {
   display: inline-block;
   width: 18vw;
@@ -26,25 +22,34 @@
 .restaurant-info {
   display: inline-block;
   position: absolute;
-  top: 3vh;
+  top: 2.1vw;
   margin-left: 2vw;
+  padding-top: 0.3vh;
+  padding-bottom: 0.3vh; 
 }
 
 .restaurant-name {
-  font-size: 1.6vw;
+  font-size: 1.4vw;
   font-weight: bold;
   margin-bottom: 1vh;
+}
+
+.bp-average-rating {
+  font-size: 1.7vw;
+  color: #2D2E2F;
 }
 
 .restaurant-details {
   color: #6E7072;
   font-size: 1vw;
-  margin-top: 2.5vh;
+  margin-top: 1vw;
 }
 
 .restaurant-bg-details {
-  width: 8vw;
+  width: 15vw;
   display: inline-block;
+  margin-top: 0.2vw;
+  margin-bottom: 0.5vw;
 }
 
 .restaurant-category, .restaurant-price-range {
@@ -54,7 +59,7 @@
   text-align: center;
   width: 5vw;
   font-weight: 600;
-  padding: 1.3vh 0.5vw;
+  padding: 1.1vh 0.5vw;
   margin: 0px;
 }
 
@@ -62,19 +67,8 @@
   margin-right: 1vw;
 }
 
-/* .restaurant-price-range {
-  letter-spacing: 0.1em;
-  background-color: rgba(240, 240, 240, 1);
-  border-radius: 4px;
-  text-align: center;
-  width: 5vw;
-  font-weight: 600;
-  padding: 1.3vh 0px;
-  margin: 0px;
-} */
-
 .restaurant-location {
-  margin: 3vh 0px;
+  margin: 2.3vh 0px;
 }
 
 .city, .state {
