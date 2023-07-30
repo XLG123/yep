@@ -9,6 +9,7 @@ class Api::RestaurantsController < ApplicationController
     category_params = params[:category]
     if category_params.present?
       @restaurants = Business.where("category = #{category_params}")
+      # print @restaurants
       render 'api/restaurants/index'
     end
 

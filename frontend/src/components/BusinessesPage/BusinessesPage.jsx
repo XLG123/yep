@@ -33,14 +33,12 @@ const BusinessesPage = () => {
     <>
       {randomizeRestaurants(restaurants)}
       <div className="bp-line-break"></div>
+
       {!finishLoading ? <Loading /> :
         <div className="business-page-container">
 
           <div className="left-side-bar">
-            <Filter restaurants = {restaurants}/>
-            <div className="recommendation-container">
-
-            </div>
+            <Filter />
           </div>
           
           <div className="main-content">
@@ -59,6 +57,7 @@ const BusinessesPage = () => {
               <MapBuilder restaurants={restaurants}/>
             </div>
           </div>
+
         </div>
       }
     </>

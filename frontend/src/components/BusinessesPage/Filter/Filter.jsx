@@ -3,12 +3,8 @@ import React from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
-import { useNavigate, createSearchParams } from "react-router-dom";
 
-const Filter = ({restaurants}) => {
-  const navigate = useNavigate();
-  // const [searchParams, setSearchParams] = useSearchParams("");
-
+const Filter = () => {
   return (
     <>
       <div className="filter-bar-container1">
