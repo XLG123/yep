@@ -7,6 +7,7 @@ const MapMarker = ({text, tooltip}) => {
     <span className="circleText" title={tooltip}>
       {text}
     </span>
+    {console.log("I'm rendering")}
   </div>
   )
 }

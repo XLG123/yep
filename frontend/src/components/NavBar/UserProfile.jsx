@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./UserProfile.css";
+// import Avatar from "@mui/material/Avatar"; //avatar for users
 
 const UserProfile = ({user}) => {
   const dispatch = useDispatch();

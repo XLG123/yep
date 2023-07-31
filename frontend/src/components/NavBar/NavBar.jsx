@@ -83,7 +83,7 @@ const NavBar = () => {
         </div>
 
         {sessionLinks}
-
+        
       </div>
 
     </div>

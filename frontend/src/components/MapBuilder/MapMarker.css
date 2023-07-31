@@ -1,11 +1,12 @@
 .circle {
-  background-color: red;
+  background-color: #d83b01;
   border-radius: 50%;
   color: #fff;
   height: 2.5em;
   position: relative;
   width: 2.5em;
-  border: 1px solid transparent; 
+
+  border: 1px solid transparent;
 }
 
 .circleText {

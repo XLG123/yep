@@ -1,44 +1,58 @@
-import  GoogleMapReact  from 'google-map-react';
-import MapMarker from "./MapMarker";
+import React from "react";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import "./MapBuilder.css";
 
 const MapBuilder = ({restaurants}) => {
 
-  // console.log(restaurants);
-  // const points = [
-  //   {id :}
-  // ];
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
+  })
 
-  // testing purposes
-  const points = [
-    { id: 1, title: "Round Pond", lat: 40.7361918, lng: -73.9958515 },
-    { id: 2, title: "The Long Water", lat: 40.7338834, lng: -74.0048117 },
-    { id: 3, title: "The Serpentine", lat: 40.7218804, lng: -73.9988491 }
-  ];
-  
-  const defaultProps = {
-    center: {
-      lat: 40.7362902,
-      lng: -73.9986631
-    },
-    zoom: 15,
-    hoverDistance: 25,
-  };
+  const [map, setMap] = React.useState(null)
 
-  return (
+  const onLoad = React.useCallback(function callback(map) {
+    // const bounds = new window.google.maps.LatLngBounds(center);
+    // map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+  const containerStyle = {
+    width: 'inherit',
+    height: 'inherit'
+  }
+
+  const center = {
+    lat: 40.7361339,
+    lng: -73.9937922,
+  }
+
+  const position = {
+    lat: 40.7367,
+    lng: -73.98,
+  }
+
+  return isLoaded ? (
     <div style={{ height: 'inherit', width: '30vw' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_MAPS_API_KEY }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={14}
+        onLoad={onLoad}
+        onUnmount={onUnmount}>
+        
+        { restaurants.map(restaurant => 
+          <Marker 
+            position={{lat: restaurant.latitude, lng: restaurant.longitude}} label={{text: restaurant.name, fontSize: '1vw'}} />) 
+        }
 
-      {points.map(({ lat, lng, id, title }) => {
-        return (
-          <MapMarker key={id} lat={lat} lng={lng} text={id} tooltip={title} />
-        );
-      })}
-    </GoogleMapReact>
+      </GoogleMap>
     </div>
-  );
+  ) : <></>
 }
 
 export default MapBuilder;
