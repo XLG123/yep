@@ -41,7 +41,7 @@ const UserProfile = ({user}) => {
               <button className="logout-btn" onClick={logout}>Log Out</button>
             </li>
           </ul>
-        ) }
+        )  }
       </span>
     </>
   );

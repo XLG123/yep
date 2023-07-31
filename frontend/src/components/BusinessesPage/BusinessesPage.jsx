@@ -27,7 +27,7 @@ const BusinessesPage = () => {
     setTimeout(() => {
       setFinishLoading(true);
     }, 2000);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

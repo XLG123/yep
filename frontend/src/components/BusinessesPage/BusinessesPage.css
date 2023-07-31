@@ -24,7 +24,7 @@
   position: absolute;
   color: inherit;
   top: 8.5vh;
-  left: 25vw;
+  left: 22vw;
 }
 
 .search-result-title {
@@ -47,7 +47,7 @@
 .right-side-bar {
   width: 35vw;
   position: absolute;
-  left: 71vw;
+  left: 68vw;
   top: 8.5vh;
 }
 
