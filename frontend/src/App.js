@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import BusinessesPage from "./components/BusinessesPage/BusinessesPage";
-import FilteredResult from "./components/BusinessesPage/Filter/CategoryFilteredResult";
+import FilteredResult from "./components/BusinessesPage/Filter/FilteredResult";
 
 export default function App() {
   

@@ -5,9 +5,9 @@ import { useLocation } from "react-router-dom";
 import Restaurant from "../Restaurant";
 import Filter from "./Filter";
 
-const CategoryFilteredResult = () => {
-  let categoryOption = useLocation().pathname.slice(22);
-  categoryOption = categoryOption[0].toUpperCase() + categoryOption.slice(1);
+const RatingFilteredResult = () => {
+  let ratingOption = useLocation().pathname.slice(28);
+  ratingOption = parseFloat(ratingOption);
   const restaurants = useSelector(getRestaurants);
 
   return (
@@ -22,14 +22,16 @@ const CategoryFilteredResult = () => {
         <div className="main-content">
           <div className="search-result-container">
             <h1 className="search-result-title">
-              {categoryOption ? `${categoryOption} Cuisine` : "Restaurants"}
-              </h1>
+              {ratingOption === 1.0 ? `${ratingOption} star` : 
+                ratingOption > 1.0 ? `${ratingOption} stars` :
+                "Restaurants"}
+            </h1>
             <div className="scrollable-result-container">
-              {restaurants.filter((restaurant) => 
-              restaurant.category.includes 
-              (categoryOption)).map((filteredRestaurant) =>
-                <Restaurant key={filteredRestaurant.id} restaurant=
-                {filteredRestaurant} />)}
+              {restaurants.filter((restaurant) =>
+                restaurant.zipCode ===
+                (ratingOption)).map((filteredRestaurant) =>
+                  <Restaurant key={filteredRestaurant.id} restaurant=
+                    {filteredRestaurant} />)}
             </div>
           </div>
         </div>
@@ -45,4 +47,4 @@ const CategoryFilteredResult = () => {
   );
 }
 
-export default CategoryFilteredResult;
+export default RatingFilteredResult;

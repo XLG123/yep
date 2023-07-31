@@ -73,3 +73,14 @@
   margin: 1.5vh 0px;
   font-size: 1.8vw;
 }
+
+.average-rating-filter {
+  color: rgb(226, 226, 230);
+  transition-property: color;
+  transition-duration: 0.8s;
+  width: 11vw;
+}
+
+.average-rating-filter:hover {
+  color: #2D2E2F;
+}
