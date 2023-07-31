@@ -109,7 +109,7 @@ italian_5 = Business.create!(
   price_range: '$$$',
   phone_number: '9295246682',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 3.5
 )
 
 italian_6 = Business.create!(
@@ -151,7 +151,7 @@ italian_8 = Business.create!(
   price_range: '$$$$',
   phone_number: '2127770303',
   category: 'Italian',
-  average_rating: 0
+  average_rating: 2.3
 )
 
 italian_9 = Business.create!(
@@ -179,7 +179,7 @@ italian_10 = Business.create!(
   price_range: '$$',
   phone_number: '2124204900',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 2.5
 )
 
 italian_11 = Business.create!(
@@ -208,7 +208,7 @@ chinese_1 = Business.create!(
   price_range: '$$$',
   phone_number: '2129019971',
   category: 'Chinese',
-  average_rating: 0
+  average_rating: 4
 )
 
 chinese_2 = Business.create!(
@@ -250,7 +250,7 @@ chinses_4 = Business.create!(
   price_range: '$$',
   phone_number: '2122338888',
   category: 'Chinese',
-  average_rating: 0
+  average_rating: 1.25
 )
 
 chinses_5 = Business.create!(
@@ -279,7 +279,7 @@ french_1 = Business.create!(
   price_range: '$$$',
   phone_number: '2125332962',
   category: 'French',
-  average_rating: 0
+  average_rating: 5
 )
 
 french_2 = Business.create!(
@@ -307,7 +307,7 @@ french_3 = Business.create!(
   price_range: '$$$',
   phone_number: '2128682424',
   category: 'French',
-  average_rating: 0
+  average_rating: 5
 )
 
 french_4 = Business.create!(
@@ -335,7 +335,7 @@ french_5 = Business.create!(
   price_range: '$$',
   phone_number: '2122553590',
   category: 'French',
-  average_rating: 0
+  average_rating: 2.1
 )
 
 french_6 = Business.create!(
@@ -364,7 +364,7 @@ japanese_1 = Business.create!(
   price_range: '$$',
   phone_number: '2126143006',
   category: 'Japanese',
-  average_rating: 0
+  average_rating: 3.8
 )
 
 japanese_2 = Business.create!(
@@ -378,7 +378,7 @@ japanese_2 = Business.create!(
   price_range: '$$',
   phone_number: '2129891000',
   category: 'Japanese_Ramen',
-  average_rating: 0
+  average_rating: 4
 )
 
 japanese_3 = Business.create!(
@@ -420,7 +420,7 @@ japanese_5 = Business.create!(
   price_range: '$$',
   phone_number: '9172615538',
   category: 'Japanese_Sushi',
-  average_rating: 0
+  average_rating: 2.78
 )
 
 japanese_6 = Business.create!(
@@ -448,7 +448,7 @@ japenese_7 = Business.create!(
   price_range: '$$',
   phone_number: '2123880088',
   category: 'Japanese_Ramen',
-  average_rating: 0
+  average_rating: 3.1
 )
 
 japanese_8 = Business.create!(
@@ -476,7 +476,7 @@ japanese_9 = Business.create!(
   price_range: '$$',
   phone_number: '3477050847',
   category: 'Japanese_Ramen',
-  average_rating: 0
+  average_rating: 4.8
 )
 
 japanese_10 = Business.create!(
@@ -519,7 +519,7 @@ thai_1 = Business.create!(
   price_range: '$$',
   phone_number: '2127866789',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 2
 )
 
 thai_2 = Business.create!(
@@ -575,7 +575,7 @@ thai_5 = Business.create!(
   price_range: '$$',
   phone_number: '6466092272',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 2
 )
 
 thai_6 = Business.create!(
@@ -603,7 +603,7 @@ thai_7 = Business.create!(
   price_range: '$$',
   phone_number: '2122068989',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 3.65
 )
 
 # Mexican Restaurants
@@ -618,7 +618,7 @@ mexican_1 = Business.create!(
   price_range: '$$',
   phone_number: '2125332233',
   category: 'Mexican',
-  average_rating: 0
+  average_rating: 3.5
 )
 
 mexican_2 = Business.create!(
@@ -646,7 +646,7 @@ mexican_3 = Business.create!(
   price_range: '$$',
   phone_number: '2125333350',
   category: 'Mexican',
-  average_rating: 0
+  average_rating: 4
 )
 
 mexican_4 = Business.create!(
@@ -689,7 +689,7 @@ milk_tea_1 = Business.create!(
   price_range: '$$',
   phone_number: '2129958349',
   category: 'Milk Tea',
-  average_rating: 0
+  average_rating: 1.67
 )
 
 milk_tea_2 = Business.create!(
@@ -717,7 +717,7 @@ milk_tea_3 = Business.create!(
   price_range: '$',
   phone_number: '2123816193',
   category: 'Milk Tea',
-  average_rating: 0
+  average_rating: 4.2
 )
 
 milk_tea_4 = Business.create!(

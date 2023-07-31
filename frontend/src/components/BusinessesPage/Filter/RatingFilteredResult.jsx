@@ -27,11 +27,71 @@ const RatingFilteredResult = () => {
                 "Restaurants"}
             </h1>
             <div className="scrollable-result-container">
-              {restaurants.filter((restaurant) =>
-                restaurant.zipCode ===
-                (ratingOption)).map((filteredRestaurant) =>
+              {ratingOption === 1 ?               
+              restaurants.filter((restaurant) =>
+                (restaurant.averageRating > 0 &&
+                  restaurant.averageRating < 1.25))
+                  .map((filteredRestaurant) =>
                   <Restaurant key={filteredRestaurant.id} restaurant=
-                    {filteredRestaurant} />)}
+                    {filteredRestaurant}/>) : 
+
+                ratingOption === 1.5 ? restaurants.filter((restaurant) => 
+                  (restaurant.averageRating >= 1.25 && 
+                    restaurant.averageRating < 1.875))
+                      .map((filteredRestaurant) => 
+                      <Restaurant key={filteredRestaurant.id} restaurant=
+                        {filteredRestaurant}/>) : 
+
+                ratingOption === 2.0 ? restaurants.filter((restaurant) =>
+                  (restaurant.averageRating >= 1.875 && 
+                    restaurant.averageRating < 2.25))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id} restaurant=
+                      {filteredRestaurant}/>) : 
+
+                ratingOption === 2.5 ? restaurants.filter(
+                  (restaurant) => (restaurant.averageRating >= 2.25 
+                    && restaurant.averageRating < 2.875))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id} restaurant=
+                    {filteredRestaurant}/>) : 
+
+                ratingOption === 3 ? restaurants.filter(
+                  (restaurant) => (restaurant.averageRating >= 
+                    2.875 && restaurant.averageRating < 3.25))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id} 
+                    restaurant={filteredRestaurant}/>) : 
+
+                ratingOption === 3.5 ? restaurants.filter(
+                  (restaurant) => (restaurant.averageRating >=
+                    3.25 && restaurant.averageRating < 3.875))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id}
+                    restaurant={filteredRestaurant}/>) : 
+
+                ratingOption === 4.0 ? restaurants.filter(
+                  (restaurant) => (restaurant.averageRating 
+                    >= 3.875 && restaurant.averageRating < 4.25))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id}
+                    restaurant={filteredRestaurant}/>) : 
+
+                ratingOption === 4.5 ? restaurants.filter(
+                  (restaurant) => (restaurant.averageRating >= 4.25 
+                    && restaurant.averageRating < 4.875))
+                    .map((filteredRestaurant) => 
+                    <Restaurant key={filteredRestaurant.id} 
+                    restaurant={filteredRestaurant}/>) : 
+
+                restaurants.filter((restaurant) => 
+                (restaurant.averageRating >= 4.875))
+                  .map((filteredRestaurant) =>
+                  <Restaurant key={filteredRestaurant.id}
+                    restaurant={filteredRestaurant} />) 
+                                        
+              }
+
             </div>
           </div>
         </div>
