@@ -6,9 +6,10 @@ import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import BusinessesPage from "./components/BusinessesPage/BusinessesPage";
 import FilteredResult from "./components/BusinessesPage/Filter/FilteredResult";
+import RestaurantShowPage from "./components/BusinessesPage/RestaurantShowPage";
 
 export default function App() {
-  
+
   return (
     <>
       <NavBar />
@@ -22,11 +23,13 @@ export default function App() {
 
         <Route exact path="/restaurants" element={<BusinessesPage />}></Route>
 
-        <Route exact path="/restaurants/:filteredItem" element={<FilteredResult/>}></Route>
+        <Route path="/restaurants/filter" element={<FilteredResult/>}>
+        </Route>
 
+        <Route exact path="/restaurants/:restaurantId" element=
+        {<RestaurantShowPage/>}></Route>
 
-        {/* <Route exact path="/restaurants/:searchItem" element={<BusinessesPage key={"sp"}/>}></Route> */}
-
+        <Route exact path="/restaurants/search" element={<></>}></Route>
 
       </Routes>
     </>

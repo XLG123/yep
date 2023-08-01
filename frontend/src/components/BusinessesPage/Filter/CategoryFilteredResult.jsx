@@ -6,7 +6,7 @@ import Restaurant from "../Restaurant";
 import Filter from "./Filter";
 
 const CategoryFilteredResult = () => {
-  let categoryOption = useLocation().pathname.slice(22);
+  let categoryOption = useLocation().search.slice(10);
   categoryOption = categoryOption[0].toUpperCase() + categoryOption.slice(1);
   const restaurants = useSelector(getRestaurants);
 
@@ -36,7 +36,8 @@ const CategoryFilteredResult = () => {
 
         <div className="right-side-bar">
           <div className="google-map">
-            <MapBuilder restaurants={restaurants} />
+            <MapBuilder restaurants={restaurants.filter((restaurant) => 
+              restaurant.category.includes(categoryOption))} />
           </div>
         </div>
 

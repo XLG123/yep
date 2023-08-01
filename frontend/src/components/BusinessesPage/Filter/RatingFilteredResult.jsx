@@ -6,9 +6,39 @@ import Restaurant from "../Restaurant";
 import Filter from "./Filter";
 
 const RatingFilteredResult = () => {
-  let ratingOption = useLocation().pathname.slice(28);
+  let ratingOption = useLocation().search.slice(16);
   ratingOption = parseFloat(ratingOption);
   const restaurants = useSelector(getRestaurants);
+
+  let ratingFilter = [];
+  if (ratingOption === 1.0) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating > 0 && restaurant.averageRating < 1.25)
+  } else if (ratingOption === 1.5) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 1.25 && restaurant.averageRating < 1.875)
+  } else if (ratingOption === 2.0) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 1.875 && restaurant.averageRating < 2.25)
+  } else if (ratingOption === 2.5) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 2.25 && restaurant.averageRating < 2.875)
+  } else if (ratingOption === 3.0) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 2.875 && restaurant.averageRating < 3.25)
+  } else if (ratingOption === 3.5) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 3.25 && restaurant.averageRating < 3.875)
+  } else if (ratingOption === 4.0) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 3.875 && restaurant.averageRating < 4.25)
+  } else if (ratingOption === 4.5) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 4.25 && restaurant.averageRating < 4.875) 
+  } else if (ratingOption === 5.0) {
+    ratingFilter = restaurants.filter(restaurant => 
+      restaurant.averageRating >= 4.875)
+  }
 
   return (
     <>
@@ -26,79 +56,20 @@ const RatingFilteredResult = () => {
                 ratingOption > 1.0 ? `${ratingOption} stars` :
                 "Restaurants"}
             </h1>
+
             <div className="scrollable-result-container">
-              {ratingOption === 1 ?               
-              restaurants.filter((restaurant) =>
-                (restaurant.averageRating > 0 &&
-                  restaurant.averageRating < 1.25))
-                  .map((filteredRestaurant) =>
-                  <Restaurant key={filteredRestaurant.id} restaurant=
-                    {filteredRestaurant}/>) : 
-
-                ratingOption === 1.5 ? restaurants.filter((restaurant) => 
-                  (restaurant.averageRating >= 1.25 && 
-                    restaurant.averageRating < 1.875))
-                      .map((filteredRestaurant) => 
-                      <Restaurant key={filteredRestaurant.id} restaurant=
-                        {filteredRestaurant}/>) : 
-
-                ratingOption === 2.0 ? restaurants.filter((restaurant) =>
-                  (restaurant.averageRating >= 1.875 && 
-                    restaurant.averageRating < 2.25))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id} restaurant=
-                      {filteredRestaurant}/>) : 
-
-                ratingOption === 2.5 ? restaurants.filter(
-                  (restaurant) => (restaurant.averageRating >= 2.25 
-                    && restaurant.averageRating < 2.875))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id} restaurant=
-                    {filteredRestaurant}/>) : 
-
-                ratingOption === 3 ? restaurants.filter(
-                  (restaurant) => (restaurant.averageRating >= 
-                    2.875 && restaurant.averageRating < 3.25))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id} 
-                    restaurant={filteredRestaurant}/>) : 
-
-                ratingOption === 3.5 ? restaurants.filter(
-                  (restaurant) => (restaurant.averageRating >=
-                    3.25 && restaurant.averageRating < 3.875))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id}
-                    restaurant={filteredRestaurant}/>) : 
-
-                ratingOption === 4.0 ? restaurants.filter(
-                  (restaurant) => (restaurant.averageRating 
-                    >= 3.875 && restaurant.averageRating < 4.25))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id}
-                    restaurant={filteredRestaurant}/>) : 
-
-                ratingOption === 4.5 ? restaurants.filter(
-                  (restaurant) => (restaurant.averageRating >= 4.25 
-                    && restaurant.averageRating < 4.875))
-                    .map((filteredRestaurant) => 
-                    <Restaurant key={filteredRestaurant.id} 
-                    restaurant={filteredRestaurant}/>) : 
-
-                restaurants.filter((restaurant) => 
-                (restaurant.averageRating >= 4.875))
-                  .map((filteredRestaurant) =>
+              {ratingFilter.map((filteredRestaurant) =>
                   <Restaurant key={filteredRestaurant.id}
-                    restaurant={filteredRestaurant} />) 
-                                        
-              }
+                    restaurant={filteredRestaurant} />)}
 
             </div>
+            
           </div>
         </div>
 
         <div className="right-side-bar">
           <div className="google-map">
-            <MapBuilder restaurants={restaurants} />
+            <MapBuilder restaurants={ratingFilter} />
           </div>
         </div>
 

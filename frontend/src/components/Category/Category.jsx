@@ -11,7 +11,7 @@ const CategoryMenu = ({location}) => {
     <div className={location === "/" ? "hp-category-container" 
     : "non-hp-category-container"}>
       {searchItems.map((item) => 
-        <NavLink to={`/restaurants/category=${item.toLowerCase()}`} 
+        <NavLink to={`/restaurants/filter?category=${item.toLowerCase()}`} 
           key={item} 
           className={location === "/" ? "hp-category-dropdown" : "non-hp-category-dropdown"}
           > 

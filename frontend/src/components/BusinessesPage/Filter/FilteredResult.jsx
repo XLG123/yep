@@ -5,17 +5,20 @@ import ZipCodeFilteredResult from "./ZipCodeFilteredResult";
 import Loading from "../../Loading/Loading";
 import { useEffect, useState } from "react";
 import RatingFilteredResult from "./RatingFilteredResult";
-
+import { useDispatch } from "react-redux";
+import { fetchRestaurants } from "../../../store/restaurants";
 
 const FilteredResult = () => {
-  const filterOption = useLocation().pathname.slice(13);
+  const filterOption = useLocation().search;
   const [finishLoading, setFinishLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchRestaurants());
     setTimeout(() => {
       setFinishLoading(true);
     }, 2000);
-  }, []);
+  }, [dispatch]);
 
   // TODO: need to fix loading page 
   // (it only renders after the clicking back Restaurants)

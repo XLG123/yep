@@ -6,7 +6,7 @@ import Restaurant from "../Restaurant";
 import Filter from "./Filter";
 
 const ZipCodeFilteredResult = () => {
-  let zipCodeOption = useLocation().pathname.slice(22);
+  let zipCodeOption = useLocation().search.slice(10);
   zipCodeOption = zipCodeOption[0].toUpperCase() +
     zipCodeOption.slice(1);
   const restaurants = useSelector(getRestaurants);
@@ -38,7 +38,8 @@ const ZipCodeFilteredResult = () => {
 
         <div className="right-side-bar">
           <div className="google-map">
-            <MapBuilder restaurants={restaurants} />
+            <MapBuilder restaurants={restaurants.filter((restaurant) => 
+              restaurant.zipCode === (zipCodeOption))} />
           </div>
         </div>
 

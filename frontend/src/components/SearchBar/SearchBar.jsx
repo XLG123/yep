@@ -1,29 +1,34 @@
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
-// import { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
+import { useRef, useState } from "react";
 
 const SearchBar = () => {
-  // const [searchTerm, setSearchTerm] = useSearchParams();
-  // const navigate = useNavigate();
-  
-  // useEffect(() => {
+  const [searchParams, setSearchParams] = useState("");
 
-  // }, [searchTerm])
+  const ref = useRef(null);
 
-  const handleSearch = () => {
-    
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    ref.current.blur();
+    setSearchParams("");
+    navigate(`/restaurants/search?value=${searchParams}`, {replace: true});
   }
 
   return (
     <>
       <span id="search-bar-content">
+      <form ref={ref} onSubmit={(e)=>handleSearch(e)} >
         <input type="text" placeholder="Pizza, Ramen, Sushi..." 
-        id="search-bar" />
+          value={searchParams} 
+          onChange={(e) => setSearchParams(e.target.value)} id="search-bar" />
 
-        <div className="nav-bar-btn red-btn" id="search-bar-btn"
-        onClick={handleSearch} onKeyDown={handleSearch}>
+        <div tabIndex={0} className="nav-bar-btn red-btn" id="search-bar-btn"
+          onClick={handleSearch}>
           <i className="fa fa-search"></i>
         </div>
+      </form>
       </span>
     </>
   );

@@ -58,3 +58,7 @@
   box-shadow: 0px 6px 8px 1px rgba(0, 0, 0, 0.27);
   height: 2.48vw;
 }
+
+#search-bar-content form {
+  display: inline;
+}

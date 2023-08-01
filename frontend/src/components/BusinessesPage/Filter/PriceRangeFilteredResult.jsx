@@ -6,7 +6,7 @@ import Restaurant from "../Restaurant";
 import Filter from "./Filter";
 
 const PriceRangeFilteredResult = () => {
-  let priceRangeOption = useLocation().pathname.slice(25);
+  let priceRangeOption = useLocation().search.slice(13);
   priceRangeOption = priceRangeOption[0].toUpperCase() + 
     priceRangeOption.slice(1);
   const restaurants = useSelector(getRestaurants);
@@ -29,7 +29,7 @@ const PriceRangeFilteredResult = () => {
             <div className="scrollable-result-container">
               {restaurants.filter((restaurant) =>
                 restaurant.priceRange === 
-                  (priceRangeOption)).map((filteredRestaurant) =>
+                  priceRangeOption).map((filteredRestaurant) =>
                     <Restaurant key={filteredRestaurant.id} restaurant=
                       {filteredRestaurant} />)}
             </div>
@@ -38,7 +38,8 @@ const PriceRangeFilteredResult = () => {
 
         <div className="right-side-bar">
           <div className="google-map">
-            <MapBuilder restaurants={restaurants} />
+            <MapBuilder restaurants={restaurants.filter((restaurant) => 
+              restaurant.priceRange === priceRangeOption)} />
           </div>
         </div>
 

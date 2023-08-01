@@ -41,7 +41,7 @@ export const fetchRestaurants = () => async (dispatch) => {
 }
 
 export const fetchRestaurantsWithFilter = (query) => async (dispatch) => {
-  const response = await csrfFetch(`/api/restaurants/${query}`);
+  const response = await csrfFetch(`/api/restaurants${query}`);
   const data = await response.json();
 
   dispatch({

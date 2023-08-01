@@ -10,17 +10,17 @@ const Filter = () => {
 
   const handlePriceFilterClick = (e, price) => {
     e.preventDefault();
-    navigate(`/restaurants/price_range=${price}`);
+    navigate(`/restaurants/filter?price_range=${price}`);
   }
 
   const handleZipCodeFilterClick = (e, zipCode) => {
     e.preventDefault();
-    navigate(`/restaurants/zip_code=${zipCode}`);
+    navigate(`/restaurants/filter?zip_code=${zipCode}`);
   }
 
   const handleRatingFilterClick = (e, averageRating) => {
     e.preventDefault();
-    navigate(`/restaurants/average_rating=${averageRating}`);
+    navigate(`/restaurants/filter?average_rating=${averageRating}`);
   }
   
   return (
