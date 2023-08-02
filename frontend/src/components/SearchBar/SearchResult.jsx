@@ -17,17 +17,20 @@ const SearchResult = () => {
   ];
 
   let searchItem = "";
+  
+  let foodType = false;
+  let nameParams = false;
+
   const searchQuery = useLocation().search;
+
   if (searchQuery.includes("category")) {
     searchItem = searchQuery.slice(10);
   } else if (searchQuery.includes("name")) {
     searchItem = searchQuery.slice(6);
+    nameParams = true;
   }
 
-  // console.log(useLocation().search);
-  console.log(searchItem);
   let backendSearchItem = searchItem;
-  let foodType = false;
 
   if (searchItem === "pizza" || searchItem === "Pizza") {
     foodType = true;
@@ -80,11 +83,17 @@ const SearchResult = () => {
 
           <div className="main-content">
             <div className="search-result-container">
-              <h1 className="search-result-title">
-                {foodType ? `${backendSearchItem[0].toUpperCase() + 
-                backendSearchItem.slice(1)}` : 
-                `${backendSearchItem[0].toUpperCase() + 
-                backendSearchItem.slice(1)} Cuisine`}</h1>
+
+              {foodType && !nameParams ? 
+                <h1 className="search-result-title">
+                  {foodType ? `${backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1)}` :
+                    `${backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1)} Cuisine`}</h1> :
+                    <h1 className="search-result-title">
+                      {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replace("%20", " ")}
+                    </h1>}
+
               <div className="scrollable-result-container">
                 {restaurants.map((restaurant) =>
                   <Restaurant key={restaurant.id} restaurant={restaurant} />)}

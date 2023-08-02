@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
 import "./MapBuilder.css";
 import { useNavigate } from "react-router-dom";
 
@@ -56,6 +56,8 @@ const MapBuilder = ({restaurants}) => {
             onClick={() => handleClick(restaurant)}
             />) : <></> 
         }
+
+        {/* {restaurants ? restaurant.map(res=> <></>)} */}
 
       </GoogleMap>
     </div>
