@@ -58,9 +58,9 @@ const RatingFilteredResult = () => {
             </h1>
 
             <div className="scrollable-result-container">
-              {ratingFilter.map((filteredRestaurant) =>
+              {ratingFilter.map((filteredRestaurant, idx) =>
                   <Restaurant key={filteredRestaurant.id}
-                    restaurant={filteredRestaurant} />)}
+                    restaurant={filteredRestaurant} index={idx}/>)}
 
             </div>
             

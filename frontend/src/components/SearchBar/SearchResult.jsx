@@ -53,7 +53,8 @@ const SearchResult = () => {
     foodType = true;
   }
 
-  if (searchItem === "milk%20tea" || searchItem === "Milk%20Tea") {
+  if (searchItem.toLowerCase() === "milk%20tea") {
+      console.log(searchItem.toLowerCase());
     backendSearchItem = "Milk Tea";
     foodType = true;
   }
@@ -63,8 +64,7 @@ const SearchResult = () => {
   useEffect(() => {
     if (categoryTerms.includes(searchItem.toLowerCase())) {
       dispatch(fetchRestaurantsWithQuery(`?category=${backendSearchItem}`));
-    } else if (searchItem === "milk%20tea" || searchItem === "Milk%20Tea" ||
-      searchItem === "Milk%20tea" || searchItem === "milk%20Tea") {
+    } else if (searchItem.toLowerCase() === "milk%20tea") {
       dispatch(fetchRestaurantsWithQuery(`?category=Milk`));
     } else {
       dispatch(fetchRestaurantsWithQuery(`?name=${backendSearchItem}`));
@@ -86,17 +86,21 @@ const SearchResult = () => {
 
               {foodType && !nameParams ? 
                 <h1 className="search-result-title">
-                  {foodType ? `${backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1)}` :
-                    `${backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1)} Cuisine`}</h1> :
+                  {`${backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1)}`}</h1> :
+                    !foodType && !nameParams ? 
+                    <h1 className="search-result-title">
+                    {`${backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1)} Cuisine`}
+                    </h1> :
                     <h1 className="search-result-title">
                       {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replace("%20", " ")}
                     </h1>}
 
               <div className="scrollable-result-container">
-                {restaurants.map((restaurant) =>
-                  <Restaurant key={restaurant.id} restaurant={restaurant} />)}
+                {restaurants && restaurants.map((restaurant, idx) =>
+                  <Restaurant key={restaurant.id} restaurant={restaurant} 
+                  index={idx}/>)}
               </div>
             </div>
           </div>

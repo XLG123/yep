@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
+import React, { useCallback, useEffect, useState } from "react";
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow} from "@react-google-maps/api";
 import "./MapBuilder.css";
 import { useNavigate } from "react-router-dom";
+import AverageRating from "../BusinessesPage/AverageRating";
 
 const MapBuilder = ({restaurants}) => {
 
@@ -40,8 +41,27 @@ const MapBuilder = ({restaurants}) => {
     lng: -73.9937922,
   }
 
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [showInfoWindow, setShowInfoWindow] = useState(false);
+
+  useEffect(() => {
+    if (!showInfoWindow) return;
+
+    const closeInfoWindow = () => {
+      setShowInfoWindow(false);
+    };
+
+    document.addEventListener("mouseover", closeInfoWindow);
+
+    return () => document.removeEventListener("mouseover", closeInfoWindow);
+  }, [showInfoWindow]);
+
+  useEffect(()=> {
+    setSelectedRestaurant(null);
+  }, []);
+
   return isLoaded ? (
-    <div style={{ height: 'inherit', width: '30vw' }}>
+    <div style={{ height: 'inherit', width: '33vw' }}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -49,15 +69,36 @@ const MapBuilder = ({restaurants}) => {
         onLoad={onLoad}
         onUnmount={onUnmount}>
         
-        {restaurants ? restaurants.map(restaurant => 
-          <Marker key={restaurant.id}
-            position={{lat: restaurant.latitude, lng: restaurant.longitude}} label={{text: restaurant.name, fontSize: '0.5vw'}}
+        {restaurants ? restaurants.map((restaurant, idx) => 
+          <Marker key={idx}
+            position={{lat: restaurant.latitude, lng: restaurant.longitude}} 
             animation={window.google.maps.Animation.DROP}
+            label={{
+              text: `${idx+1}`, 
+              fontSize: '1vw', fontWeight: 'bold',
+              color: 'inherit', fontFamily: 'inherit'}}
             onClick={() => handleClick(restaurant)}
-            />) : <></> 
-        }
+            onMouseOver={() => {
+              setSelectedRestaurant(restaurant);
+            }}/>) : <></>}
 
-        {/* {restaurants ? restaurant.map(res=> <></>)} */}
+          {selectedRestaurant ? 
+            <InfoWindow
+              options={{disableAutoPan: true}}
+              position={{lat: selectedRestaurant.latitude, lng: selectedRestaurant.longitude}}
+              key={`${selectedRestaurant.name}-info`}
+              visible={showInfoWindow}
+              onMouseLeave={() => {
+                setSelectedRestaurant(null);
+              }}>
+              <div className="restaurant-info-card">
+                <img src={selectedRestaurant.pictureUrls[0]} alt="img" 
+                  className="info-img"/>
+                <p className="info-title">{selectedRestaurant.name}</p>
+                <AverageRating averageRating=
+                {selectedRestaurant.averageRating}/>
+              </div>
+            </InfoWindow> : <></>}
 
       </GoogleMap>
     </div>

@@ -17,7 +17,7 @@ const SearchBar = () => {
   const names = [
     "da andrea", "olio e più", "rubirosa", "paesano",
     "l'antica pizzeria da michele nyc", "la lanterna di vittorio",
-    "trapizzino", "babbo", "ribalta pizza", "lil frankie's",
+    "trapizzino", "babbo", "ribalta pizza", "lil frankie's", "joe's pizza", 
     "xu's public house", "shu jiao fu zhou", "chow house", "joe's shanghai",
     "han dynasty", "amélie", "la sirene", "claudette",
     "boucherie union square", "buvette", "mino brasserie", "benemon",

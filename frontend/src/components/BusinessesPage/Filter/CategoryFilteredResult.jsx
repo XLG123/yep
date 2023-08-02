@@ -27,9 +27,9 @@ const CategoryFilteredResult = () => {
             <div className="scrollable-result-container">
               {restaurants.filter((restaurant) => 
               restaurant.category.includes 
-              (categoryOption)).map((filteredRestaurant) =>
+              (categoryOption)).map((filteredRestaurant, idx) =>
                 <Restaurant key={filteredRestaurant.id} restaurant=
-                {filteredRestaurant} />)}
+                {filteredRestaurant} index={idx}/>)}
             </div>
           </div>
         </div>

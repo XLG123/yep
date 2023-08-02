@@ -21,10 +21,12 @@ class Api::RestaurantsController < ApplicationController
     search_params = ""
     if params.has_key?(:category)
       search_params = params[:category].capitalize()
-      @restaurants = Business.where("category LIKE ?", "%#{search_params}%")
+      search_params = search_params.downcase
+      @restaurants = Business.where("LOWER(category) LIKE ?", "%#{search_params}%")
     elsif params.has_key?(:name)
       search_params = params[:name]
       search_params.gsub!("%20", " ")
+      search_params.gsub!("%27", "'")
       @restaurants = Business.where("LOWER(name) LIKE ?", 
         search_params.downcase)
     else

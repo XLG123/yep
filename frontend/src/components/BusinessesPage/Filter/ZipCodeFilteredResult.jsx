@@ -29,9 +29,9 @@ const ZipCodeFilteredResult = () => {
             <div className="scrollable-result-container">
               {restaurants.filter((restaurant) =>
                 restaurant.zipCode ===
-                (zipCodeOption)).map((filteredRestaurant) =>
+                (zipCodeOption)).map((filteredRestaurant, idx) =>
                   <Restaurant key={filteredRestaurant.id} restaurant=
-                    {filteredRestaurant} />)}
+                    {filteredRestaurant} index={idx}/>)}
             </div>
           </div>
         </div>

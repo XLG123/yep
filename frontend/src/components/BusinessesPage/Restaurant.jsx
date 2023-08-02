@@ -2,7 +2,7 @@ import React from "react";
 import "./Restaurant.css";
 import AverageRating from "./AverageRating";
 
-const Restaurant = ({restaurant}) => {
+const Restaurant = ({restaurant, index}) => {
 
   const categories = restaurant.category.split('_');
 
@@ -11,13 +11,13 @@ const Restaurant = ({restaurant}) => {
       <div className="restaurant-container">
 
         <span className="restaurant-img">
-          <img src="https://img-16.stickers.cloud/packs/fcdf27ab-ba83-432f-a5fe-46e0c7f99df3/webp/adac529c-5360-4ebf-8554-13439160ecd4.webp" alt="restaurant"/>
-          {/* <img src={restaurant.pictureUrls[0]} alt="img"/> */}
+          {/* <img src="https://img-16.stickers.cloud/packs/fcdf27ab-ba83-432f-a5fe-46e0c7f99df3/webp/adac529c-5360-4ebf-8554-13439160ecd4.webp" alt="restaurant"/> */}
+          <img src={restaurant.pictureUrls[0]} alt="img"/>
         </span>
 
         <span className="restaurant-info">
 
-          <div className="restaurant-name">{restaurant.name}</div>
+          <div className="restaurant-name">{index+1}. {restaurant.name}</div>
 
           <div className="bp-average-rating">
             <AverageRating averageRating = {restaurant.averageRating}/>

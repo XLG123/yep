@@ -750,30 +750,30 @@ end
 
 # Attaching Thumbnails to Italian Restaurants
 italian_restaurants = Business.where("category Like ?", "Italian%")
-# attach_thumbnail(italian_restaurants, "italian")
+attach_thumbnail(italian_restaurants, "italian")
 
 # Attaching Thumbnails to Chinese Restaurants
 chinese_restaurants = Business.where("category Like ?", "Chinese%")
-# attach_thumbnail(chinese_restaurants, "chinese")
+attach_thumbnail(chinese_restaurants, "chinese")
 
 # Attaching Thumbnails to French Restaurants
 french_restaurants = Business.where("category Like ?", "French%")
-# attach_thumbnail(french_restaurants, "french")
+attach_thumbnail(french_restaurants, "french")
 
 # Attaching Thumbnails to Japanese Restaurants
 japanese_restaurants = Business.where("category Like ?", "Japanese%")
-# attach_thumbnail(japanese_restaurants, "japanese")
+attach_thumbnail(japanese_restaurants, "japanese")
 
 # Attaching Thumbnails to Thai Restaurants
 thai_restaurants = Business.where("category Like ?", "Thai%")
-# attach_thumbnail(thai_restaurants, "thai")
+attach_thumbnail(thai_restaurants, "thai")
 
 # Attaching Thumbnails to Mexican Restaurants
 mexican_restaurants = Business.where("category Like ?", "Mexican%")
-# attach_thumbnail(mexican_restaurants, "mexican")
+attach_thumbnail(mexican_restaurants, "mexican")
 
 # Attaching Thumbnails to Milk Tea Stores
 milk_tea_stores = Business.where("category Like ?", "Milk Tea%")
-# attach_thumbnail(milk_tea_stores, "milk_tea")
+attach_thumbnail(milk_tea_stores, "milk_tea")
 
 puts "Done!"

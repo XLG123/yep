@@ -29,9 +29,9 @@ const PriceRangeFilteredResult = () => {
             <div className="scrollable-result-container">
               {restaurants.filter((restaurant) =>
                 restaurant.priceRange === 
-                  priceRangeOption).map((filteredRestaurant) =>
+                  priceRangeOption).map((filteredRestaurant, idx) =>
                     <Restaurant key={filteredRestaurant.id} restaurant=
-                      {filteredRestaurant} />)}
+                      {filteredRestaurant} index={idx}/>)}
             </div>
           </div>
         </div>

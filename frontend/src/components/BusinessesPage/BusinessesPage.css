@@ -20,7 +20,7 @@
 }
 
 .main-content {
-  width: 45vw;
+  width: 42vw;
   position: absolute;
   color: inherit;
   top: 8.5vh;
@@ -45,9 +45,9 @@
 }
 
 .right-side-bar {
-  width: 35vw;
+  width: 38vw;
   position: absolute;
-  left: 68vw;
+  left: 65vw;
   top: 8.5vh;
 }
 
