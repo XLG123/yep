@@ -4,37 +4,6 @@ class Api::RestaurantsController < ApplicationController
     ['zipCode', 'priceRange', 'phoneNumber', 'averageRating']
 
   def index
-
-    # Filter on category
-    category_params = params[:category]
-    if category_params.present?
-      @restaurants = Business.where("category = #{category_params}")
-      # print @restaurants
-      render 'api/restaurants/index'
-    end
-
-    # Filter on price_range
-    price_range_params = params[:price_range]
-    if price_range_params.present?
-      @restaurants = Business.where("price_range = #{price_range_params}")
-      render 'api/restaurants/index'
-    end
-    
-    # Filter on zip_code
-    zip_code_params = params[:zip_code]
-    if zip_code_params.present?
-      @restaurants = Business.where("zip_code = #{zip_code_params}")
-      render 'api/restaurants/index'
-    end
-    
-    # Filter on average_rating
-    average_rating_params = params[:average_rating]
-    if average_rating_params.present?
-      @restaurants = Business.where(
-        "average_rating = #{average_rating_params}")
-      render 'api/restaurants/index'
-    end
-
     @restaurants = Business.all
     if @restaurants
       render 'api/restaurants/index'
@@ -46,6 +15,25 @@ class Api::RestaurantsController < ApplicationController
       if @restaurant
         render 'api/restaurants/show'
       end
+  end
+
+  def search
+    # debugger
+    search_params = ""
+    
+    if params.has_key?(:category)
+      search_params = params[:category].capitalize()
+      @restaurants = Business.where("category = ?", "%#{search_params}%")
+    elsif params.has_key?(:name)
+      search_params = params[:name]
+      search_params.sub!("%20", " ")
+      @restaurants = Business.where("LOWER(name) LIKE ?", 
+        "%LOWER(#{search_params})%")
+    else
+      return null
+    end
+
+    render 'api/restaurants/search' if @restaurants
   end
 
   def business_params

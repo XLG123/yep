@@ -1,0 +1,15 @@
+.search-error-container h1 {
+  font-size: 1.5vw;
+}
+
+#error-term {
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0px 0.6vw;
+}
+
+.search-error-container p {
+  margin-top: 1vw;
+  font-size: 1.2vw;
+  color: #999;
+}

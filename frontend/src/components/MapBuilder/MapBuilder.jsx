@@ -49,12 +49,12 @@ const MapBuilder = ({restaurants}) => {
         onLoad={onLoad}
         onUnmount={onUnmount}>
         
-        { restaurants.map(restaurant => 
+        {restaurants ? restaurants.map(restaurant => 
           <Marker key={restaurant.id}
             position={{lat: restaurant.latitude, lng: restaurant.longitude}} label={{text: restaurant.name, fontSize: '0.5vw'}}
             animation={window.google.maps.Animation.DROP}
             onClick={() => handleClick(restaurant)}
-            />) 
+            />) : <></> 
         }
 
       </GoogleMap>

@@ -183,7 +183,7 @@ italian_10 = Business.create!(
 )
 
 italian_11 = Business.create!(
-  name: "Lil Frankie's",
+  name: "Joe's Pizza",
   city: 'New York City',
   state: 'New York',
   address: '150 E 14th St',
