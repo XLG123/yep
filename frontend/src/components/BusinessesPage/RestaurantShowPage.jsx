@@ -26,26 +26,29 @@ const RestaurantShowPage = () => {
         </div>
 
         <div className="bg">
-          <img src={restaurant.pictureUrls[0]} alt="restaurant" 
+          <img src={restaurant.pictureUrls[1]} alt="restaurant" 
             className="bg-img"/>
         </div>
 
         <div className="bg">
-          <img src={restaurant.pictureUrls[0]} alt="restaurant" 
+          <img src={restaurant.pictureUrls[2]} alt="restaurant" 
             className="bg-img"/>
         </div>
 
         <div className="bg">
-          <img src={restaurant.pictureUrls[0]} alt="restaurant" 
+          <img src={restaurant.pictureUrls[3]} alt="restaurant" 
             className="bg-img"/>
         </div>
 
         <div className="bg">
-          <img src={restaurant.pictureUrls[0]} alt="restaurant" 
+          <img src={restaurant.pictureUrls[4]} alt="restaurant" 
             className="bg-img"/>
         </div>
 
       </div>
+
+      <div className="sp-title">{restaurant.name}</div>
+      <div className="sp-category">{restaurant.category}</div>
     </div>
     </>
   );

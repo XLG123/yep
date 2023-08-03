@@ -27,8 +27,9 @@ class Api::RestaurantsController < ApplicationController
       search_params = params[:name]
       search_params.gsub!("%20", " ")
       search_params.gsub!("%27", "'")
+      search_params = search_params.downcase
       @restaurants = Business.where("LOWER(name) LIKE ?", 
-        search_params.downcase)
+        "%#{search_params}%")
     else
       return null
     end
