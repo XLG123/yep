@@ -748,32 +748,63 @@ def attach_thumbnail(restaurants, category)
   end
 end
 
+def attach_menu_imgs(restaurants, category)
+  restaurants.each_with_index do |restaurant, index|
+    restaurant.picture.attach(io:
+      URI.open(
+        "https://yep-app-seeds.s3.amazonaws.com/#{category}_#{index+1}_dish_1.jpg"), 
+        filename: "#{category}_#{index+1}_dish_1.jpg")
+
+    restaurant.picture.attach(io:
+      URI.open(
+        "https://yep-app-seeds.s3.amazonaws.com/#{category}_#{index+1}_dish_2.jpg"), 
+        filename: "#{category}_#{index+1}_dish_2.jpg")
+
+    restaurant.picture.attach(io:
+      URI.open(
+        "https://yep-app-seeds.s3.amazonaws.com/#{category}_#{index+1}_dish_3.jpg"), 
+        filename: "#{category}_#{index+1}_dish_3.jpg")
+
+    restaurant.picture.attach(io:
+      URI.open(
+        "https://yep-app-seeds.s3.amazonaws.com/#{category}_#{index+1}_dish_4.jpg"), 
+        filename: "#{category}_#{index+1}_dish_4.jpg")
+  end
+end
+
 # Attaching Thumbnails to Italian Restaurants
 italian_restaurants = Business.where("category Like ?", "Italian%")
 attach_thumbnail(italian_restaurants, "italian")
+attach_menu_imgs(italian_restaurants, "italian")
 
 # Attaching Thumbnails to Chinese Restaurants
 chinese_restaurants = Business.where("category Like ?", "Chinese%")
 attach_thumbnail(chinese_restaurants, "chinese")
+attach_menu_imgs(italian_restaurants, "chinese")
 
 # Attaching Thumbnails to French Restaurants
 french_restaurants = Business.where("category Like ?", "French%")
 attach_thumbnail(french_restaurants, "french")
+attach_menu_imgs(italian_restaurants, "french")
 
 # Attaching Thumbnails to Japanese Restaurants
 japanese_restaurants = Business.where("category Like ?", "Japanese%")
 attach_thumbnail(japanese_restaurants, "japanese")
+attach_menu_imgs(italian_restaurants, "japanese")
 
 # Attaching Thumbnails to Thai Restaurants
 thai_restaurants = Business.where("category Like ?", "Thai%")
 attach_thumbnail(thai_restaurants, "thai")
+attach_menu_imgs(italian_restaurants, "thai")
 
 # Attaching Thumbnails to Mexican Restaurants
 mexican_restaurants = Business.where("category Like ?", "Mexican%")
 attach_thumbnail(mexican_restaurants, "mexican")
+attach_menu_imgs(italian_restaurants, "mexican")
 
 # Attaching Thumbnails to Milk Tea Stores
 milk_tea_stores = Business.where("category Like ?", "Milk Tea%")
 attach_thumbnail(milk_tea_stores, "milk_tea")
+attach_menu_imgs(italian_restaurants, "milk_tea")
 
 puts "Done!"

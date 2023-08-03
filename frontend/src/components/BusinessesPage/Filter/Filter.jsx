@@ -1,20 +1,32 @@
 import "./Filter.css";
-import React from "react";
+import React, { useEffect } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 
 const Filter = () => {
   const navigate = useNavigate();
 
   const handlePriceFilterClick = (e, price) => {
     e.preventDefault();
+    e.target.style.backgroundColor = "rgb(226, 226, 230)";
+    const siblings = [...e.target.parentElement.children].filter(el => el != e.target);
+    siblings.forEach(sibling => {
+      sibling.style.backgroundColor = "white";
+    });
     navigate(`/restaurants/filter?price_range=${price}`);
   }
 
   const handleZipCodeFilterClick = (e, zipCode) => {
     e.preventDefault();
+    e.target.classList.add("activeBtn");
+    e.target.style.backgroundColor = "rgb(226, 226, 230)";
+    const siblings = [...e.target.parentElement.children].filter(el => el != e.target);
+    siblings.forEach(sibling => {
+      sibling.style.backgroundColor = "white";
+    });
     navigate(`/restaurants/filter?zip_code=${zipCode}`);
   }
 
@@ -22,7 +34,7 @@ const Filter = () => {
     e.preventDefault();
     navigate(`/restaurants/filter?average_rating=${averageRating}`);
   }
-  
+
   return (
     <>
       <div className="filter-bar-container1">

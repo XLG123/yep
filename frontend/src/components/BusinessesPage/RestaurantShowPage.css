@@ -1,6 +1,29 @@
-#testing {
-  margin: 0 auto;
-  width: 30vw;
-  font-size: 3vw;
-  color: green;
+.restaurant-sp-container {
+  font-family: Helvetica, sans-serif;
+  color: '#FFFFFF';
+  margin-top: 3vw;
+}
+
+.main-bg-scrollable-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0;
+  height: 30vw;
+}
+
+.main-bg-scrollable-container::-webkit-scrollbar {
+  display: none;
+}
+
+.bg {
+  width: 40vw;
+  height: inherit;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.bg-img {
+  width: inherit;
+  height: inherit;
 }

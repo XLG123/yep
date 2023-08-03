@@ -15,7 +15,7 @@ export const getRestaurants = createSelector(
 );
 
 export const getRestaurant = (restaurantId) => (state) => {
-  if (state.restaurants && state.restaurants[restaurantId]) {
+  if (state && state.restaurants) {
     return state.restaurants[restaurantId];
   } else {
     return null;
@@ -41,7 +41,7 @@ export const fetchRestaurants = () => async (dispatch) => {
 }
 
 export const fetchRestaurantsWithQuery = (query) => async (dispatch) => {
-  const response = await csrfFetch(`/api/restaurants/search${query}`);
+  const response = await csrfFetch(`/api/businesses/search${query}`);
   const data = await response.json();
 
   dispatch({

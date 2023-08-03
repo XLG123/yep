@@ -6,6 +6,7 @@
   /* font-family:  */
   color: #2D2E2F;
   font-family: Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 .info-title {
@@ -21,12 +22,3 @@
   display: block;
   margin: 0px auto;
 }
-
-/* .gm-style-iw-c {
-  display: none;
-}
-
-.gm-style-iw-tc {
-  display: none;
-} */
-

@@ -1,16 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader, InfoWindow} from "@react-google-maps/api";
+import React, { useCallback, useState } from "react";
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
 import "./MapBuilder.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AverageRating from "../BusinessesPage/AverageRating";
 
 const MapBuilder = ({restaurants}) => {
-
-  const navigate = useNavigate();
-
-  const handleClick = (restaurant) => {
-    navigate(`/restaurants/${restaurant.id}`);
-  }
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -41,24 +35,14 @@ const MapBuilder = ({restaurants}) => {
     lng: -73.9937922,
   }
 
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [showInfoWindow, setShowInfoWindow] = useState(false);
+  const [activeMarker, setActiveMarker] = useState(null);
 
-  useEffect(() => {
-    if (!showInfoWindow) return;
-
-    const closeInfoWindow = () => {
-      setShowInfoWindow(false);
-    };
-
-    document.addEventListener("mouseover", closeInfoWindow);
-
-    return () => document.removeEventListener("mouseover", closeInfoWindow);
-  }, [showInfoWindow]);
-
-  useEffect(()=> {
-    setSelectedRestaurant(null);
-  }, []);
+  const handleClick = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   return isLoaded ? (
     <div style={{ height: 'inherit', width: '33vw' }}>
@@ -67,7 +51,8 @@ const MapBuilder = ({restaurants}) => {
         center={center}
         zoom={14}
         onLoad={onLoad}
-        onUnmount={onUnmount}>
+        onUnmount={onUnmount}
+        onClick={() => {setActiveMarker(null)}}>
         
         {restaurants ? restaurants.map((restaurant, idx) => 
           <Marker key={idx}
@@ -77,28 +62,31 @@ const MapBuilder = ({restaurants}) => {
               text: `${idx+1}`, 
               fontSize: '1vw', fontWeight: 'bold',
               color: 'inherit', fontFamily: 'inherit'}}
-            onClick={() => handleClick(restaurant)}
-            onMouseOver={() => {
-              setSelectedRestaurant(restaurant);
-            }}/>) : <></>}
+            onClick={() => handleClick(idx)}>
 
-          {selectedRestaurant ? 
-            <InfoWindow
-              options={{disableAutoPan: true}}
-              position={{lat: selectedRestaurant.latitude, lng: selectedRestaurant.longitude}}
-              key={`${selectedRestaurant.name}-info`}
-              visible={showInfoWindow}
-              onMouseLeave={() => {
-                setSelectedRestaurant(null);
-              }}>
-              <div className="restaurant-info-card">
-                <img src={selectedRestaurant.pictureUrls[0]} alt="img" 
-                  className="info-img"/>
-                <p className="info-title">{selectedRestaurant.name}</p>
-                <AverageRating averageRating=
-                {selectedRestaurant.averageRating}/>
-              </div>
-            </InfoWindow> : <></>}
+            {activeMarker === idx ? 
+            <NavLink to={`/restaurants/${restaurant.id}`}>
+              <InfoWindow
+                options={{disableAutoPan: false}}
+                position={{
+                  lat: restaurant.latitude,
+                  lng: restaurant.longitude
+                }}
+                key={`${restaurant.name}-info`}
+                onCloseClick={() => {
+                  setActiveMarker(null);
+                }}>
+                
+                <div className="restaurant-info-card">
+                  <img src={restaurant.pictureUrls[0]} alt="img" 
+                    className="info-img"/>
+                  <p className="info-title">{restaurant.name}</p>
+                  <AverageRating averageRating=
+                  {restaurant.averageRating}/>
+                </div>
+              </InfoWindow>
+            </NavLink> : null}
+          </Marker>) : null}
 
       </GoogleMap>
     </div>

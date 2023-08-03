@@ -54,9 +54,12 @@ const SearchResult = () => {
   }
 
   if (searchItem.toLowerCase() === "milk%20tea") {
-      console.log(searchItem.toLowerCase());
     backendSearchItem = "Milk Tea";
     foodType = true;
+  }
+
+  if (searchItem.toLowerCase() === "joe%27s%20pizza") {
+    backendSearchItem = "Joe's Pizza";
   }
 
   const restaurants = useSelector(getRestaurants);
@@ -91,7 +94,7 @@ const SearchResult = () => {
                     !foodType && !nameParams ? 
                     <h1 className="search-result-title">
                     {`${backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1)} Cuisine`}
+                    backendSearchItem.slice(1).toLowerCase()} Cuisine`}
                     </h1> :
                     <h1 className="search-result-title">
                       {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replace("%20", " ")}

@@ -35,13 +35,13 @@ const SearchBar = () => {
     setSearchParams("");
     
     if (categoryTerms.includes(searchParams.toLowerCase())) {
-      navigate(`/restaurants/search?category=${searchParams}`, 
+      navigate(`/businesses/search?category=${searchParams}`, 
       {replace: true});
     } else if (names.includes(searchParams.toLowerCase())) {
-      navigate(`/restaurants/search?name=${searchParams}`, 
+      navigate(`/businesses/search?name=${searchParams}`, 
       {replace: true});
     } else {
-      navigate(`restaurants/error?search_term=${searchParams}`, {replace: true});
+      navigate(`businesses/error?search_term=${searchParams}`, {replace: true});
     }
   }
 

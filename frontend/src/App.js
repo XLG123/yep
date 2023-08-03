@@ -25,17 +25,18 @@ export default function App() {
 
         <Route exact path="/restaurants" element={<BusinessesPage />}></Route>
 
-        <Route path="/restaurants/filter" element={<FilteredResult />}>
-        </Route>
-
         <Route exact path="/restaurants/:restaurantId" element=
         {<RestaurantShowPage/>}></Route>
 
-        <Route exact path="/restaurants/search" element={<SearchResult />}></Route>
+        <Route path="/restaurants/filter" element={<FilteredResult />}>
+        </Route>
 
-        <Route exact path="/restaurants/error" element={<SearchError />}></Route>
+        <Route exact path="/businesses/search" element={<SearchResult />}></Route>
+        
+        <Route exact path="/businesses/error" element={<SearchError />}></Route>
 
       </Routes>
     </>
   );
 }
+ 
