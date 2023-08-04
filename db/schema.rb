@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_223236) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_010249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_223236) do
     t.datetime "updated_at", null: false
     t.string "address", null: false
     t.float "average_rating", null: false
+    t.string "mon", null: false
+    t.string "tue", null: false
+    t.string "wed", null: false
+    t.string "thu", null: false
+    t.string "fri", null: false
+    t.string "sat", null: false
+    t.string "sun", null: false
+    t.string "web_url", null: false
+    t.string "health_score"
+    t.boolean "delivery"
+    t.boolean "take_out"
+    t.boolean "wifi"
+    t.boolean "reservation"
   end
 
   create_table "reviews", force: :cascade do |t|

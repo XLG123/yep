@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
-import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from 
+  "@react-google-maps/api";
 import "./MapBuilder.css";
 import { NavLink } from "react-router-dom";
 import AverageRating from "../BusinessesPage/AverageRating";
 
 const MapBuilder = ({restaurants}) => {
-
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
@@ -87,7 +87,6 @@ const MapBuilder = ({restaurants}) => {
               </InfoWindow>
             </NavLink> : null}
           </Marker>) : null}
-
       </GoogleMap>
     </div>
   ) : <></>

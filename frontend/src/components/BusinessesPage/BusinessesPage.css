@@ -54,3 +54,23 @@
 .google-map {
   height: 82vh;
 }
+
+.review-btn {
+  width: 11vw;
+  height: 3vw;
+  background-color: rgba(224, 7, 7, 1);
+  position: absolute;
+  left: 10vw;
+  top: 31vw;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.3vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-btn:hover {
+  background-color: rgb(244, 13, 21);
+}

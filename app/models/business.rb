@@ -16,6 +16,19 @@
 #  updated_at     :datetime         not null
 #  address        :string           not null
 #  average_rating :float            not null
+#  mon            :string           not null
+#  tue            :string           not null
+#  wed            :string           not null
+#  thu            :string           not null
+#  fri            :string           not null
+#  sat            :string           not null
+#  sun            :string           not null
+#  web_url        :string           not null
+#  health_score   :string
+#  delivery       :boolean
+#  take_out       :boolean
+#  wifi           :boolean
+#  reservation    :boolean
 #
 class Business < ApplicationRecord
   validates :name, :city, :state, presence: true
@@ -24,6 +37,14 @@ class Business < ApplicationRecord
   validates :price_range, presence: true, length: { in: 1..4 }
   validates :phone_number, presence: true, length: { is: 10 }
   validates :category, presence: true
+  validates :mon, presence: true
+  validates :tue, presence: true
+  validates :wed, presence: true
+  validates :thu, presence: true
+  validates :fri, presence: true
+  validates :sat, presence: true
+  validates :sun, presence: true
+  validates :web_url, presence: true
 
   has_many_attached :picture
 
@@ -31,4 +52,8 @@ class Business < ApplicationRecord
     primary_key: :id,
     foreign_key: :business_id,
     class_name: :Review
+
+  has_many :reviewers,
+    through: :reviews,
+    source: :user
 end

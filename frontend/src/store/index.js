@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   session,
-  restaurants
+  restaurants,
 });
 
 const logger = require("redux-logger").default;

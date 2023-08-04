@@ -9,6 +9,7 @@ import FilteredResult from "./components/BusinessesPage/Filter/FilteredResult";
 import RestaurantShowPage from "./components/BusinessesPage/RestaurantShowPage";
 import SearchResult from "./components/SearchBar/SearchResult";
 import SearchError from "./components/SearchBar/SearchError";
+import WriteReview from "./components/Review/WriteReview";
 
 export default function App() {
 
@@ -31,9 +32,14 @@ export default function App() {
         <Route path="/restaurants/filter" element={<FilteredResult />}>
         </Route>
 
-        <Route exact path="/businesses/search" element={<SearchResult />}></Route>
+        <Route exact path="/businesses/search" element={<SearchResult />}>
+        </Route>
         
-        <Route exact path="/businesses/error" element={<SearchError />}></Route>
+        <Route exact path="/businesses/error" element={<SearchError />}>
+        </Route>
+
+        <Route exact path="restaurants/:restaurantId/writeareview" 
+          element={<WriteReview/>}></Route>
 
       </Routes>
     </>

@@ -1,0 +1,16 @@
+.upcoming {
+  position: absolute;
+  z-index: 10;
+  top: 15vw;
+  left: 25vw;
+  /* display: flex; */
+}
+
+h1 {
+  font-size: 2vw;
+
+}
+
+.error-code {
+  color: red;
+}

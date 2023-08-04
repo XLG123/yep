@@ -15,7 +15,7 @@ export const getRestaurants = createSelector(
 );
 
 export const getRestaurant = (restaurantId) => (state) => {
-  if (state && state.restaurants) {
+  if (state.restaurants && state.restaurants[restaurantId]) {
     return state.restaurants[restaurantId];
   } else {
     return null;

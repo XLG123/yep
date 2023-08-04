@@ -11,7 +11,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Business.find(params[:id])
+    @restaurant = Business.includes(:reviews).find(params[:id])
       if @restaurant
         render 'api/restaurants/show'
       end
@@ -22,7 +22,7 @@ class Api::RestaurantsController < ApplicationController
     if params.has_key?(:category)
       search_params = params[:category].capitalize()
       search_params = search_params.downcase
-      @restaurants = Business.where("LOWER(category) LIKE ?", "%#{search_params}%")
+      @restaurants = Business.includes(:reviews).where("LOWER(category) LIKE ?", "%#{search_params}%")
     elsif params.has_key?(:name)
       search_params = params[:name]
       search_params.gsub!("%20", " ")

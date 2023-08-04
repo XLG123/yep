@@ -50,8 +50,22 @@ italian_1 = Business.create!(
   price_range: '$$',
   phone_number: '2123671979',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:30 AM - 10:00 PM",
+  tue: "11:30 AM - 10:00 PM",
+  wed: "11:30 AM - 10:00 PM",
+  thu: "11:30 AM - 10:00 PM",
+  fri: "11:30 AM - 10:00 PM",
+  sat: "11:30 AM - 10:00 PM",
+  sun: "11:30 AM - 10:00 PM",
+  web_url: "daandreanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
+
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_1.jpg"), filename: "italian_1_dish_1.jpg")
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1_dish_2.jpg"), filename: "italian_1_dish_2.jpg")
@@ -67,7 +81,20 @@ italian_2 = Business.create!(
   price_range: "$$",
   phone_number: '2122436546',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 12:00 AM (Next day)",
+  tue: "11:00 AM - 12:00 AM (Next day)",
+  wed: "11:00 AM - 12:00 AM (Next day)",
+  thu: "11:00 AM - 12:00 AM (Next day)",
+  fri: "11:00 AM - 12:00 AM (Next day)",
+  sat: "10:00 AM - 12:00 AM (Next day)",
+  sun: "10:00 AM - 12:00 AM (Next day)",
+  web_url: "olioepiu.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 italian_3 = Business.create!(
@@ -81,7 +108,20 @@ italian_3 = Business.create!(
   price_range: "$$",
   phone_number: '2129650500',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 11:00 PM",
+  tue: "11:00 AM - 11:00 PM",
+  wed: "11:00 AM - 11:00 PM",
+  thu: "11:00 AM - 11:00 PM",
+  fri: "11:00 AM - 11:00 PM",
+  sat: "11:00 AM - 11:00 PM",
+  sun: "11:00 AM - 11:00 PM",
+  web_url: "rubirosanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 italian_4 = Business.create!(
@@ -95,7 +135,20 @@ italian_4 = Business.create!(
   price_range: '$$',
   phone_number: '2129651188',
   category: 'Italian',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 10:00 PM",
+  tue: "11:00 AM - 10:00 PM",
+  wed: "11:00 AM - 10:00 PM",
+  thu: "11:00 AM - 10:00 PM",
+  fri: "11:00 AM - 10:30 PM",
+  sat: "11:00 AM - 10:30 PM",
+  sun: "11:00 AM - 10:00 PM",
+  web_url: "paesanosoflittleitaly.com",
+  health_score: "A",
+  delivery: false,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 italian_5 = Business.create!(
@@ -109,7 +162,18 @@ italian_5 = Business.create!(
   price_range: '$$$',
   phone_number: '9295246682',
   category: 'Italian_Pizza',
-  average_rating: 3.5
+  average_rating: 0,
+  mon: "8:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  tue: "8:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  wed: "8:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  thu: "8:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  fri: "8:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  sat: "8:00 AM - 11:00 PM",
+  sun: "9:00 AM - 10:00 PM",
+  web_url: "damicheleusa.com/nyc",
+  delivery: true,
+  take_out: true,
+  reservation: true
 )
 
 italian_6 = Business.create!(
@@ -123,7 +187,20 @@ italian_6 = Business.create!(
   price_range: '$$',
   phone_number: '9176393236',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "10:00 AM - 1:00 AM (Next day)",
+  tue: "10:00 AM - 1:00 AM (Next day)",
+  wed: "10:00 AM - 1:00 AM (Next day)",
+  thu: "10:00 AM - 1:00 AM (Next day)",
+  fri: "10:00 AM - 2:00 AM (Next day)",
+  sat: "10:00 AM - 2:00 AM (Next day)",
+  sun: "10:00 AM - 1:00 AM (Next day)",
+  web_url: "lalanterna.nyc",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 italian_7 = Business.create!(
@@ -137,7 +214,20 @@ italian_7 = Business.create!(
   price_range: '$$',
   phone_number: '3474674362',
   category: 'Italian',
-  average_rating: 0
+  average_rating: 0,
+  mon: "12:00 PM - 9:00 PM",
+  tue: "12:00 PM - 10:00 PM",
+  wed: "12:00 PM - 10:00 PM",
+  thu: "12:00 PM - 10:30 PM",
+  fri: "12:00 PM - 12:00 AM (Next day)",
+  sat: "11:00 AM - 12:00 AM (Next day)",
+  sun: "11:00 AM - 9:30 PM",
+  web_url: "trapizzinousa.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 italian_8 = Business.create!(
@@ -151,7 +241,20 @@ italian_8 = Business.create!(
   price_range: '$$$$',
   phone_number: '2127770303',
   category: 'Italian',
-  average_rating: 2.3
+  average_rating: 0,
+  mon: "4:30 PM - 9:00 PM",
+  tue: "4:30 PM - 9:00 PM",
+  wed: "4:30 PM - 10:00 PM",
+  thu: "4:30 PM - 10:00 PM",
+  fri: "4:30 PM - 10:30 PM",
+  sat: "4:30 PM - 10:30 PM",
+  sun: "4:30 PM - 9:00 PM",
+  web_url: "babbonyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 italian_9 = Business.create!(
@@ -165,7 +268,19 @@ italian_9 = Business.create!(
   price_range: '$$',
   phone_number: '2127777781',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "12:00 PM - 11:00 PM",
+  tue: "12:00 PM - 11:00 PM",
+  wed: "12:00 PM - 11:00 PM",
+  thu: "12:00 PM - 11:00 PM",
+  fri: "12:00 PM - 12:00 AM (Next day)",
+  sat: "12:00 PM - 12:00 AM (Next day)",
+  sun: "12:00 PM - 11:00 PM",
+  web_url: "ribaltanyc.com",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 italian_10 = Business.create!(
@@ -179,7 +294,19 @@ italian_10 = Business.create!(
   price_range: '$$',
   phone_number: '2124204900',
   category: 'Italian_Pizza',
-  average_rating: 2.5
+  average_rating: 0,
+  mon: "11:00 AM - 2:00 AM (Next day)",
+  tue: "11:00 AM - 2:00 AM (Next day)",
+  wed: "11:00 AM - 2:00 AM (Next day)",
+  thu: "11:00 AM - 2:00 AM (Next day)",
+  fri: "11:00 PM - 4:00 AM (Next day)",
+  sat: "11:00 PM - 4:00 AM (Next day)",
+  sun: "11:00 PM - 2:00 AM (Next day)",
+  web_url: "lilfrankies.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 italian_11 = Business.create!(
@@ -193,7 +320,20 @@ italian_11 = Business.create!(
   price_range: '$',
   phone_number: '2123889474',
   category: 'Italian_Pizza',
-  average_rating: 0
+  average_rating: 0,
+  mon: "10:00 AM - 4:00 AM (Next day)",
+  tue: "10:00 AM - 4:00 AM (Next day)",
+  wed: "10:00 AM - 4:00 AM (Next day)",
+  thu: "10:00 AM - 4:00 AM (Next day)",
+  fri: "10:00 AM - 5:00 AM (Next day)",
+  sat: "10:00 AM - 5:00 AM (Next day)",
+  sun: "10:00 AM - 5:00 AM (Next day)",
+  web_url: "joespizzanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 # Chinese Restaurants
@@ -208,7 +348,20 @@ chinese_1 = Business.create!(
   price_range: '$$$',
   phone_number: '2129019971',
   category: 'Chinese',
-  average_rating: 4
+  average_rating: 0,
+  mon: "11:00 AM - 10:00 PM",
+  tue: "11:00 AM - 10:00 PM",
+  wed: "11:00 AM - 10:00 PM",
+  thu: "11:00 AM - 10:00 PM",
+  fri: "11:00 AM - 10:00 PM",
+  sat: "11:00 AM - 10:00 PM",
+  sun: "11:00 AM - 10:00 PM",
+  web_url: "xupublic.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: false
 )
 
 chinese_2 = Business.create!(
@@ -222,7 +375,19 @@ chinese_2 = Business.create!(
   price_range: '$',
   phone_number: '2126252532',
   category: 'Chinese',
-  average_rating: 0
+  average_rating: 0,
+  mon: "8:30 AM - 8:00 PM",
+  tue: "8:30 AM - 8:00 PM",
+  wed: "8:30 AM - 8:00 PM",
+  thu: "8:30 AM - 8:00 PM",
+  fri: "8:30 AM - 8:00 PM",
+  sat: "8:30 AM - 8:00 PM",
+  sun: "8:30 AM - 8:00 PM",
+  web_url: "N/A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 chinese_3 = Business.create!(
@@ -236,7 +401,20 @@ chinese_3 = Business.create!(
   price_range: '$$',
   phone_number: '2128371021',
   category: 'Chinese',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 10:00 PM",
+  tue: "11:00 AM - 10:00 PM",
+  wed: "11:00 AM - 10:00 PM",
+  thu: "11:00 AM - 10:00 PM",
+  fri: "11:00 AM - 10:30 PM",
+  sat: "12:00 PM - 10:30 PM",
+  sun: "12:00 PM - 10:00 PM",
+  web_url: "chowhousenyc.com",
+  health_score: "33.0",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 chinses_4 = Business.create!(
@@ -250,7 +428,20 @@ chinses_4 = Business.create!(
   price_range: '$$',
   phone_number: '2122338888',
   category: 'Chinese',
-  average_rating: 1.25
+  average_rating: 0,
+  mon: "11:00 AM - 10:00 PM",
+  tue: "11:00 AM - 10:00 PM",
+  wed: "11:00 AM - 10:00 PM",
+  thu: "11:00 AM - 10:00 PM",
+  fri: "11:00 AM - 10:00 PM",
+  sat: "11:00 PM - 10:00 PM",
+  sun: "11:00 PM - 10:00 PM",
+  web_url: "joeshanghairestaurants.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 chinses_5 = Business.create!(
@@ -264,7 +455,20 @@ chinses_5 = Business.create!(
   price_range: '$$',
   phone_number: '2123908685',
   category: 'Chinese',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:30 AM - 10:00 PM",
+  tue: "11:30 AM - 10:00 PM",
+  wed: "11:30 AM - 10:00 PM",
+  thu: "11:30 AM - 10:00 PM",
+  fri: "11:30 AM - 11:00 PM",
+  sat: "11:30 AM - 11:00 PM",
+  sun: "11:30 AM - 10:00 PM",
+  web_url: "handynasty.net",
+  health_score: "C",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 # French Restaurants
@@ -279,7 +483,19 @@ french_1 = Business.create!(
   price_range: '$$$',
   phone_number: '2125332962',
   category: 'French',
-  average_rating: 5
+  average_rating: 0,
+  mon: "4:00 PM - 11:00 PM",
+  tue: "12:00 PM - 11:00 PM",
+  wed: "12:00 PM - 11:00 PM",
+  thu: "12:00 PM - 11:00 PM",
+  fri: "12:00 PM - 12:00 AM (Next day)",
+  sat: "12:00 PM - 12:00 AM (Next day)",
+  sun: "12:00 PM - 11:00 PM",
+  web_url: "ameliewinebar.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 french_2 = Business.create!(
@@ -293,7 +509,19 @@ french_2 = Business.create!(
   price_range: '$$$',
   phone_number: '2129253061',
   category: 'French',
-  average_rating: 0
+  average_rating: 0,
+  mon: "4:00 PM - 10:30 PM",
+  tue: "4:00 PM - 10:30 PM",
+  wed: "4:00 PM - 10:30 PM",
+  thu: "4:00 PM - 10:30 PM",
+  fri: "4:00 PM - 11:00 PM",
+  sat: "4:00 PM - 11:00 PM",
+  sun: "4:00 PM - 10:30 PM",
+  web_url: "lasirenenyc.com",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 french_3 = Business.create!(
@@ -307,7 +535,19 @@ french_3 = Business.create!(
   price_range: '$$$',
   phone_number: '2128682424',
   category: 'French',
-  average_rating: 5
+  average_rating: 0,
+  mon: "11:30 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  tue: "11:30 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  wed: "11:30 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  thu: "11:30 AM - 3:00 PM, 5:00 PM - 11:00 PM",
+  fri: "11:30 AM - 3:00 PM, 5:00 PM - 11:00 PM",
+  sat: "10:00 AM - 3:00 PM, 5:00 PM - 11:00 PM",
+  sun: "10:00 AM - 3:00 PM, 5:00 PM - 10:00 PM",
+  web_url: "claudettenyc.com",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 french_4 = Business.create!(
@@ -321,7 +561,20 @@ french_4 = Business.create!(
   price_range: '$$$',
   phone_number: '2123530200',
   category: 'French',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 12:00 AM (Next day)",
+  tue: "11:00 AM - 12:00 AM (Next day)",
+  wed: "11:00 AM - 12:00 AM (Next day)",
+  thu: "11:00 AM - 12:00 AM (Next day)",
+  fri: "11:00 AM - 12:00 AM (Next day)",
+  sat: "10:00 AM - 12:00 AM (Next day)",
+  sun: "10:00 AM - 12:00 AM (Next day)",
+  web_url: "boucherieus.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 french_5 = Business.create!(
@@ -335,7 +588,20 @@ french_5 = Business.create!(
   price_range: '$$',
   phone_number: '2122553590',
   category: 'French',
-  average_rating: 2.1
+  average_rating: 0,
+  mon: "8:00 AM - 12:00 AM (Next day)",
+  tue: "8:00 AM - 12:00 AM (Next day)",
+  wed: "8:00 AM - 12:00 AM (Next day)",
+  thu: "8:00 AM - 12:00 AM (Next day)",
+  fri: "8:00 AM - 12:00 AM (Next day)",
+  sat: "8:00 AM - 12:00 AM (Next day)",
+  sun: "8:00 AM - 12:00 AM (Next day)",
+  web_url: "ilovebuvette.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 french_6 = Business.create!(
@@ -349,7 +615,19 @@ french_6 = Business.create!(
   price_range: '$$$',
   phone_number: '8455249006',
   category: 'French',
-  average_rating: 0  
+  average_rating: 0,
+  mon: "Closed",
+  tue: "4:30 PM - 11:00 PM",
+  wed: "4:30 PM - 11:00 PM",
+  thu: "4:30 PM - 11:00 PM",
+  fri: "4:30 PM - 11:00 PM",
+  sat: "11:30 AM - 12:00 AM (Next day)",
+  sun: "11:30 AM - 11:00 PM",
+  web_url: "minobrasserie.com",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 # Japanese Restaurants
@@ -364,7 +642,19 @@ japanese_1 = Business.create!(
   price_range: '$$',
   phone_number: '2126143006',
   category: 'Japanese',
-  average_rating: 3.8
+  average_rating: 0,
+  mon: "Closed",
+  tue: "5:00 PM - 11:00 PM",
+  wed: "5:00 PM - 11:00 PM",
+  thu: "5:00 PM - 11:00 PM",
+  fri: "5:00 PM - 11:00 PM",
+  sat: "5:00 PM - 11:00 PM",
+  sun: "5:00 PM - 10:00 PM",
+  web_url: "benemon.weeblyte.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 japanese_2 = Business.create!(
@@ -378,7 +668,20 @@ japanese_2 = Business.create!(
   price_range: '$$',
   phone_number: '2129891000',
   category: 'Japanese_Ramen',
-  average_rating: 4
+  average_rating: 0,
+  mon: "12:00 PM - 9:30 PM",
+  tue: "12:00 PM - 9:30 PM",
+  wed: "12:00 PM - 9:30 PM",
+  thu: "12:00 PM - 10:00 PM",
+  fri: "12:00 PM - 10:00 PM",
+  sat: "12:00 PM - 10:00 PM",
+  sun: "12:00 PM - 9:30 PM",
+  web_url: "tsurutontan.com",
+  health_score: "C",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 japanese_3 = Business.create!(
@@ -392,7 +695,20 @@ japanese_3 = Business.create!(
   price_range: '$$',
   phone_number: '2122281324',
   category: 'Japanese_Ramen',
-  average_rating: 0
+  average_rating: 0,
+  mon: "Closed",
+  tue: "12:00 PM - 9:30 PM",
+  wed: "12:00 PM - 9:30 PM",
+  thu: "12:00 PM - 9:30 PM",
+  fri: "12:00 PM - 9:30 PM",
+  sat: "12:00 PM - 9:30 PM",
+  sun: "12:00 PM - 9:30 PM",
+  web_url: "rakunyc.com",
+  health_score: "32.0",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 japanese_4 = Business.create!(
@@ -406,7 +722,15 @@ japanese_4 = Business.create!(
   price_range: '$$',
   phone_number: '3152304533',
   category: 'Japanese',
-  average_rating: 0
+  average_rating: 0,
+  mon: "Closed",
+  tue: "12:00 PM - 3:30 PM, 5:00 PM - 9:30 PM",
+  wed: "12:00 PM - 3:30 PM, 5:00 PM - 9:30 PM",
+  thu: "12:00 PM - 3:30 PM, 5:00 PM - 9:30 PM",
+  fri: "12:00 PM - 3:30 PM, 5:00 PM - 9:30 PM",
+  sat: "12:00 PM - 3:30 PM, 5:00 PM - 9:30 PM",
+  sun: "12:00 PM - 8:00 PM",
+  web_url: "maisonkintaro.com"
 )
 
 japanese_5 = Business.create!(
@@ -420,7 +744,19 @@ japanese_5 = Business.create!(
   price_range: '$$',
   phone_number: '9172615538',
   category: 'Japanese_Sushi',
-  average_rating: 2.78
+  average_rating: 0,
+  mon: "Closed",
+  tue: "5:00 PM - 9:30 PM",
+  wed: "5:00 PM - 9:30 PM",
+  thu: "5:00 PM - 9:30 PM",
+  fri: "5:00 PM - 9:30 PM",
+  sat: "12:00 PM - 2:30 PM, 5:00 PM - 9:30 PM",
+  sun: "12:00 PM - 2:30 PM, 5:00 PM - 9:30 PM",
+  web_url: "makikosaka.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 japanese_6 = Business.create!(
@@ -434,7 +770,19 @@ japanese_6 = Business.create!(
   price_range: '$$',
   phone_number: '2122550018',
   category: 'Japanese_Sushi',
-  average_rating: 0
+  average_rating: 0,
+  mon: "Closed",
+  tue: "11:30 AM - 3:00 PM, 5:30 PM - 9:30 PM",
+  wed: "11:30 AM - 3:00 PM, 5:30 PM - 9:30 PM",
+  thu: "11:30 AM - 3:00 PM, 5:30 PM - 9:30 PM",
+  fri: "11:30 AM - 3:00 PM, 5:30 PM - 10:00 PM",
+  sat: "11:30 PM - 3:00 PM, 5:30 PM - 10:00 PM",
+  sun: "11:30 PM - 3:00 PM, 5:30 PM - 9:30 PM",
+  web_url: "ootoya.us",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 japenese_7 = Business.create!(
@@ -448,7 +796,20 @@ japenese_7 = Business.create!(
   price_range: '$$',
   phone_number: '2123880088',
   category: 'Japanese_Ramen',
-  average_rating: 3.1
+  average_rating: 0,
+  mon: "11:30 AM - 10:30 PM",
+  tue: "11:30 AM - 10:30 PM",
+  wed: "11:30 AM - 10:30 PM",
+  thu: "11:30 AM - 10:30 PM",
+  fri: "11:30 AM - 11:30 PM",
+  sat: "11:30 AM - 11:30 PM",
+  sun: "11:30 AM - 10:30 PM",
+  web_url: "ippudony.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true 
 )
 
 japanese_8 = Business.create!(
@@ -462,7 +823,20 @@ japanese_8 = Business.create!(
   price_range: '$$',
   phone_number: '6469985754',
   category: 'Japanese_Ramen',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:30 AM - 9:30 PM",
+  tue: "11:30 AM - 9:30 PM",
+  wed: "11:30 AM - 9:30 PM",
+  thu: "11:30 AM - 9:30 PM",
+  fri: "11:30 AM - 9:30 PM",
+  sat: "11:30 AM - 9:30 PM",
+  sun: "11:30 AM - 9:30 PM",
+  web_url: "oramenchelsea.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 japanese_9 = Business.create!(
@@ -476,7 +850,19 @@ japanese_9 = Business.create!(
   price_range: '$$',
   phone_number: '3477050847',
   category: 'Japanese_Ramen',
-  average_rating: 4.8
+  average_rating: 0,
+  mon: "11:00 AM - 1:00 AM (Next day)",
+  tue: "11:00 AM - 1:00 AM (Next day)",
+  wed: "11:00 AM - 1:00 AM (Next day)",
+  thu: "11:00 AM - 1:00 AM (Next day)",
+  fri: "11:00 AM - 1:00 AM (Next day)",
+  sat: "11:00 AM - 1:00 AM (Next day)",
+  sun: "11:00 AM - 1:00 AM (Next day)",
+  web_url: "kyuramen.com",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 japanese_10 = Business.create!(
@@ -490,7 +876,19 @@ japanese_10 = Business.create!(
   price_range: '$$',
   phone_number: '2122559981',
   category: 'Japanese_Sushi',
-  average_rating: 0
+  average_rating: 0,
+  mon: "Not available",
+  tue: "Not available",
+  wed: "Not available",
+  thu: "Not available",
+  fri: "Not available",
+  sat: "Not available",
+  sun: "Not available",
+  web_url: "newmikadonyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true
 )
 
 japanese_11 = Business.create!(
@@ -504,7 +902,20 @@ japanese_11 = Business.create!(
   price_range: '$$$$',
   phone_number: '2129242212',
   category: 'Japanese_Sushi',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  tue: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  wed: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  thu: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  fri: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  sat: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  sun: "11:45 AM - 2:00 PM, 5:00 PM - 10:00 PM",
+  web_url: "sushinakazawa.com",
+  health_score: "A",
+  delivery: false,
+  take_out: false,
+  wifi: false,
+  reservation: true
 )
 
 # Thai Restaurants
@@ -519,7 +930,20 @@ thai_1 = Business.create!(
   price_range: '$$',
   phone_number: '2127866789',
   category: 'Thai',
-  average_rating: 2
+  average_rating: 0,
+  mon: "11:30 AM - 3:15 PM, 4:30 PM - 10:00 PM",
+  tue: "11:30 AM - 3:15 PM, 4:30 PM - 10:00 PM",
+  wed: "11:30 AM - 3:15 PM, 4:30 PM - 10:00 PM",
+  thu: "11:30 AM - 3:15 PM, 4:30 PM - 10:00 PM",
+  fri: "11:30 AM - 3:15 PM, 4:30 PM - 10:30 PM",
+  sat: "11:30 AM - 3:15 PM, 4:30 PM - 10:30 PM",
+  sun: "11:30 AM - 3:15 PM, 4:30 PM - 10:00 PM",
+  web_url: "pranakhonnyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 thai_2 = Business.create!(
@@ -533,7 +957,20 @@ thai_2 = Business.create!(
   price_range: '$$',
   phone_number: '2128029999',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:30 AM - 3:15 PM, 4:30 PM - 10:15 PM",
+  tue: "11:30 AM - 3:15 PM, 4:30 PM - 10:15 PM",
+  wed: "11:30 AM - 3:15 PM, 4:30 PM - 10:15 PM",
+  thu: "11:30 AM - 3:15 PM, 4:30 PM - 10:15 PM",
+  fri: "11:30 AM - 3:15 PM, 4:30 PM - 10:30 PM",
+  sat: "11:30 AM - 3:15 PM, 4:30 PM - 10:30 PM",
+  sun: "11:30 AM - 3:15 PM, 4:30 PM - 10:15 PM",
+  web_url: "thaivillanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 thai_3 = Business.create!(
@@ -547,7 +984,20 @@ thai_3 = Business.create!(
   price_range: '$$',
   phone_number: '2128449789',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 0,
+  mon: "12:00 PM - 4:00 PM, 5:00 PM - 10:30 PM",
+  tue: "12:00 PM - 4:00 PM, 5:00 PM - 10:30 PM",
+  wed: "12:00 PM - 4:00 PM, 5:00 PM - 10:30 PM",
+  thu: "12:00 PM - 4:00 PM, 5:00 PM - 10:30 PM",
+  fri: "12:00 PM - 4:00 PM, 5:00 PM - 11:30 PM",
+  sat: "12:00 PM - 4:00 PM, 5:00 PM - 11:30 PM",
+  sun: "12:00 PM - 4:00 PM, 5:00 PM - 10:30 PM",
+  web_url: "soothrnyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 thai_4 = Business.create!(
@@ -561,7 +1011,20 @@ thai_4 = Business.create!(
   price_range: '$$',
   phone_number: '2122545370',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:30 AM - 11:00 PM",
+  tue: "11:30 AM - 11:00 PM",
+  wed: "11:30 AM - 11:00 PM",
+  thu: "11:30 AM - 11:00 PM",
+  fri: "11:30 AM - 11:00 PM",
+  sat: "11:30 AM - 11:00 PM",
+  sun: "11:30 AM - 11:00 PM",
+  web_url: "lovemamanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 thai_5 = Business.create!(
@@ -575,7 +1038,20 @@ thai_5 = Business.create!(
   price_range: '$$',
   phone_number: '6466092272',
   category: 'Thai',
-  average_rating: 2
+  average_rating: 0,
+  mon: "11:30 AM - 3:30 PM, 4:30 PM - 9:00 PM",
+  tue: "11:30 AM - 3:30 PM, 4:30 PM - 9:00 PM",
+  wed: "11:30 AM - 3:30 PM, 4:30 PM - 9:00 PM",
+  thu: "11:30 AM - 3:30 PM, 4:30 PM - 9:00 PM",
+  fri: "11:30 AM - 3:30 PM, 4:30 PM - 10:00 PM",
+  sat: "11:30 AM - 3:30 PM, 4:30 PM - 10:00 PM",
+  sun: "11:30 AM - 3:30 PM, 4:30 PM - 9:00 PM",
+  web_url: "topthaivintage.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 thai_6 = Business.create!(
@@ -589,7 +1065,19 @@ thai_6 = Business.create!(
   price_range: '$$',
   phone_number: '6467264418',
   category: 'Thai',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 AM - 3:00 PM, 4:30 PM - 10:00 PM",
+  tue: "11:00 AM - 3:00 PM, 4:30 PM - 10:00 PM",
+  wed: "11:00 AM - 3:00 PM, 4:30 PM - 10:00 PM",
+  thu: "11:00 AM - 3:00 PM, 4:30 PM - 10:00 PM",
+  fri: "11:00 AM - 3:00 PM, 4:30 PM - 11:00 PM",
+  sat: "11:00 AM - 3:00 PM, 4:30 PM - 11:00 PM",
+  sun: "11:00 AM - 3:00 PM, 4:30 PM - 10:00 PM",
+  web_url: "topthainyc.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 thai_7 = Business.create!(
@@ -603,7 +1091,19 @@ thai_7 = Business.create!(
   price_range: '$$',
   phone_number: '2122068989',
   category: 'Thai',
-  average_rating: 3.65
+  average_rating: 0,
+  mon: "11:30 AM - 3:30 PM, 5:00 PM - 10:00 PM",
+  tue: "11:30 AM - 3:15 PM, 5:00 PM - 10:00 PM",
+  wed: "11:30 AM - 3:15 PM, 5:00 PM - 10:00 PM",
+  thu: "11:30 AM - 3:15 PM, 5:00 PM - 10:00 PM",
+  fri: "11:30 AM - 3:15 PM, 5:00 PM - 10:30 PM",
+  sat: "1:00 PM - 10:00 PM",
+  sun: "1:00 PM - 10:00 PM",
+  web_url: "lautnyc.com",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 # Mexican Restaurants
@@ -618,7 +1118,20 @@ mexican_1 = Business.create!(
   price_range: '$$',
   phone_number: '2125332233',
   category: 'Mexican',
-  average_rating: 3.5
+  average_rating: 0,
+  mon: "3:00 PM - 10:00 PM",
+  tue: "3:00 PM - 10:00 PM",
+  wed: "3:00 PM - 10:00 PM",
+  thu: "12:00 PM - 10:00 PM",
+  fri: "12:00 PM - 11:00 PM",
+  sat: "12:00 PM - 11:00 PM",
+  sun: "12:00 PM - 10:00 PM",
+  web_url: "lacontentanyc.com",
+  health_score: "20.0",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 mexican_2 = Business.create!(
@@ -632,7 +1145,20 @@ mexican_2 = Business.create!(
   price_range: '$$',
   phone_number: '2124324180',
   category: 'Mexican',
-  average_rating: 0
+  average_rating: 0,
+  mon: "3:00 PM - 12:00 AM (Next day)",
+  tue: "3:00 PM - 12:00 AM (Next day)",
+  wed: "3:00 PM - 12:00 AM (Next day)",
+  thu: "12:00 PM - 2:00 AM (Next day)",
+  fri: "12:00 PM - 2:00 AM (Next day)",
+  sat: "12:00 PM - 2:00 AM (Next day)",
+  sun: "12:00 PM - 11:00 PM",
+  web_url: "lacontentanyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 mexican_3 = Business.create!(
@@ -646,7 +1172,20 @@ mexican_3 = Business.create!(
   price_range: '$$',
   phone_number: '2125333350',
   category: 'Mexican',
-  average_rating: 4
+  average_rating: 0,
+  mon: "11:30 AM - 11:00 PM",
+  tue: "11:30 AM - 11:00 PM",
+  wed: "11:30 AM - 11:00 PM",
+  thu: "11:30 AM - 12:00 AM (Next day)",
+  fri: "11:30 AM - 12:00 AM (Next day)",
+  sat: "11:30 AM - 12:00 AM (Next day)",
+  sun: "11:00 AM - 11:00 PM",
+  web_url: "rosamexicano.com",
+  health_score: "19.0",
+  delivery: true,
+  take_out: true,
+  wifi: true,
+  reservation: true
 )
 
 mexican_4 = Business.create!(
@@ -660,7 +1199,20 @@ mexican_4 = Business.create!(
   price_range: '$$',
   phone_number: '2127761830',
   category: 'Mexican',
-  average_rating: 0
+  average_rating: 0,
+  mon: "12:00 PM - 11:00 PM",
+  tue: "12:00 PM - 11:00 PM",
+  wed: "12:00 PM - 11:00 PM",
+  thu: "12:00 PM - 11:00 PM",
+  fri: "12:00 PM - 11:00 PM",
+  sat: "11:00 AM - 11.00 PM",
+  sun: "11:00 AM - 11:00 PM",
+  web_url: "tortaria-nyc.com",
+  health_score: "A",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: false
 )
 
 mexican_5 = Business.create!(
@@ -674,7 +1226,20 @@ mexican_5 = Business.create!(
   price_range: '$$',
   phone_number: '2122559378',
   category: 'Mexican',
-  average_rating: 0 
+  average_rating: 0,
+  mon: "11:30 AM - 1:00 AM (Next day)",
+  tue: "11:30 AM - 1:00 AM (Next day)",
+  wed: "11:30 AM - 1:00 AM (Next day)",
+  thu: "11:30 AM - 1:00 AM (Next day)",
+  fri: "11:30 AM - 1:00 AM (Next day)",
+  sat: "11:30 AM - 4:00 AM (Next day)",
+  sun: "11:30 AM - 4:00 AM (Next day)",
+  web_url: "elcantineronyc.com",
+  health_score: "38.0",
+  delivery: true,
+  take_out: true,
+  wifi: false,
+  reservation: true
 )
 
 # Milk Tea Stores
@@ -689,7 +1254,18 @@ milk_tea_1 = Business.create!(
   price_range: '$$',
   phone_number: '2129958349',
   category: 'Milk Tea',
-  average_rating: 1.67
+  average_rating: 0,
+  mon: "12:00 PM - 8:00 PM (Next day)",
+  tue: "12:00 PM - 8:00 PM (Next day)",
+  wed: "12:00 PM - 8:00 PM (Next day)",
+  thu: "12:00 PM - 8:00 PM (Next day)",
+  fri: "12:00 PM - 8:00 PM (Next day)",
+  sat: "11:30 AM - 4:00 AM (Next day)",
+  sun: "11:30 AM - 4:00 AM (Next day)",
+  web_url: "wanpotea.us",
+  health_score: "18.0",
+  delivery: true,
+  take_out: true
 )
 
 milk_tea_2 = Business.create!(
@@ -703,7 +1279,19 @@ milk_tea_2 = Business.create!(
   price_range: '$',
   phone_number: '9172681999',
   category: 'Milk Tea',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 PM - 8:00 PM",
+  tue: "11:00 PM - 8:00 PM",
+  wed: "11:00 PM - 8:00 PM",
+  thu: "11:00 AM - 8:00 PM",
+  fri: "11:00 AM - 9:00 PM",
+  sat: "11:00 AM - 9:00 PM",
+  sun: "11:00 AM - 8:00 PM",
+  web_url: "teazzi.com",
+  health_score: "A",
+  wifi: true,
+  delivery: true,
+  take_out: true
 )
 
 milk_tea_3 = Business.create!(
@@ -717,7 +1305,18 @@ milk_tea_3 = Business.create!(
   price_range: '$',
   phone_number: '2123816193',
   category: 'Milk Tea',
-  average_rating: 4.2
+  average_rating: 0,
+  mon: "11:00 PM - 8:00 PM",
+  tue: "11:00 PM - 8:00 PM",
+  wed: "11:00 PM - 8:00 PM",
+  thu: "11:00 AM - 8:00 PM",
+  fri: "11:00 AM - 9:00 PM",
+  sat: "11:00 AM - 9:00 PM",
+  sun: "11:00 AM - 9:00 PM",  
+  web_url: "N/A",
+  health_score: "A",
+  delivery: true,
+  take_out: true
 )
 
 milk_tea_4 = Business.create!(
@@ -731,7 +1330,17 @@ milk_tea_4 = Business.create!(
   price_range: '$',
   phone_number: '6466827784',
   category: 'Milk Tea',
-  average_rating: 0
+  average_rating: 0,
+  mon: "11:00 PM - 9:00 PM",
+  tue: "11:00 PM - 9:00 PM",
+  wed: "11:00 PM - 9:00 PM",
+  thu: "11:00 AM - 9:00 PM",
+  fri: "11:00 AM - 9:00 PM",
+  sat: "11:00 AM - 9:00 PM",
+  sun: "12:00 AM - 9:00 PM",  
+  web_url: "vivibubbletea.com",
+  health_score: "A",
+  take_out: true
 )
 
 # Business.first(11).each_with_index do |restaurant, index|

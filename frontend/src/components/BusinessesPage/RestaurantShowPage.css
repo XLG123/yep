@@ -1,7 +1,7 @@
 .restaurant-sp-container {
   font-family: Helvetica, sans-serif;
-  color: '#FFFFFF';
   margin-top: 3vw;
+  position: relative;
 }
 
 .main-bg-scrollable-container {
@@ -26,4 +26,138 @@
 .bg-img {
   width: inherit;
   height: inherit;
+  filter: brightness(0.7);
+}
+
+.unscrollable-info {
+  position: absolute;
+  z-index: 10;
+  top: 18vw;
+  left: 6vw;
+  border-radius: 4px;
+}
+
+.sp-title {
+  color: white;
+  font-weight: bold;
+  font-size: 5vw;
+  margin-bottom: 0.5vw;
+}
+
+.sp-avg-rating {
+  font-size: 2vw;
+  width: 15vw;
+  background-color: rgba(226, 226, 230, 0.5);
+  border-radius: 4px;
+}
+
+.sp-category-container {
+  margin-top: 0.5vw;
+  color: white;
+  font-size: 1.5vw;
+}
+
+.sp-price-range, .sp-category {
+  color: inherit;
+  font-size: inherit;
+}
+
+.sp-category {
+  margin-right: 1vw;
+}
+
+.sp-map-container {
+  width: 23vw;
+  height: 12vw;
+}
+
+.location-hours-container {
+  top: 35vw;
+  position: absolute;
+  left: 6vw;
+  width: 80vw;
+  color: #2D2E2F;
+}
+
+.location-hours-container span {
+  display: inline-block;
+  color: inherit;
+}
+
+.loc-hr-title {
+  font-size: 1.6vw;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  color: inherit;
+}
+
+.loc-hr-title span {
+  color: inherit;
+}
+
+.sp-loc-container {
+  color: inherit;
+}
+
+.sp-restaurant-addr {
+  color: rgba(2, 122, 151, 1);
+  font-weight: bold;
+  margin-top: 1vw;
+  font-size: 1.2vw;
+}
+
+.sp-restaurant-loc-container {
+  margin-top: 1vw;
+}
+
+.sp-restaurant-loc {
+  margin-right: 0.5vw;
+  font-weight: bold;
+  font-size: 1.2vw;
+  color: "#2D2E2F";
+}
+
+.sp-restaurant-hrs {
+  width: 30vw;
+  font-size: 1.3vw;
+  margin-left: 2vw;
+  position: absolute;
+  top: 0;
+}
+
+.sp-restaurant-hrs div {
+  margin: 1vw 0px;
+}
+
+.day, .open-hrs {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.day div {
+  margin-right: 2vw;
+}
+
+.sp-restaurant-info-box {
+  border: 1px solid rgba(202, 201, 202, 1);
+  position: absolute;
+  right: 6vw;
+  width: 25vw;
+  top: 37vw;
+  padding: 0.5vw;
+  border-radius: 4px;
+  font-size: 1.2vw;
+}
+
+.sp-line-divider {
+  border-top: 1px solid rgba(202, 201, 202, 1);
+}
+
+.sp-restaurant-phone {
+  font-size: 1.3vw;
+}
+
+.sp-icon {
+  margin-right: 0.5vw;
+  font-size: 2vw;
 }
