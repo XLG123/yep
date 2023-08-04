@@ -20,8 +20,8 @@ backend).
 When users click on the login button or the sign up button, they will be redirected to either the login form or the sign up form.
 ![](https://github.com/yep/userAuth.gif)  
 
-## Restaurants Index Page
-![](https://github.com/yep/businessPage.gif)
+## Interacting with Filters
+![](https://github.com/yep/filters.gif)
 
 ## Interacting with Search bar and Google Map
 ![](https://github.com/yep/searchAndMap.gif)
