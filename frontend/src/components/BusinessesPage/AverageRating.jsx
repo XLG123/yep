@@ -4,7 +4,7 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import "./AverageRating.css";
 
 const AverageRating = ({averageRating}) => {
-  
+
   const displayRating = (averageRating) => {
     let icons = []
 

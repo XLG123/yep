@@ -1,6 +1,6 @@
 import React from "react";
 import "./Restaurant.css";
-import AverageRating from "./AverageRating";
+import AverageRating from "./AverageRating"
 import { NavLink } from "react-router-dom";
 
 const Restaurant = ({restaurant, index}) => {
