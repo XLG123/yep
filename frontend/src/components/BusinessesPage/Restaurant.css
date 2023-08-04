@@ -1,0 +1,80 @@
+.restaurant-link {
+  color: #2D2E2F;
+}
+
+.restaurant-container {
+  padding: 1.5vw;
+  /* border-bottom: 1px solid gray; */
+  /* margin: px 20px 0px 20px; */
+  border-bottom: 1px solid #EBEBEB;
+  cursor: pointer;
+  position: relative;
+}
+
+.restaurant-container:hover {
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  border-left: 1px solid #EBEBEB;
+  border-right: 1px solid #EBEBEB;
+}
+
+.restaurant-img img {
+  display: inline-block;
+  width: 20vw;
+  height: 13vw;
+}
+
+.restaurant-info {
+  display: inline-block;
+  position: absolute;
+  top: 2.1vw;
+  margin-left: 2vw;
+  padding-top: 0.3vh;
+  padding-bottom: 0.3vh; 
+}
+
+.restaurant-name {
+  font-size: 1.4vw;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.bp-average-rating {
+  font-size: 1.7vw;
+  color: #2D2E2F;
+}
+
+.restaurant-details {
+  color: #6E7072;
+  font-size: 1vw;
+  margin-top: 1vw;
+}
+
+.restaurant-bg-details {
+  width: 15vw;
+  display: inline-block;
+  margin-top: 0.2vw;
+  margin-bottom: 0.5vw;
+}
+
+.restaurant-category, .restaurant-price-range {
+  letter-spacing: 0.1em;
+  background-color: rgba(240, 240, 240, 1);
+  border-radius: 4px;
+  text-align: center;
+  width: 5vw;
+  font-weight: 600;
+  padding: 1.1vh 0.5vw;
+  margin: 0px;
+}
+
+.restaurant-category {
+  margin-right: 1vw;
+}
+
+.restaurant-location {
+  margin: 2.3vh 0px;
+}
+
+.city, .state {
+  margin-right: 0.5vw;
+}

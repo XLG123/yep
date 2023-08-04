@@ -1,0 +1,14 @@
+.activity-container {
+  font-family: Helvetica, sans-serif;
+  color: #2D2E2F;
+  z-index: 13;
+  font-size: 2vw;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.activity-container-title {
+  margin-top: 88vh;
+  margin-bottom: 6vh;
+}

@@ -40,6 +40,17 @@ export const fetchRestaurants = () => async (dispatch) => {
   });
 }
 
+export const fetchRestaurantsWithQuery = (query) => async (dispatch) => {
+  const response = await csrfFetch(`/api/businesses/search${query}`);
+  const data = await response.json();
+
+  dispatch({
+    type: RECEIVE_RESTAURANTS,
+    restaurants: data.restaurants,
+  })
+  console.log(data);
+}
+
 export const fetchRestaurant = (restaurantId) => async (dispatch) => {
   const response = await csrfFetch(`/api/restaurants/${restaurantId}`);
   const data = await response.json();
@@ -53,7 +64,7 @@ export const fetchRestaurant = (restaurantId) => async (dispatch) => {
 const restaurantReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_RESTAURANTS:
-      return {...state, ...action.restaurants};
+      return {...action.restaurants};
     case RECEIVE_RESTAURANT:
       return {...state, [action.restaurant.id]: action.restaurant};
     default:

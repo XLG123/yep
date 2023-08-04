@@ -1,0 +1,24 @@
+.restaurant-info-card {
+  font-size: 1.2vw;
+  font-weight: bold;
+  width: 9vw;
+  text-align: center;
+  /* font-family:  */
+  color: #2D2E2F;
+  font-family: Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.info-title {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  font-family: inherit;
+  margin-top: 1vh;
+}
+
+.info-img {
+  width: 8vw;
+  display: block;
+  margin: 0px auto;
+}

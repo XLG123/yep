@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Navigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import yepLogo from "../../assets/images/yepLogo2.png";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
 import PasswordStrengthBar from 'react-password-strength-bar';
 import './SignUp.css';
@@ -132,16 +131,13 @@ const SignUp = () => {
     );
   }
 
+  const strengthBarStyle = {
+    fontSize: "1vw",
+  };
+
   return (
     <>
       <div className="sign-up-page">
-
-        <NavLink to="/" className="back-to-hp-link">
-          <div id="app-title-container">
-            <h1 id="signup-app-title">yep!</h1>
-            <img src={yepLogo} alt="Yep Logo" id="signup-app-logo"/>
-          </div>
-        </NavLink>
 
         <div className="line-break"></div>
 
@@ -165,7 +161,7 @@ const SignUp = () => {
 
           <form onSubmit={handleSignUp}>
 
-            <div className="line-break"></div>
+            <div className="line-break sign-up-form-lb"></div>
 
             <div id="username">
               <input type="text" name="firstname" placeholder="First Name"  value={firstName} onChange={(e) => {setFirstName(e.target.value)}} id="firstname" className="signup-input"/>
@@ -180,7 +176,7 @@ const SignUp = () => {
             <div id="user-password">
               <input type="password" name="password" placeholder="Password"
               minLength="8" value={password} onChange={(e) => {setPassword(e.target.value)}} id="password" className="signup-input" />
-              <PasswordStrengthBar password={password} minLength={3} scoreWords={['too weak', 'weak', 'okay', 'good', 'strong']} className="password-bar"/>
+              <PasswordStrengthBar password={password} minLength={3} scoreWordStyle={strengthBarStyle} scoreWords={['too weak', 'weak', 'okay', 'good', 'strong']} className="password-bar"/>
             </div>
 
             <div id="user-zipcode">

@@ -3,8 +3,9 @@ import "./BusinessesPage.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurants, fetchRestaurants } from "../../store/restaurants";
-import Restaurant from './Restaurant';
 import Loading from '../Loading/Loading';
+import Filter from "./Filter/Filter";
+import Restaurant from './Restaurant';
 import MapBuilder from "../MapBuilder/MapBuilder";
 
 const BusinessesPage = () => {
@@ -32,27 +33,12 @@ const BusinessesPage = () => {
     <>
       {randomizeRestaurants(restaurants)}
       <div className="bp-line-break"></div>
+
       {!finishLoading ? <Loading /> :
         <div className="business-page-container">
 
           <div className="left-side-bar">
-            <div className="filter-bar-container">
-              <div className="filter-title">Price Range Filter</div>
-              <div className="filter">
-                <button className="filter-btn-group" id="filter-btn-1">
-                  $</button>
-                <button className="filter-btn-group" id="filter-btn-2">
-                  $$</button>
-                <button className="filter-btn-group" id="filter-btn-3">
-                  $$$</button>
-                <button className="filter-btn-group" id="filter-btn-4">
-                  $$$$</button>
-              </div>
-            </div>
-
-            <div className="recommendation-container">
-
-            </div>
+            <Filter />
           </div>
           
           <div className="main-content">
@@ -60,8 +46,8 @@ const BusinessesPage = () => {
               <h1 className="search-result-title">
                 {searchItem ? `${searchItem} Cuisine` : "Restaurants"}</h1>
                 <div className="scrollable-result-container">
-                {restaurants.map((restaurant) => 
-                <Restaurant key={restaurant.id} restaurant = {restaurant} /> )}
+                {restaurants.map((restaurant, idx) => 
+                <Restaurant key={restaurant.id} restaurant = {restaurant} index={idx}/> )}
                 </div>
             </div>
           </div>
@@ -71,6 +57,7 @@ const BusinessesPage = () => {
               <MapBuilder restaurants={restaurants}/>
             </div>
           </div>
+
         </div>
       }
     </>

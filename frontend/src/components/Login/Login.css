@@ -3,23 +3,6 @@
   position: relative;
 }
 
-#app-title-container {
-  position: absolute;
-  top: 2vw;
-  left: 3vw;
-}
-
-#login-app-title {
-  font-size: 2vw;
-  font-weight: 600;
-  display: inline-block;
-}
-
-#login-app-logo {
-  width: 2vw;
-  filter: brightness(1.3);
-}
-
 .signup-link {
   text-decoration: none;
   color: #0073bb;
@@ -32,17 +15,16 @@
   margin-bottom: 3vh;
 }
 
-#login-line-break {
-  margin: 4vh;
-  right: -2vw;
-}
-
 #login-form-container {
   position: absolute;
   top: 28vh;
   left: 23vw;
   text-align: center;
   width: 20vw;
+}
+
+.login-form-lb {
+  top: 9.5vw;
 }
 
 .login-input {

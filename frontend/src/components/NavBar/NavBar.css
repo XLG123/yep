@@ -4,18 +4,19 @@
   z-index: 10;
 }
 
-#nav-bar-content {
+.hp #nav-bar-content {
   margin: 0px 2vw;
   padding-top: 1.5vw;
   color: white;
 }
 
-.navlink {
+.hp .navlink {
   color: white;
-}
+} 
 
-#refresh-hp {
-  cursor: pointer;
+.hp .title-nav-link {
+  text-decoration: none;
+  color: white;
 }
 
 #app-title {
@@ -28,13 +29,9 @@
   width: 2vw;
 }
 
-#category-btn {
-  background-color: transparent;
-  outline: none;
-  border: 1px solid rgba(200, 201, 202, 1);
+.hp #category-btn, .non-hp #category-btn {
   border-radius: 5px;
   cursor: pointer;
-  color: white;
   font-size: 1vw;
   margin-left: 10vw;
   margin-right: 5vw;
@@ -43,49 +40,18 @@
   position: absolute;
   top: 1.5vw;
   left: 8vw;
-}
-
-#category-btn span {
-  margin-right: 0.6vw;
-}
-
-#search-bar {
-  width: 30vw;
-  height: 2.5vw;
-  border: none;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  font-size: 1vw;
-  padding: 0px 0.5vw;
-  font-family: "Open Sans", Helvetica, sans-serif;
-  position: absolute;
-  left: 30vw;
-  top: 1.5vw;
-}
-
-#search-bar:focus {
   outline: none;
-  box-shadow: none;
+  font-family: inherit;
 }
 
-#search-bar-btn {
-  background-color: rgba(224, 7, 7, 1);
-  width: 2.5vw;
-  height: 2.5vw;
-  border: none;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  font-size: 1.2vw;
-  cursor: pointer;
-  position: absolute;
-  top: 1.5vw;
-  left: 60vw;
-  text-align: center;
+.hp #category-btn {
+  background-color: transparent;
+  border: 1px solid rgba(200, 201, 202, 1);
+  color: white;
 }
 
-.fa-search {
-  position: relative;
-  top: 25%;
+#category-btn span{
+  margin-right: 0.6vw;
 }
 
 .contact-info-btn{
@@ -94,12 +60,16 @@
   margin-left: 10vw;
 }
 
-.contact-info-btn span {
+.contact-info-btn a {
+  color: inherit;
+}
+
+.hp .contact-info-btn span {
   cursor: pointer;
   color: rgba(255, 255, 255, 0.70);
 }
 
-.contact-info-btn span:hover {
+.hp .contact-info-btn span:hover {
   color: rgba(255, 255, 255, 1);
 }
 
@@ -129,21 +99,23 @@
   width: 5.3vw;
   box-sizing: border-box;
   text-align: center;
+  transition-property: background-color;
+  transition-duration: 0.8s;
 }
 
-#demo-btn {
+.hp #demo-btn {
   position: absolute;
   right: 14vw;
   border: 2px solid rgba(200, 201, 202, 1);
 }
 
-#login-btn {
+.hp #login-btn {
   position: absolute;
   right: 8vw;
   border: 2px solid rgba(200, 201, 202, 1);
 }
 
-#signup-btn {
+.hp #signup-btn {
   background-color: rgba(224, 7, 7, 1);
   position: absolute;
   right: 2vw;
@@ -154,6 +126,67 @@
   filter: brightness(1.1);
 }
 
-.gray-btn:hover, #category-btn:hover {
+.hp .gray-btn:hover, .hp #category-btn:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.non-hp #nav-bar-content {
+  margin: 0px 2vw;
+  padding-top: 1.5vw;
+  color: #2D2E2F;
+}
+
+.non-hp .navlink {
+  color: black;
+}
+
+.non-hp .title-nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+.non-hp-logo {
+  filter: brightness(1.3);
+}
+
+.non-hp #category-btn {
+  background-color: rgba(0, 0, 0, 0.12);
+  border: 1px solid #ebebeb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #2D2E2F;
+}
+
+.non-hp .contact-info-btn span {
+  cursor: pointer;
+  color: #999;
+}
+
+.non-hp .contact-info-btn span:hover {
+  color: #555;
+}
+
+.non-hp #demo-btn {
+  position: absolute;
+  right: 14vw;
+  border: 2px solid rgba(200, 201, 202, 1);
+  color: #2D2E2F;
+}
+
+.non-hp #login-btn {
+  position: absolute;
+  right: 8vw;
+  border: 2px solid rgba(200, 201, 202, 1);
+  color: #2D2E2F;
+}
+
+.non-hp #signup-btn {
+  background-color: rgba(224, 7, 7, 1);
+  position: absolute;
+  right: 2vw;
+  border: 2px solid transparent;
+  color: white;
+}
+
+.non-hp .gray-btn:hover, .non-hp #category-btn:hover {
+  background-color: rgba(0, 0, 0, 0.12);
 }

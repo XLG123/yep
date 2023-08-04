@@ -5,9 +5,6 @@ import "./AverageRating.css";
 
 const AverageRating = ({averageRating}) => {
 
-  let iconColorThemes = ['#C3882E', '#D5B53E', '#E5A038', '#EB6F3D',
-    '#D22E21'];
-
   const displayRating = (averageRating) => {
     let icons = []
 

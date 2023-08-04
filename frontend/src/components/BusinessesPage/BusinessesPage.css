@@ -1,0 +1,76 @@
+.bp-line-break {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid rgba(200, 201, 202, 1);
+  top: 7vw;
+}
+
+.business-page-container {
+  color: #2D2E2F;
+  position: relative;
+  font-family: Helvetica, sans-serif;
+}
+
+.left-side-bar {
+  width: 20vw;
+  position: absolute;
+  color: inherit;
+  top: 8.5vh;
+  left: 2vw;
+}
+
+.main-content {
+  width: 42vw;
+  position: absolute;
+  color: inherit;
+  top: 8.5vh;
+  left: 22vw;
+}
+
+.search-result-title {
+  color: inherit;
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin-bottom: 1.1vh;
+}
+
+.scrollable-result-container {
+  overflow-y: auto;
+  height: 78vh;
+  padding-left: 0px;
+}
+
+.scrollable-result-container::-webkit-scrollbar {
+  display: none;
+}
+
+.right-side-bar {
+  width: 38vw;
+  position: absolute;
+  left: 65vw;
+  top: 8.5vh;
+}
+
+.google-map {
+  height: 82vh;
+}
+
+.review-btn {
+  width: 11vw;
+  height: 3vw;
+  background-color: rgba(224, 7, 7, 1);
+  position: absolute;
+  left: 10vw;
+  top: 31vw;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.3vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-btn:hover {
+  background-color: rgb(244, 13, 21);
+}

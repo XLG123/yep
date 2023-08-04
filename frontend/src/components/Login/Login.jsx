@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Navigate } from "react-router-dom";
-import yepLogo from "../../assets/images/yepLogo2.png";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
 import './Login.css';
 
@@ -71,13 +70,6 @@ const Login = () => {
     <>
       <div className="login-page">
 
-        <NavLink to="/" className="back-to-hp-link">
-          <div id="app-title-container">
-            <h1 id="login-app-title">yep!</h1>
-            <img src={yepLogo} alt="Yep Logo" id="login-app-logo" />
-          </div>
-        </NavLink>
-
         <div className="line-break"></div>
 
         { errorMsgBtn &&
@@ -100,7 +92,7 @@ const Login = () => {
 
           <form onSubmit={handleLogin}>
 
-            <div className="line-break" id="login-line-break"></div>
+            <div className="line-break login-form-lb"></div>
 
             <div id="login-user-email">
               <input type="email" name="email" placeholder="Email"
