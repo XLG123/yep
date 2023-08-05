@@ -18,13 +18,13 @@ their password strength. The users will receive errors if they do not pass datab
 backend).
 
 When users click on the login button or the sign up button, they will be redirected to either the login form or the sign up form.
-![](https://github.com/yep/userAuth.gif)  
+![](userAuth.gif)  
 
 ## Interacting with Filters
-![](https://github.com/yep/filters.gif)
+![](filters.gif)
 
 ## Interacting with Search bar and Google Map
-![](https://github.com/yep/searchAndMap.gif)
+![](searchAndMap.gif)
 
 ## Google Maps
 The application utlizes Google Maps in two areas: (1) on the initial index page where all the restaurants are shown and (2) 
