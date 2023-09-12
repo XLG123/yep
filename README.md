@@ -173,4 +173,3 @@ attach_thumbnail(italian_restaurants, "italian")
 attach_menu_imgs(italian_restaurants, "italian")
 puts "done italian seeding"
 ```
-dummy
