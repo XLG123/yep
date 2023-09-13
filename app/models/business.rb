@@ -29,6 +29,13 @@
 #  take_out       :boolean
 #  wifi           :boolean
 #  reservation    :boolean
+#  mon_optional   :string
+#  tue_optional   :string
+#  wed_optional   :string
+#  thu_optional   :string
+#  fri_optional   :string
+#  sat_optional   :string
+#  sun_optional   :string
 #
 class Business < ApplicationRecord
   validates :name, :city, :state, presence: true

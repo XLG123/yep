@@ -62,3 +62,18 @@
 #search-bar-content form {
   display: inline;
 }
+
+.dropdown-menu {
+  position: absolute;
+  top: 4vw;
+  left: 30vw;
+  font-size: 1vw;
+}
+
+.hp .dropdown-menu {
+  background-color: rgb(119, 119, 119);
+}
+
+.non-hp .dropdown-menu {
+  background-color: rgb(211, 211, 211);
+}

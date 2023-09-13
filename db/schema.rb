@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_010249) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_013718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_010249) do
     t.boolean "take_out"
     t.boolean "wifi"
     t.boolean "reservation"
+    t.string "mon_optional"
+    t.string "tue_optional"
+    t.string "wed_optional"
+    t.string "thu_optional"
+    t.string "fri_optional"
+    t.string "sat_optional"
+    t.string "sun_optional"
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -114,7 +114,7 @@
   margin-right: 0.5vw;
   font-weight: bold;
   font-size: 1.2vw;
-  color: "#2D2E2F";
+  color: #2D2E2F;
 }
 
 .sp-restaurant-hrs {
@@ -157,7 +157,32 @@
   font-size: 1.3vw;
 }
 
+.rest-url {
+  color: #027A97;
+  font-weight: 600;
+}
+
+.sp-rest-link {
+  text-decoration: none;
+  color: #2D2E2F;
+}
+
+.sp-icon-container {
+  margin-right: 1vw;
+  line-height: 2vw;
+}
+
 .sp-icon {
-  margin-right: 0.5vw;
+  padding-top: 0.3vh;
   font-size: 2vw;
+}
+
+.sp-rest-info-box span {
+  vertical-align: middle;
+}
+
+.sp-rest-reviews-container {
+  position: absolute;
+  top: 58vw;
+  left: 6vw;
 }
