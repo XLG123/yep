@@ -25,6 +25,21 @@ const SearchBar = () => {
     "spagetti",
   ];
 
+  const realCategoryTerms = [
+    "Japanese",
+    "Chinese",
+    "Thai",
+    "French",
+    "Italian",
+    "Mexican",
+    "Milk Tea",
+    "Pizza",
+    "Ramen",
+    "Sushi",
+    "Tea",
+    "Spagetti",
+  ];
+
   const names = [
     "da andrea",
     "olio e più",
@@ -73,17 +88,69 @@ const SearchBar = () => {
     "el cantinero",
     "wanpo tea shop",
     "teazzi tea shop",
-    "jooy tea shoope",
+    "jooy tea shoppe",
     "vivi bubble tea",
+  ];
+
+  const realNames = [
+    "Da Andrea",
+    "Olio e Più",
+    "Rubirosa",
+    "Paesano",
+    "L'Antica Pizzeria Da Michele NYC",
+    "La Lanterna Di Vittorio",
+    "Trapizzino",
+    "Babbo",
+    "Ribalta Pizza",
+    "Lil Frankie's",
+    "Joe's Pizza",
+    "Xu's Public House",
+    "Shu Jiao Fu Zhou",
+    "Chow House",
+    "Joe's Shanghai",
+    "Han Dynasty",
+    "Amélie",
+    "La Sirene",
+    "Claudette",
+    "Boucherie Union Square",
+    "Buvette",
+    "Mino Brasserie",
+    "Benemon",
+    "Tsuru Ton Tan",
+    "Raku",
+    "Maison Kintaro",
+    "Maki Kosaka",
+    "Ootoya Chelsea",
+    "Ippudo NY",
+    "Oramen",
+    "Kyuramen",
+    "MIkado",
+    "Sushi Nakazawa",
+    "Pranakhon Thai Restaurant",
+    "Thai Villa",
+    "Soothr",
+    "Lovemama",
+    "Top Thai Vintage",
+    "Top Thai Greenwich",
+    "Laut",
+    "La Cententa Oeste",
+    "La Contenta",
+    "Rosa Mexicano",
+    "Tortaria",
+    "El Cantinero",
+    "Wanpo Tea Shop",
+    "Teazzi Tea Shop",
+    "Jooy Tea Shoppe",
+    "ViVi Bubble Tea",
   ];
 
   let dropdownItems = [];
 
-  for (const item of categoryTerms) {
+  for (const item of realCategoryTerms) {
     dropdownItems.push(item);
   }
 
-  for (const item of names) {
+  for (const item of realNames) {
     dropdownItems.push(item);
   }
 
@@ -104,6 +171,27 @@ const SearchBar = () => {
       });
     }
   };
+
+  const dropdownSearch = (searchItem, e) => {
+    e.preventDefault();
+    ref.current.blur();
+    setSearchParams("");
+
+    if (categoryTerms.includes(searchItem.toLowerCase())) {
+      navigate(`/businesses/search?category=${searchItem}`, {
+        replace: true,
+      });
+      setDropdownItem("");
+    } else if (names.includes(searchItem.toLowerCase())) {
+      navigate(`/businesses/search?name=${searchItem}`, { replace: true });
+      setDropdownItem("");
+    } else {
+      navigate(`businesses/error?search_term=${searchItem}`, {
+        replace: true,
+      });
+      setDropdownItem("");
+    }
+  }
 
   return (
     <>
@@ -130,10 +218,25 @@ const SearchBar = () => {
           </div>
         </form>
       </span>
-      {dropdownItem && 
-        <div className="dropdown-menu">
-          12345 english testing
-        </div>}
+      {dropdownItem && (
+        <div className="search-dropdown-menu" ref={ref}>
+          <ul className="dropdown-list">
+            {dropdownItems
+              .filter((item) =>
+                item.toLowerCase().includes(dropdownItem.toLowerCase())
+              )
+              .map((searchItem, idx) => (
+                <li
+                  className="dropdown-item"
+                  key={idx}
+                  onClick={(e) => dropdownSearch(searchItem, e)}
+                >
+                  {searchItem}
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 };

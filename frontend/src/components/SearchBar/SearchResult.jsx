@@ -74,6 +74,8 @@ const SearchResult = () => {
     }
   }, [searchItem]);
 
+  backendSearchItem = backendSearchItem.replaceAll("%27", "'");
+
   return (
     <>
       <div className="bp-line-break"></div>
@@ -97,7 +99,7 @@ const SearchResult = () => {
                     backendSearchItem.slice(1).toLowerCase()} Cuisine`}
                     </h1> :
                     <h1 className="search-result-title">
-                      {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replace("%20", " ")}
+                      {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replaceAll("%20", " ")}
                     </h1>}
 
               <div className="scrollable-result-container">
