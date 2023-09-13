@@ -142,7 +142,7 @@
   border: 1px solid rgba(202, 201, 202, 1);
   position: absolute;
   right: 6vw;
-  width: 25vw;
+  width: fit-content;
   top: 37vw;
   padding: 0.5vw;
   border-radius: 4px;

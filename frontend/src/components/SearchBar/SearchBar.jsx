@@ -158,12 +158,20 @@ const SearchBar = () => {
     e.preventDefault();
     ref.current.blur();
     setSearchParams("");
+    setDropdownItem("");
 
-    if (categoryTerms.includes(searchParams.toLowerCase())) {
+    if (
+      categoryTerms.find((option) =>
+        option.includes(searchParams.toLowerCase())
+      )
+    ) {
       navigate(`/businesses/search?category=${searchParams}`, {
         replace: true,
       });
-    } else if (names.includes(searchParams.toLowerCase())) {
+    } else if (
+      names.find((option) => option.includes(searchParams.toLowerCase())) ||
+      searchParams.toLowerCase() === "amelie"
+    ) {
       navigate(`/businesses/search?name=${searchParams}`, { replace: true });
     } else {
       navigate(`businesses/error?search_term=${searchParams}`, {
@@ -191,7 +199,7 @@ const SearchBar = () => {
       });
       setDropdownItem("");
     }
-  }
+  };
 
   return (
     <>
