@@ -4,7 +4,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../Loading/Loading";
+// import Loading from "../../Loading/Loading";
 
 const Filter = () => {
   const navigate = useNavigate();
