@@ -1,5 +1,5 @@
 import "./Filter.css";
-import React, { useEffect } from "react";
+import React from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
@@ -12,7 +12,9 @@ const Filter = () => {
   const handlePriceFilterClick = (e, price) => {
     e.preventDefault();
     e.target.style.backgroundColor = "rgb(226, 226, 230)";
-    const siblings = [...e.target.parentElement.children].filter(el => el != e.target);
+    const siblings = [...e.target.parentElement.children].filter(
+      (el) => el !== e.target
+    );
     siblings.forEach(sibling => {
       sibling.style.backgroundColor = "white";
     });
@@ -23,7 +25,9 @@ const Filter = () => {
     e.preventDefault();
     e.target.classList.add("activeBtn");
     e.target.style.backgroundColor = "rgb(226, 226, 230)";
-    const siblings = [...e.target.parentElement.children].filter(el => el != e.target);
+    const siblings = [...e.target.parentElement.children].filter(
+      (el) => el !== e.target
+    );
     siblings.forEach(sibling => {
       sibling.style.backgroundColor = "white";
     });

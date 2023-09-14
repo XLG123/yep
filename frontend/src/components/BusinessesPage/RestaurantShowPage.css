@@ -118,7 +118,7 @@
 }
 
 .sp-restaurant-hrs {
-  width: 30vw;
+  width: fit-content;
   font-size: 1.3vw;
   margin-left: 2vw;
   position: absolute;
@@ -136,6 +136,18 @@
 
 .day div {
   margin-right: 2vw;
+}
+
+.rest-curr-status {
+  margin-left: 1vw;
+}
+
+.rest-open-status {
+  color: rgba(0, 128, 85, 1) !important;
+}
+
+.rest-closed-status {
+  color: rgba(224, 7, 7, 1) !important;
 }
 
 .sp-restaurant-info-box {

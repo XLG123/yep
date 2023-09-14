@@ -48,7 +48,7 @@ export const fetchRestaurantsWithQuery = (query) => async (dispatch) => {
     type: RECEIVE_RESTAURANTS,
     restaurants: data.restaurants,
   })
-  console.log(data);
+  // console.log(data);
 }
 
 export const fetchRestaurant = (restaurantId) => async (dispatch) => {
