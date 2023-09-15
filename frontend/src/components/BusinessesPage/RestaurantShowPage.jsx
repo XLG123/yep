@@ -16,6 +16,7 @@ import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import LaunchIcon from "@mui/icons-material/Launch";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -53,8 +54,18 @@ const RestaurantShowPage = () => {
   };
 
   const handleCopyLink = (e) => {
-    toast.success("Current Link is copied!" , {style: {border: '1px solid black'}});
-  }
+    e.preventDefault();
+    toast(`Current Link is copied!`, {
+      style: {
+        border: "1px solid rgba(202, 201, 202, 1)",
+        fontSize: "1.2vw",
+        boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
+        backgroundColor: "rgba(255, 255, 255, 0.85)",
+        height: "2vw",
+      },
+      icon: "✅",
+    });
+  };
 
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
@@ -946,14 +957,20 @@ const RestaurantShowPage = () => {
               </div>
 
               <div className="review-btn" onClick={handleClick}>
-                <StarOutlineIcon sx={{fontSize: "1.8vw", marginRight: "0.3em"}} className="sp-btn-icon"/>
+                <StarOutlineIcon
+                  sx={{ fontSize: "1.8vw", marginRight: "0.3em" }}
+                  className="sp-btn-icon"
+                />
                 Write a review
               </div>
 
               <CopyToClipboard text={url}>
                 <div>
                   <div className="share-btn" onClick={(e) => handleCopyLink(e)}>
-                    <IosShareIcon sx={{fontSize: "1.8vw", marginRight: "0.3em"}} className="sp-btn-icon"/>
+                    <IosShareIcon
+                      sx={{ fontSize: "1.8vw", marginRight: "0.3em" }}
+                      className="sp-btn-icon"
+                    />
                     Share
                   </div>
                   <Toaster />
@@ -1205,7 +1222,10 @@ const RestaurantShowPage = () => {
                       <span className="sp-icon-container">
                         <HealthAndSafetyIcon className="sp-icon" />
                       </span>
-                      Health Score: {restaurant.healthScore}
+                      Health Score:{" "}
+                      <span className="sp-rest-health-score">
+                        {restaurant.healthScore}
+                      </span>
                     </div>
                   ) : (
                     <div className="sp-rest-info-box">

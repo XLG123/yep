@@ -190,6 +190,11 @@
   font-size: 2vw;
 }
 
+.sp-rest-health-score {
+  color:rgba(2, 122, 151, 1);
+  font-weight: 600;
+}
+
 .sp-rest-info-box span {
   vertical-align: middle;
 }
@@ -222,6 +227,10 @@
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.sp-btn-icon {
-
+.toast-icon {
+  color: rgba(0, 128, 85, 1);
 }
+
+/* .sp-btn-icon {
+
+} */
