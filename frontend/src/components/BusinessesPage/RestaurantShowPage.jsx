@@ -78,822 +78,824 @@ const RestaurantShowPage = () => {
     }, 1500);
   }, [restaurantId]);
 
-  setTimeout(() => {
-    let currentDate = new Date();
-    let day = currentDate.getDay();
-    let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes();
-
-    if (day === 0) {
-      setSun(true);
-    } else if (day === 1) {
-      setMon(true);
-    } else if (day === 2) {
-      setTue(true);
-    } else if (day === 3) {
-      setWed(!false);
-    } else if (day === 4) {
-      setThu(true);
-    } else if (day === 5) {
-      setFri(true);
-    } else if (day === 6) {
-      setSat(true);
-    }
-
-    if (hours < 12) {
-      if (mon) {
-        if (restaurant.mon === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.mon.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.monOptional?.length > 1) {
-            am = restaurant.monOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
+  if (restaurant.mon !== "Not available") {
+    setTimeout(() => {
+      let currentDate = new Date();
+      let day = currentDate.getDay();
+      let hours = currentDate.getHours();
+      let minutes = currentDate.getMinutes();
+  
+      if (day === 0) {
+        setSun(true);
+      } else if (day === 1) {
+        setMon(true);
+      } else if (day === 2) {
+        setTue(true);
+      } else if (day === 3) {
+        setWed(!false);
+      } else if (day === 4) {
+        setThu(true);
+      } else if (day === 5) {
+        setFri(true);
+      } else if (day === 6) {
+        setSat(true);
+      }
+  
+      if (hours < 12) {
+        if (mon) {
+          if (restaurant.mon === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.mon.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
                 setRestaurantOpen(true);
               } else if (hours == amHr && minutes >= amMin) {
                 setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.monOptional?.length > 1) {
+              am = restaurant.monOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (tue) {
+          if (restaurant.tue === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.tue.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.tueOptional?.length > 1) {
+              am = restaurant.tueOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (wed) {
+          if (restaurant.wed === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.wed.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.wedOptional?.length > 1) {
+              am = restaurant.wedOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (thu) {
+          if (restaurant.thu === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.thu.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.thuOptional?.length > 1) {
+              am = restaurant.thuOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (fri) {
+          if (restaurant.fri === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.fri.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.friOptional?.length > 1) {
+              am = restaurant.friOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (sat) {
+          if (restaurant.sat === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.sat.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.satOptional?.length > 1) {
+              am = restaurant.satOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+          }
+        } else if (sun) {
+          if (restaurant.sun === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.sun.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("AM")) {
+              if (hours > amHr) {
+                setRestaurantOpen(true);
+              } else if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.sunOptional?.length > 1) {
+              am = restaurant.sunOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("AM")) {
+                if (hours > amHr) {
+                  setRestaurantOpen(true);
+                } else if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
               }
             }
           }
         }
-      } else if (tue) {
-        if (restaurant.tue === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.tue.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
+      } else if (hours > 12) {
+        const currentHr = hours - 12;
+        if (mon) {
+          if (restaurant.mon === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.mon.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.monOptional?.length > 1) {
+              pm = restaurant.monOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
           }
-
-          if (restaurant.tueOptional?.length > 1) {
-            am = restaurant.tueOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
+        } else if (tue) {
+          if (restaurant.tue === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.tue.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
                 setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+              } else if (currentHr == pmHr && minutes <= pmMin) {
                 setRestaurantOpen(true);
               }
+            }
+  
+            if (restaurant.tueOptional?.length > 1) {
+              pm = restaurant.tueOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (wed) {
+          if (restaurant.wed === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.wed.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.wedOptional?.length > 1) {
+              pm = restaurant.wedOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (thu) {
+          if (restaurant.thu === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.thu.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.thuOptional?.length > 1) {
+              pm = restaurant.thuOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (fri) {
+          if (restaurant.fri === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.fri.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.friOptional?.length > 1) {
+              pm = restaurant.friOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (sat) {
+          if (restaurant.sat === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.sat.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.satOptional?.length > 1) {
+              pm = restaurant.satOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (sun) {
+          if (restaurant.sun === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let pm = restaurant.sun.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currentHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currentHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.sunOptional?.length > 1) {
+              pm = restaurant.sunOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currentHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currentHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
             }
           }
         }
-      } else if (wed) {
-        if (restaurant.wed === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.wed.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.wedOptional?.length > 1) {
-            am = restaurant.wedOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
+      } else {
+        const currHr = hours - 12;
+        if (mon) {
+          if (restaurant.mon === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.mon.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
-                setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
                 setRestaurantOpen(true);
               }
             }
-          }
-        }
-      } else if (thu) {
-        if (restaurant.thu === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.thu.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
+  
+            if (restaurant.monOptional?.length > 1) {
+              am = restaurant.monOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
             }
-          }
-
-          if (restaurant.thuOptional?.length > 1) {
-            am = restaurant.thuOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
+  
+            let pm = restaurant.mon.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
                 setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+              } else if (currHr == pmHr && minutes <= pmMin) {
                 setRestaurantOpen(true);
               }
             }
-          }
-        }
-      } else if (fri) {
-        if (restaurant.fri === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.fri.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
+  
+            if (restaurant.monOptional?.length > 1) {
+              pm = restaurant.monOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
           }
-
-          if (restaurant.friOptional?.length > 1) {
-            am = restaurant.friOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
+        } else if (tue) {
+          if (restaurant.tue === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.tue.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
-                setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
                 setRestaurantOpen(true);
               }
             }
-          }
-        }
-      } else if (sat) {
-        if (restaurant.sat === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.sat.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
+  
+            if (restaurant.tueOptional?.length > 1) {
+              am = restaurant.tueOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
             }
-          }
-
-          if (restaurant.satOptional?.length > 1) {
-            am = restaurant.satOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
+  
+            let pm = restaurant.tue.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
                 setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+              } else if (currHr == pmHr && minutes <= pmMin) {
                 setRestaurantOpen(true);
               }
             }
-          }
-        }
-      } else if (sun) {
-        if (restaurant.sun === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.sun.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("AM")) {
-            if (hours > amHr) {
-              setRestaurantOpen(true);
-            } else if (hours == amHr && minutes >= amMin) {
+  
+            if (restaurant.tueOptional?.length > 1) {
+              pm = restaurant.tueOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
           }
-
-          if (restaurant.sunOptional?.length > 1) {
-            am = restaurant.sunOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
+        } else if (wed) {
+          if (restaurant.wed === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.wed.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
-            if (am.includes("AM")) {
-              if (hours > amHr) {
-                setRestaurantOpen(true);
-              } else if (hours == amHr && minutes >= amMin) {
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
                 setRestaurantOpen(true);
               }
+            }
+  
+            if (restaurant.wedOptional?.length > 1) {
+              am = restaurant.wedOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            let pm = restaurant.wed.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.wedOptional?.length > 1) {
+              pm = restaurant.wedOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (thu) {
+          if (restaurant.thu === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.thu.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.thuOptional?.length > 1) {
+              am = restaurant.thuOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            let pm = restaurant.thu.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.thuOptional?.length > 1) {
+              pm = restaurant.thuOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (fri) {
+          if (restaurant.fri === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.fri.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.friOptional?.length > 1) {
+              am = restaurant.friOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            let pm = restaurant.fri.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.friOptional?.length > 1) {
+              pm = restaurant.friOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (sat) {
+          if (restaurant.sat === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.sat.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.satOptional?.length > 1) {
+              am = restaurant.satOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            let pm = restaurant.sat.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.satOptional?.length > 1) {
+              pm = restaurant.satOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
+            }
+          }
+        } else if (sun) {
+          if (restaurant.sun === "Closed") {
+            setRestaurantOpen(false);
+          } else {
+            let am = restaurant.sun.split(" - ")[0];
+            let [amHr, amMin] = am.split(":");
+            amMin = amMin.slice(0, -3);
+            if (am.includes("PM")) {
+              if (hours == amHr && minutes >= amMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.sunOptional?.length > 1) {
+              am = restaurant.sunOptional.split(" - ")[0];
+              [amHr, amMin] = am.split(":");
+              amMin = amMin.slice(0, -3);
+              if (am.includes("PM")) {
+                if (hours == amHr && minutes >= amMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            let pm = restaurant.sun.split(" - ")[1];
+            let [pmHr, pmMin] = pm.split(":");
+            pmMin = pmMin.slice(0, -3);
+            if (pm.includes("PM")) {
+              if (currHr < pmHr) {
+                setRestaurantOpen(true);
+              } else if (currHr == pmHr && minutes <= pmMin) {
+                setRestaurantOpen(true);
+              }
+            }
+  
+            if (restaurant.sunOptional?.length > 1) {
+              pm = restaurant.sunOptional.split(" - ")[1];
+              [pmHr, pmMin] = pm.split(":");
+              pmMin = pmMin.slice(0, -3);
+              if (pm.includes("PM")) {
+                if (currHr < pmHr) {
+                  setRestaurantOpen(true);
+                } else if (currHr == pmHr && minutes <= pmMin) {
+                  setRestaurantOpen(true);
+                }
+              }
+            }
+  
+            if (pm.includes("Next Day") || pm.includes("Next day")) {
+              setRestaurantOpen(true);
             }
           }
         }
       }
-    } else if (hours > 12) {
-      const currentHr = hours - 12;
-      if (mon) {
-        if (restaurant.mon === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.mon.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.monOptional?.length > 1) {
-            pm = restaurant.monOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (tue) {
-        if (restaurant.tue === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.tue.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.tueOptional?.length > 1) {
-            pm = restaurant.tueOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (wed) {
-        if (restaurant.wed === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.wed.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.wedOptional?.length > 1) {
-            pm = restaurant.wedOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (thu) {
-        if (restaurant.thu === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.thu.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.thuOptional?.length > 1) {
-            pm = restaurant.thuOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (fri) {
-        if (restaurant.fri === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.fri.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.friOptional?.length > 1) {
-            pm = restaurant.friOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (sat) {
-        if (restaurant.sat === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.sat.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.satOptional?.length > 1) {
-            pm = restaurant.satOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (sun) {
-        if (restaurant.sun === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let pm = restaurant.sun.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currentHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currentHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.sunOptional?.length > 1) {
-            pm = restaurant.sunOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currentHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currentHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      }
-    } else {
-      const currHr = hours - 12;
-      if (mon) {
-        if (restaurant.mon === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.mon.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.monOptional?.length > 1) {
-            am = restaurant.monOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.mon.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.monOptional?.length > 1) {
-            pm = restaurant.monOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (tue) {
-        if (restaurant.tue === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.tue.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.tueOptional?.length > 1) {
-            am = restaurant.tueOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.tue.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.tueOptional?.length > 1) {
-            pm = restaurant.tueOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (wed) {
-        if (restaurant.wed === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.wed.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.wedOptional?.length > 1) {
-            am = restaurant.wedOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.wed.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.wedOptional?.length > 1) {
-            pm = restaurant.wedOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (thu) {
-        if (restaurant.thu === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.thu.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.thuOptional?.length > 1) {
-            am = restaurant.thuOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.thu.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.thuOptional?.length > 1) {
-            pm = restaurant.thuOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (fri) {
-        if (restaurant.fri === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.fri.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.friOptional?.length > 1) {
-            am = restaurant.friOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.fri.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.friOptional?.length > 1) {
-            pm = restaurant.friOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (sat) {
-        if (restaurant.sat === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.sat.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.satOptional?.length > 1) {
-            am = restaurant.satOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.sat.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.satOptional?.length > 1) {
-            pm = restaurant.satOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      } else if (sun) {
-        if (restaurant.sun === "Closed") {
-          setRestaurantOpen(false);
-        } else {
-          let am = restaurant.sun.split(" - ")[0];
-          let [amHr, amMin] = am.split(":");
-          amMin = amMin.slice(0, -3);
-          if (am.includes("PM")) {
-            if (hours == amHr && minutes >= amMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.sunOptional?.length > 1) {
-            am = restaurant.sunOptional.split(" - ")[0];
-            [amHr, amMin] = am.split(":");
-            amMin = amMin.slice(0, -3);
-            if (am.includes("PM")) {
-              if (hours == amHr && minutes >= amMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          let pm = restaurant.sun.split(" - ")[1];
-          let [pmHr, pmMin] = pm.split(":");
-          pmMin = pmMin.slice(0, -3);
-          if (pm.includes("PM")) {
-            if (currHr < pmHr) {
-              setRestaurantOpen(true);
-            } else if (currHr == pmHr && minutes <= pmMin) {
-              setRestaurantOpen(true);
-            }
-          }
-
-          if (restaurant.sunOptional?.length > 1) {
-            pm = restaurant.sunOptional.split(" - ")[1];
-            [pmHr, pmMin] = pm.split(":");
-            pmMin = pmMin.slice(0, -3);
-            if (pm.includes("PM")) {
-              if (currHr < pmHr) {
-                setRestaurantOpen(true);
-              } else if (currHr == pmHr && minutes <= pmMin) {
-                setRestaurantOpen(true);
-              }
-            }
-          }
-
-          if (pm.includes("Next Day") || pm.includes("Next day")) {
-            setRestaurantOpen(true);
-          }
-        }
-      }
-    }
-  }, 500);
+    }, 500);
+  }
 
   return (
     <>
@@ -1029,6 +1031,169 @@ const RestaurantShowPage = () => {
                     <span className="bullet-pt">&#9679;</span>{" "}
                   </span>
                   <span>{restaurant.category.replace("_", " ")}</span>
+                </div>
+
+                <div className="sp-rest-current-status-container">
+                  {mon && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.mon}</span>
+                      {restaurant.monOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.monOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {mon && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.mon}</span>
+                      {restaurant.monOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.monOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {tue && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.tue}</span>
+                      {restaurant.tueOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.tueOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {tue && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.tue}</span>
+                      {restaurant.tueOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.tueOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {wed && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.wed}</span>
+                      {restaurant.wedOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.wedOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {wed && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.wed}</span>
+                      {restaurant.wedOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.wedOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {thu && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.thu}</span>
+                      {restaurant.thuOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.thuOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {thu && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.thu}</span>
+                      {restaurant.thuOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.thuOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {fri && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.fri}</span>
+                      {restaurant.friOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.friOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {fri && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.fri}</span>
+                      {restaurant.friOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.friOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {sat && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.sat}</span>
+                      {restaurant.satOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.satOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {sat && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.sat}</span>
+                      {restaurant.satOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.satOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+
+                  {sun && restaurantOpen ? (
+                    <span>
+                      <span className="curr-open-status">Open</span>
+                      <span className="curr-rest-hr">{restaurant.sun}</span>
+                      {restaurant.sunOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.sunOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  {sun && !restaurantOpen ? (
+                    <span>
+                      <span className="curr-closed-status">Closed</span>
+                      <span className="curr-rest-hr">{restaurant.sun}</span>
+                      {restaurant.sunOptional ? (
+                        <span className="curr-rest-hr optional-hrs">
+                          &nbsp;{restaurant.sunOptional}
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
                 </div>
               </div>
 

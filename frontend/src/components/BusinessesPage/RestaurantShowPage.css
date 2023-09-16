@@ -43,7 +43,7 @@
 .unscrollable-info {
   position: absolute;
   z-index: 10;
-  top: 18vw;
+  top: 17vw;
   left: 6vw;
   border-radius: 4px;
 }
@@ -97,6 +97,29 @@
   font-size: 1vw !important;
   vertical-align:middle;
   margin: 0px 0.2em;
+}
+
+.sp-rest-current-status-container {
+  font-size: 1.5vw;
+  padding-left: 0;
+  margin-top: 0.5vw;
+  text-align: left;
+}
+
+.curr-rest-hr {
+  margin-left: 1vw;
+}
+
+.curr-open-status {
+  color: #04c585;
+}
+
+.curr-closed-status {
+  color: #ff8b87;
+}
+
+.sp-rest-current-status-container .curr-rest-hr {
+  color: white;
 }
 
 .sp-map-container {
@@ -176,7 +199,7 @@
 }
 
 .rest-open-status {
-  color: rgba(0, 128, 85, 1) !important;
+  color: #008055 !important;
 }
 
 .rest-closed-status {
@@ -263,7 +286,3 @@
 .toast-icon {
   color: rgba(0, 128, 85, 1);
 }
-
-/* .sp-btn-icon {
-
-} */

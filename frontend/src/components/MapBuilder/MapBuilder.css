@@ -3,7 +3,6 @@
   font-weight: bold;
   width: 9vw;
   text-align: center;
-  /* font-family:  */
   color: #2D2E2F;
   font-family: Helvetica, sans-serif;
   cursor: pointer;
@@ -21,4 +20,8 @@
   width: 8vw;
   display: block;
   margin: 0px auto;
+}
+
+.restaurant-info-card .total-reviews {
+  display: none;
 }

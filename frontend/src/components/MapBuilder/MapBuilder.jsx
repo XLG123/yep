@@ -82,7 +82,7 @@ const MapBuilder = ({restaurants}) => {
                     className="info-img"/>
                   <p className="info-title">{restaurant.name}</p>
                   <AverageRating averageRating=
-                  {restaurant.averageRating}/>
+                  {restaurant.averageRating} totalReviews={restaurant.totalReviews}/>
                 </div>
               </InfoWindow>
             </NavLink> : null}
