@@ -36,6 +36,8 @@
 #  fri_optional   :string
 #  sat_optional   :string
 #  sun_optional   :string
+#  claimed        :boolean          not null
+#  total_reviews  :integer
 #
 class Business < ApplicationRecord
   validates :name, :city, :state, presence: true
@@ -52,6 +54,7 @@ class Business < ApplicationRecord
   validates :sat, presence: true
   validates :sun, presence: true
   validates :web_url, presence: true
+  validates :claimed, presence: true, allow_blank: true
 
   has_many_attached :picture
 

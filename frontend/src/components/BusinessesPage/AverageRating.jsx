@@ -3,7 +3,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import "./AverageRating.css";
 
-const AverageRating = ({averageRating}) => {
+const AverageRating = ({averageRating, totalReviews}) => {
 
   const displayRating = (averageRating) => {
     let icons = []
@@ -146,15 +146,15 @@ const AverageRating = ({averageRating}) => {
   return (
     <>
       <div className="average-rating-container">
-
         <span className="average-rating-icon">
           {displayRating(averageRating)}
         </span>
 
-        <span className="average-rating-num">
-          {averageRating}
-        </span>
+        <span className="average-rating-num">{averageRating}</span>
 
+        <span className="total-reviews">
+          ({totalReviews !== 0 ? `${totalReviews} reviews` : "0 review"})
+        </span>
       </div>
     </>
   );

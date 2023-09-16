@@ -1,7 +1,7 @@
 class Api::RestaurantsController < ApplicationController
 
   wrap_parameters include: Business.attribute_names + 
-    ['zipCode', 'priceRange', 'phoneNumber', 'averageRating']
+    ['zipCode', 'priceRange', 'phoneNumber', 'averageRating', 'totalReviews']
 
   def index
     @restaurants = Business.all

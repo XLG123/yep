@@ -43,6 +43,10 @@
   color: #2D2E2F;
 }
 
+.bp-average-rating .total-reviews {
+  color: #6E7072;
+}
+
 .restaurant-details {
   color: #6E7072;
   font-size: 1vw;

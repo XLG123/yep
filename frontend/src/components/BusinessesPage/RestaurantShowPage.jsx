@@ -6,8 +6,8 @@ import AverageRating from "./AverageRating";
 import "./RestaurantShowPage.css";
 import Loading from "../Loading/Loading";
 import ShowPageMap from "../MapBuilder/ShowPageMap";
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import IosShareIcon from '@mui/icons-material/IosShare';
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import IosShareIcon from "@mui/icons-material/IosShare";
 import PhoneIcon from "@mui/icons-material/Phone";
 import TakeoutDiningIcon from "@mui/icons-material/TakeoutDining";
 import WifiIcon from "@mui/icons-material/Wifi";
@@ -16,9 +16,11 @@ import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import LaunchIcon from "@mui/icons-material/Launch";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import toast, { Toaster } from 'react-hot-toast';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ErrorIcon from "@mui/icons-material/Error";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import toast, { Toaster } from "react-hot-toast";
+import Tooltip from "@mui/material/Tooltip";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -56,6 +58,7 @@ const RestaurantShowPage = () => {
   const handleCopyLink = (e) => {
     e.preventDefault();
     toast(`Current Link is copied!`, {
+      id: "successful-link",
       style: {
         border: "1px solid rgba(202, 201, 202, 1)",
         fontSize: "1.2vw",
@@ -64,6 +67,7 @@ const RestaurantShowPage = () => {
         height: "2vw",
       },
       icon: "✅",
+      duration: 2000,
     });
   };
 
@@ -139,7 +143,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-          
+
           if (restaurant.tueOptional?.length > 1) {
             am = restaurant.tueOptional.split(" - ")[0];
             [amHr, amMin] = am.split(":");
@@ -179,7 +183,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-          }   
+          }
         }
       } else if (thu) {
         if (restaurant.thu === "Closed") {
@@ -310,7 +314,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.monOptional?.length > 1) {
             pm = restaurant.monOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -323,7 +327,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -342,7 +346,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.tueOptional?.length > 1) {
             pm = restaurant.tueOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -355,7 +359,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -374,7 +378,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.wedOptional?.length > 1) {
             pm = restaurant.wedOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -387,7 +391,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -406,7 +410,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.thuOptional?.length > 1) {
             pm = restaurant.thuOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -419,7 +423,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -438,7 +442,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.friOptional?.length > 1) {
             pm = restaurant.friOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -451,7 +455,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -470,7 +474,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.satOptional?.length > 1) {
             pm = restaurant.satOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -483,7 +487,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -502,7 +506,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.sunOptional?.length > 1) {
             pm = restaurant.sunOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -515,7 +519,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -557,7 +561,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.monOptional?.length > 1) {
             pm = restaurant.monOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -570,7 +574,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -609,7 +613,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.tueOptional?.length > 1) {
             pm = restaurant.tueOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -622,7 +626,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -661,7 +665,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.wedOptional?.length > 1) {
             pm = restaurant.wedOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -674,7 +678,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -713,7 +717,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.thuOptional?.length > 1) {
             pm = restaurant.thuOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -726,7 +730,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -765,7 +769,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.friOptional?.length > 1) {
             pm = restaurant.friOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -778,7 +782,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -817,7 +821,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.satOptional?.length > 1) {
             pm = restaurant.satOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -830,7 +834,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -869,7 +873,7 @@ const RestaurantShowPage = () => {
               setRestaurantOpen(true);
             }
           }
-  
+
           if (restaurant.sunOptional?.length > 1) {
             pm = restaurant.sunOptional.split(" - ")[1];
             [pmHr, pmMin] = pm.split(":");
@@ -882,7 +886,7 @@ const RestaurantShowPage = () => {
               }
             }
           }
-  
+
           if (pm.includes("Next Day") || pm.includes("Next day")) {
             setRestaurantOpen(true);
           }
@@ -945,12 +949,84 @@ const RestaurantShowPage = () => {
                 <div className="sp-title">{restaurant.name}</div>
 
                 <div className="sp-avg-rating">
-                  {<AverageRating averageRating={restaurant.averageRating} />}
+                  {
+                    <AverageRating
+                      averageRating={restaurant.averageRating}
+                      totalReviews={restaurant.totalReviews}
+                    />
+                  }
                 </div>
 
                 <div className="sp-category-container">
+                  {restaurant.claimed === true ? (
+                    <span className="sp-rest-claimed">
+                      <span>
+                        <CheckCircleIcon
+                          sx={{ fontSize: "inherit", marginRight: "0.35vw" }}
+                        />
+                      </span>
+                      <span>
+                        <Tooltip
+                          title="This business is eligible to be claimed by a local representative in addition to corporate."
+                          placement="top-end"
+                          componentsProps={{
+                            tooltip: {
+                              sx: {
+                                backgroundColor: "#2D2E2F",
+                                fontSize: "1vw",
+                                textAlign: "justify",
+                                padding: "1em",
+                                lineHeight: "1.3em",
+                                maxWidth: "20vw",
+                              },
+                            },
+                            arrow: { sx: { color: "#2D2E2F" } },
+                          }}
+                          arrow
+                        >
+                          <span>Claimed</span>
+                        </Tooltip>
+                      </span>
+                    </span>
+                  ) : (
+                    <span className="sp-rest-notclaimed">
+                      <span>
+                        <Tooltip
+                          title="This business has not yet been claimed by the owner or a representative."
+                          placement="top-end"
+                          componentsProps={{
+                            tooltip: {
+                              sx: {
+                                backgroundColor: "#2D2E2F",
+                                fontSize: "1vw",
+                                textAlign: "justify",
+                                padding: "1em",
+                                lineHeight: "1.3em",
+                                maxWidth: "20vw",
+                              },
+                            },
+                            arrow: { sx: { color: "#2D2E2F" } },
+                          }}
+                          arrow
+                        >
+                          <span>Unclaimed</span>
+                        </Tooltip>
+                      </span>
+                      <span>
+                        <ErrorIcon
+                          sx={{
+                            fontSize: "inherit",
+                            marginLeft: "0.35vw",
+                            marginRight: "1vw",
+                          }}
+                        />
+                      </span>
+                    </span>
+                  )}
                   <span className="sp-price-range">
-                    &#9679; {restaurant.priceRange} &#9679;{" "}
+                    <span className="bullet-pt">&#9679;</span>{" "}
+                    {restaurant.priceRange}{" "}
+                    <span className="bullet-pt">&#9679;</span>{" "}
                   </span>
                   <span>{restaurant.category.replace("_", " ")}</span>
                 </div>

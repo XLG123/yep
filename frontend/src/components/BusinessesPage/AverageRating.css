@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-.average-rating-num {
+.average-rating-num, .total-reviews {
   font-size: 1.2vw;
   color: "#2D2E2F";
   margin-left: 1.1vw;

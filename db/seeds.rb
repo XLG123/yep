@@ -51,6 +51,7 @@ italian_1 = Business.create!(
   phone_number: '2123671979',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 10:00 PM",
   tue: "11:30 AM - 10:00 PM",
   wed: "11:30 AM - 10:00 PM",
@@ -63,7 +64,8 @@ italian_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 # italian_1.picture.attach(io: URI.open("https://yep-app-seeds.s3.amazonaws.com/italian_1.jpg"), filename: "italian_1.jpg")
@@ -82,6 +84,7 @@ italian_2 = Business.create!(
   phone_number: '2122436546',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 12:00 AM (Next day)",
   tue: "11:00 AM - 12:00 AM (Next day)",
   wed: "11:00 AM - 12:00 AM (Next day)",
@@ -94,7 +97,8 @@ italian_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_3 = Business.create!(
@@ -109,6 +113,7 @@ italian_3 = Business.create!(
   phone_number: '2129650500',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 11:00 PM",
   tue: "11:00 AM - 11:00 PM",
   wed: "11:00 AM - 11:00 PM",
@@ -121,7 +126,8 @@ italian_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_4 = Business.create!(
@@ -136,6 +142,7 @@ italian_4 = Business.create!(
   phone_number: '2129651188',
   category: 'Italian',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 10:00 PM",
   tue: "11:00 AM - 10:00 PM",
   wed: "11:00 AM - 10:00 PM",
@@ -148,7 +155,8 @@ italian_4 = Business.create!(
   delivery: false,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_5 = Business.create!(
@@ -163,6 +171,7 @@ italian_5 = Business.create!(
   phone_number: '9295246682',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "8:00 AM - 3:00 PM,",
   mon_optional: "5:00 PM - 10:00 PM",
   tue: "8:00 AM - 3:00 PM,",
@@ -178,7 +187,8 @@ italian_5 = Business.create!(
   web_url: "https://damicheleusa.com/nyc/",
   delivery: true,
   take_out: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_6 = Business.create!(
@@ -193,6 +203,7 @@ italian_6 = Business.create!(
   phone_number: '9176393236',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "10:00 AM - 1:00 AM (Next day)",
   tue: "10:00 AM - 1:00 AM (Next day)",
   wed: "10:00 AM - 1:00 AM (Next day)",
@@ -205,7 +216,8 @@ italian_6 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_7 = Business.create!(
@@ -220,6 +232,7 @@ italian_7 = Business.create!(
   phone_number: '3474674362',
   category: 'Italian',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 9:00 PM",
   tue: "12:00 PM - 10:00 PM",
   wed: "12:00 PM - 10:00 PM",
@@ -232,7 +245,8 @@ italian_7 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_8 = Business.create!(
@@ -247,6 +261,7 @@ italian_8 = Business.create!(
   phone_number: '2127770303',
   category: 'Italian',
   average_rating: 0,
+  total_reviews: 0,
   mon: "4:30 PM - 9:00 PM",
   tue: "4:30 PM - 9:00 PM",
   wed: "4:30 PM - 10:00 PM",
@@ -259,7 +274,8 @@ italian_8 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_9 = Business.create!(
@@ -274,6 +290,7 @@ italian_9 = Business.create!(
   phone_number: '2127777781',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 11:00 PM",
   tue: "12:00 PM - 11:00 PM",
   wed: "12:00 PM - 11:00 PM",
@@ -285,7 +302,8 @@ italian_9 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_10 = Business.create!(
@@ -300,6 +318,7 @@ italian_10 = Business.create!(
   phone_number: '2124204900',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 2:00 AM (Next day)",
   tue: "11:00 AM - 2:00 AM (Next day)",
   wed: "11:00 AM - 2:00 AM (Next day)",
@@ -311,7 +330,8 @@ italian_10 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 italian_11 = Business.create!(
@@ -326,6 +346,7 @@ italian_11 = Business.create!(
   phone_number: '2123889474',
   category: 'Italian_Pizza',
   average_rating: 0,
+  total_reviews: 0,
   mon: "10:00 AM - 4:00 AM (Next day)",
   tue: "10:00 AM - 4:00 AM (Next day)",
   wed: "10:00 AM - 4:00 AM (Next day)",
@@ -338,7 +359,8 @@ italian_11 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 # Chinese Restaurants
@@ -354,6 +376,7 @@ chinese_1 = Business.create!(
   phone_number: '2129019971',
   category: 'Chinese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 10:00 PM",
   tue: "11:00 AM - 10:00 PM",
   wed: "11:00 AM - 10:00 PM",
@@ -366,7 +389,8 @@ chinese_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 chinese_2 = Business.create!(
@@ -381,6 +405,7 @@ chinese_2 = Business.create!(
   phone_number: '2126252532',
   category: 'Chinese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "8:30 AM - 8:00 PM",
   tue: "8:30 AM - 8:00 PM",
   wed: "8:30 AM - 8:00 PM",
@@ -392,7 +417,8 @@ chinese_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 chinese_3 = Business.create!(
@@ -407,6 +433,7 @@ chinese_3 = Business.create!(
   phone_number: '2128371021',
   category: 'Chinese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 10:00 PM",
   tue: "11:00 AM - 10:00 PM",
   wed: "11:00 AM - 10:00 PM",
@@ -419,7 +446,8 @@ chinese_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 chinses_4 = Business.create!(
@@ -434,6 +462,7 @@ chinses_4 = Business.create!(
   phone_number: '2122338888',
   category: 'Chinese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 10:00 PM",
   tue: "11:00 AM - 10:00 PM",
   wed: "11:00 AM - 10:00 PM",
@@ -446,7 +475,8 @@ chinses_4 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 chinses_5 = Business.create!(
@@ -461,6 +491,7 @@ chinses_5 = Business.create!(
   phone_number: '2123908685',
   category: 'Chinese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 10:00 PM",
   tue: "11:30 AM - 10:00 PM",
   wed: "11:30 AM - 10:00 PM",
@@ -473,7 +504,8 @@ chinses_5 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 # French Restaurants
@@ -489,6 +521,7 @@ french_1 = Business.create!(
   phone_number: '2125332962',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "4:00 PM - 11:00 PM",
   tue: "12:00 PM - 11:00 PM",
   wed: "12:00 PM - 11:00 PM",
@@ -500,7 +533,8 @@ french_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 french_2 = Business.create!(
@@ -515,6 +549,7 @@ french_2 = Business.create!(
   phone_number: '2129253061',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "4:00 PM - 10:30 PM",
   tue: "4:00 PM - 10:30 PM",
   wed: "4:00 PM - 10:30 PM",
@@ -526,7 +561,8 @@ french_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 french_3 = Business.create!(
@@ -541,6 +577,7 @@ french_3 = Business.create!(
   phone_number: '2128682424',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 3:00 PM,",
   mon_optional: "5:00 PM - 10:00 PM",
   tue: "11:30 AM - 3:00 PM,",
@@ -559,7 +596,8 @@ french_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 french_4 = Business.create!(
@@ -574,6 +612,7 @@ french_4 = Business.create!(
   phone_number: '2123530200',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 12:00 AM (Next day)",
   tue: "11:00 AM - 12:00 AM (Next day)",
   wed: "11:00 AM - 12:00 AM (Next day)",
@@ -586,7 +625,8 @@ french_4 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 french_5 = Business.create!(
@@ -601,6 +641,7 @@ french_5 = Business.create!(
   phone_number: '2122553590',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "8:00 AM - 12:00 AM (Next day)",
   tue: "8:00 AM - 12:00 AM (Next day)",
   wed: "8:00 AM - 12:00 AM (Next day)",
@@ -613,7 +654,8 @@ french_5 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 french_6 = Business.create!(
@@ -628,6 +670,7 @@ french_6 = Business.create!(
   phone_number: '8455249006',
   category: 'French',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "4:30 PM - 11:00 PM",
   wed: "4:30 PM - 11:00 PM",
@@ -639,7 +682,8 @@ french_6 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 # Japanese Restaurants
@@ -655,6 +699,7 @@ japanese_1 = Business.create!(
   phone_number: '2126143006',
   category: 'Japanese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "5:00 PM - 11:00 PM",
   wed: "5:00 PM - 11:00 PM",
@@ -666,7 +711,8 @@ japanese_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 japanese_2 = Business.create!(
@@ -681,6 +727,7 @@ japanese_2 = Business.create!(
   phone_number: '2129891000',
   category: 'Japanese_Ramen',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 9:30 PM",
   tue: "12:00 PM - 9:30 PM",
   wed: "12:00 PM - 9:30 PM",
@@ -693,7 +740,8 @@ japanese_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 japanese_3 = Business.create!(
@@ -708,6 +756,7 @@ japanese_3 = Business.create!(
   phone_number: '2122281324',
   category: 'Japanese_Ramen',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "12:00 PM - 9:30 PM",
   wed: "12:00 PM - 9:30 PM",
@@ -720,7 +769,8 @@ japanese_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 japanese_4 = Business.create!(
@@ -735,6 +785,7 @@ japanese_4 = Business.create!(
   phone_number: '3152304533',
   category: 'Japanese',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "12:00 PM - 3:30 PM,",
   tue_optional: "5:00 PM - 9:30 PM",
@@ -747,7 +798,8 @@ japanese_4 = Business.create!(
   sat: "12:00 PM - 3:30 PM,",
   sat_optional: "5:00 PM - 9:30 PM",
   sun: "12:00 PM - 8:00 PM",
-  web_url: "https://www.maisonkintaro.com/"
+  web_url: "https://www.maisonkintaro.com/",
+  claimed: true
 )
 
 japanese_5 = Business.create!(
@@ -762,6 +814,7 @@ japanese_5 = Business.create!(
   phone_number: '9172615538',
   category: 'Japanese_Sushi',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "5:00 PM - 9:30 PM",
   wed: "5:00 PM - 9:30 PM",
@@ -775,7 +828,8 @@ japanese_5 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 japanese_6 = Business.create!(
@@ -790,6 +844,7 @@ japanese_6 = Business.create!(
   phone_number: '2122550018',
   category: 'Japanese_Sushi',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Closed",
   tue: "11:30 AM - 3:00 PM,",
   tue_optional: "5:30 PM - 9:30 PM",
@@ -807,7 +862,8 @@ japanese_6 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 japenese_7 = Business.create!(
@@ -822,6 +878,7 @@ japenese_7 = Business.create!(
   phone_number: '2123880088',
   category: 'Japanese_Ramen',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 10:30 PM",
   tue: "11:30 AM - 10:30 PM",
   wed: "11:30 AM - 10:30 PM",
@@ -834,7 +891,8 @@ japenese_7 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true 
+  reservation: true,
+  claimed: true
 )
 
 japanese_8 = Business.create!(
@@ -849,6 +907,7 @@ japanese_8 = Business.create!(
   phone_number: '6469985754',
   category: 'Japanese_Ramen',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 9:30 PM",
   tue: "11:30 AM - 9:30 PM",
   wed: "11:30 AM - 9:30 PM",
@@ -861,7 +920,8 @@ japanese_8 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 japanese_9 = Business.create!(
@@ -876,6 +936,7 @@ japanese_9 = Business.create!(
   phone_number: '3477050847',
   category: 'Japanese_Ramen',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 1:00 AM (Next day)",
   tue: "11:00 AM - 1:00 AM (Next day)",
   wed: "11:00 AM - 1:00 AM (Next day)",
@@ -887,7 +948,8 @@ japanese_9 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 japanese_10 = Business.create!(
@@ -902,6 +964,7 @@ japanese_10 = Business.create!(
   phone_number: '2122559981',
   category: 'Japanese_Sushi',
   average_rating: 0,
+  total_reviews: 0,
   mon: "Not available",
   tue: "Not available",
   wed: "Not available",
@@ -913,7 +976,8 @@ japanese_10 = Business.create!(
   health_score: "A",
   delivery: true,
   take_out: true,
-  wifi: true
+  wifi: true,
+  claimed: true
 )
 
 japanese_11 = Business.create!(
@@ -928,6 +992,7 @@ japanese_11 = Business.create!(
   phone_number: '2129242212',
   category: 'Japanese_Sushi',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:45 AM - 2:00 PM,",
   mon_optional: "5:00 PM - 10:00 PM",
   tue: "11:45 AM - 2:00 PM,",
@@ -947,7 +1012,8 @@ japanese_11 = Business.create!(
   delivery: false,
   take_out: false,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 # Thai Restaurants
@@ -963,6 +1029,7 @@ thai_1 = Business.create!(
   phone_number: '2127866789',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 3:15 PM,",
   mon_optional: "4:30 PM - 10:00 PM",
   tue: "11:30 AM - 3:15 PM,",
@@ -982,7 +1049,8 @@ thai_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_2 = Business.create!(
@@ -997,6 +1065,7 @@ thai_2 = Business.create!(
   phone_number: '2128029999',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 3:15 PM,",
   mon_optional: "4:30 PM - 10:15 PM",
   tue: "11:30 AM - 3:15 PM,",
@@ -1016,7 +1085,8 @@ thai_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_3 = Business.create!(
@@ -1031,6 +1101,7 @@ thai_3 = Business.create!(
   phone_number: '2128449789',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 4:00 PM,",
   mon_optional: "5:00 PM - 10:30 PM",
   tue: "12:00 PM - 4:00 PM,",
@@ -1050,7 +1121,8 @@ thai_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_4 = Business.create!(
@@ -1065,6 +1137,7 @@ thai_4 = Business.create!(
   phone_number: '2122545370',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 11:00 PM",
   tue: "11:30 AM - 11:00 PM",
   wed: "11:30 AM - 11:00 PM",
@@ -1077,7 +1150,8 @@ thai_4 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_5 = Business.create!(
@@ -1092,6 +1166,7 @@ thai_5 = Business.create!(
   phone_number: '6466092272',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 3:30 PM,",
   mon_optional: "4:30 PM - 9:00 PM",
   tue: "11:30 AM - 3:30 PM,",
@@ -1111,7 +1186,8 @@ thai_5 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_6 = Business.create!(
@@ -1126,6 +1202,7 @@ thai_6 = Business.create!(
   phone_number: '6467264418',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 AM - 3:00 PM,",
   mon_optional: " 4:30 PM - 10:00 PM",
   tue: "11:00 AM - 3:00 PM,",
@@ -1144,7 +1221,8 @@ thai_6 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 thai_7 = Business.create!(
@@ -1159,6 +1237,7 @@ thai_7 = Business.create!(
   phone_number: '2122068989',
   category: 'Thai',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 3:30 PM,",
   mon_optional: " 5:00 PM - 10:00 PM",
   tue: "11:30 AM - 3:15 PM,",
@@ -1175,7 +1254,8 @@ thai_7 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 # Mexican Restaurants
@@ -1191,6 +1271,7 @@ mexican_1 = Business.create!(
   phone_number: '2125332233',
   category: 'Mexican',
   average_rating: 0,
+  total_reviews: 0,
   mon: "3:00 PM - 10:00 PM",
   tue: "3:00 PM - 10:00 PM",
   wed: "3:00 PM - 10:00 PM",
@@ -1203,7 +1284,8 @@ mexican_1 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 mexican_2 = Business.create!(
@@ -1218,6 +1300,7 @@ mexican_2 = Business.create!(
   phone_number: '2124324180',
   category: 'Mexican',
   average_rating: 0,
+  total_reviews: 0,
   mon: "3:00 PM - 12:00 AM (Next day)",
   tue: "3:00 PM - 12:00 AM (Next day)",
   wed: "3:00 PM - 12:00 AM (Next day)",
@@ -1230,7 +1313,8 @@ mexican_2 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 mexican_3 = Business.create!(
@@ -1245,6 +1329,7 @@ mexican_3 = Business.create!(
   phone_number: '2125333350',
   category: 'Mexican',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 11:00 PM",
   tue: "11:30 AM - 11:00 PM",
   wed: "11:30 AM - 11:00 PM",
@@ -1257,7 +1342,8 @@ mexican_3 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: true,
-  reservation: true
+  reservation: true,
+  claimed: true
 )
 
 mexican_4 = Business.create!(
@@ -1272,6 +1358,7 @@ mexican_4 = Business.create!(
   phone_number: '2127761830',
   category: 'Mexican',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 11:00 PM",
   tue: "12:00 PM - 11:00 PM",
   wed: "12:00 PM - 11:00 PM",
@@ -1284,7 +1371,8 @@ mexican_4 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: false
+  reservation: false,
+  claimed: true
 )
 
 mexican_5 = Business.create!(
@@ -1299,6 +1387,7 @@ mexican_5 = Business.create!(
   phone_number: '2122559378',
   category: 'Mexican',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:30 AM - 1:00 AM (Next day)",
   tue: "11:30 AM - 1:00 AM (Next day)",
   wed: "11:30 AM - 1:00 AM (Next day)",
@@ -1311,7 +1400,8 @@ mexican_5 = Business.create!(
   delivery: true,
   take_out: true,
   wifi: false,
-  reservation: true
+  reservation: true,
+  claimed: false
 )
 
 # Milk Tea Stores
@@ -1327,6 +1417,7 @@ milk_tea_1 = Business.create!(
   phone_number: '2129958349',
   category: 'Milk Tea',
   average_rating: 0,
+  total_reviews: 0,
   mon: "12:00 PM - 8:00 PM (Next day)",
   tue: "12:00 PM - 8:00 PM (Next day)",
   wed: "12:00 PM - 8:00 PM (Next day)",
@@ -1337,7 +1428,8 @@ milk_tea_1 = Business.create!(
   web_url: "https://wanpotea.us/",
   health_score: "18.0",
   delivery: true,
-  take_out: true
+  take_out: true,
+  claimed: true
 )
 
 milk_tea_2 = Business.create!(
@@ -1352,6 +1444,7 @@ milk_tea_2 = Business.create!(
   phone_number: '9172681999',
   category: 'Milk Tea',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 PM - 8:00 PM",
   tue: "11:00 PM - 8:00 PM",
   wed: "11:00 PM - 8:00 PM",
@@ -1363,7 +1456,8 @@ milk_tea_2 = Business.create!(
   health_score: "A",
   wifi: true,
   delivery: true,
-  take_out: true
+  take_out: true,
+  claimed: true
 )
 
 milk_tea_3 = Business.create!(
@@ -1378,6 +1472,7 @@ milk_tea_3 = Business.create!(
   phone_number: '2123816193',
   category: 'Milk Tea',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 PM - 8:00 PM",
   tue: "11:00 PM - 8:00 PM",
   wed: "11:00 PM - 8:00 PM",
@@ -1388,7 +1483,8 @@ milk_tea_3 = Business.create!(
   web_url: "N/A",
   health_score: "A",
   delivery: true,
-  take_out: true
+  take_out: true,
+  claimed: true
 )
 
 milk_tea_4 = Business.create!(
@@ -1403,6 +1499,7 @@ milk_tea_4 = Business.create!(
   phone_number: '6466827784',
   category: 'Milk Tea',
   average_rating: 0,
+  total_reviews: 0,
   mon: "11:00 PM - 9:00 PM",
   tue: "11:00 PM - 9:00 PM",
   wed: "11:00 PM - 9:00 PM",
@@ -1412,7 +1509,8 @@ milk_tea_4 = Business.create!(
   sun: "12:00 AM - 9:00 PM",  
   web_url: "https://vivibubbletea.com/",
   health_score: "A",
-  take_out: true
+  take_out: true,
+  claimed: true
 )
 
 # Business.first(11).each_with_index do |restaurant, index|
