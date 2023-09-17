@@ -66,4 +66,11 @@ class Business < ApplicationRecord
   has_many :reviewers,
     through: :reviews,
     source: :user
+
+  def add_review
+    new_total_reviews = total_reviews+1
+    update(total_reviews: new_total_reviews)
+    new_average_rating = reviews.sum(rating) / new_total_reviews.to_f
+    update(average_rating: new_average_rating)
+  end
 end
