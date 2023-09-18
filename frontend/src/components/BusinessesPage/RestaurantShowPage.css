@@ -55,11 +55,17 @@
   margin-bottom: 0.5vw;
 }
 
-.sp-avg-rating {
+.sp-avg-rating,
+.sp-avg-rating-updated {
   font-size: 2vw;
   width: 20vw;
   background-color: rgba(226, 226, 230, 0.5);
   border-radius: 4px;
+}
+
+.sp-avg-rating-updated {
+  background-color: transparent;
+  color: white;
 }
 
 .sp-category-container {
@@ -101,7 +107,7 @@
 
 .sp-rest-current-status-container {
   font-size: 1.5vw;
-  padding-left: 0;
+  padding-left: 0.1em;
   margin-top: 0.5vw;
   text-align: left;
 }

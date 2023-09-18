@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurant, getRestaurant } from "../../store/restaurants";
@@ -38,6 +38,8 @@ const WriteReview = () => {
     dispatch(fetchRestaurant(restaurantId));
   }, [restaurantId]);
 
+  const navigate = useNavigate();
+
   const submitReview = (e, rating, reviewText) => {
     if (rating === 0) {
       setRatingError(true);
@@ -61,6 +63,7 @@ const WriteReview = () => {
         business_id: currRestaurant.id
       };
       dispatch(createReview(reviewObj));
+      navigate(`/restaurants/${restaurantId}`);
     }
   };
 

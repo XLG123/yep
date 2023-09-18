@@ -153,7 +153,13 @@ const AverageRating = ({averageRating, totalReviews}) => {
         <span className="average-rating-num">{averageRating}</span>
 
         <span className="total-reviews">
-          ({totalReviews !== 0 ? `${totalReviews} reviews` : "0 review"})
+          (
+          {totalReviews === 0
+            ? "0 review"
+            : totalReviews === 1
+            ? "1 review"
+            : `${totalReviews} reviews`}
+          )
         </span>
       </div>
     </>

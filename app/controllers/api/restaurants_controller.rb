@@ -11,7 +11,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Business.includes(:reviews).find(params[:id])
+    @restaurant = Business.find(params[:id])
       if @restaurant
         render 'api/restaurants/show'
       end

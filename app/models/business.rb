@@ -70,7 +70,11 @@ class Business < ApplicationRecord
   def add_review
     new_total_reviews = total_reviews+1
     update(total_reviews: new_total_reviews)
-    new_average_rating = reviews.sum(rating) / new_total_reviews.to_f
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    new_average_rating = total_rating / new_total_reviews.to_f
     update(average_rating: new_average_rating)
   end
 end

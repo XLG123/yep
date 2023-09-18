@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Activity.css";
+import { useDispatch } from 'react-redux';
+import { fetchReviews } from "../../store/reviews";
 
 const Activity = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [])
+
   return (
     <>
       <div className="activity-container">

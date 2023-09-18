@@ -950,7 +950,7 @@ const RestaurantShowPage = () => {
               <div className="unscrollable-info">
                 <div className="sp-title">{restaurant.name}</div>
 
-                <div className="sp-avg-rating">
+                <div className={restaurant.averageRating === 0 ? "sp-avg-rating" : "sp-avg-rating-updated"}>
                   {
                     <AverageRating
                       averageRating={restaurant.averageRating}
