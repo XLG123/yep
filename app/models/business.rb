@@ -75,6 +75,6 @@ class Business < ApplicationRecord
       total_rating += review.rating
     end
     new_average_rating = total_rating / new_total_reviews.to_f
-    update(average_rating: new_average_rating)
+    update(average_rating: new_average_rating.round(2))
   end
 end

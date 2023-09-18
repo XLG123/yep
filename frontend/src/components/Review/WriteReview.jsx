@@ -5,7 +5,7 @@ import { fetchRestaurant, getRestaurant } from "../../store/restaurants";
 import Rating from "@mui/material/Rating";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import "./WriteReview.css";
-import { createReview } from '../../store/reviews';
+import { createReview, fetchReviews } from '../../store/reviews';
 
 const WriteReview = () => {
   const location = useLocation();

@@ -66,6 +66,7 @@
 .sp-avg-rating-updated {
   background-color: transparent;
   color: white;
+  width: 100%;
 }
 
 .sp-category-container {
@@ -249,7 +250,6 @@
 
 .sp-icon {
   padding-top: 0.3vh;
-  font-size: 2vw;
 }
 
 .sp-rest-health-score {
@@ -291,4 +291,67 @@
 
 .toast-icon {
   color: rgba(0, 128, 85, 1);
+}
+
+.sp-rest-reviews-container {
+  border-top: 1px solid rgba(200, 201, 202, 1);
+  width: 88%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: #2D2E2F;
+}
+
+.empty-reviews-container {
+  font-size: 1.2vw;
+}
+
+.sp-review {
+  margin-bottom: 2vw;
+  width: 60%;
+}
+
+.reviewer-name span:first-child {
+  margin-right: 0.35em;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  font-size: 1.2vw;
+}
+
+.reviewer-profile {
+  margin-right: 0.5vw;
+}
+
+.reviewer-profile, .reviewer-name {
+  display: inline-block;
+}
+
+.sp-review-rating:has(.average-rating-num) {
+  .average-rating-num {
+    display: none;
+  }
+}
+
+.sp-review-rating:has(.total-reviews) {
+  .total-reviews {
+    display: none;
+  }
+}
+
+.sp-review-rating {
+  margin-top: 0.25vw;
+  font-size: 1.5vw;
+}
+
+.rating-time {
+  font-size: 1.2vw;
+  color: rgba(110, 112, 114, 1);
+  margin-left: 0.5vw;
+}
+
+.sp-review-body {
+  font-size: 1.1vw;
+  text-align: justify;
+  line-height: 1.3em;
 }

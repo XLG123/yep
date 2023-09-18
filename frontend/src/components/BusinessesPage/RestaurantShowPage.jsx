@@ -21,6 +21,9 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import Tooltip from "@mui/material/Tooltip";
+import Avatar from '@mui/material/Avatar';
+import { fetchReviews, getReviews } from "../../store/reviews";
+import ReviewRating from "./ReviewRating";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -32,6 +35,26 @@ const RestaurantShowPage = () => {
   const { restaurantId } = useParams();
 
   const restaurant = useSelector(getRestaurant(restaurantId));
+
+  const reviews = useSelector(getReviews);
+  // let currReviews = [];
+  let restReviews = [];
+  // reviews?.forEach((review) => currReviews.push(Object.values(review)));
+  // currReviews[0]?.forEach((review) => {
+  //   if (review?.businessId == restaurantId) {
+  //     restReviews.push(review);
+  //   }
+  // });
+
+
+  const reviewExamples = useSelector((state) => state.reviews.reviews);
+  if (reviewExamples) {
+    Object.values(reviewExamples).forEach((review) => {
+      if (review.businessId == restaurantId) {
+        restReviews.push(review);
+      }
+    });
+  }
 
   const dispatch = useDispatch();
 
@@ -61,10 +84,10 @@ const RestaurantShowPage = () => {
       id: "successful-link",
       style: {
         border: "1px solid rgba(202, 201, 202, 1)",
-        fontSize: "1.2vw",
+        fontSize: "1.1.7vw",
         boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
         backgroundColor: "rgba(255, 255, 255, 0.85)",
-        height: "2vw",
+        height: "1.7vw",
       },
       icon: "✅",
       duration: 2000,
@@ -78,13 +101,17 @@ const RestaurantShowPage = () => {
     }, 1500);
   }, [restaurantId]);
 
-  if (restaurant.mon !== "Not available") {
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch])
+
+  if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
       let currentDate = new Date();
       let day = currentDate.getDay();
       let hours = currentDate.getHours();
       let minutes = currentDate.getMinutes();
-  
+
       if (day === 0) {
         setSun(true);
       } else if (day === 1) {
@@ -100,7 +127,7 @@ const RestaurantShowPage = () => {
       } else if (day === 6) {
         setSat(true);
       }
-  
+
       if (hours < 12) {
         if (mon) {
           if (restaurant.mon === "Closed") {
@@ -116,7 +143,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.monOptional?.length > 1) {
               am = restaurant.monOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -144,7 +171,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.tueOptional?.length > 1) {
               am = restaurant.tueOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -172,7 +199,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.wedOptional?.length > 1) {
               am = restaurant.wedOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -200,7 +227,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.thuOptional?.length > 1) {
               am = restaurant.thuOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -228,7 +255,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.friOptional?.length > 1) {
               am = restaurant.friOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -256,7 +283,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.satOptional?.length > 1) {
               am = restaurant.satOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -284,7 +311,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.sunOptional?.length > 1) {
               am = restaurant.sunOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -315,7 +342,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.monOptional?.length > 1) {
               pm = restaurant.monOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -328,7 +355,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -347,7 +374,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.tueOptional?.length > 1) {
               pm = restaurant.tueOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -360,7 +387,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -379,7 +406,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.wedOptional?.length > 1) {
               pm = restaurant.wedOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -392,7 +419,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -411,7 +438,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.thuOptional?.length > 1) {
               pm = restaurant.thuOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -424,7 +451,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -443,7 +470,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.friOptional?.length > 1) {
               pm = restaurant.friOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -456,7 +483,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -475,7 +502,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.satOptional?.length > 1) {
               pm = restaurant.satOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -488,7 +515,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -507,7 +534,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.sunOptional?.length > 1) {
               pm = restaurant.sunOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -520,7 +547,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -540,7 +567,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.monOptional?.length > 1) {
               am = restaurant.monOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -551,7 +578,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.mon.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -562,7 +589,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.monOptional?.length > 1) {
               pm = restaurant.monOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -575,7 +602,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -592,7 +619,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.tueOptional?.length > 1) {
               am = restaurant.tueOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -603,7 +630,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.tue.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -614,7 +641,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.tueOptional?.length > 1) {
               pm = restaurant.tueOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -627,7 +654,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -644,7 +671,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.wedOptional?.length > 1) {
               am = restaurant.wedOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -655,7 +682,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.wed.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -666,7 +693,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.wedOptional?.length > 1) {
               pm = restaurant.wedOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -679,7 +706,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -696,7 +723,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.thuOptional?.length > 1) {
               am = restaurant.thuOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -707,7 +734,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.thu.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -718,7 +745,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.thuOptional?.length > 1) {
               pm = restaurant.thuOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -731,7 +758,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -748,7 +775,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.friOptional?.length > 1) {
               am = restaurant.friOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -759,7 +786,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.fri.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -770,7 +797,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.friOptional?.length > 1) {
               pm = restaurant.friOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -783,7 +810,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -800,7 +827,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.satOptional?.length > 1) {
               am = restaurant.satOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -811,7 +838,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.sat.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -822,7 +849,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.satOptional?.length > 1) {
               pm = restaurant.satOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -835,7 +862,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -852,7 +879,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.sunOptional?.length > 1) {
               am = restaurant.sunOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
@@ -863,7 +890,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             let pm = restaurant.sun.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
@@ -874,7 +901,7 @@ const RestaurantShowPage = () => {
                 setRestaurantOpen(true);
               }
             }
-  
+
             if (restaurant.sunOptional?.length > 1) {
               pm = restaurant.sunOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
@@ -887,7 +914,7 @@ const RestaurantShowPage = () => {
                 }
               }
             }
-  
+
             if (pm.includes("Next Day") || pm.includes("Next day")) {
               setRestaurantOpen(true);
             }
@@ -950,7 +977,13 @@ const RestaurantShowPage = () => {
               <div className="unscrollable-info">
                 <div className="sp-title">{restaurant.name}</div>
 
-                <div className={restaurant.averageRating === 0 ? "sp-avg-rating" : "sp-avg-rating-updated"}>
+                <div
+                  className={
+                    restaurant.averageRating === 0
+                      ? "sp-avg-rating"
+                      : "sp-avg-rating-updated"
+                  }
+                >
                   {
                     <AverageRating
                       averageRating={restaurant.averageRating}
@@ -1400,7 +1433,10 @@ const RestaurantShowPage = () => {
                   {restaurant.phoneNumber ? (
                     <div className="sp-restaurant-phone sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <PhoneIcon className="sp-icon" />
+                        <PhoneIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       ({restaurant.phoneNumber.slice(0, 3)}) -{" "}
                       {restaurant.phoneNumber.slice(3, 6)} -{" "}
@@ -1409,7 +1445,10 @@ const RestaurantShowPage = () => {
                   ) : (
                     <div className="phone-num-notavailable">
                       <span className="sp-icon-container">
-                        <PhoneIcon className="sp-icon" />
+                        <PhoneIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       phone number is not available
                     </div>
@@ -1425,14 +1464,20 @@ const RestaurantShowPage = () => {
                       className="sp-rest-link sp-rest-info-box"
                     >
                       <span className="sp-icon-container">
-                        <LaunchIcon className="sp-icon" />
+                        <LaunchIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       <span className="rest-url">{restaurant.webUrl}</span>
                     </a>
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <LaunchIcon className="sp-icon" />
+                        <LaunchIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       NO Restaurant Link
                     </div>
@@ -1443,14 +1488,20 @@ const RestaurantShowPage = () => {
                   {restaurant.wifi ? (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <WifiIcon className="sp-icon" />
+                        <WifiIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Free Wi-Fi
                     </div>
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <WifiOffIcon className="sp-icon" />
+                        <WifiOffIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       NO Wi-Fi
                     </div>
@@ -1461,7 +1512,10 @@ const RestaurantShowPage = () => {
                   {restaurant.healthScore ? (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <HealthAndSafetyIcon className="sp-icon" />
+                        <HealthAndSafetyIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Health Score:{" "}
                       <span className="sp-rest-health-score">
@@ -1471,7 +1525,10 @@ const RestaurantShowPage = () => {
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <HealthAndSafetyIcon className="sp-icon" />
+                        <HealthAndSafetyIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       NO Health Scores
                     </div>
@@ -1482,14 +1539,20 @@ const RestaurantShowPage = () => {
                   {restaurant.delivery ? (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <LocalShippingIcon className="sp-icon" />
+                        <LocalShippingIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Offers Delivery
                     </div>
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <LocalShippingIcon className="sp-icon" />
+                        <LocalShippingIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Doesn't Offer Delivery
                     </div>
@@ -1500,14 +1563,20 @@ const RestaurantShowPage = () => {
                   {restaurant.takeOut ? (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <TakeoutDiningIcon className="sp-icon" />
+                        <TakeoutDiningIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Offers Takeout
                     </div>
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <TakeoutDiningIcon className="sp-icon" />
+                        <TakeoutDiningIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       <span className="sp-rest-info-text">
                         Doesn't Offer Takeout
@@ -1520,14 +1589,20 @@ const RestaurantShowPage = () => {
                   {restaurant.reservation ? (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <EditCalendarIcon className="sp-icon" />
+                        <EditCalendarIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Takes Reservations
                     </div>
                   ) : (
                     <div className="sp-rest-info-box">
                       <span className="sp-icon-container">
-                        <EditCalendarIcon className="sp-icon" />
+                        <EditCalendarIcon
+                          className="sp-icon"
+                          sx={{ fontSize: "1.7vw" }}
+                        />
                       </span>
                       Does Not take reservations
                     </div>
@@ -1535,7 +1610,41 @@ const RestaurantShowPage = () => {
                 </div>
               </div>
 
-              <div className="sp-rest-reviews-container">123 reviews</div>
+              <div className="sp-rest-reviews-container">
+                {restReviews?.length === 0 ? (
+                  <div className="empty-reviews-container">
+                    Be the first to leave a review
+                  </div>
+                ) : (
+                  <div className="reviews-container">
+                    <ul>
+                      {restReviews?.map((userReview) => (
+                        <li className="sp-review" key={userReview.businessId + userReview.id}>
+                          <div className="reviewer-profile">
+                            <Avatar sx={{ backgroundColor: "#555" , height: "3vw", width: "3vw", fontSize: "1.3vw"}}>
+                              {userReview.reviewerFn[0]}
+                              {userReview.reviewerLn[0]}
+                            </Avatar>
+                          </div>
+                          <div className="reviewer-name">
+                            <span>{userReview.reviewerFn}</span>
+                            <span>{userReview.reviewerLn}</span>
+                          </div>
+                          <div className="sp-review-rating">
+                            <ReviewRating
+                              averageRating={userReview.rating}
+                              ratingTime={userReview.createdAt.split("T")[0]}
+                            />
+                          </div>
+                          <div className="sp-review-body">
+                            {userReview.body}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </>
