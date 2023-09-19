@@ -31,15 +31,9 @@ const WriteReview = () => {
     });
   }
 
-  const options = {
-    year: 'numeric', month: 'numeric', day: 'numeric',
-    hour: 'numeric', minute: 'numeric', second: 'numeric',
-    hour12: false,
-    timeZone: 'America/Toronto'
-  };
-
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(-1);
+  const [color, setColor] = useState(null);
   const [reviewText, setReviewText] = useState("");
   const [ratingError, setRatingError] = useState(false);
   const [reviewTextError, setReviewTextError] = useState(false);
@@ -51,6 +45,20 @@ const WriteReview = () => {
     4: "Good",
     5: "Great",
   };
+
+  const setNewColor = (newRating) => {
+    if (newRating === 1) {
+      setColor("#C3882E");
+    } else if (newRating === 2) {
+      setColor("#D5B53E");
+    } else if (newRating === 3) {
+      setColor("#E5A038");
+    } else if (newRating === 4) {
+      setColor("#EB6F3D");
+    } else if (newRating === 5) {
+      setColor("#D22E21");
+    }
+  }
 
   const dispatch = useDispatch();
 
@@ -104,8 +112,8 @@ const WriteReview = () => {
             <div className="curr-rating">
               <Rating
                 onChange={(e, newRating) => setRating(newRating)}
-                onChangeActive={(e, newHover) => setHover(newHover)}
-                sx={{ fontSize: "1.8vw" }}
+                onChangeActive={(e, newHover) => {setHover(newHover); setNewColor(newHover)}}
+                sx={{ fontSize: "1.8vw", color: color}}
               />
               <span className="rating-labels-container">
                 {rating === 0 && hover === -1 ? "Select your rating" : null}

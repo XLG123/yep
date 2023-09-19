@@ -9,6 +9,142 @@
 }
 
 .activity-container-title {
-  margin-top: 88vh;
-  margin-bottom: 6vh;
+  margin-top: 42vw;
+  margin-bottom: 3vw;
+}
+
+.activity-reviews-container {
+  position: absolute;
+  margin-top: 47vw;
+  padding-bottom: 1.5em;
+}
+
+@media screen and (width <= 1440px) {
+  .activity-container-title {
+    margin-top: 50vw;
+  }
+
+  .activity-reviews-container {
+    margin-top: 55vw;
+  }
+}
+
+@media screen and (width <= 1250px) {
+  .activity-container-title {
+    margin-top: 60vw;
+  }
+
+  .activity-reviews-container {
+    margin-top: 65vw;
+  }
+}
+
+@media screen and (width <= 1100px) {
+  .activity-container-title {
+    margin-top: 48vw;
+  }
+
+  .activity-reviews-container {
+    margin-top: 53vw;
+  }
+}
+
+@media screen and (width <= 1000px) {
+  .activity-container-title {
+    margin-top: 73vw;
+  }
+
+  .activity-reviews-container {
+    margin-top: 80vw;
+  }
+}
+
+@media screen and (width <= 900px) {
+  .activity-container-title {
+    margin-top: 52vw;
+  }
+  
+  .activity-reviews-container {
+    margin-top: 57vw;
+  }
+}
+
+@media screen and (width <= 800px) {
+  .activity-container-title {
+    margin-top: 50vw;
+  }
+  
+  .activity-reviews-container {
+    margin-top: 55vw;
+  }
+}
+
+.activity-reviews {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw;
+  row-gap: 1em;
+  column-gap: 1em;
+}
+
+.activity-recent-review {
+  display: inline-block;
+  border: 1px solid #ebebeb;
+  padding: 0.3em;
+}
+
+.activity-pg-go-to-rest-container {
+  text-decoration: none;
+  color: #2D2E2F;
+}
+
+.review-restaurant-name {
+  font-size: 1.7vw;
+  color: #027a97;
+  margin-bottom: 0.3em;
+}
+
+.review-rest-pic-container {
+  width: 100%;
+  height: 16vw;
+  margin-bottom: 0.3em;
+}
+
+.review-rest-pic {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.recent-review-reviewer {
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin-left: 0.5vw;
+}
+
+.recent-review-reviewer span:first-child {
+  margin-right: 0.35vw;
+}
+
+.recent-review-profile, .recent-review-reviewer {
+  display: inline-block;
+}
+
+.activity-recent-review-rating:has(.average-rating-icon) {
+  .average-rating-icon {
+    font-size: 1.4vw;
+  }
+}
+
+.activity-recent-review-rating:has(.rating-time) {
+  .rating-time {
+    display: none;
+  }
+}
+
+.recent-activity-review-body {
+  font-size: 1vw;
+  font-weight: 500;
+  text-align: justify;
+  height: 4vw;
+  overflow-y: auto;
 }

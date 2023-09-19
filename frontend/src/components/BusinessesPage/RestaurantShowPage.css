@@ -38,6 +38,7 @@
   width: inherit;
   height: inherit;
   filter: brightness(0.7);
+  object-fit: cover;
 }
 
 .unscrollable-info {
