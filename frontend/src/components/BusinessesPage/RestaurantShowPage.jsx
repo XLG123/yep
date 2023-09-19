@@ -21,8 +21,8 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import Tooltip from "@mui/material/Tooltip";
-import Avatar from '@mui/material/Avatar';
-import { fetchReviews, getReviews } from "../../store/reviews";
+import Avatar from "@mui/material/Avatar";
+import { fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
 
 const RestaurantShowPage = () => {
@@ -36,16 +36,7 @@ const RestaurantShowPage = () => {
 
   const restaurant = useSelector(getRestaurant(restaurantId));
 
-  const reviews = useSelector(getReviews);
-  // let currReviews = [];
   let restReviews = [];
-  // reviews?.forEach((review) => currReviews.push(Object.values(review)));
-  // currReviews[0]?.forEach((review) => {
-  //   if (review?.businessId == restaurantId) {
-  //     restReviews.push(review);
-  //   }
-  // });
-
 
   const reviewExamples = useSelector((state) => state.reviews.reviews);
   if (reviewExamples) {
@@ -103,7 +94,7 @@ const RestaurantShowPage = () => {
 
   useEffect(() => {
     dispatch(fetchReviews());
-  }, [dispatch])
+  }, [dispatch]);
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
@@ -1618,10 +1609,20 @@ const RestaurantShowPage = () => {
                 ) : (
                   <div className="reviews-container">
                     <ul>
-                      {restReviews?.map((userReview) => (
-                        <li className="sp-review" key={userReview.businessId + userReview.id}>
+                      {restReviews?.reverse().map((userReview) => (
+                        <li
+                          className="sp-review"
+                          key={userReview.businessId + userReview.id}
+                        >
                           <div className="reviewer-profile">
-                            <Avatar sx={{ backgroundColor: "#555" , height: "3vw", width: "3vw", fontSize: "1.3vw"}}>
+                            <Avatar
+                              sx={{
+                                backgroundColor: "#555",
+                                height: "3vw",
+                                width: "3vw",
+                                fontSize: "1.3vw",
+                              }}
+                            >
                               {userReview.reviewerFn[0]}
                               {userReview.reviewerLn[0]}
                             </Avatar>
@@ -1633,7 +1634,13 @@ const RestaurantShowPage = () => {
                           <div className="sp-review-rating">
                             <ReviewRating
                               averageRating={userReview.rating}
-                              ratingTime={userReview.createdAt.split("T")[0]}
+                              ratingTime={
+                                new Date(userReview.updatedAt)
+                                  .toLocaleString("en-US", {
+                                    timeZone: "America/New_York",
+                                  })
+                                  .split(",")[0]
+                              }
                             />
                           </div>
                           <div className="sp-review-body">

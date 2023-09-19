@@ -17,7 +17,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.order(created_at: :desc)
     if @reviews
       render 'api/reviews/index'
     end

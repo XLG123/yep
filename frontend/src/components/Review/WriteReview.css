@@ -123,3 +123,56 @@
   font-weight: 900;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+.reviews-scrollable-container {
+  overflow-y: auto;
+  margin-top: 0.5vw;
+  height: 74vh;
+}
+
+.curr-rest-recent-review {
+  margin-bottom: 1vw;
+  padding-bottom: 1vw;
+  border-bottom: 1px solid rgba(200, 201, 202, 1);
+}
+
+.curr-rest-recent-review:last-child {
+  border-bottom: none;
+}
+
+.reviews-unscrollable-container {
+  margin-top: 0.5vw;
+}
+
+.reviewer {
+  font-size: 1.1vw;
+  font-weight: bold;
+  margin-left: 0.5vw;
+}
+
+.reviewer span:first-child {
+  margin-right: 0.35vw;
+}
+
+.review-user-profile, .reviewer {
+  display: inline-block;
+}
+
+.recent-review-rating {
+  margin-top: 0.35vw;
+}
+
+.recent-review-rating .average-rating-icon {
+  font-size: 1.3vw;
+}
+
+.recent-review-rating .rating-time {
+  font-size: 1vw;
+}
+
+.recent-review-body {
+  font-size: 1.2vw;
+  line-height: 1.2em;
+  text-align: justify;
+  width: 98%;
+}

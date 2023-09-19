@@ -5,7 +5,9 @@ import { fetchRestaurant, getRestaurant } from "../../store/restaurants";
 import Rating from "@mui/material/Rating";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import "./WriteReview.css";
-import { createReview, fetchReviews } from '../../store/reviews';
+import { createReview, fetchReviews } from "../../store/reviews";
+import Avatar from "@mui/material/Avatar";
+import ReviewRating from "../BusinessesPage/ReviewRating";
 
 const WriteReview = () => {
   const location = useLocation();
@@ -17,6 +19,24 @@ const WriteReview = () => {
 
   const currRestaurant = useSelector(getRestaurant(restaurantId));
   const currUser = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => state.reviews.reviews);
+
+  let recentReviews = [];
+
+  if (reviews) {
+    Object.values(reviews).forEach((review) => {
+      if (review.businessId == restaurantId) {
+        recentReviews.push(review);
+      }
+    });
+  }
+
+  const options = {
+    year: 'numeric', month: 'numeric', day: 'numeric',
+    hour: 'numeric', minute: 'numeric', second: 'numeric',
+    hour12: false,
+    timeZone: 'America/Toronto'
+  };
 
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(-1);
@@ -36,6 +56,7 @@ const WriteReview = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
+    dispatch(fetchReviews());
   }, [restaurantId]);
 
   const navigate = useNavigate();
@@ -53,14 +74,19 @@ const WriteReview = () => {
       setReviewTextError(false);
     }
 
-    if (ratingError === false && reviewTextError === false && rating !== 0 && reviewText.length >= 85) {
+    if (
+      ratingError === false &&
+      reviewTextError === false &&
+      rating !== 0 &&
+      reviewText.length >= 85
+    ) {
       const reviewObj = {
         rating: rating,
         body: reviewText,
         user_id: currUser.id,
         reviewer_fn: currUser.firstName,
         reviewer_ln: currUser.lastName,
-        business_id: currRestaurant.id
+        business_id: currRestaurant.id,
       };
       dispatch(createReview(reviewObj));
       navigate(`/restaurants/${restaurantId}`);
@@ -130,6 +156,54 @@ const WriteReview = () => {
 
         <div className="rest-recent-reviews-container">
           <div className="rest-recent-reviews-title">Recent Reviews</div>
+          {recentReviews?.length === 0 ? (
+            <div className="reviews-unscrollable-container">No reviews yet</div>
+          ) : (
+            <div className="reviews-scrollable-container">
+              <ul>
+                {recentReviews
+                  ?.reverse()
+                  .slice(0, 6)
+                  .map((review) => (
+                    <li
+                      className="curr-rest-recent-review"
+                      key={review.id + review.businessId}
+                    >
+                      <div className="review-user-profile">
+                        <Avatar
+                          sx={{
+                            backgroundColor: "#555",
+                            height: "2.5vw",
+                            width: "2.5vw",
+                            fontSize: "0.9vw",
+                          }}
+                        >
+                          {review.reviewerFn[0]}
+                          {review.reviewerLn[0]}
+                        </Avatar>
+                      </div>
+                      <div className="reviewer">
+                        <span>{review.reviewerFn}</span>
+                        <span>{review.reviewerLn}</span>
+                      </div>
+                      <div className="recent-review-rating">
+                        <ReviewRating
+                          averageRating={review.rating}
+                          ratingTime={
+                            new Date(review.updatedAt)
+                              .toLocaleString("en-US", {
+                                timeZone: "America/New_York",
+                              })
+                              .split(",")[0]
+                          }
+                        />
+                      </div>
+                      <div className="recent-review-body">{review.body}</div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </>
