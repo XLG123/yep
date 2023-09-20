@@ -150,11 +150,8 @@ const RestaurantShowPage = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
-  }, [restReviews?.length])
-
-  useEffect(() => {
     dispatch(fetchReviews());
-  }, [Object.keys(reviewExamples)?.length]);
+  }, [restReviews?.length])
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
