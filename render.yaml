@@ -1,13 +1,13 @@
 databases:
   - name: yep
     user: yep
-    plan: free
+    plan: starter
     region: ohio
 
 services:
   - type: web
     name: yep
-    plan: free
+    plan: starter
     region: ohio
     branch: main
     env: ruby
