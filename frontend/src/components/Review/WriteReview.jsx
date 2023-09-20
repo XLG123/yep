@@ -92,6 +92,7 @@ const WriteReview = () => {
         business_id: currRestaurant.id,
       };
       dispatch(createReview(reviewObj));
+      dispatch(fetchReviews());
       navigate(`/restaurants/${restaurantId}`);
     }
   };
