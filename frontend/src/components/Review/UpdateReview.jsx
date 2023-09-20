@@ -90,8 +90,8 @@ const UpdateReview = () => {
 
   const submitReview = (e, rating, reviewText, originalRating, originalText) => {
     e.preventDefault();
-    console.log(rating);
-    console.log(reviewText);
+    // console.log(rating);
+    // console.log(reviewText);
     if (rating === undefined) {
       setRating(originalRating);
     }
@@ -122,6 +122,7 @@ const UpdateReview = () => {
         business_id: currReview.businessId,
       };
       dispatch(updateReview(reviewObj, reviewId));
+      dispatch(fetchReviews());
       navigate(`/restaurants/${currReview.businessId}`);
     }
   }
