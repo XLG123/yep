@@ -68,13 +68,37 @@ class Business < ApplicationRecord
     source: :user
 
   def add_review
-    new_total_reviews = total_reviews+1
+    new_total_reviews = total_reviews + 1
     update(total_reviews: new_total_reviews)
     total_rating = 0
     reviews.each do |review|
       total_rating += review.rating
     end
     new_average_rating = total_rating / new_total_reviews.to_f
+    update(average_rating: new_average_rating.round(2))
+  end
+
+  def delete_review
+    new_total_reviews = total_reviews - 1
+    update(total_reviews: new_total_reviews)
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    if total_rating == 0
+      update(average_rating: 0)
+    else
+      new_average_rating = total_rating / new_total_reviews.to_f
+      update(average_rating: new_average_rating.round(2))
+    end
+  end
+
+  def update_rating
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    new_average_rating = total_rating / total_reviews.to_f
     update(average_rating: new_average_rating.round(2))
   end
 end

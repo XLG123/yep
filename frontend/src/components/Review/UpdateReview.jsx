@@ -1,40 +1,61 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRestaurant, getRestaurant } from "../../store/restaurants";
+import {
+  fetchRestaurant,
+  fetchRestaurants,
+  getRestaurant,
+  getRestaurants,
+} from "../../store/restaurants";
 import Rating from "@mui/material/Rating";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import "./WriteReview.css";
-import { createReview, fetchReviews } from "../../store/reviews";
+import { createReview, fetchReviews, updateReview } from "../../store/reviews";
 import Avatar from "@mui/material/Avatar";
 import ReviewRating from "../BusinessesPage/ReviewRating";
+import "./WriteReview.css";
 
-const WriteReview = () => {
+const UpdateReview = () => {
   const location = useLocation();
   const location_path = location.pathname;
-  let restaurantId = location_path.substring(13, 15);
-  if (restaurantId[1] === "/") {
-    restaurantId = restaurantId[0];
-  }
+  let reviewId = location_path.split("/")[2];
 
-  const currRestaurant = useSelector(getRestaurant(restaurantId));
-  const currUser = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.reviews.reviews);
-
-  let recentReviews = [];
+  let otherReviews = [];
+  let currReview = "";
 
   if (reviews) {
     Object.values(reviews).forEach((review) => {
-      if (review.businessId == restaurantId) {
-        recentReviews.push(review);
+      if (review.id == reviewId) {
+        currReview = review;
+      }
+    });
+
+    Object.values(reviews).forEach((review) => {
+      if (currReview.businessId === review.businessId) {
+        otherReviews.push(review);
       }
     });
   }
 
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(-1);
-  const [color, setColor] = useState(null);
-  const [reviewText, setReviewText] = useState("");
+  const restaurant = useSelector(getRestaurant(currReview.businessId));
+
+  let currColor = "";
+  if (currReview.rating === 1) {
+    currColor = "#C3882E";
+  } else if (currReview.rating === 2) {
+    currColor = "#D5B53E";
+  } else if (currReview.rating === 3) {
+    currColor = "#E5A038";
+  } else if (currReview.rating === 4) {
+    currColor = "#EB6F3D";
+  } else if (currReview.rating === 5) {
+    currColor = "#D22E21";
+  }
+
+  const [rating, setRating] = useState(currReview.rating);
+  const [hover, setHover] = useState(currReview.rating);
+  const [color, setColor] = useState(currColor);
+  const [reviewText, setReviewText] = useState(currReview.body);
   const [ratingError, setRatingError] = useState(false);
   const [reviewTextError, setReviewTextError] = useState(false);
 
@@ -58,18 +79,27 @@ const WriteReview = () => {
     } else if (newRating === 5) {
       setColor("#D22E21");
     }
-  }
+  };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRestaurant(restaurantId));
+    dispatch(fetchRestaurants());
     dispatch(fetchReviews());
-  }, [restaurantId]);
+  }, [dispatch]);
 
-  const navigate = useNavigate();
+  const submitReview = (e, rating, reviewText, originalRating, originalText) => {
+    e.preventDefault();
+    console.log(rating);
+    console.log(reviewText);
+    if (rating === undefined) {
+      setRating(originalRating);
+    }
 
-  const submitReview = (e, rating, reviewText) => {
+    if (reviewText === "") {
+      setReviewText(originalText);
+    }
+
     if (rating === 0) {
       setRatingError(true);
     } else {
@@ -86,33 +116,44 @@ const WriteReview = () => {
       const reviewObj = {
         rating: rating,
         body: reviewText,
-        user_id: currUser.id,
-        reviewer_fn: currUser.firstName,
-        reviewer_ln: currUser.lastName,
-        business_id: currRestaurant.id,
+        user_id: currReview.userId,
+        reviewer_fn: currReview.reviewerFn,
+        reviewer_ln: currReview.reviewerLn,
+        business_id: currReview.businessId,
       };
-      dispatch(createReview(reviewObj));
-      navigate(`/restaurants/${restaurantId}`);
+      dispatch(updateReview(reviewObj, reviewId));
+      navigate(`/restaurants/${currReview.businessId}`);
     }
-  };
+  }
+
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="write-review-line-break"></div>
-
       <div className="review-pg-container">
         <div className="write-review-container">
-          <div className="rp-restaurant-name">{currRestaurant?.name}</div>
+          <div className="rp-restaurant-name">{restaurant?.name}</div>
           <div className="review-container">
             <div className="curr-rating">
-              <Rating
-                onChange={(e, newRating) => setRating(newRating)}
-                onChangeActive={(e, newHover) => {setHover(newHover); setNewColor(newHover)}}
-                sx={{ fontSize: "1.8vw", color: color}}
-              />
+              {currReview?.rating ? (
+                <Rating
+                  value={rating ? rating : currReview?.rating}
+                  onChange={(e, newRating) => setRating(newRating)}
+                  onChangeActive={(e, newHover) => {
+                    setHover(newHover);
+                    setNewColor(newHover);
+                  }}
+                  sx={{ fontSize: "1.8vw", color: color ? color : currColor }}
+                />
+              ) : null}
+
               <span className="rating-labels-container">
                 {rating === 0 && hover === -1 ? "Select your rating" : null}
                 {hover !== -1 ? ratingLabels[hover] : null}
+                {hover === undefined && currReview?.rating
+                  ? ratingLabels[currReview?.rating]
+                  : null}
                 {rating !== 0 && hover === -1 ? ratingLabels[rating] : null}
               </span>
             </div>
@@ -125,6 +166,7 @@ const WriteReview = () => {
               <span className="review-reminder-category">Ambiance</span>
             </div>
             <textarea
+              defaultValue={currReview?.body}
               className="review-text-area"
               placeholder="Enjoying the best time in our restaurant? Please leave us a review to help us improve for a better future experience!"
               onInput={(e) => setReviewText(e.target.value)}
@@ -151,20 +193,20 @@ const WriteReview = () => {
           </div>
           <div
             className="submit-review-btn"
-            onClick={(e) => submitReview(e, rating, reviewText)}
+            onClick={(e) => submitReview(e, rating, reviewText, currReview?.rating, currReview?.body)}
           >
-            Post Review
+            Update Review
           </div>
         </div>
 
         <div className="rest-recent-reviews-container">
           <div className="rest-recent-reviews-title">Recent Reviews</div>
-          {recentReviews?.length === 0 ? (
+          {otherReviews?.length === 0 ? (
             <div className="reviews-unscrollable-container">No reviews yet</div>
           ) : (
             <div className="reviews-scrollable-container">
               <ul>
-                {recentReviews
+                {otherReviews
                   ?.reverse()
                   .slice(0, 6)
                   .map((review) => (
@@ -213,4 +255,4 @@ const WriteReview = () => {
   );
 };
 
-export default WriteReview;
+export default UpdateReview;

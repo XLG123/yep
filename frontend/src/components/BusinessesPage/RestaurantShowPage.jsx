@@ -18,11 +18,17 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast, { Toaster } from "react-hot-toast";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
-import { fetchReviews } from "../../store/reviews";
+import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
 
 const RestaurantShowPage = () => {
@@ -61,6 +67,56 @@ const RestaurantShowPage = () => {
 
   const [restaurantOpen, setRestaurantOpen] = useState(false);
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleAnchorClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const showModal = () => {
+    handleClose();
+    handleOpenModal();
+  };
+
+  const handleUpdate = (e, reviewId) => {
+    e.preventDefault();
+    handleClose();
+    navigate(`/reviews/${reviewId}/updateareview`);
+  }
+
+  const handleRemove = (e, reviewId) => {
+    e.preventDefault();
+    handleCloseModal();
+    dispatch(deleteReview(reviewId));
+  }
+
+  const myBoxStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    borderColor: "rgba(235,235,235,1)",
+    borderRadius: "5px",
+    boxShadow: 50,
+    padding: "2.8em",
+  };
+
   const handleClick = (e) => {
     if (sessionUser) {
       navigate(`/restaurants/${restaurantId}/writeareview`);
@@ -93,6 +149,10 @@ const RestaurantShowPage = () => {
   }, [restaurantId]);
 
   useEffect(() => {
+    dispatch(fetchRestaurant(restaurantId));
+  }, [restReviews.length])
+
+  useEffect(() => {
     dispatch(fetchReviews());
   }, [dispatch]);
 
@@ -121,10 +181,10 @@ const RestaurantShowPage = () => {
 
       if (hours < 12) {
         if (mon) {
-          if (restaurant.mon === "Closed") {
+          if (restaurant?.mon === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.mon.split(" - ")[0];
+            let am = restaurant?.mon.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -135,8 +195,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.monOptional?.length > 1) {
-              am = restaurant.monOptional.split(" - ")[0];
+            if (restaurant?.monOptional?.length > 1) {
+              am = restaurant?.monOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -149,10 +209,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (tue) {
-          if (restaurant.tue === "Closed") {
+          if (restaurant?.tue === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.tue.split(" - ")[0];
+            let am = restaurant?.tue.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -163,8 +223,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.tueOptional?.length > 1) {
-              am = restaurant.tueOptional.split(" - ")[0];
+            if (restaurant?.tueOptional?.length > 1) {
+              am = restaurant?.tueOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -177,10 +237,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (wed) {
-          if (restaurant.wed === "Closed") {
+          if (restaurant?.wed === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.wed.split(" - ")[0];
+            let am = restaurant?.wed.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -191,8 +251,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.wedOptional?.length > 1) {
-              am = restaurant.wedOptional.split(" - ")[0];
+            if (restaurant?.wedOptional?.length > 1) {
+              am = restaurant?.wedOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -205,10 +265,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (thu) {
-          if (restaurant.thu === "Closed") {
+          if (restaurant?.thu === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.thu.split(" - ")[0];
+            let am = restaurant?.thu.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -219,8 +279,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.thuOptional?.length > 1) {
-              am = restaurant.thuOptional.split(" - ")[0];
+            if (restaurant?.thuOptional?.length > 1) {
+              am = restaurant?.thuOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -233,10 +293,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (fri) {
-          if (restaurant.fri === "Closed") {
+          if (restaurant?.fri === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.fri.split(" - ")[0];
+            let am = restaurant?.fri.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -247,8 +307,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.friOptional?.length > 1) {
-              am = restaurant.friOptional.split(" - ")[0];
+            if (restaurant?.friOptional?.length > 1) {
+              am = restaurant?.friOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -261,10 +321,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sat) {
-          if (restaurant.sat === "Closed") {
+          if (restaurant?.sat === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.sat.split(" - ")[0];
+            let am = restaurant?.sat.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -275,8 +335,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.satOptional?.length > 1) {
-              am = restaurant.satOptional.split(" - ")[0];
+            if (restaurant?.satOptional?.length > 1) {
+              am = restaurant?.satOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -289,10 +349,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sun) {
-          if (restaurant.sun === "Closed") {
+          if (restaurant?.sun === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.sun.split(" - ")[0];
+            let am = restaurant?.sun.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
@@ -303,8 +363,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.sunOptional?.length > 1) {
-              am = restaurant.sunOptional.split(" - ")[0];
+            if (restaurant?.sunOptional?.length > 1) {
+              am = restaurant?.sunOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
@@ -320,10 +380,10 @@ const RestaurantShowPage = () => {
       } else if (hours > 12) {
         const currentHr = hours - 12;
         if (mon) {
-          if (restaurant.mon === "Closed") {
+          if (restaurant?.mon === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.mon.split(" - ")[1];
+            let pm = restaurant?.mon.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -334,8 +394,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.monOptional?.length > 1) {
-              pm = restaurant.monOptional.split(" - ")[1];
+            if (restaurant?.monOptional?.length > 1) {
+              pm = restaurant?.monOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -352,10 +412,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (tue) {
-          if (restaurant.tue === "Closed") {
+          if (restaurant?.tue === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.tue.split(" - ")[1];
+            let pm = restaurant?.tue.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -366,8 +426,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.tueOptional?.length > 1) {
-              pm = restaurant.tueOptional.split(" - ")[1];
+            if (restaurant?.tueOptional?.length > 1) {
+              pm = restaurant?.tueOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -384,10 +444,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (wed) {
-          if (restaurant.wed === "Closed") {
+          if (restaurant?.wed === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.wed.split(" - ")[1];
+            let pm = restaurant?.wed.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -398,8 +458,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.wedOptional?.length > 1) {
-              pm = restaurant.wedOptional.split(" - ")[1];
+            if (restaurant?.wedOptional?.length > 1) {
+              pm = restaurant?.wedOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -416,10 +476,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (thu) {
-          if (restaurant.thu === "Closed") {
+          if (restaurant?.thu === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.thu.split(" - ")[1];
+            let pm = restaurant?.thu.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -430,8 +490,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.thuOptional?.length > 1) {
-              pm = restaurant.thuOptional.split(" - ")[1];
+            if (restaurant?.thuOptional?.length > 1) {
+              pm = restaurant?.thuOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -448,10 +508,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (fri) {
-          if (restaurant.fri === "Closed") {
+          if (restaurant?.fri === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.fri.split(" - ")[1];
+            let pm = restaurant?.fri.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -462,8 +522,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.friOptional?.length > 1) {
-              pm = restaurant.friOptional.split(" - ")[1];
+            if (restaurant?.friOptional?.length > 1) {
+              pm = restaurant?.friOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -480,10 +540,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sat) {
-          if (restaurant.sat === "Closed") {
+          if (restaurant?.sat === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.sat.split(" - ")[1];
+            let pm = restaurant?.sat.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -494,8 +554,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.satOptional?.length > 1) {
-              pm = restaurant.satOptional.split(" - ")[1];
+            if (restaurant?.satOptional?.length > 1) {
+              pm = restaurant?.satOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -512,10 +572,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sun) {
-          if (restaurant.sun === "Closed") {
+          if (restaurant?.sun === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let pm = restaurant.sun.split(" - ")[1];
+            let pm = restaurant?.sun.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -526,8 +586,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.sunOptional?.length > 1) {
-              pm = restaurant.sunOptional.split(" - ")[1];
+            if (restaurant?.sunOptional?.length > 1) {
+              pm = restaurant?.sunOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -547,10 +607,10 @@ const RestaurantShowPage = () => {
       } else {
         const currHr = hours - 12;
         if (mon) {
-          if (restaurant.mon === "Closed") {
+          if (restaurant?.mon === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.mon.split(" - ")[0];
+            let am = restaurant?.mon.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -559,8 +619,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.monOptional?.length > 1) {
-              am = restaurant.monOptional.split(" - ")[0];
+            if (restaurant?.monOptional?.length > 1) {
+              am = restaurant?.monOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -570,7 +630,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.mon.split(" - ")[1];
+            let pm = restaurant?.mon.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -581,8 +641,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.monOptional?.length > 1) {
-              pm = restaurant.monOptional.split(" - ")[1];
+            if (restaurant?.monOptional?.length > 1) {
+              pm = restaurant?.monOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -599,10 +659,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (tue) {
-          if (restaurant.tue === "Closed") {
+          if (restaurant?.tue === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.tue.split(" - ")[0];
+            let am = restaurant?.tue.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -611,8 +671,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.tueOptional?.length > 1) {
-              am = restaurant.tueOptional.split(" - ")[0];
+            if (restaurant?.tueOptional?.length > 1) {
+              am = restaurant?.tueOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -622,7 +682,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.tue.split(" - ")[1];
+            let pm = restaurant?.tue.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -633,8 +693,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.tueOptional?.length > 1) {
-              pm = restaurant.tueOptional.split(" - ")[1];
+            if (restaurant?.tueOptional?.length > 1) {
+              pm = restaurant?.tueOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -651,10 +711,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (wed) {
-          if (restaurant.wed === "Closed") {
+          if (restaurant?.wed === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.wed.split(" - ")[0];
+            let am = restaurant?.wed.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -663,8 +723,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.wedOptional?.length > 1) {
-              am = restaurant.wedOptional.split(" - ")[0];
+            if (restaurant?.wedOptional?.length > 1) {
+              am = restaurant?.wedOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -674,7 +734,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.wed.split(" - ")[1];
+            let pm = restaurant?.wed.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -685,8 +745,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.wedOptional?.length > 1) {
-              pm = restaurant.wedOptional.split(" - ")[1];
+            if (restaurant?.wedOptional?.length > 1) {
+              pm = restaurant?.wedOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -703,10 +763,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (thu) {
-          if (restaurant.thu === "Closed") {
+          if (restaurant?.thu === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.thu.split(" - ")[0];
+            let am = restaurant?.thu.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -715,8 +775,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.thuOptional?.length > 1) {
-              am = restaurant.thuOptional.split(" - ")[0];
+            if (restaurant?.thuOptional?.length > 1) {
+              am = restaurant?.thuOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -726,7 +786,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.thu.split(" - ")[1];
+            let pm = restaurant?.thu.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -737,8 +797,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.thuOptional?.length > 1) {
-              pm = restaurant.thuOptional.split(" - ")[1];
+            if (restaurant?.thuOptional?.length > 1) {
+              pm = restaurant?.thuOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -755,10 +815,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (fri) {
-          if (restaurant.fri === "Closed") {
+          if (restaurant?.fri === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.fri.split(" - ")[0];
+            let am = restaurant?.fri.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -767,8 +827,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.friOptional?.length > 1) {
-              am = restaurant.friOptional.split(" - ")[0];
+            if (restaurant?.friOptional?.length > 1) {
+              am = restaurant?.friOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -778,7 +838,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.fri.split(" - ")[1];
+            let pm = restaurant?.fri.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -789,8 +849,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.friOptional?.length > 1) {
-              pm = restaurant.friOptional.split(" - ")[1];
+            if (restaurant?.friOptional?.length > 1) {
+              pm = restaurant?.friOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -807,10 +867,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sat) {
-          if (restaurant.sat === "Closed") {
+          if (restaurant?.sat === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.sat.split(" - ")[0];
+            let am = restaurant?.sat.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -819,8 +879,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.satOptional?.length > 1) {
-              am = restaurant.satOptional.split(" - ")[0];
+            if (restaurant?.satOptional?.length > 1) {
+              am = restaurant?.satOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -830,7 +890,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.sat.split(" - ")[1];
+            let pm = restaurant?.sat.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -841,8 +901,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.satOptional?.length > 1) {
-              pm = restaurant.satOptional.split(" - ")[1];
+            if (restaurant?.satOptional?.length > 1) {
+              pm = restaurant?.satOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -859,10 +919,10 @@ const RestaurantShowPage = () => {
             }
           }
         } else if (sun) {
-          if (restaurant.sun === "Closed") {
+          if (restaurant?.sun === "Closed") {
             setRestaurantOpen(false);
           } else {
-            let am = restaurant.sun.split(" - ")[0];
+            let am = restaurant?.sun.split(" - ")[0];
             let [amHr, amMin] = am.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
@@ -871,8 +931,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.sunOptional?.length > 1) {
-              am = restaurant.sunOptional.split(" - ")[0];
+            if (restaurant?.sunOptional?.length > 1) {
+              am = restaurant?.sunOptional.split(" - ")[0];
               [amHr, amMin] = am.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
@@ -882,7 +942,7 @@ const RestaurantShowPage = () => {
               }
             }
 
-            let pm = restaurant.sun.split(" - ")[1];
+            let pm = restaurant?.sun.split(" - ")[1];
             let [pmHr, pmMin] = pm.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
@@ -893,8 +953,8 @@ const RestaurantShowPage = () => {
               }
             }
 
-            if (restaurant.sunOptional?.length > 1) {
-              pm = restaurant.sunOptional.split(" - ")[1];
+            if (restaurant?.sunOptional?.length > 1) {
+              pm = restaurant?.sunOptional.split(" - ")[1];
               [pmHr, pmMin] = pm.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
@@ -1623,14 +1683,104 @@ const RestaurantShowPage = () => {
                                 fontSize: "1.3vw",
                               }}
                             >
-                              {userReview.reviewerFn[0]}
-                              {userReview.reviewerLn[0]}
+                              {userReview?.reviewerFn[0]}
+                              {userReview?.reviewerLn[0]}
                             </Avatar>
                           </div>
                           <div className="reviewer-name">
-                            <span>{userReview.reviewerFn}</span>
-                            <span>{userReview.reviewerLn}</span>
+                            <span>{userReview?.reviewerFn}</span>
+                            <span>{userReview?.reviewerLn}</span>
                           </div>
+                          {sessionUser?.id === userReview?.userId ? (
+                            <span className="more-options-btn">
+                              <IconButton
+                                id="simple-button"
+                                aria-controls={open ? "basic-menu" : null}
+                                aria-expanded={open ? "true" : null}
+                                aria-haspopup="true"
+                                aria-label="Click to show more options"
+                                title="More options"
+                                onClick={handleAnchorClick}
+                                sx={{
+                                  fontSize: "1.8vw",
+                                  position: "relative",
+                                  left: "1.5vw",
+                                  "&:hover": { backgroundColor: "#E2E2E6" },
+                                }}
+                              >
+                                <MoreHorizIcon
+                                  sx={{ fontSize: "1.8vw", color: "#2D2E2F" }}
+                                />
+                              </IconButton>
+                              <Menu
+                                id="simple-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                  "aria-labelledby": "simple-button",
+                                }}
+                                sx={{ lineHeight: "1em" }}
+                              >
+                                <MenuItem
+                                  onClick={(e) =>
+                                    handleUpdate(e, userReview.id)
+                                  }
+                                  sx={{
+                                    fontSize: "1vw",
+                                    fontWeight: "600",
+                                    "&:hover": { backgroundColor: "#E2E2E6" },
+                                  }}
+                                >
+                                  Update Review
+                                </MenuItem>
+                                <MenuItem
+                                  onClick={showModal}
+                                  sx={{
+                                    fontSize: "1vw",
+                                    fontWeight: "600",
+                                    "&:hover": { backgroundColor: "#E2E2E6" },
+                                  }}
+                                >
+                                  Remove Review
+                                </MenuItem>
+                              </Menu>
+                              <Modal
+                                open={openModal}
+                                onClose={handleCloseModal}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                              >
+                                <Box className="modal-content" sx={myBoxStyle}>
+                                  <div className="modal-title">
+                                    Remove Review
+                                  </div>
+                                  <div className="modal-text">
+                                    Are you sure you want to remove this review?
+                                    It can help the restaurants improve their
+                                    services the more reviews they get.
+                                  </div>
+                                  <div className="modal-btn-gp">
+                                    <div
+                                      className="modal-btn"
+                                      onClick={handleCloseModal}
+                                    >
+                                      Keep Review
+                                    </div>
+                                    <div
+                                      className="modal-btn"
+                                      onClick={(e) =>
+                                        handleRemove(e, userReview.id)
+                                      }
+                                    >
+                                      Confirm Remove
+                                    </div>
+                                  </div>
+                                </Box>
+                              </Modal>
+                            </span>
+                          ) : null}
+
                           <div className="sp-review-rating">
                             <ReviewRating
                               averageRating={userReview.rating}

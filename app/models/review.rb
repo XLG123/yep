@@ -32,5 +32,13 @@ class Review < ApplicationRecord
   def add_review
     business.add_review
   end
+
+  def delete_review
+    business.delete_review
+  end
+
+  def update_rating
+    business.update_rating
+  end
 end
 

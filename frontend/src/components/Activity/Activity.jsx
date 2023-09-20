@@ -56,17 +56,17 @@ const Activity = () => {
                 >
                   <div className="review-restaurant-name">
                     {
-                      selectedRestaurants.find(
+                      selectedRestaurants?.find(
                         (restaurant) => restaurant.id === review.businessId
-                      ).name
+                      )?.name
                     }
                   </div>
                   <div className="review-rest-pic-container">
                     <img
                       src={
-                        selectedRestaurants.find(
+                        selectedRestaurants?.find(
                           (restaurant) => restaurant.id === review.businessId
-                        ).pictureUrls[0]
+                        )?.pictureUrls[0]
                       }
                       alt="img"
                       className="review-rest-pic"

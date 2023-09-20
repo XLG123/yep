@@ -2,6 +2,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import "./AverageRating.css";
+import { useDispatch } from 'react-redux';
 
 const AverageRating = ({averageRating, totalReviews}) => {
 

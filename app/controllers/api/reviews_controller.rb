@@ -16,6 +16,20 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find_by(id: params[:id])
+    @review.user_id = current_user.id
+    @review.reviewer_fn = current_user.first_name
+    @review.reviewer_ln = current_user.last_name
+
+    if @review && @review.update(review_params)
+      @review.business.update_rating
+      render json: @review
+    else
+      render json: @review.errors.full_messages, status: 422
+    end
+  end
+
   def index
     @reviews = Review.all.order(created_at: :desc)
     if @reviews
@@ -26,7 +40,8 @@ class Api::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     if @review && @review.user_id == current_user.id
-      @review.destory
+      @review.destroy
+      @review.business.delete_review
     end
   end
   
