@@ -60,7 +60,7 @@ const MapBuilder = ({restaurants}) => {
             animation={window.google.maps.Animation.DROP}
             label={{
               text: `${idx+1}`, 
-              fontSize: '1vw', fontWeight: 'bold',
+              fontSize: '0.8vw', fontWeight: 'bold',
               color: 'inherit', fontFamily: 'inherit'}}
             onClick={() => handleClick(idx)}>
 
@@ -82,7 +82,7 @@ const MapBuilder = ({restaurants}) => {
                     className="info-img"/>
                   <p className="info-title">{restaurant.name}</p>
                   <AverageRating averageRating=
-                  {restaurant.averageRating}/>
+                  {restaurant.averageRating} totalReviews={restaurant.totalReviews}/>
                 </div>
               </InfoWindow>
             </NavLink> : null}

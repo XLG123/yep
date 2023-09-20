@@ -2,9 +2,8 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import "./AverageRating.css";
-import { useDispatch } from 'react-redux';
 
-const AverageRating = ({averageRating, totalReviews}) => {
+const ReviewRating = ({averageRating, ratingTime}) => {
 
   const displayRating = (averageRating) => {
     let icons = []
@@ -150,21 +149,10 @@ const AverageRating = ({averageRating, totalReviews}) => {
         <span className="average-rating-icon">
           {displayRating(averageRating)}
         </span>
-
-        <span className="average-rating-num">{averageRating}</span>
-
-        <span className="total-reviews">
-          (
-          {totalReviews === 0
-            ? "0 review"
-            : totalReviews === 1
-            ? "1 review"
-            : `${totalReviews} reviews`}
-          )
-        </span>
+        <span className="rating-time">{ratingTime}</span>
       </div>
     </>
   );
 }
 
-export default AverageRating;
+export default ReviewRating;

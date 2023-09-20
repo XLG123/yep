@@ -56,17 +56,21 @@
   border: 1px solid rgba(200, 201, 202, 1);
 }
 
-.filter-bar-container2 {
-  margin-top: 6vh;
+.filter-bar-container2,
+.filter-bar-container3 {
+  margin-top: 4vh;
+}
+
+@media screen and (width <= 1440px) {
+  .filter-bar-container2,
+  .filter-bar-container3 {
+    margin-top: 6vh;
+  }
 }
 
 .filter-btn-group2 {
   border: 1px solid rgba(200, 201, 202, 1);
   width: 6vw;
-}
-
-.filter-bar-container3 {
-  margin-top: 6vh;
 }
 
 .average-rating-filter {

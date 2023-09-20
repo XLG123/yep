@@ -1,7 +1,7 @@
 class Api::RestaurantsController < ApplicationController
 
   wrap_parameters include: Business.attribute_names + 
-    ['zipCode', 'priceRange', 'phoneNumber', 'averageRating']
+    ['zipCode', 'priceRange', 'phoneNumber', 'averageRating', 'totalReviews']
 
   def index
     @restaurants = Business.all
@@ -11,7 +11,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Business.includes(:reviews).find(params[:id])
+    @restaurant = Business.find(params[:id])
       if @restaurant
         render 'api/restaurants/show'
       end
@@ -28,7 +28,7 @@ class Api::RestaurantsController < ApplicationController
       search_params.gsub!("%20", " ")
       search_params.gsub!("%27", "'")
       search_params = search_params.downcase
-      @restaurants = Business.where("LOWER(name) LIKE ?", 
+      @restaurants = Business.includes(:reviews).where("LOWER(name) LIKE ?", 
         "%#{search_params}%")
     else
       return null

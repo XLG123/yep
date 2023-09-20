@@ -39,8 +39,12 @@
 }
 
 .bp-average-rating {
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   color: #2D2E2F;
+}
+
+.bp-average-rating .total-reviews {
+  color: #6E7072;
 }
 
 .restaurant-details {

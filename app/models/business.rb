@@ -29,6 +29,15 @@
 #  take_out       :boolean
 #  wifi           :boolean
 #  reservation    :boolean
+#  mon_optional   :string
+#  tue_optional   :string
+#  wed_optional   :string
+#  thu_optional   :string
+#  fri_optional   :string
+#  sat_optional   :string
+#  sun_optional   :string
+#  claimed        :boolean          not null
+#  total_reviews  :integer
 #
 class Business < ApplicationRecord
   validates :name, :city, :state, presence: true
@@ -45,6 +54,7 @@ class Business < ApplicationRecord
   validates :sat, presence: true
   validates :sun, presence: true
   validates :web_url, presence: true
+  validates :claimed, presence: true, allow_blank: true
 
   has_many_attached :picture
 
@@ -56,4 +66,39 @@ class Business < ApplicationRecord
   has_many :reviewers,
     through: :reviews,
     source: :user
+
+  def add_review
+    new_total_reviews = total_reviews + 1
+    update(total_reviews: new_total_reviews)
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    new_average_rating = total_rating / new_total_reviews.to_f
+    update(average_rating: new_average_rating.round(2))
+  end
+
+  def delete_review
+    new_total_reviews = total_reviews - 1
+    update(total_reviews: new_total_reviews)
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    if total_rating == 0
+      update(average_rating: 0)
+    else
+      new_average_rating = total_rating / new_total_reviews.to_f
+      update(average_rating: new_average_rating.round(2))
+    end
+  end
+
+  def update_rating
+    total_rating = 0
+    reviews.each do |review|
+      total_rating += review.rating
+    end
+    new_average_rating = total_rating / total_reviews.to_f
+    update(average_rating: new_average_rating.round(2))
+  end
 end

@@ -1,5 +1,8 @@
 import { useLocation } from "react-router-dom";
-import { fetchRestaurantsWithQuery, getRestaurants } from "../../store/restaurants";
+import {
+  fetchRestaurantsWithQuery,
+  getRestaurants,
+} from "../../store/restaurants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MapBuilder from "../MapBuilder/MapBuilder";
@@ -12,12 +15,22 @@ const SearchResult = () => {
   // check search item in the front end before sending it to the backend for
   // filteration
   const categoryTerms = [
-    'japanese', 'chinese', 'thai', 'french', 'italian', 'mexican',
-    'milk tea', 'pizza', 'ramen', 'sushi', 'tea', 'spagetti'
+    "japanese",
+    "chinese",
+    "thai",
+    "french",
+    "italian",
+    "mexican",
+    "milk tea",
+    "pizza",
+    "ramen",
+    "sushi",
+    "tea",
+    "spagetti",
   ];
 
   let searchItem = "";
-  
+
   let foodType = false;
   let nameParams = false;
 
@@ -34,22 +47,26 @@ const SearchResult = () => {
 
   if (searchItem === "pizza" || searchItem === "Pizza") {
     foodType = true;
-  } 
-  
+  }
+
   if (searchItem === "spagetti" || searchItem === "Spagetti") {
     backendSearchItem = "Italian";
     foodType = true;
   }
-  
+
   if (searchItem === "ramen" || searchItem === "Ramen") {
     foodType = true;
   }
-  
+
   if (searchItem === "sushi" || searchItem === "Sushi") {
     foodType = true;
   }
-  
-  if (searchItem === "tea" || searchItem === "Tea") {
+
+  if (
+    searchItem === "tea" ||
+    searchItem === "Tea" ||
+    "milk tea".includes(searchItem.toLowerCase())
+  ) {
     foodType = true;
   }
 
@@ -62,48 +79,69 @@ const SearchResult = () => {
     backendSearchItem = "Joe's Pizza";
   }
 
+  if (searchItem.toLowerCase() === "amelie") {
+    backendSearchItem = "Amélie";
+  }
+
   const restaurants = useSelector(getRestaurants);
 
   useEffect(() => {
-    if (categoryTerms.includes(searchItem.toLowerCase())) {
-      dispatch(fetchRestaurantsWithQuery(`?category=${backendSearchItem}`));
-    } else if (searchItem.toLowerCase() === "milk%20tea") {
+    if (categoryTerms.find((term) => term.includes(searchItem.toLowerCase())))
+    {
+      dispatch(fetchRestaurantsWithQuery(`?category=${categoryTerms.find((term) => term.includes(searchItem.toLowerCase()))}`));
+    } else if ("milk%20tea".includes(searchItem.toLowerCase())) {
       dispatch(fetchRestaurantsWithQuery(`?category=Milk`));
     } else {
       dispatch(fetchRestaurantsWithQuery(`?name=${backendSearchItem}`));
     }
   }, [searchItem]);
 
+  backendSearchItem = backendSearchItem.replaceAll("%27", "'");
+
   return (
     <>
       <div className="bp-line-break"></div>
-      { searchItem ? 
+      {searchItem ? (
         <div className="business-page-container">
-
           <div className="left-side-bar">
             <Filter />
           </div>
 
           <div className="main-content">
             <div className="search-result-container">
-
-              {foodType && !nameParams ? 
+              {foodType && !nameParams ? (
                 <h1 className="search-result-title">
-                  {`${backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1)}`}</h1> :
-                    !foodType && !nameParams ? 
-                    <h1 className="search-result-title">
-                    {`${backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1).toLowerCase()} Cuisine`}
-                    </h1> :
-                    <h1 className="search-result-title">
-                      {`${backendSearchItem[0].toUpperCase()}` + backendSearchItem.slice(1).replace("%20", " ")}
-                    </h1>}
+                  Search results for&nbsp;
+                  {`${
+                    backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1)
+                  }`}
+                </h1>
+              ) : !foodType && !nameParams ? (
+                <h1 className="search-result-title">
+                  Search results for&nbsp;
+                  {`${
+                    backendSearchItem[0].toUpperCase() +
+                    backendSearchItem.slice(1).toLowerCase()
+                  }`}
+                </h1>
+              ) : (
+                <h1 className="search-result-title">
+                  Search results for&nbsp;
+                  {`${backendSearchItem[0].toUpperCase()}` +
+                    backendSearchItem.slice(1).replaceAll("%20", " ")}
+                </h1>
+              )}
 
               <div className="scrollable-result-container">
-                {restaurants && restaurants.map((restaurant, idx) =>
-                  <Restaurant key={restaurant.id} restaurant={restaurant} 
-                  index={idx}/>)}
+                {restaurants &&
+                  restaurants.map((restaurant, idx) => (
+                    <Restaurant
+                      key={restaurant.id}
+                      restaurant={restaurant}
+                      index={idx}
+                    />
+                  ))}
               </div>
             </div>
           </div>
@@ -113,11 +151,12 @@ const SearchResult = () => {
               <MapBuilder restaurants={restaurants} />
             </div>
           </div>
-
-        </div> : <div></div>
-      }
+        </div>
+      ) : (
+        <div></div>
+      )}
     </>
   );
-}
+};
 
 export default SearchResult;

@@ -27,6 +27,12 @@
   padding: 1vh 1vw;
   width: 8vw;
   font-size: 0.8vw;
+  backdrop-filter: blur(10px);
+}
+
+.non-hp-profile li:first-child,
+.non-hp-profile li:nth-child(2){
+  color: white !important;
 }
 
 .logout-btn {

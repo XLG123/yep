@@ -10,6 +10,7 @@ import RestaurantShowPage from "./components/BusinessesPage/RestaurantShowPage";
 import SearchResult from "./components/SearchBar/SearchResult";
 import SearchError from "./components/SearchBar/SearchError";
 import WriteReview from "./components/Review/WriteReview";
+import UpdateReview from "./components/Review/UpdateReview";
 
 export default function App() {
 
@@ -40,6 +41,8 @@ export default function App() {
 
         <Route exact path="restaurants/:restaurantId/writeareview" 
           element={<WriteReview/>}></Route>
+
+        <Route exact path="reviews/:reviewId/updateareview" element={<UpdateReview/>}></Route>
 
       </Routes>
     </>
