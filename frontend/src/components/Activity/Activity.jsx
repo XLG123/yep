@@ -48,7 +48,7 @@ const Activity = () => {
             {recentReviews?.map((review) => (
               <li
                 className="activity-recent-review"
-                key={review.id + review.businessId}
+                key={review.id}
               >
                 <NavLink
                   to={`/restaurants/${review.businessId}`}
