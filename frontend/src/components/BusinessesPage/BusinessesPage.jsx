@@ -26,7 +26,7 @@ const BusinessesPage = () => {
     dispatch(fetchRestaurants());
     setTimeout(() => {
       setFinishLoading(true);
-    }, 2000);
+    }, 3000);
   }, [dispatch]);
 
   return (

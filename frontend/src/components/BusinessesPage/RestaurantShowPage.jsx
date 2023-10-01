@@ -153,6 +153,10 @@ const RestaurantShowPage = () => {
     dispatch(fetchReviews());
   }, [restReviews?.length])
 
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [])
+
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
       let currentDate = new Date();

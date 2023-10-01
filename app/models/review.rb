@@ -15,7 +15,6 @@
 class Review < ApplicationRecord
   validates :rating, presence: true, inclusion: { in: 1..5 }
   validates :body, presence: true
-  validates :user_id, uniqueness: { scope: :business_id }
 
   belongs_to :user,
     primary_key: :id,
