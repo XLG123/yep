@@ -11,6 +11,7 @@ import SearchResult from "./components/SearchBar/SearchResult";
 import SearchError from "./components/SearchBar/SearchError";
 import WriteReview from "./components/Review/WriteReview";
 import UpdateReview from "./components/Review/UpdateReview";
+import SeeYouSoon from "./components/SeeYouSoon/SeeYouSoon";
 
 export default function App() {
 
@@ -42,7 +43,10 @@ export default function App() {
         <Route exact path="restaurants/:restaurantId/writeareview" 
           element={<WriteReview/>}></Route>
 
-        <Route exact path="reviews/:reviewId/updateareview" element={<UpdateReview/>}></Route>
+        <Route exact path="reviews/:reviewId/updateareview" 
+          element={<UpdateReview/>}></Route>
+
+        <Route exact path="seeyousoon" element={<SeeYouSoon />}></Route>
 
       </Routes>
     </>

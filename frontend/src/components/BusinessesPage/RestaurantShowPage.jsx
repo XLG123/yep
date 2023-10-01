@@ -1792,6 +1792,7 @@ const RestaurantShowPage = () => {
                                   })
                                   .split(",")[0]
                               }
+                              edited={userReview.createdAt !== userReview.updatedAt ? true : false}
                             />
                           </div>
                           <div className="sp-review-body">

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./UserProfile.css";
+import { useNavigate } from "react-router-dom";
 // import Avatar from "@mui/material/Avatar"; //avatar for users
 
 const UserProfile = ({ user }) => {
@@ -25,9 +26,12 @@ const UserProfile = ({ user }) => {
     };
   }, [userProfile]);
 
+  const navigate = useNavigate();
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    navigate("/seeyousoon");
   };
 
   return (

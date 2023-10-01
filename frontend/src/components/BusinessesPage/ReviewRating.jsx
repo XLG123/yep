@@ -3,7 +3,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import "./AverageRating.css";
 
-const ReviewRating = ({averageRating, ratingTime}) => {
+const ReviewRating = ({averageRating, ratingTime, edited}) => {
 
   const displayRating = (averageRating) => {
     let icons = []
@@ -150,6 +150,7 @@ const ReviewRating = ({averageRating, ratingTime}) => {
           {displayRating(averageRating)}
         </span>
         <span className="rating-time">{ratingTime}</span>
+        {edited ? <span className="edited">Edited</span> : null}
       </div>
     </>
   );

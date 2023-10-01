@@ -347,8 +347,14 @@
 
 .rating-time {
   font-size: 1.2vw;
-  color: rgba(110, 112, 114, 1);
+  color: rgb(138, 141, 144);
   margin-left: 0.5vw;
+}
+
+.edited {
+  font-size: 1.2vw;
+  color: rgb(138, 141, 144);
+  margin-left: 1.5vw;
 }
 
 .sp-review-body {
