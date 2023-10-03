@@ -12,6 +12,7 @@ import SearchError from "./components/SearchBar/SearchError";
 import WriteReview from "./components/Review/WriteReview";
 import UpdateReview from "./components/Review/UpdateReview";
 import SeeYouSoon from "./components/SeeYouSoon/SeeYouSoon";
+import ErrorUrl from "./components/ErrorUrl/ErrorUrl";
 
 export default function App() {
 
@@ -47,6 +48,8 @@ export default function App() {
           element={<UpdateReview/>}></Route>
 
         <Route exact path="seeyousoon" element={<SeeYouSoon />}></Route>
+
+        <Route exact path="/:errorurl" element={<ErrorUrl />}></Route>
 
       </Routes>
     </>
