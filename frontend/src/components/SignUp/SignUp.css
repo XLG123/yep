@@ -45,6 +45,10 @@
   text-decoration: none;
 }
 
+#yep-msg a:hover {
+  text-decoration: underline;
+}
+
 #yep-msg a:visited {
   color: #0073bb;
 }
@@ -177,6 +181,10 @@
 .login-link {
   text-decoration: none;
   color: #0073bb;
+}
+
+.login-link:hover {
+  text-decoration: underline;
 }
 
 #login-link-1 {

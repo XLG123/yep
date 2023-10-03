@@ -94,14 +94,12 @@ const Login = () => {
           </p>
 
           <div id="yep-msg">
-            By continuing, you agree to Yep's
+            By continuing, you agree to Yep's{" "}
             <a href="https://terms.yelp.com/tos/en_us/20200101_en_us/">
-              {" "}
               Terms of Service
             </a>{" "}
-            and acknowledge Yep's
+            and acknowledge Yep's{" "}
             <a href="https://terms.yelp.com/privacy/en_us/20220831_en_us/">
-              {" "}
               Privacy Policy
             </a>
             .
