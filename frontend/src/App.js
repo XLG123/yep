@@ -13,6 +13,7 @@ import WriteReview from "./components/Review/WriteReview";
 import UpdateReview from "./components/Review/UpdateReview";
 import SeeYouSoon from "./components/SeeYouSoon/SeeYouSoon";
 import ErrorUrl from "./components/ErrorUrl/ErrorUrl";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
 
@@ -41,17 +42,18 @@ export default function App() {
         <Route exact path="/businesses/error" element={<SearchError />}>
         </Route>
 
-        <Route exact path="restaurants/:restaurantId/writeareview" 
+        <Route exact path="/restaurants/:restaurantId/writeareview" 
           element={<WriteReview/>}></Route>
 
-        <Route exact path="reviews/:reviewId/updateareview" 
+        <Route exact path="/reviews/:reviewId/updateareview" 
           element={<UpdateReview/>}></Route>
 
-        <Route exact path="seeyousoon" element={<SeeYouSoon />}></Route>
+        <Route exact path="/seeyousoon" element={<SeeYouSoon />}></Route>
 
         <Route exact path="/:errorurl" element={<ErrorUrl />}></Route>
 
       </Routes>
+      <Footer />
     </>
   );
 }
