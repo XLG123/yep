@@ -68,6 +68,7 @@
   top: 4vw;
   left: 30vw;
   font-size: 1vw;
+  z-index: 10;
 }
 
 .hp .search-dropdown-menu {

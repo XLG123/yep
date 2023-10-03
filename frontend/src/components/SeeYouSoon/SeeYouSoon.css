@@ -62,13 +62,34 @@
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.developer-tel-email {
+.developer-tel-email-container {
   margin-top: 1.2vw;
   outline: none;
 }
 
-.developer-tel-email:focus {
-  outline: none;
+.developer-tel-email {
+  width: 75%;
+  color: #333;
+  font-size: 0.9vw;
+  line-height: 1.5vw;
+}
+
+.developer-tel-container,
+.developer-email-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.developer-tel-container {
+  margin-bottom: 0.2vw;
+}
+
+.developer-tel,
+.developer-email {
+  color: #777;
+  font-size: 1.1vw;
+  line-height: 1.5vw;
 }
 
 .see-you-soon-picture {
