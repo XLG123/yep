@@ -1,8 +1,8 @@
 .see-you-soon-container {
-  margin-top: 6vw;
+  margin-top: 9vw;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 58%;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .see-you-soon-title div:last-child {
-  margin-bottom: 1.3vw;
+  margin-bottom: 1.5vw;
 }
 
 .see-you-soon-body p {
@@ -41,7 +41,7 @@
 .hp-share-btn,
 .portfolio-btn,
 .resume-btn {
-  width: 7vw;
+  width: 7.5vw;
   height: 2vw;
   background-color: transparent;
   border-radius: 4px;
@@ -63,7 +63,7 @@
 }
 
 .developer-tel-email-container {
-  margin-top: 1.2vw;
+  margin-top: 1.5vw;
   outline: none;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .developer-tel-container {
-  margin-bottom: 0.2vw;
+  margin-bottom: 0.35vw;
 }
 
 .developer-tel,
@@ -90,6 +90,18 @@
   color: #777;
   font-size: 1.1vw;
   line-height: 1.5vw;
+}
+
+.available-time-container {
+  margin-top: 0.6em;
+  font-size: 0.9vw;
+  color: #777;
+}
+
+@media screen and (width > 1440px) {
+  .available-time-container {
+    margin-top: 1em;
+  }
 }
 
 .see-you-soon-picture {

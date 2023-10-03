@@ -150,6 +150,9 @@ const SeeYouSoon = () => {
                     </a>
                   </Tooltip>
                 </div>
+                <div className="available-time-container">
+                  Available: Mon - Sat, 9:00 A.M. - 7:00 P.M.
+                </div>
               </div>
             </div>
           </div>
