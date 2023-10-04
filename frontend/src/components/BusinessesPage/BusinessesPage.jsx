@@ -7,6 +7,7 @@ import Loading from "../Loading/Loading";
 import Filter from "./Filter/Filter";
 import Restaurant from "./Restaurant";
 import MapBuilder from "../MapBuilder/MapBuilder";
+import Footer from "../Footer/Footer";
 
 const BusinessesPage = () => {
   const dispatch = useDispatch();
@@ -37,34 +38,37 @@ const BusinessesPage = () => {
       {!finishLoading ? (
         <Loading />
       ) : (
-        <div className="business-page-container">
-          <div className="left-side-bar">
-            <Filter />
-          </div>
+        <>
+          <div className="business-page-container">
+            <div className="left-side-bar">
+              <Filter />
+            </div>
 
-          <div className="main-content">
-            <div className="search-result-container">
-              <h1 className="search-result-title">
-                {searchItem ? `${searchItem} Cuisine` : "Restaurants"}
-              </h1>
-              <div className="scrollable-result-container">
-                {restaurants.map((restaurant, idx) => (
-                  <Restaurant
-                    key={restaurant.id}
-                    restaurant={restaurant}
-                    index={idx}
-                  />
-                ))}
+            <div className="main-content">
+              <div className="search-result-container">
+                <h1 className="search-result-title">
+                  {searchItem ? `${searchItem} Cuisine` : "Restaurants"}
+                </h1>
+                <div className="scrollable-result-container">
+                  {restaurants.map((restaurant, idx) => (
+                    <Restaurant
+                      key={restaurant.id}
+                      restaurant={restaurant}
+                      index={idx}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="right-side-bar">
+              <div className="google-map">
+                <MapBuilder restaurants={restaurants} />
               </div>
             </div>
           </div>
-
-          <div className="right-side-bar">
-            <div className="google-map">
-              <MapBuilder restaurants={restaurants} />
-            </div>
-          </div>
-        </div>
+          <Footer />
+        </>
       )}
     </>
   );

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Navigate } from "react-router-dom";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
 import "./Login.css";
+import Footer from "../Footer/Footer";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -152,6 +153,7 @@ const Login = () => {
           <img src={yepUserAuth} alt="User Auth" />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

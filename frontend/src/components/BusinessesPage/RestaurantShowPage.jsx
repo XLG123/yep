@@ -30,6 +30,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
+import Footer from "../Footer/Footer";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -1806,6 +1807,7 @@ const RestaurantShowPage = () => {
               </div>
             </div>
           )}
+          {/* <Footer /> */}
         </>
       )}
     </>

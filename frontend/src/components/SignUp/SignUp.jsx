@@ -5,6 +5,7 @@ import * as sessionActions from "../../store/session";
 import yepUserAuth from "../../assets/images/yepUserAuth.png";
 import PasswordStrengthBar from "react-password-strength-bar";
 import "./SignUp.css";
+import Footer from "../Footer/Footer";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -309,6 +310,7 @@ const SignUp = () => {
           <img src={yepUserAuth} alt="User Auth" />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

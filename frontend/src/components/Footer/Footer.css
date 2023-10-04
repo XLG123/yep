@@ -1,1 +1,114 @@
- 
+.footer-section-container,
+.login-footer-container,
+.signup-footer-container,
+.hp-footer-container,
+.restaurants-footer-container,
+.filter-footer-container,
+.search-footer-container {
+  background-color: rgb(247, 247, 247);
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-top: 3em;
+  padding: 2em 1em;
+  color: #2D2E2F;
+}
+
+.login-footer-container {
+  margin-top: 47vw;
+}
+
+.signup-footer-container {
+  margin-top: 53vw;
+}
+
+.hp-footer-container {
+  margin-top: 65vw;
+}
+
+.restaurants-footer-container,
+.search-footer-container {
+  margin-top: 57vw;
+}
+
+.filter-footer-container {
+  position: absolute;
+  top: 51vw;
+  width: 100%;
+}
+
+@media screen and (width > 1440px) {
+  .restaurants-footer-container,
+  .search-footer-container {
+    margin-top: 50vw;
+  }
+}
+
+@media screen and (width <= 1440px) {
+  .filter-footer-container {
+    top: 56vw;
+  }
+}
+
+.yep-footer-description {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.yep-name {
+  font-weight: 900;
+  font-size: 1.6vw;
+}
+
+.yep-name img {
+  width: 1.4vw;
+}
+
+.yep-description {
+  font-size: 1.1vw;
+  line-height: 1.5em;
+}
+
+.yep-technologies-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.footer-list-title {
+  font-weight: bold;
+  font-size: 1.2vw;
+  margin-bottom: 0.75em;
+}
+
+.list-first-child {
+  margin-bottom: 0.50em;
+}
+
+.list-first-child, .list-second-child {
+  font-size: 1vw;
+  color:#6e7072;
+}
+
+.copyright-container {
+  color: #6e7072;
+  font-size: 0.8vw;
+  text-align: center;
+  margin-top: 2.5em;
+}
+
+.footer-yeplogo {
+  width: 0.8vw;
+  font-weight: bold;
+  color: #2d2e2f;
+}
+
+.footer-yeplogo img {
+  width: inherit;
+}
+
+.yep-name-logo, .yep-copyright-logo {
+  filter: brightness(1.3);
+}

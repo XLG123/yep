@@ -13,7 +13,6 @@ import WriteReview from "./components/Review/WriteReview";
 import UpdateReview from "./components/Review/UpdateReview";
 import SeeYouSoon from "./components/SeeYouSoon/SeeYouSoon";
 import ErrorUrl from "./components/ErrorUrl/ErrorUrl";
-import Footer from "./components/Footer/Footer";
 
 export default function App() {
 
@@ -53,7 +52,6 @@ export default function App() {
         <Route exact path="/:errorurl" element={<ErrorUrl />}></Route>
 
       </Routes>
-      <Footer />
     </>
   );
 }

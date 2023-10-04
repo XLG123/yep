@@ -10,6 +10,7 @@ import ResumePDF from "../../assets/files/resume.pdf";
 import "./SeeYouSoon.css";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
+import Footer from "../Footer/Footer";
 
 const SeeYouSoon = () => {
   const handleCopyLink = (e) => {
@@ -151,7 +152,7 @@ const SeeYouSoon = () => {
                   </Tooltip>
                 </div>
                 <div className="available-time-container">
-                  Available: Mon - Sat, 9:00 A.M. - 7:00 P.M.
+                  Available: Mon - Sat, 9:00 A.M. - 7:00 P.M. EDT
                 </div>
               </div>
             </div>
@@ -162,6 +163,7 @@ const SeeYouSoon = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

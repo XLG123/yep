@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MapBuilder from "../MapBuilder/MapBuilder";
 import Filter from "../BusinessesPage/Filter/Filter";
 import Restaurant from "../BusinessesPage/Restaurant";
+import Footer from "../Footer/Footer";
 
 const SearchResult = () => {
   const dispatch = useDispatch();
@@ -102,56 +103,59 @@ const SearchResult = () => {
     <>
       <div className="bp-line-break"></div>
       {searchItem ? (
-        <div className="business-page-container">
-          <div className="left-side-bar">
-            <Filter />
-          </div>
+        <>
+          <div className="business-page-container">
+            <div className="left-side-bar">
+              <Filter />
+            </div>
 
-          <div className="main-content">
-            <div className="search-result-container">
-              {foodType && !nameParams ? (
-                <h1 className="search-result-title">
-                  Search results for&nbsp;
-                  {`${
-                    backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1)
-                  }`}
-                </h1>
-              ) : !foodType && !nameParams ? (
-                <h1 className="search-result-title">
-                  Search results for&nbsp;
-                  {`${
-                    backendSearchItem[0].toUpperCase() +
-                    backendSearchItem.slice(1).toLowerCase()
-                  }`}
-                </h1>
-              ) : (
-                <h1 className="search-result-title">
-                  Search results for&nbsp;
-                  {`${backendSearchItem[0].toUpperCase()}` +
-                    backendSearchItem.slice(1).replaceAll("%20", " ")}
-                </h1>
-              )}
+            <div className="main-content">
+              <div className="search-result-container">
+                {foodType && !nameParams ? (
+                  <h1 className="search-result-title">
+                    Search results for&nbsp;
+                    {`${
+                      backendSearchItem[0].toUpperCase() +
+                      backendSearchItem.slice(1)
+                    }`}
+                  </h1>
+                ) : !foodType && !nameParams ? (
+                  <h1 className="search-result-title">
+                    Search results for&nbsp;
+                    {`${
+                      backendSearchItem[0].toUpperCase() +
+                      backendSearchItem.slice(1).toLowerCase()
+                    }`}
+                  </h1>
+                ) : (
+                  <h1 className="search-result-title">
+                    Search results for&nbsp;
+                    {`${backendSearchItem[0].toUpperCase()}` +
+                      backendSearchItem.slice(1).replaceAll("%20", " ")}
+                  </h1>
+                )}
 
-              <div className="scrollable-result-container">
-                {restaurants &&
-                  restaurants.map((restaurant, idx) => (
-                    <Restaurant
-                      key={restaurant.id}
-                      restaurant={restaurant}
-                      index={idx}
-                    />
-                  ))}
+                <div className="scrollable-result-container">
+                  {restaurants &&
+                    restaurants.map((restaurant, idx) => (
+                      <Restaurant
+                        key={restaurant.id}
+                        restaurant={restaurant}
+                        index={idx}
+                      />
+                    ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="right-side-bar">
+              <div className="google-map">
+                <MapBuilder restaurants={restaurants} />
               </div>
             </div>
           </div>
-
-          <div className="right-side-bar">
-            <div className="google-map">
-              <MapBuilder restaurants={restaurants} />
-            </div>
-          </div>
-        </div>
+          <Footer />
+        </>
       ) : (
         <div></div>
       )}
