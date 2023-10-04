@@ -4,6 +4,7 @@ import MapBuilder from "../../MapBuilder/MapBuilder";
 import { useLocation } from "react-router-dom";
 import Restaurant from "../Restaurant";
 import Filter from "./Filter";
+import Footer from "../../Footer/Footer";
 
 const CategoryFilteredResult = () => {
   let categoryOption = useLocation().search.slice(10);
@@ -42,6 +43,7 @@ const CategoryFilteredResult = () => {
         </div>
 
       </div>
+      <Footer />
     </>
   );
 }

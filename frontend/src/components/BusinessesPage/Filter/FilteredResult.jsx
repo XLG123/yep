@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import RatingFilteredResult from "./RatingFilteredResult";
 import { useDispatch } from "react-redux";
 import { fetchRestaurants } from "../../../store/restaurants";
+import Footer from "../../Footer/Footer";
 
 const FilteredResult = () => {
   const filterOption = useLocation().search;
@@ -32,8 +33,8 @@ const FilteredResult = () => {
             filterOption.includes("price_range") ? <PriceRangeFilteredResult /> 
             : filterOption.includes("zip_code") ? <ZipCodeFilteredResult /> : 
             <RatingFilteredResult />}
+          <Footer />
         </div>}
-
     </>
   )
 }

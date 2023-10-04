@@ -60,7 +60,7 @@ const MapBuilder = ({restaurants}) => {
             animation={window.google.maps.Animation.DROP}
             label={{
               text: `${idx+1}`, 
-              fontSize: '0.8vw', fontWeight: 'bold',
+              fontSize: '1.2em', fontWeight: 'bold',
               color: 'inherit', fontFamily: 'inherit'}}
             onClick={() => handleClick(idx)}>
 

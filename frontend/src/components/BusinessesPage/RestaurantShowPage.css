@@ -43,7 +43,7 @@
 
 .unscrollable-info {
   position: absolute;
-  z-index: 10;
+  z-index: 8;
   top: 17vw;
   left: 6vw;
   border-radius: 4px;
@@ -265,7 +265,6 @@
 .sp-rest-reviews-container {
   position: absolute;
   top: 58vw;
-  left: 6vw;
 }
 
 .share-btn {
@@ -304,6 +303,11 @@
 
 .empty-reviews-container {
   font-size: 1.2vw;
+  padding-left: 6vw;
+}
+
+.reviews-container {
+  padding-left: 6vw;
 }
 
 .sp-review {
@@ -347,8 +351,14 @@
 
 .rating-time {
   font-size: 1.2vw;
-  color: rgba(110, 112, 114, 1);
+  color: rgb(138, 141, 144);
   margin-left: 0.5vw;
+}
+
+.edited {
+  font-size: 1.2vw;
+  color: rgb(138, 141, 144);
+  margin-left: 1.5vw;
 }
 
 .sp-review-body {

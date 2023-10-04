@@ -8,6 +8,10 @@
   color: #0073bb;
 }
 
+.signup-link:hover {
+  text-decoration: underline;
+}
+
 #signup-link-1 {
   font-weight: bold;
   font-size: 1vw;

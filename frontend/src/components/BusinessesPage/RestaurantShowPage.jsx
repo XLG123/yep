@@ -30,6 +30,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
+import Yeplogo from "../../assets/images/yepLogo2.png";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -152,6 +153,10 @@ const RestaurantShowPage = () => {
     dispatch(fetchRestaurant(restaurantId));
     dispatch(fetchReviews());
   }, [restReviews?.length])
+
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [])
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
@@ -977,7 +982,7 @@ const RestaurantShowPage = () => {
       {!finishLoading ? (
         <Loading />
       ) : (
-        <>
+        <div className="sp-wrapper">
           {restaurant && (
             <div className="restaurant-sp-container">
               <div className="main-bg-scrollable-container">
@@ -1788,6 +1793,7 @@ const RestaurantShowPage = () => {
                                   })
                                   .split(",")[0]
                               }
+                              edited={userReview.createdAt !== userReview.updatedAt ? true : false}
                             />
                           </div>
                           <div className="sp-review-body">
@@ -1798,10 +1804,58 @@ const RestaurantShowPage = () => {
                     </ul>
                   </div>
                 )}
+                <footer className="sp-rest-footer-container">
+                  <div className="yep-footer-description">
+                    <div className="yep-name">
+                      Yep!
+                      <img src={Yeplogo} alt="footer logo" className="yep-name-logo" />
+                    </div>
+                    <div className="yep-description">
+                      An online platform where one can browse local restaurants, write &
+                      read reviews.
+                    </div>
+                  </div>
+
+                  <div className="yep-technologies-container">
+                    <div className="frontend-container">
+                      <div className="footer-list-title">Frontend</div>
+                      <div className="list-first-child">React</div>
+                      <div className="list-second-child">CSS</div>
+                    </div>
+                    
+                    <div className="backend-container">
+                      <div className="footer-list-title">Backend</div>
+                      <div className="list-first-child">Rails</div>
+                      <div className="list-second-child">PSQL</div>
+                    </div>
+
+                    <div className="other-tech-container">
+                      <div className="footer-list-title">Technology</div>
+                      <div className="list-first-child">AWS S3</div>
+                      <div className="list-second-child">Google Maps API</div>
+                    </div>
+
+                    <div className="upcoming-feature-container">
+                      <div className="footer-list-title">Upcoming features</div>
+                      <div className="list-first-child">User Profile</div>
+                      <div className="list-second-child">Multiple Language Support</div>
+                    </div>
+                  </div>
+
+                  <div className="copyright-container">
+                    &copy; Copyright 2023{" "}
+                    <span className="footer-yeplogo">
+                      Yep!
+                      <img src={Yeplogo} alt="footer logo" className="yep-copyright-logo" />
+                    </span>
+                  </div>
+
+                </footer>
               </div>
+
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );
