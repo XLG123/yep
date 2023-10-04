@@ -4,14 +4,32 @@ import "./Footer.css";
 
 const Footer = () => {
   const currUrl = useLocation().pathname;
-  console.log(currUrl);
+  console.log(currUrl.split("/")[2]);
 
   return (
-    <footer className={currUrl === "/login" ? "login-footer-container" : currUrl === "/signup" ? "signup-footer-container" : currUrl === "/" ? "hp-footer-container" : currUrl === "/restaurants" ? "restaurants-footer-container" : currUrl === "/restaurants/filter" ? "filter-footer-container" : currUrl === "/businesses/search" ? "search-footer-container" : "footer-section-container"}>
+    <footer
+      className={
+        currUrl === "/login"
+          ? "login-footer-container"
+          : currUrl === "/signup"
+          ? "signup-footer-container"
+          : currUrl === "/"
+          ? "hp-footer-container"
+          : currUrl === "/restaurants"
+          ? "restaurants-footer-container"
+          : currUrl === "/restaurants/filter"
+          ? "filter-footer-container"
+          : currUrl === "/businesses/search"
+          ? "search-footer-container"
+          : currUrl === "/businesses/error"
+          ? "search-error-footer-container"
+          : "footer-section-container"
+      }
+    >
       <div className="yep-footer-description">
         <div className="yep-name">
           Yep!
-          <img src={Yeplogo} alt="footer logo" className="yep-name-logo"/>
+          <img src={Yeplogo} alt="footer logo" className="yep-name-logo" />
         </div>
         <div className="yep-description">
           An online platform where one can browse local restaurants, write &
@@ -44,7 +62,7 @@ const Footer = () => {
         &copy; Copyright 2023{" "}
         <span className="footer-yeplogo">
           Yep!
-          <img src={Yeplogo} alt="footer logo" className="yep-copyright-logo"/>
+          <img src={Yeplogo} alt="footer logo" className="yep-copyright-logo" />
         </span>
       </div>
     </footer>

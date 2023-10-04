@@ -4,12 +4,19 @@
 .hp-footer-container,
 .restaurants-footer-container,
 .filter-footer-container,
-.search-footer-container {
+.search-footer-container,
+.search-error-footer-container,
+.sp-rest-footer-container {
   background-color: rgb(247, 247, 247);
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin-top: 3em;
   padding: 2em 1em;
   color: #2D2E2F;
+}
+
+.sp-rest-footer-container {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .login-footer-container {
@@ -25,7 +32,8 @@
 }
 
 .restaurants-footer-container,
-.search-footer-container {
+.search-footer-container,
+.search-error-footer-container {
   margin-top: 57vw;
 }
 
@@ -35,9 +43,15 @@
   width: 100%;
 }
 
+.sp-rest-footer-container {
+  margin-top: 8em;
+  width: 100vw !important;
+}
+
 @media screen and (width > 1440px) {
   .restaurants-footer-container,
-  .search-footer-container {
+  .search-footer-container,
+  .search-error-footer-container {
     margin-top: 50vw;
   }
 }
@@ -52,6 +66,13 @@
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.sp-rest-footer-container:has(.yep-footer-description) {
+  .yep-footer-description {
+    width: 100%;
+    padding-left: 6vw;
+  }
 }
 
 .yep-name {
@@ -75,6 +96,13 @@
   margin-top: 1em;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+}
+
+.sp-rest-footer-container:has(.yep-technologies-container) {
+  .yep-technologies-container {
+    width: 100%;
+    padding-left: 6vw;
+  }
 }
 
 .footer-list-title {
