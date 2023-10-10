@@ -1668,6 +1668,7 @@ const RestaurantShowPage = () => {
               </div>
 
               <div className="sp-rest-reviews-container">
+                <div className="reviews-linebreak"></div>
                 {restReviews?.length === 0 ? (
                   <div className="empty-reviews-container">
                     Be the first to leave a review
@@ -1810,25 +1811,45 @@ const RestaurantShowPage = () => {
                           <div className="reaction-button-group">
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
-                                <LightbulbCircleIcon sx={{color: "rgb(138, 141, 144)", fontSize: "2vw"}}/>
+                                <LightbulbCircleIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
                               </div>{" "}
                               <div className="reaction-btn-text">Helpful</div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
-                                <RecommendIcon sx={{color: "rgb(138, 141, 144)", fontSize: "2vw"}}/>
+                                <RecommendIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
                               </div>
                               <div className="reaction-btn-text">Thanks</div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
-                                <FavoriteIcon sx={{color: "rgb(138, 141, 144)", fontSize: "2vw"}}/>
+                                <FavoriteIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
                               </div>
                               <div className="reaction-btn-text">Love this</div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
-                                <MoodBadIcon sx={{color: "rgb(138, 141, 144)", fontSize: "2vw"}}/>
+                                <MoodBadIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
                               </div>
                               <div className="reaction-btn-text">Oh no</div>
                             </span>

@@ -294,11 +294,15 @@
 }
 
 .sp-rest-reviews-container {
-  border-top: 1px solid rgba(200, 201, 202, 1);
   width: 88%;
-  padding-top: 1em;
   padding-bottom: 1em;
   color: #2D2E2F;
+}
+
+.reviews-linebreak {
+  border-top: 1px solid rgb(200, 201, 202);
+  margin-left: 6vw;
+  margin-bottom: 1em;
 }
 
 .empty-reviews-container {
@@ -385,7 +389,7 @@
 
 .reaction-btn-text {
   color: rgb(138, 141, 144);
-  font-size: 1vw;
+  font-size: 0.9vw;
 }
 
 .more-options-btn {
