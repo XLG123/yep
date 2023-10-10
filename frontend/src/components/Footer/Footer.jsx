@@ -4,6 +4,7 @@ import "./Footer.css";
 
 const Footer = () => {
   const currUrl = useLocation().pathname;
+  console.log(currUrl);
   // console.log(currUrl.split("/")[2]);
 
   return (
@@ -23,10 +24,16 @@ const Footer = () => {
           ? "search-footer-container"
           : currUrl === "/businesses/error"
           ? "search-error-footer-container"
+          : currUrl === "/"
+          ? "hp-footer-container"
           : "footer-section-container"
       }
     >
-      <div className="yep-footer-description">
+      <div
+        className={
+          currUrl === "/" ? "hp-footer-description" : "yep-footer-description"
+        }
+      >
         <div className="yep-name">
           Yep!
           <img src={Yeplogo} alt="footer logo" className="yep-name-logo" />
@@ -36,7 +43,13 @@ const Footer = () => {
           read reviews.
         </div>
       </div>
-      <div className="yep-technologies-container">
+      <div
+        className={
+          currUrl === "/"
+            ? "hp-technologies-container"
+            : "yep-technologies-container"
+        }
+      >
         <div className="frontend-container">
           <div className="footer-list-title">Frontend</div>
           <div className="list-first-child">React</div>

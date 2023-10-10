@@ -3,7 +3,9 @@ import "./FoodBG.css";
 
 const FoodBG = () => {
   return (
-    <div id="food-bg"></div>
+    <div id="food-bg">
+      <div className=""></div>
+    </div>
   );
 }
 
