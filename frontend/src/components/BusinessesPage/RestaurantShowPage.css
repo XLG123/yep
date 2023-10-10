@@ -311,7 +311,7 @@
 }
 
 .sp-review {
-  margin-bottom: 2vw;
+  margin-bottom: 3.5vw;
   width: 60%;
 }
 
@@ -365,6 +365,27 @@
   font-size: 1.1vw;
   text-align: justify;
   line-height: 1.3em;
+}
+
+.reaction-button-group {
+  margin-top: 0.5em;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.reaction-btn {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.reaction-btn-icon {
+  text-align: center;
+}
+
+.reaction-btn-text {
+  color: rgb(138, 141, 144);
+  font-size: 1vw;
 }
 
 .more-options-btn {
