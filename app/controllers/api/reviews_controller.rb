@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  wrap_parameters include: Review.attribute_names + ["reviewerFN", "reviewerLN"]
+  wrap_parameters include: Review.attribute_names + ["reviewerFN", "reviewerLN", "helpfulCount", "thanksCount", "loveThisCount", "ohNoCount"]
 
   before_action :require_logged_in, only: [:create, :update, :destroy]
 

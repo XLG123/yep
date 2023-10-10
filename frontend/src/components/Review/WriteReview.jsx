@@ -90,6 +90,10 @@ const WriteReview = () => {
         reviewer_fn: currUser.firstName,
         reviewer_ln: currUser.lastName,
         business_id: currRestaurant.id,
+        helpful_count: 0,
+        thanks_count: 0,
+        love_this_count: 0,
+        oh_no_count: 0,
       };
       dispatch(createReview(reviewObj));
       dispatch(fetchReviews());

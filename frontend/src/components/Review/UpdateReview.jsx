@@ -120,6 +120,10 @@ const UpdateReview = () => {
         reviewer_fn: currReview.reviewerFn,
         reviewer_ln: currReview.reviewerLn,
         business_id: currReview.businessId,
+        helpful_count: currReview.helpfulCount,
+        thanks_count: currReview.thanksCount,
+        love_this_count: currReview.loveThisCount,
+        oh_no_count: currReview.ohNoCount,
       };
       dispatch(updateReview(reviewObj, reviewId));
       dispatch(fetchReviews());
