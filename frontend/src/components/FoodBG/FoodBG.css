@@ -7,6 +7,7 @@
   animation-name: changeBGImg;
   animation-duration: 30s;
   animation-iteration-count: infinite;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 @keyframes changeBGImg {
@@ -33,4 +34,33 @@
   100% {
     background-image: url("../../assets/images/sushiBG.jpg");
   }
+}
+
+.greeting-text{
+  color: white;
+  margin-left: 2.6em;
+  font-size: 3.5vw;
+  font-weight: 900;
+}
+
+.greeting-text {
+  margin-top: 30vh;
+}
+
+.explore-btn {
+  font-size: 1.2vw;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  background-color: rgb(224, 7, 7);
+  padding: 0.5em 2em;
+  margin-top: 0.8em;
+  margin-left: 7.7em;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.explore-btn:hover {
+  filter: brightness(1.1);
 }

@@ -4,7 +4,7 @@ import "./Footer.css";
 
 const Footer = () => {
   const currUrl = useLocation().pathname;
-  console.log(currUrl);
+  // console.log(currUrl);
   // console.log(currUrl.split("/")[2]);
 
   return (
