@@ -24,7 +24,36 @@ class Reaction < ApplicationRecord
   
   private
   
-  def update_reaction_count
-    review.update_reaction_count
+  def increment_helpful_count
+    review.increment_helpful_count
   end
+
+  def increment_thanks_count
+    review.increment_thanks_count
+  end
+
+  def increment_love_this_count
+    review.increment_love_this_count
+  end
+  
+  def increment_oh_no_count
+    review.increment_oh_no_count
+  end
+  
+  def decrement_helpful_count
+    review.decrement_helpful_count
+  end
+
+  def decrement_thanks_count
+    review.decrement_thanks_count
+  end
+  
+  def decrement_love_this_count
+    review.decrement_love_this_count
+  end
+  
+  def decrement_oh_no_count
+    review.decrement_oh_no_count
+  end
+  
 end

@@ -36,10 +36,62 @@ class Review < ApplicationRecord
     foreign_key: :business_id,
     class_name: :Business
 
-  def update_reaction_count
-    
+  def increment_helpful_count
+    new_helpful_count = helpful_count + 1
+    update(helpful_count: new_helpful_count)
   end
 
+  def increment_thanks_count
+    new_thanks_count = thanks_count + 1
+    update(thanks_count: new_thanks_count)
+  end
+  
+  def increment_love_this_count
+    new_love_this_count = love_this_count + 1
+    update(love_this_count: new_love_this_count)
+  end
+  
+  def increment_oh_no_count
+    new_oh_no_count = oh_no_count + 1
+    update(oh_no_count: new_oh_no_count)
+  end
+  
+  def decrement_helpful_count
+    new_helpful_count = helpful_count - 1
+    if new_helpful_count == 0
+      update(helpful_count: 0)
+    else
+      update(helpful_count: new_helpful_count)
+    end
+  end
+  
+  def decrement_thanks_count
+    new_thanks_count = thanks_count - 1
+    if new_thanks_count == 0
+      update(thanks_count: 0)
+    else
+      update(thanks_count: new_thanks_count)
+    end
+  end
+  
+  def decrement_love_this_count
+    new_love_this_count = love_this_count - 1
+    if new_love_this_count == 0
+      update(love_this_count: 0)
+    else
+      update(love_this_count: new_love_this_count)
+    end
+  end
+  
+  def decrement_oh_no_count
+    new_oh_no_count = oh_no_count - 1
+    if new_oh_no_count == 0
+      update(oh_no_count: 0)
+    else
+      update(oh_no_count: new_oh_no_count)
+    end
+  end
+  
   private
 
   def add_review
