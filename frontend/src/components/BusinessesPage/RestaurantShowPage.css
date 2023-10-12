@@ -392,6 +392,10 @@
   font-size: 0.9vw;
 }
 
+.reaction-count {
+  font-weight: 900;
+}
+
 .more-options-btn {
   text-align: right;
 }

@@ -1808,7 +1808,7 @@ const RestaurantShowPage = () => {
                           <div className="sp-review-body">
                             {userReview.body}
                           </div>
-                          <div className="reaction-button-group">
+                          {/* <div className="reaction-button-group">
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
                                 <LightbulbCircleIcon
@@ -1818,7 +1818,14 @@ const RestaurantShowPage = () => {
                                   }}
                                 />
                               </div>{" "}
-                              <div className="reaction-btn-text">Helpful</div>
+                              <div className="reaction-btn-text">
+                                Helpful{" "}
+                                <span className="reaction-count">
+                                  {userReview?.helpfulCount === null
+                                    ? 0
+                                    : userReview?.helpfulCount}
+                                </span>
+                              </div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
@@ -1829,7 +1836,14 @@ const RestaurantShowPage = () => {
                                   }}
                                 />
                               </div>
-                              <div className="reaction-btn-text">Thanks</div>
+                              <div className="reaction-btn-text">
+                                Thanks{" "}
+                                <span className="reaction-count">
+                                  {userReview?.thanksCount === null
+                                    ? 0
+                                    : userReview?.thanksCount}
+                                </span>
+                              </div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
@@ -1840,7 +1854,14 @@ const RestaurantShowPage = () => {
                                   }}
                                 />
                               </div>
-                              <div className="reaction-btn-text">Love this</div>
+                              <div className="reaction-btn-text">
+                                Love this{" "}
+                                <span className="reaction-count">
+                                  {userReview?.loveThisCount === null
+                                    ? 0
+                                    : userReview?.loveThisCount}
+                                </span>
+                              </div>
                             </span>
                             <span className="reaction-btn">
                               <div className="reaction-btn-icon">
@@ -1851,9 +1872,16 @@ const RestaurantShowPage = () => {
                                   }}
                                 />
                               </div>
-                              <div className="reaction-btn-text">Oh no</div>
+                              <div className="reaction-btn-text">
+                                Oh no{" "}
+                                <span className="reaction-count">
+                                  {userReview?.ohNoCount === null
+                                    ? 0
+                                    : userReview?.ohNoCount}
+                                </span>
+                              </div>
                             </span>
-                          </div>
+                          </div> */}
                         </li>
                       ))}
                     </ul>
