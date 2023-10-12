@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :show, :destroy]
     resources :restaurants, only: [:index, :show]
     resources :reviews, only: [:index, :create, :show, :update, :destroy]
+    resources :reactions, only: [:index, :create, :destroy]
     get 'businesses/search', to: 'restaurants#search', as: 'search'
   end
 

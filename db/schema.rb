@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_17_200520) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_193154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_200520) do
     t.integer "total_reviews"
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.string "reaction_type", null: false
+    t.bigint "review_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_reactions_on_review_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating", null: false
     t.text "body", null: false
@@ -89,6 +99,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_200520) do
     t.datetime "updated_at", null: false
     t.string "reviewer_fn", null: false
     t.string "reviewer_ln", null: false
+    t.integer "helpful_count"
+    t.integer "thanks_count"
+    t.integer "love_this_count"
+    t.integer "oh_no_count"
     t.index ["business_id"], name: "index_reviews_on_business_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -108,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_200520) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reactions", "reviews"
+  add_foreign_key "reactions", "users"
   add_foreign_key "reviews", "businesses"
   add_foreign_key "reviews", "users"
 end

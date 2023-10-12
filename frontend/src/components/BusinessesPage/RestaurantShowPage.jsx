@@ -19,6 +19,10 @@ import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import MoodBadIcon from "@mui/icons-material/MoodBad";
+import RecommendIcon from "@mui/icons-material/Recommend";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -98,13 +102,13 @@ const RestaurantShowPage = () => {
     e.preventDefault();
     handleClose();
     navigate(`/reviews/${reviewId}/updateareview`);
-  }
+  };
 
   const handleRemove = (e, reviewId) => {
     e.preventDefault();
     handleCloseModal();
     dispatch(deleteReview(reviewId));
-  }
+  };
 
   const myBoxStyle = {
     position: "absolute",
@@ -152,11 +156,11 @@ const RestaurantShowPage = () => {
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
     dispatch(fetchReviews());
-  }, [restReviews?.length])
+  }, [restReviews?.length]);
 
   useEffect(() => {
     dispatch(fetchReviews());
-  }, [])
+  }, []);
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
@@ -1664,6 +1668,7 @@ const RestaurantShowPage = () => {
               </div>
 
               <div className="sp-rest-reviews-container">
+                <div className="reviews-linebreak"></div>
                 {restReviews?.length === 0 ? (
                   <div className="empty-reviews-container">
                     Be the first to leave a review
@@ -1793,12 +1798,90 @@ const RestaurantShowPage = () => {
                                   })
                                   .split(",")[0]
                               }
-                              edited={userReview.createdAt !== userReview.updatedAt ? true : false}
+                              edited={
+                                userReview.createdAt !== userReview.updatedAt
+                                  ? true
+                                  : false
+                              }
                             />
                           </div>
                           <div className="sp-review-body">
                             {userReview.body}
                           </div>
+                          {/* <div className="reaction-button-group">
+                            <span className="reaction-btn">
+                              <div className="reaction-btn-icon">
+                                <LightbulbCircleIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
+                              </div>{" "}
+                              <div className="reaction-btn-text">
+                                Helpful{" "}
+                                <span className="reaction-count">
+                                  {userReview?.helpfulCount === null
+                                    ? 0
+                                    : userReview?.helpfulCount}
+                                </span>
+                              </div>
+                            </span>
+                            <span className="reaction-btn">
+                              <div className="reaction-btn-icon">
+                                <RecommendIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
+                              </div>
+                              <div className="reaction-btn-text">
+                                Thanks{" "}
+                                <span className="reaction-count">
+                                  {userReview?.thanksCount === null
+                                    ? 0
+                                    : userReview?.thanksCount}
+                                </span>
+                              </div>
+                            </span>
+                            <span className="reaction-btn">
+                              <div className="reaction-btn-icon">
+                                <FavoriteIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
+                              </div>
+                              <div className="reaction-btn-text">
+                                Love this{" "}
+                                <span className="reaction-count">
+                                  {userReview?.loveThisCount === null
+                                    ? 0
+                                    : userReview?.loveThisCount}
+                                </span>
+                              </div>
+                            </span>
+                            <span className="reaction-btn">
+                              <div className="reaction-btn-icon">
+                                <MoodBadIcon
+                                  sx={{
+                                    color: "rgb(138, 141, 144)",
+                                    fontSize: "1.8vw",
+                                  }}
+                                />
+                              </div>
+                              <div className="reaction-btn-text">
+                                Oh no{" "}
+                                <span className="reaction-count">
+                                  {userReview?.ohNoCount === null
+                                    ? 0
+                                    : userReview?.ohNoCount}
+                                </span>
+                              </div>
+                            </span>
+                          </div> */}
                         </li>
                       ))}
                     </ul>
@@ -1808,11 +1891,15 @@ const RestaurantShowPage = () => {
                   <div className="yep-footer-description">
                     <div className="yep-name">
                       Yep!
-                      <img src={Yeplogo} alt="footer logo" className="yep-name-logo" />
+                      <img
+                        src={Yeplogo}
+                        alt="footer logo"
+                        className="yep-name-logo"
+                      />
                     </div>
                     <div className="yep-description">
-                      An online platform where one can browse local restaurants, write &
-                      read reviews.
+                      An online platform where one can browse local restaurants,
+                      write & read reviews.
                     </div>
                   </div>
 
@@ -1822,7 +1909,7 @@ const RestaurantShowPage = () => {
                       <div className="list-first-child">React</div>
                       <div className="list-second-child">CSS</div>
                     </div>
-                    
+
                     <div className="backend-container">
                       <div className="footer-list-title">Backend</div>
                       <div className="list-first-child">Rails</div>
@@ -1838,7 +1925,9 @@ const RestaurantShowPage = () => {
                     <div className="upcoming-feature-container">
                       <div className="footer-list-title">Upcoming features</div>
                       <div className="list-first-child">User Profile</div>
-                      <div className="list-second-child">Multiple Language Support</div>
+                      <div className="list-second-child">
+                        Multiple Language Support
+                      </div>
                     </div>
                   </div>
 
@@ -1846,13 +1935,15 @@ const RestaurantShowPage = () => {
                     &copy; Copyright 2023{" "}
                     <span className="footer-yeplogo">
                       Yep!
-                      <img src={Yeplogo} alt="footer logo" className="yep-copyright-logo" />
+                      <img
+                        src={Yeplogo}
+                        alt="footer logo"
+                        className="yep-copyright-logo"
+                      />
                     </span>
                   </div>
-
                 </footer>
               </div>
-
             </div>
           )}
         </div>

@@ -294,11 +294,15 @@
 }
 
 .sp-rest-reviews-container {
-  border-top: 1px solid rgba(200, 201, 202, 1);
   width: 88%;
-  padding-top: 1em;
   padding-bottom: 1em;
   color: #2D2E2F;
+}
+
+.reviews-linebreak {
+  border-top: 1px solid rgb(200, 201, 202);
+  margin-left: 6vw;
+  margin-bottom: 1em;
 }
 
 .empty-reviews-container {
@@ -311,7 +315,7 @@
 }
 
 .sp-review {
-  margin-bottom: 2vw;
+  margin-bottom: 3.5vw;
   width: 60%;
 }
 
@@ -365,6 +369,31 @@
   font-size: 1.1vw;
   text-align: justify;
   line-height: 1.3em;
+}
+
+.reaction-button-group {
+  margin-top: 0.5em;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.reaction-btn {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.reaction-btn-icon {
+  text-align: center;
+}
+
+.reaction-btn-text {
+  color: rgb(138, 141, 144);
+  font-size: 0.9vw;
+}
+
+.reaction-count {
+  font-weight: 900;
 }
 
 .more-options-btn {
