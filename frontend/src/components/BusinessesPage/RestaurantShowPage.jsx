@@ -35,7 +35,7 @@ import Avatar from "@mui/material/Avatar";
 import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
 import Yeplogo from "../../assets/images/yepLogo2.png";
-import { createReaction, fetchReactions } from "../../store/reactions";
+import { createReaction, fetchReactions, getReactions } from "../../store/reactions";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -133,29 +133,45 @@ const RestaurantShowPage = () => {
 
   const handleCopyLink = (e) => {
     e.preventDefault();
-    toast(`Current Link is copied!`, {
+    toast("Current Link is copied!", {
       id: "successful-link",
       style: {
         border: "1px solid rgba(202, 201, 202, 1)",
-        fontSize: "1.1.7vw",
+        fontSize: "1.1vw",
         boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
         backgroundColor: "rgba(255, 255, 255, 0.85)",
-        height: "1.7vw",
+        height: "1vw",
+        padding: "1em"
       },
       icon: "✅",
       duration: 2000,
     });
   };
 
-  const handleHelpfulReaction = (e, reviewId) => {
-    if (sessionUser) {
+  const allReactions = useSelector(getReactions);
+
+  const handleHelpfulReaction = (e, reviewId, userId) => {
+    if (sessionUser && sessionUser.id !== userId) {
       const reactionObj = {
         reaction_type: "helpful",
         user_id: sessionUser.id,
         review_id: reviewId
       };
       dispatch(createReaction(reactionObj));
-      // dispatch(fetchReactions());
+    } else if (sessionUser && sessionUser.id === userId) {
+      toast("You can't react to your own review.", {
+        id: "warning-message",
+        style: {
+          border: "1px solid rgba(202, 201, 202, 1)",
+          fontSize: "1.1vw",
+          boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgb(255, 255, 255)",
+          height: "1vw",
+          padding: "1em"
+        },
+        icon: "❗️",
+        duration: 2000,
+      })
     } else {
       navigate("/login");
     }
@@ -200,6 +216,10 @@ const RestaurantShowPage = () => {
   useEffect(() => {
     dispatch(fetchReviews());
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [Object.values(allReactions).length])
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
@@ -1848,7 +1868,7 @@ const RestaurantShowPage = () => {
                             {userReview.body}
                           </div>
                           <div className="reaction-button-group">
-                            <span className="reaction-btn" onClick={(e) => handleHelpfulReaction(e, userReview?.id)}>
+                            <span className="reaction-btn" onClick={(e) => handleHelpfulReaction(e, userReview?.id, userReview?.userId)}>
                               <div className="reaction-btn-icon">
                                 <LightbulbCircleIcon
                                   sx={{
@@ -1865,6 +1885,7 @@ const RestaurantShowPage = () => {
                                     : userReview?.helpfulCount}
                                 </span>
                               </div>
+                              <Toaster />
                             </span>
 
                             <span className="reaction-btn" onClick={(e) => handleThanksReaction(e)}>
