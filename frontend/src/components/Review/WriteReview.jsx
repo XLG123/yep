@@ -19,7 +19,7 @@ const WriteReview = () => {
 
   const currRestaurant = useSelector(getRestaurant(restaurantId));
   const currUser = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => state.reviews.reviews);
+  const reviews = useSelector((state) => state.reviews);
 
   let recentReviews = [];
 

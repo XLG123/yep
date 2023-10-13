@@ -36,6 +36,14 @@ class Api::ReactionsController < ApplicationController
       end
     end
   end
+
+  def index
+    @reactions = Reaction.all
+    if @reactions
+      render 'api/reactions/index'
+    end
+  end
+  
   
   private
 

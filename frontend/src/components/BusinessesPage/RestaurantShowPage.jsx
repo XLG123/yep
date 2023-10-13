@@ -35,6 +35,7 @@ import Avatar from "@mui/material/Avatar";
 import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
 import Yeplogo from "../../assets/images/yepLogo2.png";
+import { createReaction, fetchReactions } from "../../store/reactions";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -49,7 +50,7 @@ const RestaurantShowPage = () => {
 
   let restReviews = [];
 
-  const reviewExamples = useSelector((state) => state.reviews.reviews);
+  const reviewExamples = useSelector((state) => state.reviews);
   if (reviewExamples) {
     Object.values(reviewExamples).forEach((review) => {
       if (review.businessId == restaurantId) {
@@ -146,6 +147,44 @@ const RestaurantShowPage = () => {
     });
   };
 
+  const handleHelpfulReaction = (e, reviewId) => {
+    if (sessionUser) {
+      const reactionObj = {
+        reaction_type: "helpful",
+        user_id: sessionUser.id,
+        review_id: reviewId
+      };
+      dispatch(createReaction(reactionObj));
+      // dispatch(fetchReactions());
+    } else {
+      navigate("/login");
+    }
+  }
+  
+  const handleThanksReaction = (e) => {
+    if (sessionUser) {
+  
+    } else {
+      navigate("/login");
+    }
+  }
+  
+  const handleLoveThisReaction = (e) => {
+    if (sessionUser) {
+  
+    } else {
+      navigate("/login");
+    }
+  } 
+  
+  const handleOhNoReaction = (e) => {
+    if (sessionUser) {
+  
+    } else {
+      navigate("/login");
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
     setTimeout(() => {
@@ -157,7 +196,7 @@ const RestaurantShowPage = () => {
     dispatch(fetchRestaurant(restaurantId));
     dispatch(fetchReviews());
   }, [restReviews?.length]);
-
+  
   useEffect(() => {
     dispatch(fetchReviews());
   }, []);
@@ -1808,8 +1847,8 @@ const RestaurantShowPage = () => {
                           <div className="sp-review-body">
                             {userReview.body}
                           </div>
-                          {/* <div className="reaction-button-group">
-                            <span className="reaction-btn">
+                          <div className="reaction-button-group">
+                            <span className="reaction-btn" onClick={(e) => handleHelpfulReaction(e, userReview?.id)}>
                               <div className="reaction-btn-icon">
                                 <LightbulbCircleIcon
                                   sx={{
@@ -1817,7 +1856,7 @@ const RestaurantShowPage = () => {
                                     fontSize: "1.8vw",
                                   }}
                                 />
-                              </div>{" "}
+                              </div>
                               <div className="reaction-btn-text">
                                 Helpful{" "}
                                 <span className="reaction-count">
@@ -1827,7 +1866,8 @@ const RestaurantShowPage = () => {
                                 </span>
                               </div>
                             </span>
-                            <span className="reaction-btn">
+
+                            <span className="reaction-btn" onClick={(e) => handleThanksReaction(e)}>
                               <div className="reaction-btn-icon">
                                 <RecommendIcon
                                   sx={{
@@ -1845,7 +1885,8 @@ const RestaurantShowPage = () => {
                                 </span>
                               </div>
                             </span>
-                            <span className="reaction-btn">
+
+                            <span className="reaction-btn" onClick={(e) => handleLoveThisReaction(e)}>
                               <div className="reaction-btn-icon">
                                 <FavoriteIcon
                                   sx={{
@@ -1863,7 +1904,8 @@ const RestaurantShowPage = () => {
                                 </span>
                               </div>
                             </span>
-                            <span className="reaction-btn">
+
+                            <span className="reaction-btn" onClick={(e) => handleOhNoReaction(e)}>
                               <div className="reaction-btn-icon">
                                 <MoodBadIcon
                                   sx={{
@@ -1881,7 +1923,8 @@ const RestaurantShowPage = () => {
                                 </span>
                               </div>
                             </span>
-                          </div> */}
+
+                          </div>
                         </li>
                       ))}
                     </ul>

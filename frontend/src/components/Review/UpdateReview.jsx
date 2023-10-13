@@ -19,7 +19,7 @@ const UpdateReview = () => {
   const location_path = location.pathname;
   let reviewId = location_path.split("/")[2];
 
-  const reviews = useSelector((state) => state.reviews.reviews);
+  const reviews = useSelector((state) => state.reviews);
   let otherReviews = [];
   let currReview = "";
 
@@ -96,7 +96,7 @@ const UpdateReview = () => {
       setRating(originalRating);
     }
 
-    if (reviewText === "") {
+    if (reviewText === "" || reviewText === undefined) {
       setReviewText(originalText);
     }
 
@@ -106,13 +106,13 @@ const UpdateReview = () => {
       setRatingError(false);
     }
 
-    if (reviewText.length < 85) {
+    if (reviewText?.length < 85) {
       setReviewTextError(true);
     } else {
       setReviewTextError(false);
     }
 
-    if (rating !== 0 && reviewText.length >= 85) {
+    if (rating !== 0 && reviewText?.length >= 85) {
       const reviewObj = {
         rating: rating,
         body: reviewText,

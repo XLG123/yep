@@ -16,7 +16,7 @@ const Activity = () => {
   }, [dispatch]);
 
   const restaurants = useSelector(getRestaurants);
-  const reviews = useSelector((state) => state.reviews.reviews);
+  const reviews = useSelector((state) => state.reviews);
   let recentReviews = [];
   let reviewRestaurantIds = [];
   let selectedRestaurants = [];

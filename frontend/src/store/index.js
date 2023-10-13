@@ -3,11 +3,13 @@ import session from "./session";
 import restaurants from "./restaurants";
 import reviews from "./reviews";
 import thunk from 'redux-thunk';
+import reactions from './reactions';
 
 const rootReducer = combineReducers({
   session,
   restaurants,
-  reviews
+  reviews,
+  reactions
 });
 
 let enhancer;
