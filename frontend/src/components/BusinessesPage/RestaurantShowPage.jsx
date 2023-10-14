@@ -159,6 +159,8 @@ const RestaurantShowPage = () => {
       };
       dispatch(createReaction(reactionObj));
     } else if (sessionUser && sessionUser.id === userId) {
+      // This prevents current user from giving reactions to their own reviews
+      // Notifies the user by displaying a warning message
       toast("You can't react to your own review.", {
         id: "warning-message",
         style: {
