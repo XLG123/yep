@@ -36,7 +36,6 @@ puts "Creating businesses..."
 
 ApplicationRecord.connection.reset_pk_sequence!('businesses')
 
-# TODO: attach aws images to the associated restaurants
 # Businesses => they are all restaurants
 # Italian Restaurants
 italian_1 = Business.create!(
@@ -1596,5 +1595,15 @@ milk_tea_stores = Business.where("category Like ?", "Milk Tea%")
 attach_thumbnail(milk_tea_stores, "milk_tea")
 attach_menu_imgs(milk_tea_stores, "milk_tea")
 puts "done milk tea seeding"
+
+# Dropping the Review Table
+Review.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('reviews')
+puts "Review Table successfully reset"
+
+# Dropping the Reaction Table
+Reaction.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('reactions')
+puts "Reaction Table successfully reset"
 
 puts "Done!"

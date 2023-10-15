@@ -372,7 +372,7 @@
 }
 
 .reaction-button-group {
-  margin-top: 0.5em;
+  margin-top: 0.70em;
   width: 60%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -390,6 +390,11 @@
 .reaction-btn-text {
   color: rgb(138, 141, 144);
   font-size: 0.9vw;
+  font-weight: 600;
+}
+
+.already-clicked-btn-text {
+  color: #3D3E3F;
 }
 
 .reaction-count {

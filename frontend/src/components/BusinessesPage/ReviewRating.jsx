@@ -150,7 +150,10 @@ const ReviewRating = ({averageRating, ratingTime, edited}) => {
           {displayRating(averageRating)}
         </span>
         <span className="rating-time">{ratingTime}</span>
-        {edited ? <span className="edited">Edited</span> : null}
+
+        {/* TODO: Once the count of the reactions changes, it also changes the updated_at of the review object. Needs to fix it so that only the reviewer changes the review or the rating, it will show Edited. */}
+        
+        {/* {edited ? <span className="edited">Edited</span> : null} */}
       </div>
     </>
   );

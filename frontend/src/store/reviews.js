@@ -93,7 +93,7 @@ const reviewsReducer = (state = {}, action) => {
     case RECEIVE_REVIEW:
       return {...state, [action.review.id]: action.review}
     case RECEIVE_REVIEWS:
-      return { ...state, ...action.reviews };
+      return { ...state, ...action.reviews.reviews};
     case REMOVE_REVIEW:
       delete newState[action.reviewId];
       return newState;

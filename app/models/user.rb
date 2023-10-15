@@ -28,6 +28,12 @@ class User < ApplicationRecord
     class_name: :Review,
     dependent: :destroy
 
+  has_many :reactions,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Reaction,
+    dependent: :destroy
+
   has_many :reviewed_businesses,
     through: :reviews,
     source: :business

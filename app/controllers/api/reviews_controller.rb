@@ -10,7 +10,7 @@ class Api::ReviewsController < ApplicationController
     @review.reviewer_ln = current_user.last_name
     if @review.save
       @review.business.add_review
-      redirect_to api_restaurant_url(@review.business_id)
+      render json: @review
     else
       render json: @review.errors.full_messages, status: 422
     end
@@ -48,6 +48,6 @@ class Api::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :body, :reviewer_fn, :reviewer_ln, :user_id, :business_id)
+    params.require(:review).permit(:rating, :body, :reviewer_fn, :reviewer_ln, :user_id, :business_id, :helpful_count, :thanks_count, :love_this_count, :oh_no_count)
   end
 end
