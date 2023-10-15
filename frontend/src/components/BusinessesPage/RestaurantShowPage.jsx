@@ -35,7 +35,12 @@ import Avatar from "@mui/material/Avatar";
 import { deleteReview, fetchReviews } from "../../store/reviews";
 import ReviewRating from "./ReviewRating";
 import Yeplogo from "../../assets/images/yepLogo2.png";
-import { createReaction, fetchReactions, getReactions } from "../../store/reactions";
+import {
+  createReaction,
+  deleteReaction,
+  fetchReactions,
+  getReactions,
+} from "../../store/reactions";
 
 const RestaurantShowPage = () => {
   const url = window.location.href;
@@ -43,6 +48,8 @@ const RestaurantShowPage = () => {
   const [finishLoading, setFinishLoading] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
+
+  // console.log(sessionUser);
 
   const { restaurantId } = useParams();
 
@@ -138,10 +145,10 @@ const RestaurantShowPage = () => {
       style: {
         border: "1px solid rgba(202, 201, 202, 1)",
         fontSize: "1.1vw",
-        boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.1)",
         backgroundColor: "rgba(255, 255, 255, 0.85)",
         height: "1vw",
-        padding: "1em"
+        padding: "1em",
       },
       icon: "✅",
       duration: 2000,
@@ -150,12 +157,13 @@ const RestaurantShowPage = () => {
 
   const allReactions = useSelector(getReactions);
 
-  const handleHelpfulReaction = (e, reviewId, userId) => {
+  const createUserReaction = (e, reviewId, userId, reaction) => {
+    e.preventDefault();
     if (sessionUser && sessionUser.id !== userId) {
       const reactionObj = {
-        reaction_type: "helpful",
+        reaction_type: reaction,
         user_id: sessionUser.id,
-        review_id: reviewId
+        review_id: reviewId,
       };
       dispatch(createReaction(reactionObj));
     } else if (sessionUser && sessionUser.id === userId) {
@@ -166,42 +174,27 @@ const RestaurantShowPage = () => {
         style: {
           border: "1px solid rgba(202, 201, 202, 1)",
           fontSize: "1.1vw",
-          boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
+          boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.1)",
           backgroundColor: "rgb(255, 255, 255)",
           height: "1vw",
-          padding: "1em"
+          padding: "1em",
         },
         icon: "❗️",
         duration: 2000,
-      })
+      });
     } else {
       navigate("/login");
     }
-  }
-  
-  const handleThanksReaction = (e) => {
-    if (sessionUser) {
-  
+  };
+
+  const removeReaction = (e, userId, reactionId) => {
+    e.preventDefault();
+    if (sessionUser && sessionUser.id !== userId) {
+      dispatch(deleteReaction(reactionId));
     } else {
       navigate("/login");
     }
-  }
-  
-  const handleLoveThisReaction = (e) => {
-    if (sessionUser) {
-  
-    } else {
-      navigate("/login");
-    }
-  } 
-  
-  const handleOhNoReaction = (e) => {
-    if (sessionUser) {
-  
-    } else {
-      navigate("/login");
-    }
-  }
+  };
 
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
@@ -214,14 +207,14 @@ const RestaurantShowPage = () => {
     dispatch(fetchRestaurant(restaurantId));
     dispatch(fetchReviews());
   }, [restReviews?.length]);
-  
-  useEffect(() => {
-    dispatch(fetchReviews());
-  }, []);
 
   useEffect(() => {
     dispatch(fetchReviews());
-  }, [Object.values(allReactions).length])
+  }, [Object.values(allReactions).length]);
+
+  useEffect(() => {
+    dispatch(fetchReactions());
+  }, []);
 
   if (restaurant?.mon !== "Not available") {
     setTimeout(() => {
@@ -1870,82 +1863,281 @@ const RestaurantShowPage = () => {
                             {userReview.body}
                           </div>
                           <div className="reaction-button-group">
-                            <span className="reaction-btn" onClick={(e) => handleHelpfulReaction(e, userReview?.id, userReview?.userId)}>
-                              <div className="reaction-btn-icon">
-                                <LightbulbCircleIcon
-                                  sx={{
-                                    color: "rgb(138, 141, 144)",
-                                    fontSize: "1.8vw",
-                                  }}
-                                />
-                              </div>
-                              <div className="reaction-btn-text">
-                                Helpful{" "}
-                                <span className="reaction-count">
-                                  {userReview?.helpfulCount === null
-                                    ? 0
-                                    : userReview?.helpfulCount}
-                                </span>
-                              </div>
-                              <Toaster />
-                            </span>
+                            {/* Helpful Reaction Button */}
+                            {userReview?.reactions &&
+                            Object.values(userReview?.reactions)?.filter(
+                              (reaction) =>
+                                reaction?.userId === sessionUser?.id &&
+                                reaction?.reactionType === "helpful"
+                            ).length !== 0 ? (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  removeReaction(
+                                    e,
+                                    userReview?.userId,
+                                    Object.values(
+                                      userReview?.reactions
+                                    )?.filter(
+                                      (reaction) =>
+                                        reaction?.userId === sessionUser?.id &&
+                                        reaction?.reactionType === "helpful"
+                                    )[0]?.id
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <LightbulbCircleIcon
+                                    sx={{
+                                      color: "#FFCC4B",
+                                      fontSize: "2vw",
+                                      stroke: "#3D3E3F",
+                                      strokeWidth: "0.5",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text already-clicked-btn-text">
+                                  Helpful{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.helpfulCount}
+                                  </span>
+                                </div>
+                              </span>
+                            ) : (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  createUserReaction(
+                                    e,
+                                    userReview?.id,
+                                    userReview?.userId,
+                                    "helpful"
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <LightbulbCircleIcon
+                                    sx={{
+                                      color: "rgb(138, 141, 144)",
+                                      fontSize: "2vw",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text">
+                                  Helpful{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.helpfulCount}
+                                  </span>
+                                </div>
+                              </span>
+                            )}
 
-                            <span className="reaction-btn" onClick={(e) => handleThanksReaction(e)}>
-                              <div className="reaction-btn-icon">
-                                <RecommendIcon
-                                  sx={{
-                                    color: "rgb(138, 141, 144)",
-                                    fontSize: "1.8vw",
-                                  }}
-                                />
-                              </div>
-                              <div className="reaction-btn-text">
-                                Thanks{" "}
-                                <span className="reaction-count">
-                                  {userReview?.thanksCount === null
-                                    ? 0
-                                    : userReview?.thanksCount}
-                                </span>
-                              </div>
-                            </span>
+                            {/* Thanks Reaction Button */}
+                            {userReview?.reactions &&
+                            Object.values(userReview?.reactions)?.filter(
+                              (reaction) =>
+                                reaction?.userId === sessionUser?.id &&
+                                reaction?.reactionType === "thanks"
+                            ).length !== 0 ? (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  removeReaction(
+                                    e,
+                                    userReview?.userId,
+                                    Object.values(
+                                      userReview?.reactions
+                                    )?.filter(
+                                      (reaction) =>
+                                        reaction?.userId === sessionUser?.id &&
+                                        reaction?.reactionType === "thanks"
+                                    )[0]?.id
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <RecommendIcon
+                                    sx={{
+                                      color: "#ABE1A2",
+                                      fontSize: "2vw",
+                                      stroke: "#3D3E3F",
+                                      strokeWidth: "0.5",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text already-clicked-btn-text">
+                                  Thanks{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.thanksCount}
+                                  </span>
+                                </div>
+                              </span>
+                            ) : (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  createUserReaction(
+                                    e,
+                                    userReview?.id,
+                                    userReview?.userId,
+                                    "thanks"
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <RecommendIcon
+                                    sx={{
+                                      color: "rgb(138, 141, 144)",
+                                      fontSize: "2vw",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text">
+                                  Thanks{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.thanksCount}
+                                  </span>
+                                </div>
+                              </span>
+                            )}
 
-                            <span className="reaction-btn" onClick={(e) => handleLoveThisReaction(e)}>
-                              <div className="reaction-btn-icon">
-                                <FavoriteIcon
-                                  sx={{
-                                    color: "rgb(138, 141, 144)",
-                                    fontSize: "1.8vw",
-                                  }}
-                                />
-                              </div>
-                              <div className="reaction-btn-text">
-                                Love this{" "}
-                                <span className="reaction-count">
-                                  {userReview?.loveThisCount === null
-                                    ? 0
-                                    : userReview?.loveThisCount}
-                                </span>
-                              </div>
-                            </span>
+                            {/* Love this Reaction Button */}
+                            {userReview?.reactions &&
+                            Object.values(userReview?.reactions)?.filter(
+                              (reaction) =>
+                                reaction?.userId === sessionUser?.id &&
+                                reaction?.reactionType === "love_this"
+                            ).length !== 0 ? (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  removeReaction(
+                                    e,
+                                    userReview?.userId,
+                                    Object.values(
+                                      userReview?.reactions
+                                    )?.filter(
+                                      (reaction) =>
+                                        reaction?.userId === sessionUser?.id &&
+                                        reaction?.reactionType === "love_this"
+                                    )[0]?.id
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <FavoriteIcon
+                                    sx={{
+                                      color: "#E68D8D",
+                                      fontSize: "2vw",
+                                      stroke: "#3D3E3F",
+                                      strokeWidth: "0.5",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text already-clicked-btn-text">
+                                  Love this{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.loveThisCount}
+                                  </span>
+                                </div>
+                              </span>
+                            ) : (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  createUserReaction(
+                                    e,
+                                    userReview?.id,
+                                    userReview?.userId,
+                                    "love_this"
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <FavoriteIcon
+                                    sx={{
+                                      color: "rgb(138, 141, 144)",
+                                      fontSize: "2vw",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text">
+                                  Love this{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.loveThisCount}
+                                  </span>
+                                </div>
+                              </span>
+                            )}
 
-                            <span className="reaction-btn" onClick={(e) => handleOhNoReaction(e)}>
-                              <div className="reaction-btn-icon">
-                                <MoodBadIcon
-                                  sx={{
-                                    color: "rgb(138, 141, 144)",
-                                    fontSize: "1.8vw",
-                                  }}
-                                />
-                              </div>
-                              <div className="reaction-btn-text">
-                                Oh no{" "}
-                                <span className="reaction-count">
-                                  {userReview?.ohNoCount === null
-                                    ? 0
-                                    : userReview?.ohNoCount}
-                                </span>
-                              </div>
-                            </span>
+                            {/* Oh no Reaction Button */}
+                            {userReview?.reactions &&
+                            Object.values(userReview?.reactions)?.filter(
+                              (reaction) =>
+                                reaction?.userId === sessionUser?.id &&
+                                reaction?.reactionType === "oh_no"
+                            ).length !== 0 ? (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  removeReaction(
+                                    e,
+                                    userReview?.userId,
+                                    Object.values(
+                                      userReview?.reactions
+                                    )?.filter(
+                                      (reaction) =>
+                                        reaction?.userId === sessionUser?.id &&
+                                        reaction?.reactionType === "oh_no"
+                                    )[0]?.id
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <MoodBadIcon
+                                    sx={{
+                                      color: "#8FBEE5",
+                                      fontSize: "2vw",
+                                      stroke: "#7Fa9CC",
+                                      strokeWidth: "0.5"
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text already-clicked-btn-text">
+                                  Oh no{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.ohNoCount}
+                                  </span>
+                                </div>
+                              </span>
+                            ) : (
+                              <span
+                                className="reaction-btn"
+                                onClick={(e) =>
+                                  createUserReaction(
+                                    e,
+                                    userReview?.id,
+                                    userReview?.userId,
+                                    "oh_no"
+                                  )
+                                }
+                              >
+                                <div className="reaction-btn-icon">
+                                  <MoodBadIcon
+                                    sx={{
+                                      color: "rgb(138, 141, 144)",
+                                      fontSize: "2vw",
+                                    }}
+                                  />
+                                </div>
+                                <div className="reaction-btn-text">
+                                  Oh no{" "}
+                                  <span className="reaction-count">
+                                    {userReview?.ohNoCount}
+                                  </span>
+                                </div>
+                              </span>
+                            )}
 
                           </div>
                         </li>

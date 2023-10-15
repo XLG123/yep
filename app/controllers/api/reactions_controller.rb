@@ -23,7 +23,7 @@ class Api::ReactionsController < ApplicationController
 
   def destroy
     @reaction = Reaction.find(params[:id])
-    if @reaction && reaction.user_id == current_user.id
+    if @reaction && @reaction.user_id == current_user.id
       @reaction.destroy
       if @reaction.reaction_type == "helpful"
         @reaction.review.decrement_helpful_count

@@ -10,7 +10,7 @@ class Api::ReviewsController < ApplicationController
     @review.reviewer_ln = current_user.last_name
     if @review.save
       @review.business.add_review
-      redirect_to api_restaurant_url(@review.business_id)
+      render json: @review
     else
       render json: @review.errors.full_messages, status: 422
     end
