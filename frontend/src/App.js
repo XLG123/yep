@@ -13,7 +13,7 @@ import WriteReview from "./components/Review/WriteReview";
 import UpdateReview from "./components/Review/UpdateReview";
 import SeeYouSoon from "./components/SeeYouSoon/SeeYouSoon";
 import ErrorUrl from "./components/ErrorUrl/ErrorUrl";
-import UserProfilePage from "./components/UserProfilePage/UserProfilePage";
+import UserDetailPage from "./components/UserDetailPage/UserDetailPage";
 
 export default function App() {
 
@@ -52,7 +52,7 @@ export default function App() {
 
         <Route exact path="/:errorurl" element={<ErrorUrl />}></Route>
 
-        <Route exact path="/user_details/:userId" element={<UserProfilePage />}></Route>
+        <Route exact path="/user_details/:userId" element={<UserDetailPage />}></Route>
 
       </Routes>
     </>
