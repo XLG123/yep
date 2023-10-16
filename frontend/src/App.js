@@ -52,7 +52,7 @@ export default function App() {
 
         <Route exact path="/:errorurl" element={<ErrorUrl />}></Route>
 
-        <Route exact path="/users/:userId" element={<UserProfilePage />}></Route>
+        <Route exact path="/user_details/:userId" element={<UserProfilePage />}></Route>
 
       </Routes>
     </>

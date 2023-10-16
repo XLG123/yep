@@ -28,6 +28,11 @@ const UserProfile = ({ user }) => {
 
   const navigate = useNavigate();
 
+  const goToProfilePage = (e) => {
+    e.preventDefault();
+    navigate(`/user_details/${user?.id}`);
+  };
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
@@ -58,7 +63,14 @@ const UserProfile = ({ user }) => {
             <li>
               {user.firstName} {user.lastName[0]}.
             </li>
-            <li>{user.email}</li>
+            <li>
+              <button
+                className="about-me-btn"
+                onClick={(e) => goToProfilePage(e)}
+              >
+                About Me
+              </button>
+            </li>
             <li>
               <button className="logout-btn" onClick={logout}>
                 Log Out

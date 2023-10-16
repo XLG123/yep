@@ -19,22 +19,22 @@
 
 #user-profile {
   position: absolute;
-  top: 7.5vh;
-  right: 2vw;
+  top: 5em;
+  right: 4.3em;
   background-color: rgba(102, 102, 102, 0.7);
   line-height: 2em;
   border-radius: 4px;
   padding: 1vh 1vw;
-  width: 8vw;
+  width: fit-content;
   font-size: 0.8vw;
   backdrop-filter: blur(10px);
 }
 
-.non-hp-profile li:first-child,
-.non-hp-profile li:nth-child(2){
+.non-hp-profile li:first-child {
   color: white !important;
 }
 
+.about-me-btn,
 .logout-btn {
   font-size: 0.8vw;
   width: 5vw;
@@ -44,6 +44,7 @@
   cursor: pointer;
 }
 
+.about-me-btn:hover,
 .logout-btn:hover {
   opacity: 1;
 }
