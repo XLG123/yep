@@ -30,6 +30,7 @@ const UserProfile = ({ user }) => {
 
   const goToProfilePage = (e) => {
     e.preventDefault();
+    setUserProfile(!userProfile);
     navigate(`/user_details/${user?.id}`);
   };
 
