@@ -1,7 +1,6 @@
 .user-detail-container {
   width: 79%;
   margin: 3.5vw auto 0px auto;
-  border: 1px solid red;
   display: grid;
   grid-template-columns: 30% 70%;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -13,7 +12,7 @@
 }
 
 .basic-info-container {
-  border: 1px solid #EBEBEB;
+  border: 1px solid #D3D3D3;
   border-radius: 8px;
   width: 95%;
   text-align: center;
@@ -35,8 +34,8 @@
 
 .username-container {
   font-weight: 900;
-  font-size: 1.5vw;
-  margin: 0.5em 0px;
+  font-size: 1.8vw;
+  margin: 0.35em 0px 0.5em 0px;
   word-spacing: 0.1em;
 }
 
@@ -58,7 +57,7 @@
 .follow-btn-text {
   color: #6E7072;
   font-weight: 500;
-  font-size: 1vw;
+  font-size: 0.85vw;
 }
 
 .list-container {
@@ -67,10 +66,31 @@
 
 .list-btn-group {
   width: 95%;
-  text-align: center;
   margin-top: 1em;
 }
 
 .list-btn {
-  border: 1px solid blue;
+  border: 1px solid #D3D3D3;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  column-gap: 0.3em;
+  align-items: center;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-btn:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.list-btn-icon {
+  text-align: right;
+}
+
+.list-btn-text {
+  margin-left: 0.25em;
+  color: #5A5C5E;
+  font-weight: 500;
+  font-size: 1.3vw;
 }

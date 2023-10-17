@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import StarsIcon from '@mui/icons-material/Stars';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
+import StarsIcon from "@mui/icons-material/Stars";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Footer from "../Footer/Footer";
 
 const UserDetailPage = () => {
@@ -71,7 +71,20 @@ const UserDetailPage = () => {
 
             {user?.id !== currUser?.id ? (
               <div className="follow-btn">
-                <PersonAddIcon />
+                <PersonAddIcon
+                  sx={{
+                    width: "1.7vw",
+                    height: "1.7vw",
+                    color: "#777",
+                    cursor: "pointer",
+                    padding: "0.35vw",
+                    borderRadius: "50%",
+                    backgroundColor: "#EBEBEB",
+                    marginBottom: "0.1em",
+                    "&:hover": { color: "#2D2E2F" },
+                  }}
+                  onClick={(e) => {}}
+                />
                 <div className="follow-btn-text">Follow</div>
               </div>
             ) : null}
@@ -79,9 +92,24 @@ const UserDetailPage = () => {
 
           {/* button group for users to look at their reviewed restaurants, friends, and other users that they follow */}
           <div className="list-btn-group">
-            <div className="list-btn"><StarsIcon />Reviews</div>
-            <div className="list-btn"><Diversity3Icon />Friends</div>
-            <div className="list-btn"><HowToRegIcon />Following</div>
+            <div className="list-btn">
+              <span className="list-btn-icon">
+                <StarsIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
+              </span>
+              <span className="list-btn-text">Reviews</span>
+            </div>
+            <div className="list-btn">
+              <span className="list-btn-icon">
+                <Diversity3Icon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
+              </span>
+              <span className="list-btn-text">Friends</span>
+            </div>
+            <div className="list-btn">
+              <span className="list-btn-icon">
+                <HowToRegIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
+              </span>
+              <span className="list-btn-text">Following</span>
+            </div>
           </div>
         </div>
 

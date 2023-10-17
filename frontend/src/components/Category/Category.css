@@ -18,7 +18,7 @@
 }
 
 .non-hp-category-container {
-  background-color: rgba(189, 194, 198, 0.8);
+  background-color: rgba(189, 194, 198, 0.85);
 }
 
 .hp-category-dropdown, .non-hp-category-dropdown {
@@ -41,7 +41,7 @@
 }
 
 .non-hp-category-dropdown:hover {
-  background-color: #b9b7b7;
+  background-color: #9f9f9f;
 }
 
 .hp-category-dropdown:first-child::after,
