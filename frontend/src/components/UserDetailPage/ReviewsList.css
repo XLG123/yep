@@ -8,6 +8,10 @@
   margin-top: 1.5em;
 }
 
+.reviewed-restaurant {
+  border: 1px solid red;
+}
+
 .restaurant-thumbnail {
   width: 42%;
 }
@@ -22,6 +26,9 @@
 .restaurant-thumbnail,
 .text-container {
   display: inline-block;
+}
+
+.text-container {
 }
 
 .empty-reviewed-restaurants-list {

@@ -60,6 +60,10 @@
   font-size: 0.85vw;
 }
 
+.list-container {
+  border: 1px solid green;
+}
+
 .list-btn-group {
   width: 95%;
   margin-top: 1em;
