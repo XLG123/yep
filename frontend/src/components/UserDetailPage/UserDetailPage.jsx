@@ -22,17 +22,17 @@ const UserDetailPage = () => {
 
   const currUser = useSelector((state) => state.session.user);
 
-  console.log(user);
+  // console.log(user);
 
   const [listBtn, setListBtn] = useState("reviews");
 
-  console.log(listBtn);
+  // console.log(listBtn);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [userId]);
+  }, [userId, dispatch]);
 
   return (
     <>
@@ -136,7 +136,10 @@ const UserDetailPage = () => {
 
         <div className="list-container">
           {listBtn === "reviews" ? (
-            <ReviewsList reviewedRestaurants={user?.reviewedRestaurants} />
+            <ReviewsList
+              reviewedRestaurants={user?.reviewedRestaurants}
+              isCurrUser={user?.id === currUser?.id ? true : false}
+            />
           ) : listBtn === "friends" ? (
             <FriendsList />
           ) : (

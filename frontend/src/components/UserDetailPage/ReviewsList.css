@@ -4,10 +4,28 @@
   color: #2D2E2F;
 }
 
+.reviewed-restaurants-container {
+  margin-top: 1.5em;
+}
+
 .restaurant-thumbnail {
-  width: 40%;
+  width: 42%;
 }
 
 .restaurant-thumbnail img {
   width: inherit;
+  height: 7vw;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.restaurant-thumbnail,
+.text-container {
+  display: inline-block;
+}
+
+.empty-reviewed-restaurants-list {
+  margin-top: 0.5em;
+  font-size: 1.2vw;
+  color: #2D2E2F;
 }
