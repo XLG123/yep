@@ -1,13 +1,76 @@
 .user-detail-container {
-  width: 70%;
+  width: 79%;
   margin: 3.5vw auto 0px auto;
   border: 1px solid red;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 30% 70%;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .user-info-container,
 .list-container {
   margin-top: 0.25vw;
+}
+
+.basic-info-container {
+  border: 1px solid #EBEBEB;
+  border-radius: 8px;
+  width: 95%;
+  text-align: center;
+}
+
+.bg-red-banner {
+  position: absolute;
+  background-color: #E00707;
+  width: 22.515%;
+  height: 4.5vw;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.username-container,
+.user-joined-time-container {
+  padding: 0px 1em;
+}
+
+.username-container {
+  font-weight: 900;
+  font-size: 1.5vw;
+  margin: 0.5em 0px;
+  word-spacing: 0.1em;
+}
+
+.user-joined-time-container {
+  color: #6E7072;
+  font-size: 1.05vw;
+  margin-bottom: 0.75em;
+}
+
+.joined-time {
+  color: #5A5C5E;
+  font-weight: bold;
+}
+
+.follow-btn {
+  margin-bottom: 0.65em;
+}
+
+.follow-btn-text {
+  color: #6E7072;
+  font-weight: 500;
+  font-size: 1vw;
+}
+
+.list-container {
+  border: 1px solid green;
+}
+
+.list-btn-group {
+  width: 95%;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.list-btn {
+  border: 1px solid blue;
 }

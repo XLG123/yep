@@ -4,7 +4,7 @@
 .user-detail-page-line-break {
   position: absolute;
   width: 100%;
-  border-top: 1px solid rgba(200, 201, 202, 1);
+  border-top: 1px solid rgb(200, 201, 202);
   top: 7vw;
 }
 

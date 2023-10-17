@@ -1763,7 +1763,7 @@ const RestaurantShowPage = () => {
                               goToUserDetailPage(e, userReview?.userId)
                             }
                           >
-                            {userReview?.reviewerFn} {userReview?.reviewerLn}
+                            {userReview?.reviewerFn} {userReview?.reviewerLn[0]}.
                           </div>
                           {sessionUser?.id === userReview?.userId ? (
                             <span className="more-options-btn">
