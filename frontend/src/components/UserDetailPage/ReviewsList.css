@@ -1,0 +1,13 @@
+.reviewed-restaurants-list-title {
+  font-size: 3vw;
+  font-weight: 900;
+  color: #2D2E2F;
+}
+
+.restaurant-thumbnail {
+  width: 40%;
+}
+
+.restaurant-thumbnail img {
+  width: inherit;
+}
