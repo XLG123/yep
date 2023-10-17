@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./UserDetailPage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
@@ -9,17 +9,24 @@ import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Footer from "../Footer/Footer";
+import ReviewsList from "./ReviewsList";
+import FriendsList from "./FriendsList";
+import FollowingList from "./FollowingList";
 
 const UserDetailPage = () => {
   const userId = useParams().userId;
   // console.log(userId);
 
   const users = useSelector(getUsers);
-  const user = users.filter((user) => user.id === parseInt(userId))[0];
+  const user = users?.filter((user) => user.id === parseInt(userId))[0];
 
   const currUser = useSelector((state) => state.session.user);
 
   console.log(user);
+
+  const [listBtn, setListBtn] = useState("reviews");
+
+  console.log(listBtn);
 
   const dispatch = useDispatch();
 
@@ -92,19 +99,33 @@ const UserDetailPage = () => {
 
           {/* button group for users to look at their reviewed restaurants, friends, and other users that they follow */}
           <div className="list-btn-group">
-            <div className="list-btn">
+            <div
+              className="list-btn"
+              id={listBtn === "reviews" ? "reviews-list-btn" : null}
+              onClick={(e) => setListBtn("reviews")}
+            >
               <span className="list-btn-icon">
                 <StarsIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
               </span>
               <span className="list-btn-text">Reviews</span>
             </div>
-            <div className="list-btn">
+
+            <div
+              className="list-btn"
+              id={listBtn === "friends" ? "friends-list-btn" : null}
+              onClick={(e) => setListBtn("friends")}
+            >
               <span className="list-btn-icon">
                 <Diversity3Icon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
               </span>
               <span className="list-btn-text">Friends</span>
             </div>
-            <div className="list-btn">
+
+            <div
+              className="list-btn"
+              id={listBtn === "following" ? "following-list-btn" : null}
+              onClick={(e) => setListBtn("following")}
+            >
               <span className="list-btn-icon">
                 <HowToRegIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
               </span>
@@ -113,7 +134,15 @@ const UserDetailPage = () => {
           </div>
         </div>
 
-        <div className="list-container">list</div>
+        <div className="list-container">
+          {listBtn === "reviews" ? (
+            <ReviewsList />
+          ) : listBtn === "friends" ? (
+            <FriendsList />
+          ) : (
+            <FollowingList />
+          )}
+        </div>
       </div>
 
       <Footer />
