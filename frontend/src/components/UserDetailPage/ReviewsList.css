@@ -1,4 +1,4 @@
-.reviewed-restaurants-list-title {
+.reviews-list-title {
   font-size: 3vw;
   font-weight: 900;
   color: #2D2E2F;
@@ -29,6 +29,14 @@
 }
 
 .text-container {
+  
+}
+
+.reviewed-restaurant-name {
+  font-weight: bold;
+  font-size: 1.5vw;
+  color: #2D2E2F;
+  margin-bottom: 0.25em;
 }
 
 .empty-reviewed-restaurants-list {

@@ -1,43 +1,43 @@
 import { useNavigate } from "react-router-dom";
 import "./ReviewsList.css";
 
-const ReviewsList = ({ reviewedRestaurants, isCurrUser }) => {
-  console.log(reviewedRestaurants);
-  console.log(isCurrUser);
+const ReviewsList = ({ reviews, isCurrUser }) => {
+  // console.log(reviews);
+  // console.log(isCurrUser);
 
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="reviewed-restaurants-list-title">Reviews</div>
-      {reviewedRestaurants !== undefined ? (
-        <ul className="reviewed-restaurants-container">
-          {Object.values(reviewedRestaurants)?.map((reviewedRestaurant) => (
-            <li className="reviewed-restaurant" key={reviewedRestaurant.id}>
+      <div className="reviews-list-title">Reviews</div>
+      {reviews !== undefined ? (
+        <ul className="reviews-list-container">
+          {Object.values(reviews)?.reverse().map((review) => (
+            <li className="reviewed-restaurant" key={review.id}>
 
               <div className="restaurant-basic-info">
                 <div className="restaurant-thumbnail">
                   <img
-                    src={reviewedRestaurant?.pictureUrls[0]}
+                    src={review.restaurantPictures[0]}
                     alt="thumbnail"
                   />
                 </div>
                 <div className="text-container">
                   <div className="reviewed-restaurant-name">
-                    {reviewedRestaurant?.name}
+                    {review?.restaurantName}
                   </div>
                   <div className="reviewed-restaurant-category">
-                    {reviewedRestaurant?.category}
+                    {review?.restaurantCategory}
                   </div>
                   <div className="reviewed-restaurant-address">
-                    {reviewedRestaurant?.city}
-                    {reviewedRestaurant?.state}
-                    {reviewedRestaurant?.zipCode}
+                    {review?.restaurantCity}
+                    {review?.restaurantState}
+                    {review?.restaurantZipCode}
                   </div>
                 </div>
               </div>
 
-              <div className="reviews-list"></div>
+              <div className=""></div>
             </li>
           ))}
         </ul>

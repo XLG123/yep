@@ -137,7 +137,7 @@ const UserDetailPage = () => {
         <div className="list-container">
           {listBtn === "reviews" ? (
             <ReviewsList
-              reviewedRestaurants={user?.reviewedRestaurants}
+              reviews={user?.reviews}
               isCurrUser={user?.id === currUser?.id ? true : false}
             />
           ) : listBtn === "friends" ? (
