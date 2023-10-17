@@ -1,6 +1,7 @@
 .bp-line-break,
 .write-review-line-break,
-.see-you-soon-line-break {
+.see-you-soon-line-break,
+.user-detail-page-line-break {
   position: absolute;
   width: 100%;
   border-top: 1px solid rgba(200, 201, 202, 1);

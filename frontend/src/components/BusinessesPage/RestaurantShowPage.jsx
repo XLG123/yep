@@ -196,6 +196,11 @@ const RestaurantShowPage = () => {
     }
   };
 
+  const goToUserDetailPage = (e, userId) => {
+    e.preventDefault();
+    navigate(`/user_details/${userId}`);
+  };
+
   useEffect(() => {
     dispatch(fetchRestaurant(restaurantId));
     setTimeout(() => {
@@ -1742,15 +1747,23 @@ const RestaurantShowPage = () => {
                                 height: "3vw",
                                 width: "3vw",
                                 fontSize: "1.3vw",
+                                cursor: "pointer",
                               }}
+                              onClick={(e) =>
+                                goToUserDetailPage(e, userReview?.userId)
+                              }
                             >
                               {userReview?.reviewerFn[0]}
                               {userReview?.reviewerLn[0]}
                             </Avatar>
                           </div>
-                          <div className="reviewer-name">
-                            <span>{userReview?.reviewerFn}</span>
-                            <span>{userReview?.reviewerLn}</span>
+                          <div
+                            className="reviewer-name"
+                            onClick={(e) =>
+                              goToUserDetailPage(e, userReview?.userId)
+                            }
+                          >
+                            {userReview?.reviewerFn} {userReview?.reviewerLn}
                           </div>
                           {sessionUser?.id === userReview?.userId ? (
                             <span className="more-options-btn">
@@ -2099,7 +2112,7 @@ const RestaurantShowPage = () => {
                                       color: "#8FBEE5",
                                       fontSize: "2vw",
                                       stroke: "#7Fa9CC",
-                                      strokeWidth: "0.5"
+                                      strokeWidth: "0.5",
                                     }}
                                   />
                                 </div>
@@ -2138,7 +2151,6 @@ const RestaurantShowPage = () => {
                                 </div>
                               </span>
                             )}
-
                           </div>
                         </li>
                       ))}

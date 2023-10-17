@@ -319,13 +319,15 @@
   width: 60%;
 }
 
-.reviewer-name span:first-child {
-  margin-right: 0.35em;
-}
-
 .reviewer-name {
   font-weight: bold;
   font-size: 1.2vw;
+  word-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.reviewer-name:hover {
+  text-decoration: underline #2D2E2F;
 }
 
 .reviewer-profile {

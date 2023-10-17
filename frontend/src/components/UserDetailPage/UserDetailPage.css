@@ -1,0 +1,13 @@
+.user-detail-container {
+  width: 70%;
+  margin: 3.5vw auto 0px auto;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: auto auto;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.user-info-container,
+.list-container {
+  margin-top: 0.25vw;
+}

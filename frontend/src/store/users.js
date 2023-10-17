@@ -1,3 +1,4 @@
+import { createSelector } from "reselect";
 import csrfFetch from "./csrf.js";
 
 export const RECEIVE_USERS = "users/receiveUsers";
@@ -7,13 +8,14 @@ export const receiveUsers = (users) => ({
   users
 })
 
-export const getUsers = (state) => {
-  if (state.users) {
-    return Object.values(state.users);
-  } else {
-    return [];
+const getUsersData = state => state.users;
+
+export const getUsers = createSelector(
+  [getUsersData],
+  (usersData) => {
+    return Object.values(usersData);
   }
-}
+);
 
 export const fetchUsers = () => async (dispatch) => {
   const response = await csrfFetch('/api/users');

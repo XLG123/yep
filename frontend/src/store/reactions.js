@@ -1,3 +1,4 @@
+import { createSelector } from "reselect";
 import csrfFetch from "./csrf";
 
 export const RECEIVE_REACTIONS = "reviews/receiveReactions";
@@ -19,13 +20,14 @@ export const removeReaction = (reactionId) => ({
   reactionId
 })
 
-export const getReactions = (state) => {
-  if (state.reactions) {
-    return Object.values(state.reactions);
-  } else {
-    return [];
+const getReactionsData = state => state.reactions;
+
+export const getReactions = createSelector(
+  [getReactionsData],
+  (reactionsData) => {
+    return Object.values(reactionsData);
   }
-}
+);
 
 export const getReaction = (reactionId) => (state) => {
   if (state.reactions && state.reactions[reactionId]) {
