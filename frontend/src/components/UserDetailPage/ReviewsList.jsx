@@ -33,7 +33,6 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                     />
                   </div>
                   <div className="text-container">
-
                     {/* Restaurant name */}
                     <div
                       className="reviewed-restaurant-name"
@@ -65,7 +64,24 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                 </div>
 
                 <div className="associated-review">
-                  <div className="associated-review-rating"><Rating /></div>
+                  <div className="associated-review-rating">
+                    <Rating
+                      value={review?.rating}
+                      readOnly
+                      sx={{
+                        color:
+                          review?.rating === 1
+                            ? "#C3882E"
+                            : review?.rating === 2
+                            ? "#D5B53E"
+                            : review?.rating === 3
+                            ? "#E5A038"
+                            : review?.rating === 4
+                            ? "#EB6F3D"
+                            : "#D22E21",
+                      }}
+                    />
+                  </div>
                   <div className="associated-review-body">{review?.body}</div>
                 </div>
               </li>
