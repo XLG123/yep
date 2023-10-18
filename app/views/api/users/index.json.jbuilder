@@ -1,7 +1,7 @@
 json.users do
   @users.each do |user|
     json.set! user.id do
-      json.extract! user, :id, :first_name, :last_name, :email, :zip_code, :created_at
+      json.extract! user, :id, :first_name, :last_name, :created_at
 
       user.reviews.includes(:business).each do |review|
         json.reviews do
