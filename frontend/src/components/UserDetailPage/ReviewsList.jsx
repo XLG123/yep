@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import "./ReviewsList.css";
+import AssociatedReactions from "./AssociatedReactions";
 
 const ReviewsList = ({ reviews, isCurrUser }) => {
   // console.log(reviews);
@@ -94,6 +95,13 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                     </div>
                   </div>
                   <div className="associated-review-body">{review?.body}</div>
+                  <AssociatedReactions
+                    associatedReactions={review?.reactions}
+                    helpfulCount={review?.helpfulCount}
+                    thanksCount={review?.thanksCount}
+                    loveItCount={review?.loveItCount}
+                    ohNoCount={review?.ohNoCount}
+                  />
                 </div>
               </li>
             ))}
