@@ -30,6 +30,11 @@
 
 .reviewed-restaurant {
   border-bottom: 1px solid #EBEBEB;
+  padding: 1vw 0px;
+}
+
+.reviewed-restaurant:first-child {
+  padding-top: 0px;
 }
 
 .reviewed-restaurant:last-child {
@@ -39,7 +44,6 @@
 .restaurant-basic-info {
   display: flex;
   align-items: center;
-  margin-bottom: 0.1em;
 }
 
 .restaurant-thumbnail img {
@@ -48,6 +52,7 @@
   object-fit: cover;
   border-radius: 4px;
   margin-right: 1vw;
+  cursor: pointer;
 }
 
 .restaurant-thumbnail,
@@ -55,14 +60,17 @@
   display: inline-block;
 }
 
-.text-container {
-
-}
-
 .reviewed-restaurant-name {
   font-weight: bold;
   font-size: 1.4vw;
   color: #2D2E2F;
+  cursor: pointer;
+}
+
+.reviewed-restaurant-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.07vw;
 }
 
 .reviewed-restaurant-category {
@@ -81,6 +89,17 @@
 .reviewed-restaurant-city,
 .reviewed-restaurant-state {
   margin-right: 0.5em;
+}
+
+.associated-review {
+  padding-right: 10vw;
+}
+
+.associated-review-body {
+  font-size: 1vw;
+  line-height: 1.2em;
+  text-align: justify;
+  color: #2D2E2F;
 }
 
 .empty-reviewed-restaurants-list {

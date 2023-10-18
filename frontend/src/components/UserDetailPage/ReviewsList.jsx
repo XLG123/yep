@@ -7,6 +7,11 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
 
   const navigate = useNavigate();
 
+  const goToRestaurantPage = (e, restaurantId) => {
+    e.preventDefault();
+    navigate(`/restaurants/${restaurantId}`);
+  };
+
   return (
     <>
       <div className="reviews-list-title">Reviews</div>
@@ -18,12 +23,23 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
               <li className="reviewed-restaurant" key={review.id}>
                 <div className="restaurant-basic-info">
                   <div className="restaurant-thumbnail">
-                    <img src={review.restaurantPictures[0]} alt="thumbnail" />
+                    <img
+                      src={review.restaurantPictures[0]}
+                      alt="thumbnail"
+                      onClick={(e) =>
+                        goToRestaurantPage(e, review?.restaurantId)
+                      }
+                    />
                   </div>
                   <div className="text-container">
 
                     {/* Restaurant name */}
-                    <div className="reviewed-restaurant-name">
+                    <div
+                      className="reviewed-restaurant-name"
+                      onClick={(e) =>
+                        goToRestaurantPage(e, review?.restaurantId)
+                      }
+                    >
                       {review?.restaurantName}
                     </div>
 
@@ -44,11 +60,13 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                         {review?.restaurantZipCode}
                       </span>
                     </div>
-
                   </div>
                 </div>
 
-                <div className=""></div>
+                <div className="associated-review">
+                  <div className="associated-review-rating"></div>
+                  <div className="associated-review-body">{review?.body}</div>
+                </div>
               </li>
             ))}
         </ul>
