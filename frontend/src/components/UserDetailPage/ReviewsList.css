@@ -14,7 +14,7 @@
   background-color: #f7f7f7;
   box-shadow: inset 0 0 5px gray;
   border-radius: 10px;
-  width: 0.8vw;
+  width: 0.75vw;
 }
 
 .reviews-list-container::-webkit-scrollbar-thumb {
