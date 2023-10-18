@@ -1877,6 +1877,8 @@ const RestaurantShowPage = () => {
                           <div className="sp-review-body">
                             {userReview.body}
                           </div>
+
+                          {/* Reaction buttons */}
                           <div className="reaction-button-group">
                             {/* Helpful Reaction Button */}
                             {userReview?.reactions &&

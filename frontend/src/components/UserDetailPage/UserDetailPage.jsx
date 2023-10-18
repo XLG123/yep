@@ -139,6 +139,7 @@ const UserDetailPage = () => {
             <ReviewsList
               reviews={user?.reviews}
               isCurrUser={user?.id === currUser?.id ? true : false}
+              currUserId={currUser?.id}
             />
           ) : listBtn === "friends" ? (
             <FriendsList />

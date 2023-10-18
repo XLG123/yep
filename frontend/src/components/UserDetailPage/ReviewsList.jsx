@@ -3,7 +3,7 @@ import Rating from "@mui/material/Rating";
 import "./ReviewsList.css";
 import AssociatedReactions from "./AssociatedReactions";
 
-const ReviewsList = ({ reviews, isCurrUser }) => {
+const ReviewsList = ({ reviews, isCurrUser, currUserId}) => {
   // console.log(reviews);
   // console.log(isCurrUser);
 
@@ -101,6 +101,7 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                     thanksCount={review?.thanksCount}
                     loveItCount={review?.loveItCount}
                     ohNoCount={review?.ohNoCount}
+                    currUserId={currUserId}
                   />
                 </div>
               </li>
