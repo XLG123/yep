@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Rating from '@mui/material/Rating';
 import "./ReviewsList.css";
 
 const ReviewsList = ({ reviews, isCurrUser }) => {
@@ -64,7 +65,7 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                 </div>
 
                 <div className="associated-review">
-                  <div className="associated-review-rating"></div>
+                  <div className="associated-review-rating"><Rating /></div>
                   <div className="associated-review-body">{review?.body}</div>
                 </div>
               </li>
@@ -74,7 +75,7 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
         <div className="empty-reviewed-restaurants-list">
           {isCurrUser
             ? "Leave a review on your favorite restaurant."
-            : "This user hasn't left any reviews."}
+            : "This user hasn't left any reviews yet."}
         </div>
       )}
     </>
