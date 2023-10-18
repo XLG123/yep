@@ -21,12 +21,18 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                     <img src={review.restaurantPictures[0]} alt="thumbnail" />
                   </div>
                   <div className="text-container">
+
+                    {/* Restaurant name */}
                     <div className="reviewed-restaurant-name">
                       {review?.restaurantName}
                     </div>
+
+                    {/* Restaurant category */}
                     <div className="reviewed-restaurant-category">
                       {review?.restaurantCategory.replaceAll("_", ", ")}
                     </div>
+
+                    {/* Restaurant address */}
                     <div className="reviewed-restaurant-address">
                       <span className="reviewed-restaurant-city">
                         {review?.restaurantCity},
@@ -38,6 +44,7 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                         {review?.restaurantZipCode}
                       </span>
                     </div>
+
                   </div>
                 </div>
 

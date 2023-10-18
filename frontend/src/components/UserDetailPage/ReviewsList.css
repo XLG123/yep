@@ -50,14 +50,13 @@
 }
 
 .text-container {
-  
+  /* max-height: 1vw; */
 }
 
 .reviewed-restaurant-name {
   font-weight: bold;
   font-size: 1.4vw;
   color: #2D2E2F;
-  margin-bottom: 0.3em;
 }
 
 .reviewed-restaurant-category {
@@ -69,9 +68,6 @@
 
 .reviewed-restaurant-address {
   margin-top: 0.7em;
-}
-
-.reviewed-restaurant-address span {
   color: #6E7072;
   font-size: 1vw;
 }
