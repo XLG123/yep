@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 import "./ReviewsList.css";
 
 const ReviewsList = ({ reviews, isCurrUser }) => {
@@ -64,23 +64,34 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
                 </div>
 
                 <div className="associated-review">
-                  <div className="associated-review-rating">
-                    <Rating
-                      value={review?.rating}
-                      readOnly
-                      sx={{
-                        color:
-                          review?.rating === 1
-                            ? "#C3882E"
-                            : review?.rating === 2
-                            ? "#D5B53E"
-                            : review?.rating === 3
-                            ? "#E5A038"
-                            : review?.rating === 4
-                            ? "#EB6F3D"
-                            : "#D22E21",
-                      }}
-                    />
+                  <div className="rating-time-container">
+                    <div className="associated-review-rating">
+                      <Rating
+                        value={review?.rating}
+                        readOnly
+                        sx={{
+                          color:
+                            review?.rating === 1
+                              ? "#C3882E"
+                              : review?.rating === 2
+                              ? "#D5B53E"
+                              : review?.rating === 3
+                              ? "#E5A038"
+                              : review?.rating === 4
+                              ? "#EB6F3D"
+                              : "#D22E21",
+                          fontSize: "1.8vw",
+                        }}
+                      />
+                    </div>
+                    <div className="associated-review-time">
+                      {new Date(review?.createdAt).toLocaleString("en-US", {
+                        timeZone: "America/New_York",
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </div>
                   </div>
                   <div className="associated-review-body">{review?.body}</div>
                 </div>

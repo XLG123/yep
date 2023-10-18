@@ -1763,7 +1763,8 @@ const RestaurantShowPage = () => {
                               goToUserDetailPage(e, userReview?.userId)
                             }
                           >
-                            {userReview?.reviewerFn} {userReview?.reviewerLn[0]}.
+                            {userReview?.reviewerFn} {userReview?.reviewerLn[0]}
+                            .
                           </div>
                           {sessionUser?.id === userReview?.userId ? (
                             <span className="more-options-btn">
@@ -1858,13 +1859,14 @@ const RestaurantShowPage = () => {
                           <div className="sp-review-rating">
                             <ReviewRating
                               averageRating={userReview.rating}
-                              ratingTime={
-                                new Date(userReview.updatedAt)
-                                  .toLocaleString("en-US", {
-                                    timeZone: "America/New_York",
-                                  })
-                                  .split(",")[0]
-                              }
+                              ratingTime={new Date(
+                                userReview.createdAt
+                              ).toLocaleString("en-US", {
+                                timeZone: "America/New_York",
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
+                              })}
                               edited={
                                 userReview.createdAt !== userReview.updatedAt
                                   ? true
