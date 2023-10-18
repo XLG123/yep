@@ -12,34 +12,38 @@ const ReviewsList = ({ reviews, isCurrUser }) => {
       <div className="reviews-list-title">Reviews</div>
       {reviews !== undefined ? (
         <ul className="reviews-list-container">
-          {Object.values(reviews)?.reverse().map((review) => (
-            <li className="reviewed-restaurant" key={review.id}>
-
-              <div className="restaurant-basic-info">
-                <div className="restaurant-thumbnail">
-                  <img
-                    src={review.restaurantPictures[0]}
-                    alt="thumbnail"
-                  />
+          {Object.values(reviews)
+            ?.reverse()
+            .map((review) => (
+              <li className="reviewed-restaurant" key={review.id}>
+                <div className="restaurant-basic-info">
+                  <div className="restaurant-thumbnail">
+                    <img src={review.restaurantPictures[0]} alt="thumbnail" />
+                  </div>
+                  <div className="text-container">
+                    <div className="reviewed-restaurant-name">
+                      {review?.restaurantName}
+                    </div>
+                    <div className="reviewed-restaurant-category">
+                      {review?.restaurantCategory.replaceAll("_", ", ")}
+                    </div>
+                    <div className="reviewed-restaurant-address">
+                      <span className="reviewed-restaurant-city">
+                        {review?.restaurantCity},
+                      </span>
+                      <span className="reviewed-restaurant-state">
+                        {review?.restaurantState},
+                      </span>
+                      <span className="reviewed-restaurant-zipcode">
+                        {review?.restaurantZipCode}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-container">
-                  <div className="reviewed-restaurant-name">
-                    {review?.restaurantName}
-                  </div>
-                  <div className="reviewed-restaurant-category">
-                    {review?.restaurantCategory}
-                  </div>
-                  <div className="reviewed-restaurant-address">
-                    {review?.restaurantCity}
-                    {review?.restaurantState}
-                    {review?.restaurantZipCode}
-                  </div>
-                </div>
-              </div>
 
-              <div className=""></div>
-            </li>
-          ))}
+                <div className=""></div>
+              </li>
+            ))}
         </ul>
       ) : (
         <div className="empty-reviewed-restaurants-list">
