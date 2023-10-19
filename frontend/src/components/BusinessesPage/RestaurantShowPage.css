@@ -374,7 +374,7 @@
 }
 
 .reaction-button-group {
-  margin-top: 0.70em;
+  margin-top: 0.6vw;
   width: 60%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
