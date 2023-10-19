@@ -64,7 +64,6 @@ const AssociatedReactions = ({
   return (
     <div className="associated-reactions-container">
       <Toaster /> {/* To display the warning message */}
-      
       {/* Reaction buttons on the associated review */}
       <div className="reaction-button-group">
         {/* Helpful Reaction Button */}
@@ -120,6 +119,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
+            onClick={(e) => createReaction(e, reviewId, reviewerId, "helpful")}
           >
             <div className="reaction-btn-icon">
               <LightbulbCircleIcon
@@ -164,6 +164,7 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
+              onClick={(e) => createReaction(e, reviewId, reviewerId, "thanks")}
             >
               <div className="reaction-btn-icon">
                 <RecommendIcon
@@ -185,6 +186,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
+            onClick={(e) => createReaction(e, reviewId, reviewerId, "thanks")}
           >
             <div className="reaction-btn-icon">
               <RecommendIcon
@@ -230,6 +232,9 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
+              onClick={(e) =>
+                createReaction(e, reviewId, reviewerId, "love_this")
+              }
             >
               <div className="reaction-btn-icon">
                 <FavoriteIcon
@@ -251,6 +256,9 @@ const AssociatedReactions = ({
               currUserId !== reviewerId
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
+            }
+            onClick={(e) =>
+              createReaction(e, reviewId, reviewerId, "love_this")
             }
           >
             <div className="reaction-btn-icon">
@@ -296,6 +304,7 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
+              onClick={(e) => createReaction(e, reviewId, reviewerId, "oh_no")}
             >
               <div className="reaction-btn-icon">
                 <MoodBadIcon
@@ -317,6 +326,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
+            onClick={(e) => createReaction(e, reviewId, reviewerId, "oh_no")}
           >
             <div className="reaction-btn-icon">
               <MoodBadIcon
