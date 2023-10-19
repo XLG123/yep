@@ -4,9 +4,10 @@ import RecommendIcon from "@mui/icons-material/Recommend";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoodBadIcon from "@mui/icons-material/MoodBad";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../store/users";
 import { useNavigate } from "react-router-dom";
+import { createReaction, getReactions } from '../../store/reactions';
 
 // For css styling, check RestaurantShowPage.css
 
@@ -29,13 +30,22 @@ const AssociatedReactions = ({
   // console.log(reviewerId);
   // console.log(reviewId);
 
+  const allReactions = useSelector(getReactions);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const createReaction = (e, reviewId, reviewerId, reaction) => {
-    e.preventDefault();
+  const createUserReaction = (e, currUserId, reviewId, reviewerId, reaction) => {
+    // e.preventDefault();
     if (currUserId && currUserId !== reviewerId) {
+      const reactionObj = {
+        reaction_type: reaction,
+        user_id: currUserId,
+        review_id: reviewId,
+      };
+      console.log(reactionObj);
+      dispatch(createReaction(reactionObj));
     } else if (currUserId && currUserId === reviewerId) {
       // This prevents current user from giving reactions to their own reviews
       // Notifies the user by displaying a warning message
@@ -57,9 +67,9 @@ const AssociatedReactions = ({
     }
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, [associatedReactions]);
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [allReactions?.length]);
 
   return (
     <div className="associated-reactions-container">
@@ -96,7 +106,7 @@ const AssociatedReactions = ({
                   : "reaction-btn disabled-reaction-btn"
               }
               onClick={(e) =>
-                createReaction(e, reviewId, reviewerId, "helpful")
+                createUserReaction(e, currUserId, reviewId, reviewerId, "helpful")
               }
             >
               <div className="reaction-btn-icon">
@@ -119,7 +129,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createReaction(e, reviewId, reviewerId, "helpful")}
+            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "helpful")}
           >
             <div className="reaction-btn-icon">
               <LightbulbCircleIcon
@@ -164,7 +174,7 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
-              onClick={(e) => createReaction(e, reviewId, reviewerId, "thanks")}
+              onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "thanks")}
             >
               <div className="reaction-btn-icon">
                 <RecommendIcon
@@ -186,7 +196,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createReaction(e, reviewId, reviewerId, "thanks")}
+            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "thanks")}
           >
             <div className="reaction-btn-icon">
               <RecommendIcon
@@ -233,7 +243,7 @@ const AssociatedReactions = ({
                   : "reaction-btn disabled-reaction-btn"
               }
               onClick={(e) =>
-                createReaction(e, reviewId, reviewerId, "love_this")
+                createUserReaction(e, currUserId, reviewId, reviewerId, "love_this")
               }
             >
               <div className="reaction-btn-icon">
@@ -258,7 +268,7 @@ const AssociatedReactions = ({
                 : "reaction-btn disabled-reaction-btn"
             }
             onClick={(e) =>
-              createReaction(e, reviewId, reviewerId, "love_this")
+              createUserReaction(e, currUserId, reviewId, reviewerId, "love_this")
             }
           >
             <div className="reaction-btn-icon">
@@ -304,7 +314,7 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
-              onClick={(e) => createReaction(e, reviewId, reviewerId, "oh_no")}
+              onClick={(e) => createUserReaction(e, currUserId,reviewId, reviewerId, "oh_no")}
             >
               <div className="reaction-btn-icon">
                 <MoodBadIcon
@@ -326,7 +336,7 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createReaction(e, reviewId, reviewerId, "oh_no")}
+            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "oh_no")}
           >
             <div className="reaction-btn-icon">
               <MoodBadIcon
