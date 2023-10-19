@@ -1,4 +1,4 @@
-import Tooltip from "@mui/material/Tooltip";
+import toast, { Toaster } from "react-hot-toast";
 import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
 import RecommendIcon from "@mui/icons-material/Recommend";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -6,6 +6,7 @@ import MoodBadIcon from "@mui/icons-material/MoodBad";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUsers } from "../../store/users";
+import { useNavigate } from "react-router-dom";
 
 // For css styling, check RestaurantShowPage.css
 
@@ -17,6 +18,7 @@ const AssociatedReactions = ({
   ohNoCount,
   currUserId,
   reviewerId,
+  reviewId,
 }) => {
   // console.log(associatedReactions);
   // console.log(helpfulCount);
@@ -25,8 +27,35 @@ const AssociatedReactions = ({
   // console.log(ohNoCount);
   // console.log(currUserId);
   // console.log(reviewerId);
+  // console.log(reviewId);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const createReaction = (e, reviewId, reviewerId, reaction) => {
+    e.preventDefault();
+    if (currUserId && currUserId !== reviewerId) {
+    } else if (currUserId && currUserId === reviewerId) {
+      // This prevents current user from giving reactions to their own reviews
+      // Notifies the user by displaying a warning message
+      toast("You can't react to your own review.", {
+        id: "warning-message",
+        style: {
+          border: "1px solid rgba(202, 201, 202, 1)",
+          fontSize: "1.1vw",
+          boxShadow: "0px 3px 3px 1px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgb(255, 255, 255)",
+          height: "1vw",
+          padding: "1em",
+        },
+        icon: "❗️",
+        duration: 2000,
+      });
+    } else {
+      navigate("/login");
+    }
+  };
 
   // useEffect(() => {
   //   dispatch(fetchUsers());
@@ -34,6 +63,8 @@ const AssociatedReactions = ({
 
   return (
     <div className="associated-reactions-container">
+      <Toaster /> {/* To display the warning message */}
+      
       {/* Reaction buttons on the associated review */}
       <div className="reaction-button-group">
         {/* Helpful Reaction Button */}
@@ -64,6 +95,9 @@ const AssociatedReactions = ({
                 currUserId !== reviewerId
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
+              }
+              onClick={(e) =>
+                createReaction(e, reviewId, reviewerId, "helpful")
               }
             >
               <div className="reaction-btn-icon">

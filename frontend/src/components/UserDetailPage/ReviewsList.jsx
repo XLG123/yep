@@ -103,6 +103,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId}) => {
                     ohNoCount={review?.ohNoCount}
                     currUserId={currUserId}
                     reviewerId={review?.userId}
+                    reviewId={review?.id}
                   />
                 </div>
               </li>
