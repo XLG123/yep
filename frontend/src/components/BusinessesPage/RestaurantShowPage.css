@@ -385,6 +385,10 @@
   cursor: pointer;
 }
 
+.disabled-reaction-btn {
+  cursor: not-allowed;
+}
+
 .reaction-btn-icon {
   text-align: center;
 }

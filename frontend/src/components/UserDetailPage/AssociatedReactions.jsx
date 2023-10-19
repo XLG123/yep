@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUsers } from "../../store/users";
 
+// For css styling, check RestaurantShowPage.css
+
 const AssociatedReactions = ({
   associatedReactions,
   helpfulCount,
@@ -14,13 +16,15 @@ const AssociatedReactions = ({
   loveThisCount,
   ohNoCount,
   currUserId,
+  reviewerId,
 }) => {
-  console.log(associatedReactions);
+  // console.log(associatedReactions);
   // console.log(helpfulCount);
   // console.log(thanksCount);
   // console.log(loveThisCount);
   // console.log(ohNoCount);
   // console.log(currUserId);
+  // console.log(reviewerId);
 
   const dispatch = useDispatch();
 
@@ -55,7 +59,13 @@ const AssociatedReactions = ({
               </div>
             </span>
           ) : (
-            <span className="reaction-btn">
+            <span
+              className={
+                currUserId !== reviewerId
+                  ? "reaction-btn"
+                  : "reaction-btn disabled-reaction-btn"
+              }
+            >
               <div className="reaction-btn-icon">
                 <LightbulbCircleIcon
                   sx={{
@@ -70,7 +80,13 @@ const AssociatedReactions = ({
             </span>
           )
         ) : (
-          <span className="reaction-btn">
+          <span
+            className={
+              currUserId !== reviewerId
+                ? "reaction-btn"
+                : "reaction-btn disabled-reaction-btn"
+            }
+          >
             <div className="reaction-btn-icon">
               <LightbulbCircleIcon
                 sx={{
@@ -108,7 +124,13 @@ const AssociatedReactions = ({
               </div>
             </span>
           ) : (
-            <span className="reaction-btn">
+            <span
+              className={
+                currUserId !== reviewerId
+                  ? "reaction-btn"
+                  : "reaction-btn disabled-reaction-btn"
+              }
+            >
               <div className="reaction-btn-icon">
                 <RecommendIcon
                   sx={{
@@ -123,7 +145,13 @@ const AssociatedReactions = ({
             </span>
           )
         ) : (
-          <span className="reaction-btn">
+          <span
+            className={
+              currUserId !== reviewerId
+                ? "reaction-btn"
+                : "reaction-btn disabled-reaction-btn"
+            }
+          >
             <div className="reaction-btn-icon">
               <RecommendIcon
                 sx={{
@@ -162,7 +190,13 @@ const AssociatedReactions = ({
               </div>
             </span>
           ) : (
-            <span className="reaction-btn">
+            <span
+              className={
+                currUserId !== reviewerId
+                  ? "reaction-btn"
+                  : "reaction-btn disabled-reaction-btn"
+              }
+            >
               <div className="reaction-btn-icon">
                 <FavoriteIcon
                   sx={{
@@ -178,7 +212,13 @@ const AssociatedReactions = ({
             </span>
           )
         ) : (
-          <span className="reaction-btn">
+          <span
+            className={
+              currUserId !== reviewerId
+                ? "reaction-btn"
+                : "reaction-btn disabled-reaction-btn"
+            }
+          >
             <div className="reaction-btn-icon">
               <FavoriteIcon
                 sx={{
@@ -216,7 +256,13 @@ const AssociatedReactions = ({
               </div>
             </span>
           ) : (
-            <span className="reaction-btn">
+            <span
+              className={
+                currUserId !== reviewerId
+                  ? "reaction-btn"
+                  : "reaction-btn disabled-reaction-btn"
+              }
+            >
               <div className="reaction-btn-icon">
                 <MoodBadIcon
                   sx={{
@@ -231,7 +277,13 @@ const AssociatedReactions = ({
             </span>
           )
         ) : (
-          <span className="reaction-btn">
+          <span
+            className={
+              currUserId !== reviewerId
+                ? "reaction-btn"
+                : "reaction-btn disabled-reaction-btn"
+            }
+          >
             <div className="reaction-btn-icon">
               <MoodBadIcon
                 sx={{

@@ -174,7 +174,7 @@ const RestaurantShowPage = () => {
         style: {
           border: "1px solid rgba(202, 201, 202, 1)",
           fontSize: "1.1vw",
-          boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0px 3px 3px 1px rgba(0, 0, 0, 0.2)",
           backgroundColor: "rgb(255, 255, 255)",
           height: "1vw",
           padding: "1em",
@@ -1922,7 +1922,11 @@ const RestaurantShowPage = () => {
                               </span>
                             ) : (
                               <span
-                                className="reaction-btn"
+                                className={
+                                  sessionUser?.id !== userReview?.userId
+                                    ? "reaction-btn"
+                                    : "reaction-btn disabled-reaction-btn"
+                                }
                                 onClick={(e) =>
                                   createUserReaction(
                                     e,
@@ -1991,7 +1995,11 @@ const RestaurantShowPage = () => {
                               </span>
                             ) : (
                               <span
-                                className="reaction-btn"
+                                className={
+                                  sessionUser?.id !== userReview?.userId
+                                    ? "reaction-btn"
+                                    : "reaction-btn disabled-reaction-btn"
+                                }
                                 onClick={(e) =>
                                   createUserReaction(
                                     e,
@@ -2060,7 +2068,11 @@ const RestaurantShowPage = () => {
                               </span>
                             ) : (
                               <span
-                                className="reaction-btn"
+                                className={
+                                  sessionUser?.id !== userReview?.userId
+                                    ? "reaction-btn"
+                                    : "reaction-btn disabled-reaction-btn"
+                                }
                                 onClick={(e) =>
                                   createUserReaction(
                                     e,
@@ -2129,7 +2141,11 @@ const RestaurantShowPage = () => {
                               </span>
                             ) : (
                               <span
-                                className="reaction-btn"
+                                className={
+                                  sessionUser?.id !== userReview?.userId
+                                    ? "reaction-btn"
+                                    : "reaction-btn disabled-reaction-btn"
+                                }
                                 onClick={(e) =>
                                   createUserReaction(
                                     e,
