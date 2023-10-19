@@ -99,7 +99,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId}) => {
                     associatedReactions={review?.reactions}
                     helpfulCount={review?.helpfulCount}
                     thanksCount={review?.thanksCount}
-                    loveItCount={review?.loveItCount}
+                    loveThisCount={review?.loveThisCount}
                     ohNoCount={review?.ohNoCount}
                     currUserId={currUserId}
                   />

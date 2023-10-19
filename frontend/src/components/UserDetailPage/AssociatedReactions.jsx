@@ -11,14 +11,14 @@ const AssociatedReactions = ({
   associatedReactions,
   helpfulCount,
   thanksCount,
-  loveItCount,
+  loveThisCount,
   ohNoCount,
   currUserId,
 }) => {
   console.log(associatedReactions);
   // console.log(helpfulCount);
   // console.log(thanksCount);
-  // console.log(loveItCount);
+  // console.log(loveThisCount);
   // console.log(ohNoCount);
   // console.log(currUserId);
 
@@ -92,11 +92,51 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "thanks"
           ).length !== 0 ? (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <RecommendIcon
+                  sx={{
+                    color: "#ABE1A2",
+                    fontSize: "2vw",
+                    stroke: "#3D3E3F",
+                    strokeWidth: "0.5",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text already-clicked-btn-text">
+                Thanks <span className="reaction-count">{thanksCount}</span>
+              </div>
+            </span>
           ) : (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <RecommendIcon
+                  sx={{
+                    color: "rgb(138, 141, 144)",
+                    fontSize: "2vw",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text">
+                Thanks <span className="reaction-count">{thanksCount}</span>
+              </div>
+            </span>
           )
-        ) : null}
+        ) : (
+          <span className="reaction-btn">
+            <div className="reaction-btn-icon">
+              <RecommendIcon
+                sx={{
+                  color: "rgb(138, 141, 144)",
+                  fontSize: "2vw",
+                }}
+              />
+            </div>
+            <div className="reaction-btn-text">
+              Thanks <span className="reaction-count">{thanksCount}</span>
+            </div>
+          </span>
+        )}
 
         {/* Love this Reaction Button */}
         {associatedReactions ? (
@@ -105,11 +145,53 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "love_this"
           ).length !== 0 ? (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <FavoriteIcon
+                  sx={{
+                    color: "#E68D8D",
+                    fontSize: "2vw",
+                    stroke: "#3D3E3F",
+                    strokeWidth: "0.5",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text already-clicked-btn-text">
+                Love this{" "}
+                <span className="reaction-count">{loveThisCount}</span>
+              </div>
+            </span>
           ) : (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <FavoriteIcon
+                  sx={{
+                    color: "rgb(138, 141, 144)",
+                    fontSize: "2vw",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text">
+                Love this{" "}
+                <span className="reaction-count">{loveThisCount}</span>
+              </div>
+            </span>
           )
-        ) : null}
+        ) : (
+          <span className="reaction-btn">
+            <div className="reaction-btn-icon">
+              <FavoriteIcon
+                sx={{
+                  color: "rgb(138, 141, 144)",
+                  fontSize: "2vw",
+                }}
+              />
+            </div>
+            <div className="reaction-btn-text">
+              Love this <span className="reaction-count">{loveThisCount}</span>
+            </div>
+          </span>
+        )}
 
         {/* Oh no Reaction Button */}
         {associatedReactions ? (
@@ -118,11 +200,51 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "oh_no"
           ).length !== 0 ? (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <MoodBadIcon
+                  sx={{
+                    color: "#8FBEE5",
+                    fontSize: "2vw",
+                    stroke: "#7Fa9CC",
+                    strokeWidth: "0.5",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text already-clicked-btn-text">
+                Oh no <span className="reaction-count">{ohNoCount}</span>
+              </div>
+            </span>
           ) : (
-            <span className="reaction-btn"></span>
+            <span className="reaction-btn">
+              <div className="reaction-btn-icon">
+                <MoodBadIcon
+                  sx={{
+                    color: "rgb(138, 141, 144)",
+                    fontSize: "2vw",
+                  }}
+                />
+              </div>
+              <div className="reaction-btn-text">
+                Oh no <span className="reaction-count">{ohNoCount}</span>
+              </div>
+            </span>
           )
-        ) : null}
+        ) : (
+          <span className="reaction-btn">
+            <div className="reaction-btn-icon">
+              <MoodBadIcon
+                sx={{
+                  color: "rgb(138, 141, 144)",
+                  fontSize: "2vw",
+                }}
+              />
+            </div>
+            <div className="reaction-btn-text">
+              Oh no <span className="reaction-count">{ohNoCount}</span>
+            </div>
+          </span>
+        )}
       </div>
     </div>
   );
