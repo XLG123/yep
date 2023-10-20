@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../store/users";
 import { useNavigate } from "react-router-dom";
-import { createReaction, getReactions } from '../../store/reactions';
+import { createReaction, deleteReaction, getReactions, removeReaction } from '../../store/reactions';
 
 // For css styling, check RestaurantShowPage.css
 
@@ -67,6 +67,15 @@ const AssociatedReactions = ({
     }
   };
 
+  const removeUserReaction = (e, currUserId, reviewerId, reactionId) => {
+    e.preventDefault();
+    if (currUserId && currUserId !== reviewerId ) {
+      dispatch(deleteReaction(reactionId));
+    } else {
+      navigate("/login");
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, [allReactions?.length]);
@@ -83,7 +92,21 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "helpful"
           ).length !== 0 ? (
-            <span className="reaction-btn">
+            <span
+              className="reaction-btn"
+              onClick={(e) =>
+                removeUserReaction(
+                  e,
+                  currUserId,
+                  reviewerId,
+                  Object.values(associatedReactions)?.filter(
+                    (reaction) =>
+                      reaction?.userId === currUserId &&
+                      reaction?.reactionType === "helpful"
+                  )[0]?.id
+                )
+              }
+            >
               <div className="reaction-btn-icon">
                 <LightbulbCircleIcon
                   sx={{
@@ -106,7 +129,13 @@ const AssociatedReactions = ({
                   : "reaction-btn disabled-reaction-btn"
               }
               onClick={(e) =>
-                createUserReaction(e, currUserId, reviewId, reviewerId, "helpful")
+                createUserReaction(
+                  e,
+                  currUserId,
+                  reviewId,
+                  reviewerId,
+                  "helpful"
+                )
               }
             >
               <div className="reaction-btn-icon">
@@ -129,7 +158,9 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "helpful")}
+            onClick={(e) =>
+              createUserReaction(e, currUserId, reviewId, reviewerId, "helpful")
+            }
           >
             <div className="reaction-btn-icon">
               <LightbulbCircleIcon
@@ -152,7 +183,21 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "thanks"
           ).length !== 0 ? (
-            <span className="reaction-btn">
+            <span
+              className="reaction-btn"
+              onClick={(e) =>
+                removeUserReaction(
+                  e,
+                  currUserId,
+                  reviewerId,
+                  Object.values(associatedReactions)?.filter(
+                    (reaction) =>
+                      reaction?.userId === currUserId &&
+                      reaction?.reactionType === "thanks"
+                  )[0]?.id
+                )
+              }
+            >
               <div className="reaction-btn-icon">
                 <RecommendIcon
                   sx={{
@@ -174,7 +219,15 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
-              onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "thanks")}
+              onClick={(e) =>
+                createUserReaction(
+                  e,
+                  currUserId,
+                  reviewId,
+                  reviewerId,
+                  "thanks"
+                )
+              }
             >
               <div className="reaction-btn-icon">
                 <RecommendIcon
@@ -196,7 +249,9 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "thanks")}
+            onClick={(e) =>
+              createUserReaction(e, currUserId, reviewId, reviewerId, "thanks")
+            }
           >
             <div className="reaction-btn-icon">
               <RecommendIcon
@@ -219,7 +274,21 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "love_this"
           ).length !== 0 ? (
-            <span className="reaction-btn">
+            <span
+              className="reaction-btn"
+              onClick={(e) =>
+                removeUserReaction(
+                  e,
+                  currUserId,
+                  reviewerId,
+                  Object.values(associatedReactions)?.filter(
+                    (reaction) =>
+                      reaction?.userId === currUserId &&
+                      reaction?.reactionType === "love_this"
+                  )[0]?.id
+                )
+              }
+            >
               <div className="reaction-btn-icon">
                 <FavoriteIcon
                   sx={{
@@ -243,7 +312,13 @@ const AssociatedReactions = ({
                   : "reaction-btn disabled-reaction-btn"
               }
               onClick={(e) =>
-                createUserReaction(e, currUserId, reviewId, reviewerId, "love_this")
+                createUserReaction(
+                  e,
+                  currUserId,
+                  reviewId,
+                  reviewerId,
+                  "love_this"
+                )
               }
             >
               <div className="reaction-btn-icon">
@@ -268,7 +343,13 @@ const AssociatedReactions = ({
                 : "reaction-btn disabled-reaction-btn"
             }
             onClick={(e) =>
-              createUserReaction(e, currUserId, reviewId, reviewerId, "love_this")
+              createUserReaction(
+                e,
+                currUserId,
+                reviewId,
+                reviewerId,
+                "love_this"
+              )
             }
           >
             <div className="reaction-btn-icon">
@@ -292,7 +373,21 @@ const AssociatedReactions = ({
               reaction?.userId === currUserId &&
               reaction?.reactionType === "oh_no"
           ).length !== 0 ? (
-            <span className="reaction-btn">
+            <span
+              className="reaction-btn"
+              onClick={(e) =>
+                removeUserReaction(
+                  e,
+                  currUserId,
+                  reviewerId,
+                  Object.values(associatedReactions)?.filter(
+                    (reaction) =>
+                      reaction?.userId === currUserId &&
+                      reaction?.reactionType === "oh_no"
+                  )[0]?.id
+                )
+              }
+            >
               <div className="reaction-btn-icon">
                 <MoodBadIcon
                   sx={{
@@ -314,7 +409,9 @@ const AssociatedReactions = ({
                   ? "reaction-btn"
                   : "reaction-btn disabled-reaction-btn"
               }
-              onClick={(e) => createUserReaction(e, currUserId,reviewId, reviewerId, "oh_no")}
+              onClick={(e) =>
+                createUserReaction(e, currUserId, reviewId, reviewerId, "oh_no")
+              }
             >
               <div className="reaction-btn-icon">
                 <MoodBadIcon
@@ -336,7 +433,9 @@ const AssociatedReactions = ({
                 ? "reaction-btn"
                 : "reaction-btn disabled-reaction-btn"
             }
-            onClick={(e) => createUserReaction(e, currUserId, reviewId, reviewerId, "oh_no")}
+            onClick={(e) =>
+              createUserReaction(e, currUserId, reviewId, reviewerId, "oh_no")
+            }
           >
             <div className="reaction-btn-icon">
               <MoodBadIcon
