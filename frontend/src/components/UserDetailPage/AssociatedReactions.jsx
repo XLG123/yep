@@ -58,6 +58,7 @@ const AssociatedReactions = ({
           backgroundColor: "rgb(255, 255, 255)",
           height: "1vw",
           padding: "1em",
+          minWidth: "fit-content",
         },
         icon: "❗️",
         duration: 2000,

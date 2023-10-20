@@ -19,10 +19,11 @@ const SeeYouSoon = () => {
       id: "successful-link",
       style: {
         border: "1px solid rgba(202, 201, 202, 1)",
-        fontSize: "1.1.7vw",
+        fontSize: "1.1vw",
         boxShadow: "0px 10px 8px 1px rgba(0, 0, 0, 0.2)",
         backgroundColor: "rgba(255, 255, 255, 0.85)",
-        height: "1.7vw",
+        height: "1vw",
+        padding: "1em",
       },
       icon: "✅",
       duration: 2000,
