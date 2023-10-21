@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
 import IconButton from "@mui/material/IconButton";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -8,6 +8,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
+import { deleteReview } from "../../store/reviews";
+import Box from "@mui/material/Box";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "../../store/users";
 
 const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   // console.log(reviews);
@@ -16,18 +20,42 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+  const [openElement, setOpenElement] = useState(null);
+  const [modalEleId, setModalEleId] = useState(null);
+
   const [openModal, setOpenModal] = useState(false);
 
-  const handleAnchorClick = (e) => {
+  const handleAnchorClick = (e, currReview) => {
     setAnchorEl(e.currentTarget);
+    setOpenElement(currReview);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setOpenElement(null);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (reviewId) => {
     setOpenModal(true);
+    setModalEleId(reviewId);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setModalEleId(null);
+  };
+
+  const showModal = (e, reviewId) => {
+    handleClose();
+    handleOpenModal(reviewId);
+  };
+
+  const dispatch = useDispatch();
+
+  const handleRemove = (e, reviewId) => {
+    e.preventDefault();
+    handleCloseModal();
+    dispatch(deleteReview(reviewId));
   };
 
   const navigate = useNavigate();
@@ -36,6 +64,24 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     e.preventDefault();
     navigate(`/restaurants/${restaurantId}`);
   };
+
+  const myBoxStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    borderColor: "rgba(235,235,235,1)",
+    borderRadius: "5px",
+    boxShadow: 50,
+    padding: "2.8em",
+  };
+
+  const currUserAllReviews = useSelector((state) => state.reviews);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [Object.values(currUserAllReviews)?.length]);
 
   return (
     <>
@@ -95,7 +141,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                         aria-haspopup="true"
                         aria-label="Click to show more options"
                         title="More options"
-                        onClick={handleAnchorClick}
+                        onClick={(e) => handleAnchorClick(e, review)}
                         sx={{
                           fontSize: "1.8vw",
                           position: "relative",
@@ -125,6 +171,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                           horizontal: "right",
                         }}
                         sx={{ lineHeight: "1vw", borderRadius: "4px" }}
+                        elevation={1}
                       >
                         <MenuItem
                           // onClick={(e) => handleUpdate(e, userReview.id)}
@@ -141,7 +188,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                           Update Review
                         </MenuItem>
                         <MenuItem
-                          // onClick={showModal}
+                          onClick={(e) => showModal(e, openElement?.id)}
                           sx={{
                             fontSize: "1vw",
                             fontWeight: "600",
@@ -155,6 +202,41 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                           Remove Review
                         </MenuItem>
                       </Menu>
+                      <Modal
+                        open={openModal}
+                        onClose={handleCloseModal}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        sx={{
+                          "& .MuiBackdrop-root": {
+                            backgroundColor: "transparent",
+                            backdropFilter: "brightness(80%)",
+                          },
+                        }}
+                      >
+                        <Box className="modal-content" sx={myBoxStyle}>
+                          <div className="modal-title">Remove Review</div>
+                          <div className="modal-text">
+                            Are you sure you want to remove this review? It can
+                            help the restaurants improve their services the more
+                            reviews they get.
+                          </div>
+                          <div className="modal-btn-gp">
+                            <div
+                              className="modal-btn"
+                              onClick={handleCloseModal}
+                            >
+                              Keep Review
+                            </div>
+                            <div
+                              className="modal-btn"
+                              onClick={(e) => handleRemove(e, modalEleId)}
+                            >
+                              Confirm Remove
+                            </div>
+                          </div>
+                        </Box>
+                      </Modal>
                     </div>
                   )}
                 </div>

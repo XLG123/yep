@@ -21,13 +21,34 @@
 .bg-red-banner {
   position: absolute;
   background-color: #E00707;
-  min-width: 22.515%;
-  /* max-width: 22%; */
-  /* max-width: 18.3em; */
-  /* width: 22vw; */
+  width: 22.4vw;
   height: 4.5vw;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+}
+
+@media screen and (width <= 1440px) {
+  .bg-red-banner {
+    width: 22.3vw;
+  }
+}
+
+@media screen and (width <= 1000px) {
+  .bg-red-banner {
+    width: 22.2vw;
+  }
+}
+
+@media screen and (width < 800px) {
+  .bg-red-banner {
+    width: 22.1vw;
+  }
+}
+
+@media screen and (width < 600px) {
+  .bg-red-banner {
+    width: 22vw;
+  }
 }
 
 .username-container,

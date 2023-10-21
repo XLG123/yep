@@ -83,32 +83,39 @@ const RestaurantShowPage = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+  const [openElement, setOpenElement] = useState(null);
+  const [modalEleId, setModalEleId] = useState(null);
+
   const [openModal, setOpenModal] = useState(false);
 
-  const handleAnchorClick = (e) => {
+  const handleAnchorClick = (e, currReview) => {
     setAnchorEl(e.currentTarget);
+    setOpenElement(currReview);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setOpenElement(null);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (reviewId) => {
     setOpenModal(true);
+    setModalEleId(reviewId);
   };
 
   const handleCloseModal = () => {
     setOpenModal(false);
   };
 
-  const showModal = () => {
+  const showModal = (e, reviewId) => {
     handleClose();
-    handleOpenModal();
+    handleOpenModal(reviewId);
   };
 
   const handleUpdate = (e, reviewId) => {
     e.preventDefault();
     handleClose();
+    console.log(reviewId);
     navigate(`/reviews/${reviewId}/updateareview`);
   };
 
@@ -251,7 +258,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.mon.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -263,7 +270,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.monOptional?.length > 1) {
               am = restaurant?.monOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -279,7 +286,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.tue.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -291,7 +298,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.tueOptional?.length > 1) {
               am = restaurant?.tueOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -307,7 +314,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.wed.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -319,7 +326,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.wedOptional?.length > 1) {
               am = restaurant?.wedOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -335,7 +342,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.thu.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -347,7 +354,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.thuOptional?.length > 1) {
               am = restaurant?.thuOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -363,7 +370,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.fri.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -375,7 +382,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.friOptional?.length > 1) {
               am = restaurant?.friOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -391,7 +398,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.sat.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -403,7 +410,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.satOptional?.length > 1) {
               am = restaurant?.satOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -419,7 +426,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.sun.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("AM")) {
               if (hours > amHr) {
@@ -431,7 +438,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.sunOptional?.length > 1) {
               am = restaurant?.sunOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("AM")) {
                 if (hours > amHr) {
@@ -450,7 +457,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.mon.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -462,7 +469,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.monOptional?.length > 1) {
               pm = restaurant?.monOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -482,7 +489,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.tue.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -494,7 +501,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.tueOptional?.length > 1) {
               pm = restaurant?.tueOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -514,7 +521,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.wed.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -526,7 +533,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.wedOptional?.length > 1) {
               pm = restaurant?.wedOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -546,7 +553,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.thu.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -558,7 +565,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.thuOptional?.length > 1) {
               pm = restaurant?.thuOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -578,7 +585,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.fri.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -590,7 +597,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.friOptional?.length > 1) {
               pm = restaurant?.friOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -610,7 +617,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.sat.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -622,7 +629,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.satOptional?.length > 1) {
               pm = restaurant?.satOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -642,7 +649,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let pm = restaurant?.sun.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currentHr < pmHr) {
@@ -654,7 +661,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.sunOptional?.length > 1) {
               pm = restaurant?.sunOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currentHr < pmHr) {
@@ -677,7 +684,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.mon.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -687,7 +694,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.monOptional?.length > 1) {
               am = restaurant?.monOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -697,7 +704,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.mon.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -709,7 +716,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.monOptional?.length > 1) {
               pm = restaurant?.monOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -729,7 +736,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.tue.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -739,7 +746,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.tueOptional?.length > 1) {
               am = restaurant?.tueOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -749,7 +756,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.tue.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -761,7 +768,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.tueOptional?.length > 1) {
               pm = restaurant?.tueOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -781,7 +788,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.wed.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -791,7 +798,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.wedOptional?.length > 1) {
               am = restaurant?.wedOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -801,7 +808,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.wed.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -813,7 +820,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.wedOptional?.length > 1) {
               pm = restaurant?.wedOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -833,7 +840,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.thu.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -843,7 +850,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.thuOptional?.length > 1) {
               am = restaurant?.thuOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -853,7 +860,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.thu.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -865,7 +872,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.thuOptional?.length > 1) {
               pm = restaurant?.thuOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -885,7 +892,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.fri.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -895,7 +902,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.friOptional?.length > 1) {
               am = restaurant?.friOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -905,7 +912,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.fri.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -917,7 +924,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.friOptional?.length > 1) {
               pm = restaurant?.friOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -937,7 +944,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.sat.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -947,7 +954,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.satOptional?.length > 1) {
               am = restaurant?.satOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -957,7 +964,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.sat.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -969,7 +976,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.satOptional?.length > 1) {
               pm = restaurant?.satOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -989,7 +996,7 @@ const RestaurantShowPage = () => {
             setRestaurantOpen(false);
           } else {
             let am = restaurant?.sun.split(" - ")[0];
-            let [amHr, amMin] = am.split(":");
+            let [amHr, amMin] = am?.split(":");
             amMin = amMin.slice(0, -3);
             if (am.includes("PM")) {
               if (hours == amHr && minutes >= amMin) {
@@ -999,7 +1006,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.sunOptional?.length > 1) {
               am = restaurant?.sunOptional.split(" - ")[0];
-              [amHr, amMin] = am.split(":");
+              [amHr, amMin] = am?.split(":");
               amMin = amMin.slice(0, -3);
               if (am.includes("PM")) {
                 if (hours == amHr && minutes >= amMin) {
@@ -1009,7 +1016,7 @@ const RestaurantShowPage = () => {
             }
 
             let pm = restaurant?.sun.split(" - ")[1];
-            let [pmHr, pmMin] = pm.split(":");
+            let [pmHr, pmMin] = pm?.split(":");
             pmMin = pmMin.slice(0, -3);
             if (pm.includes("PM")) {
               if (currHr < pmHr) {
@@ -1021,7 +1028,7 @@ const RestaurantShowPage = () => {
 
             if (restaurant?.sunOptional?.length > 1) {
               pm = restaurant?.sunOptional.split(" - ")[1];
-              [pmHr, pmMin] = pm.split(":");
+              [pmHr, pmMin] = pm?.split(":");
               pmMin = pmMin.slice(0, -3);
               if (pm.includes("PM")) {
                 if (currHr < pmHr) {
@@ -1737,10 +1744,8 @@ const RestaurantShowPage = () => {
                   <div className="reviews-container">
                     <ul>
                       {restReviews?.reverse().map((userReview) => (
-                        <li
-                          className="sp-review"
-                          key={userReview.businessId + userReview.id}
-                        >
+                        <li className="sp-review" key={userReview?.id}>
+                          {/* {console.log(userReview?.id)} */}
                           <div className="reviewer-profile">
                             <Avatar
                               sx={{
@@ -1776,7 +1781,9 @@ const RestaurantShowPage = () => {
                                 aria-haspopup="true"
                                 aria-label="Click to show more options"
                                 title="More options"
-                                onClick={handleAnchorClick}
+                                onClick={(e) =>
+                                  handleAnchorClick(e, userReview)
+                                }
                                 sx={{
                                   fontSize: "1.8vw",
                                   position: "relative",
@@ -1795,7 +1802,7 @@ const RestaurantShowPage = () => {
                                 onClose={handleClose}
                                 MenuListProps={{
                                   "aria-labelledby": "simple-button",
-                                  sx: {py: "0.5vw", px: "0.5vw",}
+                                  sx: { py: "0.5vw", px: "0.5vw" },
                                 }}
                                 anchorOrigin={{
                                   vertical: "top",
@@ -1809,7 +1816,7 @@ const RestaurantShowPage = () => {
                               >
                                 <MenuItem
                                   onClick={(e) =>
-                                    handleUpdate(e, userReview.id)
+                                    handleUpdate(e, openElement?.id)
                                   }
                                   sx={{
                                     fontSize: "1vw",
@@ -1820,11 +1827,11 @@ const RestaurantShowPage = () => {
                                     borderRadius: "4px",
                                     "&:hover": { backgroundColor: "#E2E2E6" },
                                   }}
-                                  >
+                                >
                                   Update Review
                                 </MenuItem>
                                 <MenuItem
-                                  onClick={showModal}
+                                  onClick={(e) => showModal(e, openElement?.id)}
                                   sx={{
                                     fontSize: "1vw",
                                     fontWeight: "600",
@@ -1863,7 +1870,7 @@ const RestaurantShowPage = () => {
                                     <div
                                       className="modal-btn"
                                       onClick={(e) =>
-                                        handleRemove(e, userReview.id)
+                                        handleRemove(e, modalEleId)
                                       }
                                     >
                                       Confirm Remove
