@@ -1795,8 +1795,17 @@ const RestaurantShowPage = () => {
                                 onClose={handleClose}
                                 MenuListProps={{
                                   "aria-labelledby": "simple-button",
+                                  sx: {py: "0.5vw", px: "0.5vw",}
                                 }}
-                                sx={{ lineHeight: "1em" }}
+                                anchorOrigin={{
+                                  vertical: "top",
+                                  horizontal: "right",
+                                }}
+                                transformOrigin={{
+                                  vertical: "top",
+                                  horizontal: "left",
+                                }}
+                                sx={{ lineHeight: "1vw", borderRadius: "4px" }}
                               >
                                 <MenuItem
                                   onClick={(e) =>
@@ -1805,9 +1814,13 @@ const RestaurantShowPage = () => {
                                   sx={{
                                     fontSize: "1vw",
                                     fontWeight: "600",
+                                    minHeight: "fit-content",
+                                    paddingLeft: "1vw",
+                                    paddingRight: "1vw",
+                                    borderRadius: "4px",
                                     "&:hover": { backgroundColor: "#E2E2E6" },
                                   }}
-                                >
+                                  >
                                   Update Review
                                 </MenuItem>
                                 <MenuItem
@@ -1815,6 +1828,10 @@ const RestaurantShowPage = () => {
                                   sx={{
                                     fontSize: "1vw",
                                     fontWeight: "600",
+                                    minHeight: "fit-content",
+                                    paddingLeft: "1vw",
+                                    paddingRight: "1vw",
+                                    borderRadius: "4px",
                                     "&:hover": { backgroundColor: "#E2E2E6" },
                                   }}
                                 >

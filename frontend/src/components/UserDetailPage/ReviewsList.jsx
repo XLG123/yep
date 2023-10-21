@@ -3,6 +3,9 @@ import { useState } from "react";
 import Rating from "@mui/material/Rating";
 import IconButton from "@mui/material/IconButton";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
 
@@ -83,11 +86,33 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                     </div>
                   </div>
 
-                  {isCurrUser && <div className="pg-more-options-btn">
-                    <IconButton>
-                      <MoreHorizIcon sx={{ fontSize: "1.8vw", color: "#2D2E2F"}}/>
-                    </IconButton>
-                  </div>}
+                  {isCurrUser && (
+                    <div className="pg-more-options-btn">
+                      <IconButton>
+                        <MoreHorizIcon
+                          sx={{ fontSize: "1.8vw", color: "#2D2E2F" }}
+                        />
+                      </IconButton>
+                      <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "simple-button",
+                        }}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        sx={{ lineHeight: "1vw" }}
+                      ></Menu>
+                    </div>
+                  )}
                 </div>
 
                 <div className="associated-review">
