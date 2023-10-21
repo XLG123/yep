@@ -1,11 +1,31 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Rating from "@mui/material/Rating";
-import "./ReviewsList.css";
+import IconButton from "@mui/material/IconButton";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AssociatedReactions from "./AssociatedReactions";
+import "./ReviewsList.css";
 
-const ReviewsList = ({ reviews, isCurrUser, currUserId}) => {
+const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   // console.log(reviews);
   // console.log(isCurrUser);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleAnchorClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // const handleOpenModal = () => {
+  //   setOpenModal(true);
+  // };
 
   const navigate = useNavigate();
 
@@ -62,6 +82,12 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId}) => {
                       </span>
                     </div>
                   </div>
+
+                  {isCurrUser && <div className="pg-more-options-btn">
+                    <IconButton>
+                      <MoreHorizIcon sx={{ fontSize: "1.8vw", color: "#2D2E2F"}}/>
+                    </IconButton>
+                  </div>}
                 </div>
 
                 <div className="associated-review">

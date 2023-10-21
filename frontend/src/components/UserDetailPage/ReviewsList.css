@@ -10,7 +10,7 @@
 
 .reviewed-restaurant {
   border-bottom: 1px solid #EBEBEB;
-  padding: 1vw 0px;
+  padding: 2vw 0px;
 }
 
 .reviewed-restaurant:first-child {
@@ -33,11 +33,6 @@
   border-radius: 4px;
   margin-right: 1vw;
   cursor: pointer;
-}
-
-.restaurant-thumbnail,
-.text-container {
-  display: inline-block;
 }
 
 .reviewed-restaurant-name {
@@ -96,6 +91,12 @@
   line-height: 1.2em;
   text-align: justify;
   color: #2D2E2F;
+}
+
+.pg-more-options-btn {
+  position: relative;
+  top: -2.5vw;
+
 }
 
 .empty-reviewed-restaurants-list {

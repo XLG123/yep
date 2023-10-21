@@ -409,6 +409,38 @@
 
 .more-options-btn {
   text-align: right;
+  position: relative;
+  right: -36.2vw;
+}
+
+@media screen and (width < 1440px){
+  .more-options-btn {
+    right: -35.8vw;
+  }
+}
+
+@media screen and (width < 1000px) {
+  .more-options-btn {
+    right: -35.5vw;
+  }
+}
+
+@media screen and (width < 800px) {
+  .more-options-btn {
+    right: -35vw;
+  }
+}
+
+@media screen and (width < 700px) {
+  .more-options-btn {
+    right: -34.5vw;
+  }
+}
+
+@media screen and (width < 600px) {
+  .more-options-btn {
+    right: -34vw;
+  }
 }
 
 .modal-content {
