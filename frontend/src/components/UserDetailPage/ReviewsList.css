@@ -67,7 +67,7 @@
 }
 
 .associated-review {
-  padding-right: 6vw;
+  padding-right: 4vw;
   margin-top: 1vw;
 }
 
@@ -96,7 +96,43 @@
 .pg-more-options-btn {
   position: relative;
   top: -2.5vw;
+  left: 25vw;
+}
 
+@media screen and (width <= 1440px) {
+  .pg-more-options-btn {
+    left: 24.5vw;
+  }
+}
+
+@media screen and (width <= 1300px) {
+  .pg-more-options-btn {
+    left: 24vw;
+  }
+}
+
+@media screen and (width <= 1100px) {
+  .pg-more-options-btn {
+    left: 23.7vw;
+  }
+}
+
+@media screen and (width <= 1000px) {
+  .pg-more-options-btn {
+    left: 23.3vw;
+  }
+}
+
+@media screen and (width <= 900px) {
+  .pg-more-options-btn {
+    left: 23vw;
+  }
+}
+
+@media screen and (width <= 800px) {
+  .pg-more-options-btn {
+    left: 24.1vw;
+  }
 }
 
 .empty-reviewed-restaurants-list {
