@@ -294,7 +294,7 @@
 }
 
 .sp-rest-reviews-container {
-  width: 88%;
+  width: 94%;
   padding-bottom: 1em;
   color: #2D2E2F;
 }
@@ -410,36 +410,54 @@
 .more-options-btn {
   text-align: right;
   position: relative;
-  right: -36.2vw;
+  right: -40vw;
 }
 
-@media screen and (width < 1440px){
+@media screen and (width <= 1440px){
   .more-options-btn {
-    right: -35.8vw;
+    right: -39.5vw;
   }
 }
 
-@media screen and (width < 1000px) {
+@media screen and (width < 1300px) {
   .more-options-btn {
-    right: -35.5vw;
+    right: -39.2vw;
+  }
+}
+
+@media screen and (width < 1100px) {
+  .more-options-btn {
+    right: -38.9vw;
+  }
+}
+
+@media screen and (width < 900px) {
+  .more-options-btn {
+    right: -38.5vw;
   }
 }
 
 @media screen and (width < 800px) {
   .more-options-btn {
-    right: -35vw;
+    right: -38.3vw;
   }
 }
 
 @media screen and (width < 700px) {
   .more-options-btn {
-    right: -34.5vw;
+    right: -37.8vw;
   }
 }
 
 @media screen and (width < 600px) {
   .more-options-btn {
-    right: -34vw;
+    right: -37.5vw;
+  }
+}
+
+@media screen and (width = 500px) {
+  .more-options-btn {
+    right: -38.5vw;
   }
 }
 
