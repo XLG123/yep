@@ -26,9 +26,9 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     setAnchorEl(null);
   };
 
-  // const handleOpenModal = () => {
-  //   setOpenModal(true);
-  // };
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
 
   const navigate = useNavigate();
 
@@ -88,7 +88,21 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
 
                   {isCurrUser && (
                     <div className="pg-more-options-btn">
-                      <IconButton>
+                      <IconButton
+                        id="simple-button"
+                        aria-controls={open ? "basic-menu" : null}
+                        aria-expanded={open ? "true" : null}
+                        aria-haspopup="true"
+                        aria-label="Click to show more options"
+                        title="More options"
+                        onClick={handleAnchorClick}
+                        sx={{
+                          fontSize: "1.8vw",
+                          position: "relative",
+                          left: "1.5vw",
+                          "&:hover": { backgroundColor: "#E2E2E6" },
+                        }}
+                      >
                         <MoreHorizIcon
                           sx={{ fontSize: "1.8vw", color: "#2D2E2F" }}
                         />
@@ -100,17 +114,47 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                         onClose={handleClose}
                         MenuListProps={{
                           "aria-labelledby": "simple-button",
+                          sx: { py: "0.5vw", px: "0.5vw" },
                         }}
                         anchorOrigin={{
                           vertical: "top",
-                          horizontal: "right",
+                          horizontal: "left",
                         }}
                         transformOrigin={{
                           vertical: "top",
-                          horizontal: "left",
+                          horizontal: "right",
                         }}
-                        sx={{ lineHeight: "1vw" }}
-                      ></Menu>
+                        sx={{ lineHeight: "1vw", borderRadius: "4px" }}
+                      >
+                        <MenuItem
+                          // onClick={(e) => handleUpdate(e, userReview.id)}
+                          sx={{
+                            fontSize: "1vw",
+                            fontWeight: "600",
+                            minHeight: "fit-content",
+                            paddingLeft: "1vw",
+                            paddingRight: "1vw",
+                            borderRadius: "4px",
+                            "&:hover": { backgroundColor: "#E2E2E6" },
+                          }}
+                        >
+                          Update Review
+                        </MenuItem>
+                        <MenuItem
+                          // onClick={showModal}
+                          sx={{
+                            fontSize: "1vw",
+                            fontWeight: "600",
+                            minHeight: "fit-content",
+                            paddingLeft: "1vw",
+                            paddingRight: "1vw",
+                            borderRadius: "4px",
+                            "&:hover": { backgroundColor: "#E2E2E6" },
+                          }}
+                        >
+                          Remove Review
+                        </MenuItem>
+                      </Menu>
                     </div>
                   )}
                 </div>
