@@ -149,10 +149,12 @@
   font-size: 1.1vw;
   font-weight: bold;
   margin-left: 0.5vw;
+  cursor: pointer;
+  word-spacing: 0.1em;
 }
 
-.reviewer span:first-child {
-  margin-right: 0.35vw;
+.reviewer:hover {
+  text-decoration: underline #2D2E2F;
 }
 
 .review-user-profile, .reviewer {

@@ -24,6 +24,8 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const [modalEleId, setModalEleId] = useState(null);
 
   const [openModal, setOpenModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [editReviewObj, setEditReviewObj] = useState(null);
 
   const handleAnchorClick = (e, currReview) => {
     setAnchorEl(e.currentTarget);
@@ -45,9 +47,24 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     setModalEleId(null);
   };
 
+  const handleEditModal = (review) => {
+    setOpenEditModal(true);
+    setEditReviewObj(review);
+  }
+
+  const closeEditModal = () => {
+    setOpenEditModal(false);
+    setEditReviewObj(null);
+  }
+
   const showModal = (e, reviewId) => {
     handleClose();
     handleOpenModal(reviewId);
+  };
+
+  const showEditModal = (e, review) => {
+    handleClose();
+    handleEditModal(review);
   };
 
   const dispatch = useDispatch();
@@ -174,7 +191,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                         elevation={1}
                       >
                         <MenuItem
-                          // onClick={(e) => handleUpdate(e, userReview.id)}
+                          onClick={(e) => showEditModal(e, openElement)}
                           sx={{
                             fontSize: "1vw",
                             fontWeight: "600",
@@ -235,6 +252,29 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                               Confirm Remove
                             </div>
                           </div>
+                        </Box>
+                      </Modal>
+                      <Modal
+                        open={openEditModal}
+                        onClose={closeEditModal}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        sx={{
+                          "& .MuiBackdrop-root": {
+                            backgroundColor: "transparent",
+                            backdropFilter: "brightness(80%)",
+                          },
+                        }}
+                      >
+                        <Box sx={myBoxStyle}>
+                          <div className="modal-restaurant-name">
+                            {editReviewObj?.restaurantName}
+                          </div>
+
+                          <div className="modal-restaurant-review-container"></div>
+
+                          <div className="modal-submit-update-btn">Update Review</div>
+
                         </Box>
                       </Modal>
                     </div>
