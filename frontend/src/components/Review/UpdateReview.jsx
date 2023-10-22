@@ -9,7 +9,7 @@ import {
 } from "../../store/restaurants";
 import Rating from "@mui/material/Rating";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { createReview, fetchReviews, updateReview } from "../../store/reviews";
+import { fetchReviews, updateReview } from "../../store/reviews";
 import Avatar from "@mui/material/Avatar";
 import ReviewRating from "../BusinessesPage/ReviewRating";
 import "./WriteReview.css";

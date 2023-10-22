@@ -115,7 +115,7 @@ const RestaurantShowPage = () => {
   const handleUpdate = (e, reviewId) => {
     e.preventDefault();
     handleClose();
-    console.log(reviewId);
+    // console.log(reviewId);
     navigate(`/reviews/${reviewId}/updateareview`);
   };
 

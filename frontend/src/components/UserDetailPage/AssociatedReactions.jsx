@@ -44,7 +44,7 @@ const AssociatedReactions = ({
         user_id: currUserId,
         review_id: reviewId,
       };
-      console.log(reactionObj);
+      // console.log(reactionObj);
       dispatch(createReaction(reactionObj));
     } else if (currUserId && currUserId === reviewerId) {
       // This prevents current user from giving reactions to their own reviews
