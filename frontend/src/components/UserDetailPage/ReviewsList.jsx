@@ -271,7 +271,9 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                             {editReviewObj?.restaurantName}
                           </div>
 
-                          <div className="modal-restaurant-review-container"></div>
+                          <div className="modal-restaurant-review-container">
+                            
+                          </div>
 
                           <div className="modal-submit-update-btn">Update Review</div>
 
