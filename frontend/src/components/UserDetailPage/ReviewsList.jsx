@@ -110,8 +110,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     setEditReviewObj(null);
     setRating(null);
     setHover(-1);
-    setColor(currColor);
-    // console.log(color);
+    setColor(null);
     setReviewBody(null);
     setReviewBodyError(false);
   };
