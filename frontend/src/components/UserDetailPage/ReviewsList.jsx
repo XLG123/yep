@@ -41,11 +41,15 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   }
 
   const [rating, setRating] = useState(editReviewObj?.rating ? editReviewObj?.rating : null);
-  const [hover, setHover] = useState(editReviewObj?.rating ? editReviewObj?.rating : null);
+  const [hover, setHover] = useState(editReviewObj?.rating ? editReviewObj?.rating : -1);
   const [color, setColor] = useState(currColor);
   const [reviewBody, setReviewBody] = useState(editReviewObj?.body ? editReviewObj?.body : null);
   const [ratingError, setRatingError] = useState(false);
   const [reviewBodyError, setReviewBodyError] = useState(false);
+
+  // console.log(rating);
+  // console.log(hover);
+  // console.log(color);
 
   const ratingLabels = {
     1: "Not good",
@@ -316,9 +320,32 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                           <div className="modal-restaurant-review-container">
                             <div className="modal-rating-container">
                               <span className="modal-rating">
-                                <Rating sx={{ fontSize: "1.8vw" }}></Rating>
+                                <Rating
+                                  value={
+                                    rating ? rating : editReviewObj?.rating
+                                  }
+                                  onChange={(e, newRating) =>
+                                    setRating(newRating)
+                                  }
+                                  onChangeActive={(e, newHover) => {
+                                    setHover(newHover);
+                                    setNewColor(newHover);
+                                  }}
+                                  sx={{
+                                    fontSize: "1.8vw",
+                                    color: color ? color : currColor,
+                                  }}
+                                />
                               </span>
-                              <span className="modal-rating-text"></span>
+                              <span className="modal-rating-text">
+                                {rating && hover === -1
+                                  ? ratingLabels[rating]
+                                  : hover !== -1
+                                  ? ratingLabels[hover]
+                                  : editReviewObj?.rating
+                                  ? ratingLabels[editReviewObj?.rating]
+                                  : null}
+                              </span>
                             </div>
 
                             <div className="modal-reminder-text">
