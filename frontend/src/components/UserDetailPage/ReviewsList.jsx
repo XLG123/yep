@@ -50,12 +50,12 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const [reviewBody, setReviewBody] = useState(
     editReviewObj?.body ? editReviewObj?.body : null
   );
-  const [ratingError, setRatingError] = useState(false);
   const [reviewBodyError, setReviewBodyError] = useState(false);
 
   // console.log(rating);
   // console.log(hover);
   // console.log(color);
+  // console.log(reviewBody);
 
   const ratingLabels = {
     1: "Not good",
@@ -112,6 +112,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     setColor(currColor);
     // console.log(color);
     setReviewBody(null);
+    setReviewBodyError(false);
   };
 
   const showModal = (e, reviewId) => {
@@ -138,6 +139,19 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     e.preventDefault();
     navigate(`/restaurants/${restaurantId}`);
   };
+
+  const submitUpdatedReview = (e) => {
+    if (reviewBody?.length < 85) {
+      setReviewBodyError(true);
+    } else if (reviewBody?.length >= 85) {
+      setReviewBodyError(false);
+    }
+
+    if (!reviewBodyError) {
+      // TODO: bug, setReviewBodyError is not updated immediately
+      console.log("yes");
+    }
+  }
 
   const myBoxStyle = {
     position: "absolute",
@@ -337,11 +351,16 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                                 defaultValue={editReviewObj?.body}
                                 className="review-text-area modal-text-area"
                                 placeholder="Enjoying the best time in our restaurant? Please leave us a review to help us improve for a better future experience!"
+                                onInput={(e) => setReviewBody(e.target.value)}
                               ></textarea>
                             </div>
                           </div>
 
-                          <div className="modal-submit-update-btn">
+                          <div className="modal-review-errors">
+
+                          </div>
+
+                          <div className="modal-submit-update-btn" onClick={(e) => submitUpdatedReview(e)}>
                             Update Review
                           </div>
                         </Box>
