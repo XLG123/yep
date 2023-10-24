@@ -144,13 +144,21 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const submitUpdatedReview = (e) => {
     if (reviewBody?.length < 85) {
       setReviewBodyError(true);
-    } else if (reviewBody?.length >= 85) {
+    } else if (reviewBody?.length >= 85 || editReviewObj?.body.length >= 85) {
       setReviewBodyError(false);
-    }
-
-    if (!reviewBodyError) {
-      // TODO: bug, setReviewBodyError is not updated immediately
-      console.log("yes");
+      const newReviewObj = {
+        rating: rating,
+        body: reviewBody,
+        user_id: currUserId,
+        reviewer_fn: editReviewObj?.reviewerFn,
+        reviewer_ln: editReviewObj?.reviewerLn,
+        businessId: editReviewObj?.restaurantId,
+        helpful_count: editReviewObj?.helpfulCount,
+        thanks_count: editReviewObj?.thanksCount,
+        love_this_count: editReviewObj?.loveThisCount,
+        oh_no_count: editReviewObj?.ohNoCount,
+      };
+      console.log(newReviewObj);
     }
   }
 

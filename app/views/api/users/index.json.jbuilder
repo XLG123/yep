@@ -6,7 +6,7 @@ json.users do
       user.reviews.includes(:business).each do |review|
         json.reviews do
           json.set! review.id do
-            json.extract! review, :id, :rating, :body, :user_id, :created_at, :helpful_count, :thanks_count, :love_this_count, :oh_no_count
+            json.extract! review, :id, :rating, :body, :user_id, :reviewer_fn, :reviewer_ln, :created_at, :helpful_count, :thanks_count, :love_this_count, :oh_no_count
             json.restaurant_id review.business.id
             json.restaurant_name review.business.name
             json.restaurant_city review.business.city
