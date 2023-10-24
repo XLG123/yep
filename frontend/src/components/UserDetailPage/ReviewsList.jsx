@@ -40,10 +40,16 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     currColor = "#D22E21";
   }
 
-  const [rating, setRating] = useState(editReviewObj?.rating ? editReviewObj?.rating : null);
-  const [hover, setHover] = useState(editReviewObj?.rating ? editReviewObj?.rating : -1);
+  const [rating, setRating] = useState(
+    editReviewObj?.rating ? editReviewObj?.rating : null
+  );
+  const [hover, setHover] = useState(
+    editReviewObj?.rating ? editReviewObj?.rating : -1
+  );
   const [color, setColor] = useState(currColor);
-  const [reviewBody, setReviewBody] = useState(editReviewObj?.body ? editReviewObj?.body : null);
+  const [reviewBody, setReviewBody] = useState(
+    editReviewObj?.body ? editReviewObj?.body : null
+  );
   const [ratingError, setRatingError] = useState(false);
   const [reviewBodyError, setReviewBodyError] = useState(false);
 
@@ -96,12 +102,12 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const handleEditModal = (review) => {
     setOpenEditModal(true);
     setEditReviewObj(review);
-  }
+  };
 
   const closeEditModal = () => {
     setOpenEditModal(false);
     setEditReviewObj(null);
-  }
+  };
 
   const showModal = (e, reviewId) => {
     handleClose();
@@ -266,41 +272,6 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                         </MenuItem>
                       </Menu>
                       <Modal
-                        open={openModal}
-                        onClose={handleCloseModal}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                        sx={{
-                          "& .MuiBackdrop-root": {
-                            backgroundColor: "transparent",
-                            backdropFilter: "brightness(80%)",
-                          },
-                        }}
-                      >
-                        <Box className="modal-content" sx={myBoxStyle}>
-                          <div className="modal-title">Remove Review</div>
-                          <div className="modal-text">
-                            Are you sure you want to remove this review? It can
-                            help the restaurants improve their services the more
-                            reviews they get.
-                          </div>
-                          <div className="modal-btn-gp">
-                            <div
-                              className="modal-btn"
-                              onClick={handleCloseModal}
-                            >
-                              Keep Review
-                            </div>
-                            <div
-                              className="modal-btn"
-                              onClick={(e) => handleRemove(e, modalEleId)}
-                            >
-                              Confirm Remove
-                            </div>
-                          </div>
-                        </Box>
-                      </Modal>
-                      <Modal
                         open={openEditModal}
                         onClose={closeEditModal}
                         aria-labelledby="modal-modal-title"
@@ -367,6 +338,41 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
 
                           <div className="modal-submit-update-btn">
                             Update Review
+                          </div>
+                        </Box>
+                      </Modal>
+                      <Modal
+                        open={openModal}
+                        onClose={handleCloseModal}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        sx={{
+                          "& .MuiBackdrop-root": {
+                            backgroundColor: "transparent",
+                            backdropFilter: "brightness(80%)",
+                          },
+                        }}
+                      >
+                        <Box className="modal-content" sx={myBoxStyle}>
+                          <div className="modal-title">Remove Review</div>
+                          <div className="modal-text">
+                            Are you sure you want to remove this review? It can
+                            help the restaurants improve their services the more
+                            reviews they get.
+                          </div>
+                          <div className="modal-btn-gp">
+                            <div
+                              className="modal-btn"
+                              onClick={handleCloseModal}
+                            >
+                              Keep Review
+                            </div>
+                            <div
+                              className="modal-btn"
+                              onClick={(e) => handleRemove(e, modalEleId)}
+                            >
+                              Confirm Remove
+                            </div>
                           </div>
                         </Box>
                       </Modal>
