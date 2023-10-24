@@ -7,6 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
 import { deleteReview } from "../../store/reviews";
@@ -356,11 +357,20 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                             </div>
                           </div>
 
-                          <div className="modal-review-errors">
+                          {reviewBodyError && (
+                            <div className="modal-review-errors">
+                              <ErrorOutlineIcon
+                                sx={{ marginRight: "0.3em", fontSize: "1.3vw" }}
+                              />
+                              Your review needs at least 85 characters. Add a
+                              few more thoughts to update review.
+                            </div>
+                          )}
 
-                          </div>
-
-                          <div className="modal-submit-update-btn" onClick={(e) => submitUpdatedReview(e)}>
+                          <div
+                            className="modal-submit-update-btn"
+                            onClick={(e) => submitUpdatedReview(e)}
+                          >
                             Update Review
                           </div>
                         </Box>

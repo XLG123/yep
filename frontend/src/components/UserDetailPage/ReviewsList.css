@@ -159,16 +159,20 @@
   padding: 1.1vw;
 }
 
-.modal-reminder-text {
-
-}
-
 .modal-review-input {
   height: 85%;
 }
 
 .modal-text-area {
   text-align: justify;
+}
+
+.modal-review-errors {
+  margin-top: 0.5em;
+  font-size: 1.1vw;
+  display: flex;
+  align-items: center;
+  color: rgb(224, 7, 7);
 }
 
 .modal-submit-update-btn {

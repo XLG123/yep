@@ -202,7 +202,7 @@ const UpdateReview = () => {
                   sx={{ marginRight: "0.3em", fontSize: "1.3vw" }}
                 />
                 Your review needs at least 85 characters. Add a few more
-                thoughts to post review.
+                thoughts to update review.
               </div>
             ) : null}
           </div>
