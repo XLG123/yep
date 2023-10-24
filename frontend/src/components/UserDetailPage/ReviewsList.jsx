@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
-import { deleteReview, updateReview } from "../../store/reviews";
+import { deleteReview, fetchReviews, updateReview } from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../store/users";
 
@@ -159,6 +159,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
         oh_no_count: editReviewObj?.ohNoCount,
       };
       dispatch(updateReview(newReviewObj, editReviewObj?.id));
+      dispatch(fetchUsers());
       closeEditModal();
     }
   }
