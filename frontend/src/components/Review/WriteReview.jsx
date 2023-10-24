@@ -58,7 +58,7 @@ const WriteReview = () => {
     } else if (newRating === 5) {
       setColor("#D22E21");
     }
-  }
+  };
 
   const dispatch = useDispatch();
 
@@ -101,6 +101,10 @@ const WriteReview = () => {
     }
   };
 
+  const goToOtherUserProfilePage = (otherUserId) => {
+    navigate(`/user_details/${otherUserId}`);
+  };
+
   return (
     <>
       <div className="write-review-line-break"></div>
@@ -112,8 +116,11 @@ const WriteReview = () => {
             <div className="curr-rating">
               <Rating
                 onChange={(e, newRating) => setRating(newRating)}
-                onChangeActive={(e, newHover) => {setHover(newHover); setNewColor(newHover)}}
-                sx={{ fontSize: "1.8vw", color: color}}
+                onChangeActive={(e, newHover) => {
+                  setHover(newHover);
+                  setNewColor(newHover);
+                }}
+                sx={{ fontSize: "1.8vw", color: color }}
               />
               <span className="rating-labels-container">
                 {rating === 0 && hover === -1 ? "Select your rating" : null}
@@ -184,14 +191,23 @@ const WriteReview = () => {
                             height: "2.5vw",
                             width: "2.5vw",
                             fontSize: "0.9vw",
+                            cursor: "pointer",
                           }}
+                          onClick={(e) =>
+                            goToOtherUserProfilePage(review?.userId)
+                          }
                         >
                           {review.reviewerFn[0]}
                           {review.reviewerLn[0]}
                         </Avatar>
                       </div>
-                      <div className="reviewer">
-                        <span>{review.reviewerFn}</span>
+                      <div
+                        className="reviewer"
+                        onClick={(e) =>
+                          goToOtherUserProfilePage(review?.userId)
+                        }
+                      >
+                        <span>{review.reviewerFn}</span>{" "}
                         <span>{review.reviewerLn}</span>
                       </div>
                       <div className="recent-review-rating">

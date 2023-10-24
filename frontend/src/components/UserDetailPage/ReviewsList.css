@@ -1,0 +1,196 @@
+.reviews-list-title {
+  font-size: 3vw;
+  font-weight: 900;
+  color: #2D2E2F;
+}
+
+.reviews-list-container {
+  margin-top: 1.5vw;
+}
+
+.reviewed-restaurant {
+  border-bottom: 1px solid #EBEBEB;
+  padding: 2vw 0px;
+}
+
+.reviewed-restaurant:first-child {
+  padding-top: 0px;
+}
+
+.reviewed-restaurant:last-child {
+  border-bottom: none;
+}
+
+.restaurant-basic-info {
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-thumbnail img {
+  width: 11vw;
+  height: 7vw;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1vw;
+  cursor: pointer;
+}
+
+.reviewed-restaurant-name {
+  min-width: 17.5vw;
+  max-width: 17.5vw;
+  font-weight: bold;
+  font-size: 1.4vw;
+  color: #2D2E2F;
+  cursor: pointer;
+}
+
+.reviewed-restaurant-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.07vw;
+}
+
+.reviewed-restaurant-category {
+  color: #6E7072;
+  font-size: 1vw;
+  font-weight: 600;
+  margin-top: 0.7em;
+}
+
+.reviewed-restaurant-address {
+  margin-top: 0.7em;
+  color: #6E7072;
+  font-size: 1vw;
+}
+
+.reviewed-restaurant-city,
+.reviewed-restaurant-state {
+  margin-right: 0.5em;
+}
+
+.associated-review {
+  padding-right: 4vw;
+  margin-top: 1vw;
+}
+
+.rating-time-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5vw;
+}
+
+.associated-review-rating {
+  margin-right: 0.5vw;
+}
+
+.associated-review-time {
+  font-size: 1.1vw;
+  color: rgba(110, 112, 114);
+}
+
+.associated-review-body {
+  font-size: 1.1vw;
+  line-height: 1.2em;
+  text-align: justify;
+  color: #2D2E2F;
+}
+
+.pg-more-options-btn {
+  position: relative;
+  top: -2.5vw;
+  left: 21vw;
+}
+
+@media screen and (width <= 1440px) {
+  .pg-more-options-btn {
+    left: 20.5vw;
+  }
+}
+
+@media screen and (width <= 1300px) {
+  .pg-more-options-btn {
+    left: 20vw;
+  }
+}
+
+@media screen and (width <= 1100px) {
+  .pg-more-options-btn {
+    left: 19.5vw;
+  }
+}
+
+@media screen and (width <= 900px) {
+  .pg-more-options-btn {
+    left: 19vw;
+  }
+}
+
+@media screen and (width <= 700px) {
+  .pg-more-options-btn {
+    left: 18.5vw;
+  }
+}
+
+@media screen and (width <=600px) {
+  .pg-more-options-btn {
+    left: 17.5vw;
+  }
+}
+
+.empty-reviewed-restaurants-list {
+  margin-top: 0.5em;
+  font-size: 1.2vw;
+  color: #2D2E2F;
+}
+
+/* Some of the Update Review Modal's styling rules are on WriteReview.css */
+
+.modal-restaurant-name {
+  font-size: 2vw;
+  font-weight: 900;
+  margin-bottom: 2vw;
+}
+
+.modal-restaurant-review-container {
+  width: 40vw;
+  height: 18vw;
+  border: 1px solid rgba(200, 201, 202, 1);
+  border-radius: 5px;
+  padding: 1.1vw;
+}
+
+.modal-review-input {
+  height: 85%;
+}
+
+.modal-text-area {
+  text-align: justify;
+}
+
+.modal-review-errors {
+  margin-top: 0.5em;
+  font-size: 1.1vw;
+  display: flex;
+  align-items: center;
+  color: rgb(224, 7, 7);
+}
+
+.modal-submit-update-btn {
+  width: 12vw;
+  height: 3vw;
+  background-color: rgba(224, 7, 7, 1);
+  border-radius: 4px;
+  color: white;
+  font-size: 1.3vw;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 1s;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-top: 2vw;
+}
+
+.modal-submit-update-btn:hover {
+  background-color: rgb(244, 13, 21);
+}

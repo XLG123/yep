@@ -9,7 +9,7 @@ import {
 } from "../../store/restaurants";
 import Rating from "@mui/material/Rating";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { createReview, fetchReviews, updateReview } from "../../store/reviews";
+import { fetchReviews, updateReview } from "../../store/reviews";
 import Avatar from "@mui/material/Avatar";
 import ReviewRating from "../BusinessesPage/ReviewRating";
 import "./WriteReview.css";
@@ -88,7 +88,13 @@ const UpdateReview = () => {
     dispatch(fetchReviews());
   }, [dispatch]);
 
-  const submitReview = (e, rating, reviewText, originalRating, originalText) => {
+  const submitReview = (
+    e,
+    rating,
+    reviewText,
+    originalRating,
+    originalText
+  ) => {
     e.preventDefault();
     // console.log(rating);
     // console.log(reviewText);
@@ -129,9 +135,13 @@ const UpdateReview = () => {
       dispatch(fetchReviews());
       navigate(`/restaurants/${currReview.businessId}`);
     }
-  }
+  };
 
   const navigate = useNavigate();
+
+  const goToOtherUserProfilePage = (otherUserId) => {
+    navigate(`/user_details/${otherUserId}`);
+  };
 
   return (
     <>
@@ -192,13 +202,21 @@ const UpdateReview = () => {
                   sx={{ marginRight: "0.3em", fontSize: "1.3vw" }}
                 />
                 Your review needs at least 85 characters. Add a few more
-                thoughts to post review.
+                thoughts to update review.
               </div>
             ) : null}
           </div>
           <div
             className="submit-review-btn"
-            onClick={(e) => submitReview(e, rating, reviewText, currReview?.rating, currReview?.body)}
+            onClick={(e) =>
+              submitReview(
+                e,
+                rating,
+                reviewText,
+                currReview?.rating,
+                currReview?.body
+              )
+            }
           >
             Update Review
           </div>
@@ -226,14 +244,23 @@ const UpdateReview = () => {
                             height: "2.5vw",
                             width: "2.5vw",
                             fontSize: "0.9vw",
+                            cursor: "pointer",
                           }}
+                          onClick={(e) =>
+                            goToOtherUserProfilePage(review?.userId)
+                          }
                         >
                           {review.reviewerFn[0]}
                           {review.reviewerLn[0]}
                         </Avatar>
                       </div>
-                      <div className="reviewer">
-                        <span>{review.reviewerFn}</span>
+                      <div
+                        className="reviewer"
+                        onClick={(e) =>
+                          goToOtherUserProfilePage(review?.userId)
+                        }
+                      >
+                        <span>{review.reviewerFn}</span>{" "}
                         <span>{review.reviewerLn}</span>
                       </div>
                       <div className="recent-review-rating">

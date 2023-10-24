@@ -1,0 +1,127 @@
+.user-detail-container {
+  width: 79%;
+  margin: 3.5vw auto 0px auto;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.user-info-container,
+.list-container {
+  margin-top: 0.25vw;
+}
+
+.basic-info-container {
+  border: 1px solid #D3D3D3;
+  border-radius: 8px;
+  width: 95%;
+  text-align: center;
+}
+
+.bg-red-banner {
+  position: absolute;
+  background-color: #E00707;
+  width: 22.4vw;
+  height: 4.5vw;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+@media screen and (width <= 1440px) {
+  .bg-red-banner {
+    width: 22.3vw;
+  }
+}
+
+@media screen and (width <= 1000px) {
+  .bg-red-banner {
+    width: 22.2vw;
+  }
+}
+
+@media screen and (width < 800px) {
+  .bg-red-banner {
+    width: 22.1vw;
+  }
+}
+
+@media screen and (width < 600px) {
+  .bg-red-banner {
+    width: 22vw;
+  }
+}
+
+.username-container,
+.user-joined-time-container {
+  padding: 0px 1em;
+}
+
+.username-container {
+  font-weight: 900;
+  font-size: 1.8vw;
+  margin: 0.35em 0px 0.5em 0px;
+  word-spacing: 0.1em;
+}
+
+.user-joined-time-container {
+  color: #6E7072;
+  font-size: 1.05vw;
+  margin-bottom: 0.75em;
+}
+
+.joined-time {
+  color: #5A5C5E;
+  font-weight: bold;
+}
+
+.follow-btn {
+  margin-bottom: 0.65em;
+}
+
+.follow-btn-text {
+  color: #6E7072;
+  font-weight: 500;
+  font-size: 0.85vw;
+}
+
+.list-btn-group {
+  width: 95%;
+  margin-top: 1em;
+}
+
+.list-btn {
+  border: 1px solid #D3D3D3;
+  display: grid;
+  grid-template-columns: 43% 57%;
+  column-gap: 0.3em;
+  align-items: center;
+  margin-bottom: 0.5em;
+  padding: 0.25em 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-btn:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.list-btn-icon {
+  text-align: right;
+}
+
+.list-btn-text {
+  margin-left: 0.25em;
+  color: #5A5C5E;
+  font-weight: 500;
+  font-size: 1.3vw;
+}
+
+#reviews-list-btn,
+#friends-list-btn,
+#following-list-btn {
+  background-color: rgb(235, 235, 235);
+}
+
+.list-container {
+  margin-left: 0.5vw;
+}

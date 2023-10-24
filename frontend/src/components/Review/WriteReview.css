@@ -23,24 +23,32 @@
   padding: 1em;
 }
 
-.curr-rating {
+.curr-rating,
+.modal-rating-container {
   display: flex;
   align-items: center;
 }
 
-.rating-labels-container {
+.rating-labels-container,
+.modal-rating-text {
   font-size: 1.2vw;
   margin-left: 0.5em;
 }
 
-.review-reminder-text {
+.review-reminder-text,
+.modal-reminder-text {
   margin-top: 0.7em;
   padding-left: 0.3em;
   color: rgb(110, 112, 114);
   font-size: 1.2vw;
 }
 
-.review-reminder-category-container {
+.modal-reminder-text {
+  margin-top: 0.5em;
+}
+
+.review-reminder-category-container,
+.modal-reminder-categories {
   font-size: 1vw;
   font-weight: bold;
   color: rgb(110, 112, 114);
@@ -48,14 +56,20 @@
   padding-left: 0.3em;
 }
 
-.review-reminder-category {
-  border: 1px solid#ebebeb;
+.modal-reminder-categories {
+  padding-left: 0;
+}
+
+.review-reminder-category,
+.modal-reminder-categories span {
+  border: 1px solid#EBEBEB;
   border-radius: 5px;
   padding: 0.2em;
   background-color: rgb(240, 240, 240);
 }
 
-.review-reminder-category:nth-child(2) {
+.review-reminder-category:nth-child(2),
+.modal-reminder-categories span:nth-child(2) {
   margin-left: 0.75em;
   margin-right: 0.75em;
 }
@@ -71,6 +85,7 @@
   outline: none;
   box-sizing: border-box;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-y: auto;
 }
 
 .review-errors-container {
@@ -149,10 +164,12 @@
   font-size: 1.1vw;
   font-weight: bold;
   margin-left: 0.5vw;
+  cursor: pointer;
+  word-spacing: 0.1em;
 }
 
-.reviewer span:first-child {
-  margin-right: 0.35vw;
+.reviewer:hover {
+  text-decoration: underline #2D2E2F;
 }
 
 .review-user-profile, .reviewer {

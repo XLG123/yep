@@ -6,6 +6,7 @@ import { fetchRestaurants, getRestaurants } from "../../store/restaurants";
 import Avatar from "@mui/material/Avatar";
 import ReviewRating from "../BusinessesPage/ReviewRating";
 import { NavLink } from "react-router-dom";
+import { fetchUsers } from "../../store/users";
 
 const Activity = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const Activity = () => {
   useEffect(() => {
     dispatch(fetchRestaurants());
     dispatch(fetchReviews());
+    dispatch(fetchUsers());
   }, []);
 
   const restaurants = useSelector(getRestaurants);
