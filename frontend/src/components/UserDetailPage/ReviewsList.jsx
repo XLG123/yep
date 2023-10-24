@@ -107,6 +107,11 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const closeEditModal = () => {
     setOpenEditModal(false);
     setEditReviewObj(null);
+    setRating(null);
+    setHover(-1);
+    setColor(currColor);
+    // console.log(color);
+    setReviewBody(null);
   };
 
   const showModal = (e, reviewId) => {

@@ -23,12 +23,14 @@
   padding: 1em;
 }
 
-.curr-rating {
+.curr-rating,
+.modal-rating-container {
   display: flex;
   align-items: center;
 }
 
-.rating-labels-container {
+.rating-labels-container,
+.modal-rating-text {
   font-size: 1.2vw;
   margin-left: 0.5em;
 }
