@@ -6,10 +6,10 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
 import { deleteReview } from "../../store/reviews";
-import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../store/users";
 
@@ -26,6 +26,48 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [editReviewObj, setEditReviewObj] = useState(null);
+
+  let currColor = "";
+  if (editReviewObj?.rating === 1) {
+    currColor = "#C3882E";
+  } else if (editReviewObj?.rating === 2) {
+    currColor = "#D5B53E";
+  } else if (editReviewObj?.rating === 3) {
+    currColor = "#E5A038";
+  } else if (editReviewObj?.rating === 4) {
+    currColor = "#EB6F3D";
+  } else if (editReviewObj?.rating === 5) {
+    currColor = "#D22E21";
+  }
+
+  const [rating, setRating] = useState(editReviewObj?.rating ? editReviewObj?.rating : null);
+  const [hover, setHover] = useState(editReviewObj?.rating ? editReviewObj?.rating : null);
+  const [color, setColor] = useState(currColor);
+  const [reviewBody, setReviewBody] = useState(editReviewObj?.body ? editReviewObj?.body : null);
+  const [ratingError, setRatingError] = useState(false);
+  const [reviewBodyError, setReviewBodyError] = useState(false);
+
+  const ratingLabels = {
+    1: "Not good",
+    2: "Could've been better",
+    3: "Ok",
+    4: "Good",
+    5: "Great",
+  };
+
+  const setNewColor = (newRating) => {
+    if (newRating === 1) {
+      setColor("#C3882E");
+    } else if (newRating === 2) {
+      setColor("#D5B53E");
+    } else if (newRating === 3) {
+      setColor("#E5A038");
+    } else if (newRating === 4) {
+      setColor("#EB6F3D");
+    } else if (newRating === 5) {
+      setColor("#D22E21");
+    }
+  };
 
   const handleAnchorClick = (e, currReview) => {
     setAnchorEl(e.currentTarget);
@@ -91,7 +133,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     borderColor: "rgba(235,235,235,1)",
     borderRadius: "5px",
     boxShadow: 50,
-    padding: "2.8em",
+    padding: "2.8vw",
   };
 
   const currUserAllReviews = useSelector((state) => state.reviews);
@@ -272,11 +314,33 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
                           </div>
 
                           <div className="modal-restaurant-review-container">
-                            
+                            <div className="modal-rating-container">
+                              <span className="modal-rating">
+                                <Rating sx={{ fontSize: "1.8vw" }}></Rating>
+                              </span>
+                              <span className="modal-rating-text"></span>
+                            </div>
+
+                            <div className="modal-reminder-text">
+                              A few things to consider in your review
+                            </div>
+                            <div className="modal-reminder-categories">
+                              <span>Food</span>
+                              <span>Service</span>
+                              <span>Ambiance</span>
+                            </div>
+                            <div className="modal-review-input">
+                              <textarea
+                                defaultValue={editReviewObj?.body}
+                                className="review-text-area modal-text-area"
+                                placeholder="Enjoying the best time in our restaurant? Please leave us a review to help us improve for a better future experience!"
+                              ></textarea>
+                            </div>
                           </div>
 
-                          <div className="modal-submit-update-btn">Update Review</div>
-
+                          <div className="modal-submit-update-btn">
+                            Update Review
+                          </div>
                         </Box>
                       </Modal>
                     </div>

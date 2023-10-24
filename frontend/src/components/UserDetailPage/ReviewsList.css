@@ -143,8 +143,10 @@
   color: #2D2E2F;
 }
 
+/* Some of the Update Review Modal's styling rules are on WriteReview.css */
+
 .modal-restaurant-name {
-  font-size: 1.8vw;
+  font-size: 2vw;
   font-weight: 900;
   margin-bottom: 2vw;
 }
@@ -154,6 +156,19 @@
   height: 18vw;
   border: 1px solid rgba(200, 201, 202, 1);
   border-radius: 5px;
+  padding: 1.1vw;
+}
+
+.modal-reminder-text {
+
+}
+
+.modal-review-input {
+  height: 85%;
+}
+
+.modal-text-area {
+  text-align: justify;
 }
 
 .modal-submit-update-btn {
