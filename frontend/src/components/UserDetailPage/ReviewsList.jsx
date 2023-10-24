@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import AssociatedReactions from "./AssociatedReactions";
 import "./ReviewsList.css";
-import { deleteReview } from "../../store/reviews";
+import { deleteReview, updateReview } from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../store/users";
 
@@ -147,8 +147,8 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
     } else if (reviewBody?.length >= 85 || editReviewObj?.body.length >= 85) {
       setReviewBodyError(false);
       const newReviewObj = {
-        rating: rating,
-        body: reviewBody,
+        rating: rating ? rating : editReviewObj?.rating,
+        body: reviewBody ? reviewBody : editReviewObj?.body,
         user_id: currUserId,
         reviewer_fn: editReviewObj?.reviewerFn,
         reviewer_ln: editReviewObj?.reviewerLn,
@@ -159,6 +159,7 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
         oh_no_count: editReviewObj?.ohNoCount,
       };
       console.log(newReviewObj);
+      // dispatch(updateReview(newReviewObj, editReviewObj?.id));
     }
   }
 
