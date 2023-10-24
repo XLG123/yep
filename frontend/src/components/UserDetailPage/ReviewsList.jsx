@@ -158,8 +158,8 @@ const ReviewsList = ({ reviews, isCurrUser, currUserId }) => {
         love_this_count: editReviewObj?.loveThisCount,
         oh_no_count: editReviewObj?.ohNoCount,
       };
-      console.log(newReviewObj);
-      // dispatch(updateReview(newReviewObj, editReviewObj?.id));
+      dispatch(updateReview(newReviewObj, editReviewObj?.id));
+      closeEditModal();
     }
   }
 
