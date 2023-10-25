@@ -5,13 +5,15 @@ import reviews from "./reviews";
 import thunk from 'redux-thunk';
 import reactions from './reactions';
 import users from './users';
+import friendships from './friendships';
 
 const rootReducer = combineReducers({
   session,
   restaurants,
   reviews,
   reactions,
-  users
+  users,
+  friendships
 });
 
 let enhancer;

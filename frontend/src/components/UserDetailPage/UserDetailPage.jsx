@@ -24,6 +24,7 @@ const UserDetailPage = () => {
   const currUser = useSelector((state) => state.session.user);
 
   // console.log(user);
+  // console.log(currUser);
 
   const [listBtn, setListBtn] = useState("reviews");
 
