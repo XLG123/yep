@@ -44,7 +44,6 @@ class Api::ReactionsController < ApplicationController
     end
   end
   
-  
   private
 
   def reaction_params

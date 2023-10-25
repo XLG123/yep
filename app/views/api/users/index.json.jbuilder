@@ -29,7 +29,7 @@ json.users do
       user.followees.each do |followee|
         json.followees do
           json.set! followee.id do
-
+            json.extract! followee, :id, :first_name, :last_name
           end
         end
       end
@@ -37,7 +37,7 @@ json.users do
       user.followers.each do |follower|
         json.followers do
           json.set! follower.id do
-            
+            json.extract! follower, :id, :first_name, :last_name
           end
         end
       end

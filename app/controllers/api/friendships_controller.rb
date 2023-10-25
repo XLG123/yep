@@ -4,30 +4,25 @@ class Api::FriendshipsController < ApplicationController
   before_action :require_logged_in, only: [:create, :destroy]
 
   def create
-    @object = Object.new(params[:object])
-    if @object.save
-      flash[:success] = "Object successfully created"
-      redirect_to @object
+    @friendship = Friendship.new(friendship_params)
+    if @friendship.save
+      render json: @friendship
     else
-      flash[:error] = "Something went wrong"
-      render 'new'
+      render json: @reaction.errors.full_messages, status: 422
     end
   end
   
   def destroy
-    @object = Object.find(params[:id])
-    if @object.destroy
-      flash[:success] = 'Object was successfully deleted.'
-      redirect_to objects_url
-    else
-      flash[:error] = 'Something went wrong'
-      redirect_to objects_url
+    @friendship = Friendship.find(params[:id])
+    if @friendship && @friendship.follower_id == current_user.id
+      @friendship.destroy
     end
   end
   
-  def index
-    @ = .all
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:follower_id, :followee_id)
   end
-  
 
 end

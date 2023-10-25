@@ -41,23 +41,21 @@ class User < ApplicationRecord
   has_many :followed_users,
     primary_key: :id,
     foreign_key: :follower_id,
-    class_name: :Friendship
+    class_name: :Friendship,
     dependent: :destroy
 
   has_many :following_users,
     primary_key: :id,
     foreign_key: :followee_id,
-    class_name: :Friendship
+    class_name: :Friendship,
     dependent: :destroy
 
   has_many :followees, 
     through: :followed_users, 
-    source: :user,
     dependent: :destroy
     
   has_many :followers, 
     through: :following_users, 
-    source: :user,
     dependent: :destroy
 
   def self.find_by_credentials(email, password)

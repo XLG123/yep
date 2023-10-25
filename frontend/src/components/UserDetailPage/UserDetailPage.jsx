@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
