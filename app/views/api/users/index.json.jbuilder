@@ -26,6 +26,22 @@ json.users do
         end
       end
 
+      user.followees.each do |followee|
+        json.followees do
+          json.set! followee.id do
+
+          end
+        end
+      end
+
+      user.followers.each do |follower|
+        json.followers do
+          json.set! follower.id do
+            
+          end
+        end
+      end
+
     end
 
   end
