@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import ReviewsList from "./ReviewsList";
 import FriendsList from "./FriendsList";
 import FollowingList from "./FollowingList";
+import { createFriendship } from '../../store/friendships';
 
 const UserDetailPage = () => {
   const userId = useParams().userId;
@@ -29,6 +30,14 @@ const UserDetailPage = () => {
   const [listBtn, setListBtn] = useState("reviews");
 
   // console.log(listBtn);
+
+  const followUser = () => {
+    const newFriendshipObj =  {
+      follower_id: currUser?.id,
+      followee_id: user?.id,
+    };
+    dispatch(createFriendship(newFriendshipObj));
+  }
 
   const dispatch = useDispatch();
 
@@ -92,7 +101,7 @@ const UserDetailPage = () => {
                     marginBottom: "0.1em",
                     "&:hover": { color: "#2D2E2F" },
                   }}
-                  onClick={(e) => {}}
+                  onClick={(e) => followUser()}
                 />
                 <div className="follow-btn-text">Follow</div>
               </div>

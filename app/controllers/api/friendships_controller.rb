@@ -8,7 +8,7 @@ class Api::FriendshipsController < ApplicationController
     if @friendship.save
       render json: @friendship
     else
-      render json: @reaction.errors.full_messages, status: 422
+      render json: {errors: @friendship.errors.full_messages}, status: 422
     end
   end
   

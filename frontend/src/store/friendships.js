@@ -13,7 +13,7 @@ export const removeFriendship = (friendshipId) => ({
   friendshipId
 })
 
-export const createFriendship = (friendship) => async (dispatch) => {
+export const createFriendship = (friendship) => async (dispatch) => { 
   const response = await csrfFetch('/api/friendships/', {
     method: "POST",
     body: JSON.stringify(friendship)

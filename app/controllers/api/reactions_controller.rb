@@ -17,7 +17,7 @@ class Api::ReactionsController < ApplicationController
       end
       render json: @reaction
     else
-      render json: @reaction.errors.full_messages, status: 422
+      render json: {errors: @reaction.errors.full_messages}, status: 422
     end
   end
 
