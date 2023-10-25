@@ -38,6 +38,11 @@ class User < ApplicationRecord
     through: :reviews,
     source: :business
 
+  has_many :followed_users,
+    primary_key: :id,
+    foreign_key: :follower_id,
+    class_name: :Friendship
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user&.authenticate(password) ? user : nil

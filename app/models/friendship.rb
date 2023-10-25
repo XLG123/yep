@@ -11,6 +11,10 @@
 class Friendship < ApplicationRecord
   validates :follower_id, presence: true
   validates :followee_id, presence: true
+
   validates :follower_id, uniqueness: { scope: :followee_id , message: "You can only follow another user once."}
   validates :followee_id, uniqueness: { scope: :follower_id, message: "You can only have one follow from another user."}
+
+  belongs_to :follower, class_name: :User
+  belongs_to :followee, class_name: :User
 end
