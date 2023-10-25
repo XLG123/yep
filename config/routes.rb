@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :show]
     resources :reviews, only: [:index, :create, :show, :update, :destroy]
     resources :reactions, only: [:index, :create, :destroy]
+    resources :friendships, only: [:index, :create, :destroy]
     get 'businesses/search', to: 'restaurants#search', as: 'search'
   end
 
