@@ -18,6 +18,14 @@ class Api::FriendshipsController < ApplicationController
       @friendship.destroy
     end
   end
+
+  def index
+    @friendships = Friendship.all
+    if @friendships
+      render :index
+    end
+  end
+  
   
   private
 

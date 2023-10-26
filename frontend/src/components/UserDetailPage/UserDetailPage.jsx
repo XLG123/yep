@@ -13,7 +13,12 @@ import Footer from "../Footer/Footer";
 import ReviewsList from "./ReviewsList";
 import FriendsList from "./FriendsList";
 import FollowingList from "./FollowingList";
-import { createFriendship, deleteFriendship } from "../../store/friendships";
+import {
+  createFriendship,
+  deleteFriendship,
+  fetchFriendships,
+  getFriendships,
+} from "../../store/friendships";
 
 const UserDetailPage = () => {
   const dispatch = useDispatch();
@@ -38,11 +43,7 @@ const UserDetailPage = () => {
   const currUser = useSelector((state) => state.users.currentUser);
   // console.log(currUser);
 
-  const friendships = useSelector((state) => state.friendships);
-  let friendshipLength = 0;
-  if (friendships) {
-    friendshipLength = Object.values(friendships)?.length;
-  }
+  const friendships = useSelector(getFriendships);
 
   const followUser = () => {
     if (sessionUser) {
@@ -58,8 +59,8 @@ const UserDetailPage = () => {
 
   const unfollowUser = (friendshipId) => {
     dispatch(deleteFriendship(friendshipId));
-    dispatch(fetchUser(sessionUser?.id));
-  }
+    dispatch(fetchFriendships());
+  };
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -72,7 +73,11 @@ const UserDetailPage = () => {
     if (sessionUser) {
       dispatch(fetchUser(sessionUser?.id));
     }
-  }, [friendshipLength]);
+  }, [friendships?.length]);
+
+  useEffect(() => {
+    dispatch(fetchFriendships());
+  }, [dispatch]);
 
   return (
     <>
@@ -141,7 +146,7 @@ const UserDetailPage = () => {
                     />
                     <div className="follow-btn-text">Follow</div>
                   </div>
-                ) : (
+                ) : sessionUser ? (
                   <div className="unfollow-btn">
                     <PersonRemoveIcon
                       sx={{
@@ -167,6 +172,24 @@ const UserDetailPage = () => {
                       }
                     />
                     <div className="unfollow-btn-text">Unfollow</div>
+                  </div>
+                ) : (
+                  <div className="follow-btn">
+                    <PersonAddIcon
+                      sx={{
+                        width: "1.7vw",
+                        height: "1.7vw",
+                        color: "#777",
+                        cursor: sessionUser ? "pointer" : "not-allowed",
+                        padding: "0.35vw",
+                        borderRadius: "50%",
+                        backgroundColor: "#EBEBEB",
+                        marginBottom: "0.1em",
+                        "&:hover": { color: "#2D2E2F" },
+                      }}
+                      onClick={(e) => followUser()}
+                    />
+                    <div className="follow-btn-text">Follow</div>
                   </div>
                 )
               ) : (

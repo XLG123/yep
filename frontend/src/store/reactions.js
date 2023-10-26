@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 import csrfFetch from "./csrf";
 
-export const RECEIVE_REACTIONS = "reviews/receiveReactions";
+export const RECEIVE_REACTIONS = "reactions/receiveReactions";
 export const RECEIVE_REACTION = "reactions/receiveReaction";
 export const REMOVE_REACTION = "reactions/removeReaction";
 
