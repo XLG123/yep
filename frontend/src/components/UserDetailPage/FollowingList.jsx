@@ -1,4 +1,5 @@
 import "./FollowingList.css";
+import Avatar from '@mui/material/Avatar';
 
 const FollowingList = ({ followees, isCurrUser }) => {
   // console.log(followees);
@@ -6,13 +7,15 @@ const FollowingList = ({ followees, isCurrUser }) => {
   return (
     <>
       {followees ? (
-        <div className="followees-list">
+        <div className="followees-list-container">
           <div className="followees-title">Following</div>
-          {Object.values(followees)?.map((followee) => (
-            <div className="followee-container" key={followee.id}>
-              {followee?.id}
-            </div>
-          ))}
+          <div className="followees-grid">
+            {Object.values(followees)?.map((followee) => (
+              <div className="followee-container" key={followee.id}>
+                <Avatar variant="rounded"></Avatar>
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         <div className="empty-following-list">
