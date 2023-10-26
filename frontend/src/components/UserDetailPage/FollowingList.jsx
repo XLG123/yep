@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./FollowingList.css";
 import Avatar from "@mui/material/Avatar";
-import { useState } from "react";
 
-const FollowingList = ({ followees, isCurrUser, setListBtn }) => {
+const FollowingList = ({ followees, isCurrUser }) => {
   // console.log(followees);
   const navigate = useNavigate();
 
   const goToFolloweeProfilePage = (userId) => {
-    setListBtn("reviews");
     navigate(`/user_details/${userId}`);
   };
 

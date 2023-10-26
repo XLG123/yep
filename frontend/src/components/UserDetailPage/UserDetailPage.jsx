@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./UserDetailPage.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,9 @@ const UserDetailPage = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const location_path = useLocation().pathname;
+  // console.log(location_path);
 
   const userId = useParams().userId;
   // console.log(userId);
@@ -78,6 +81,10 @@ const UserDetailPage = () => {
   useEffect(() => {
     dispatch(fetchFriendships());
   }, [dispatch]);
+
+  useEffect(() => {
+    setListBtn("reviews");
+  }, [location_path]);
 
   return (
     <>
@@ -266,7 +273,6 @@ const UserDetailPage = () => {
             <FollowingList 
               followees={user?.followees}
               isCurrUser={user?.id === sessionUser?.id ? true : false}
-              setListBtn={setListBtn}
             />
           )}
         </div>
