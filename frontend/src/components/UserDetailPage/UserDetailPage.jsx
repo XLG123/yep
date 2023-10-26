@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./UserDetailPage.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,12 @@ import Footer from "../Footer/Footer";
 import ReviewsList from "./ReviewsList";
 import FriendsList from "./FriendsList";
 import FollowingList from "./FollowingList";
-import { createFriendship } from "../../store/friendships";
+import { createFriendship, deleteFriendship } from "../../store/friendships";
 
 const UserDetailPage = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const userId = useParams().userId;
   // console.log(userId);
@@ -34,7 +36,7 @@ const UserDetailPage = () => {
   // console.log(listBtn);
 
   const currUser = useSelector((state) => state.users.currentUser);
-  console.log(currUser);
+  // console.log(currUser);
 
   const friendships = useSelector((state) => state.friendships);
   let friendshipLength = 0;
@@ -43,24 +45,33 @@ const UserDetailPage = () => {
   }
 
   const followUser = () => {
-    const newFriendshipObj = {
-      follower_id: sessionUser?.id,
-      followee_id: user?.id,
-    };
-    dispatch(createFriendship(newFriendshipObj));
+    if (sessionUser) {
+      const newFriendshipObj = {
+        follower_id: sessionUser?.id,
+        followee_id: user?.id,
+      };
+      dispatch(createFriendship(newFriendshipObj));
+    } else {
+      navigate("/login");
+    }
   };
 
-  const unfollowUser = () => {
-    
+  const unfollowUser = (friendshipId) => {
+    dispatch(deleteFriendship(friendshipId));
+    dispatch(fetchUser(sessionUser?.id));
   }
 
   useEffect(() => {
     dispatch(fetchUsers());
-    dispatch(fetchUser(sessionUser?.id));
+    if (sessionUser) {
+      dispatch(fetchUser(sessionUser?.id));
+    }
   }, [userId, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchUser(sessionUser?.id));
+    if (sessionUser) {
+      dispatch(fetchUser(sessionUser?.id));
+    }
   }, [friendshipLength]);
 
   return (
@@ -105,13 +116,12 @@ const UserDetailPage = () => {
               </span>
             </div>
 
-
             {/* If the current user is on another user's profile page, display either a follow button or an unfollow button. Otherwise, don't display any buttons. */}
 
-              {/* If the current user has followees, check if the current profile's owner is being followed by the current user. */}
+            {/* If the current user has followees, check if the current profile's owner is being followed by the current user. */}
             {user?.id !== sessionUser?.id ? (
               currUser?.followees ? (
-                Object.values(currUser?.followees).filter(
+                Object.values(currUser?.followees)?.filter(
                   (followee) => followee?.id === user?.id
                 )?.length === 0 ? (
                   <div className="follow-btn">
@@ -145,6 +155,16 @@ const UserDetailPage = () => {
                         marginBottom: "0.1em",
                         "&:hover": { color: "#2D2E2F" },
                       }}
+                      onClick={(e) =>
+                        unfollowUser(
+                          Object.values(
+                            currUser?.followeeRelationships
+                          )?.filter(
+                            (followeeRelationship) =>
+                              followeeRelationship.followeeId === user?.id
+                          )[0]?.id
+                        )
+                      }
                     />
                     <div className="unfollow-btn-text">Unfollow</div>
                   </div>
@@ -156,7 +176,7 @@ const UserDetailPage = () => {
                       width: "1.7vw",
                       height: "1.7vw",
                       color: "#777",
-                      cursor: "pointer",
+                      cursor: sessionUser ? "pointer" : "not-allowed",
                       padding: "0.35vw",
                       borderRadius: "50%",
                       backgroundColor: "#EBEBEB",
