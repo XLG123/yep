@@ -1,12 +1,19 @@
 import "./FollowingList.css";
 
 const FollowingList = ({ followees, isCurrUser }) => {
-  console.log(followees);
+  // console.log(followees);
 
   return (
     <>
       {followees ? (
-        <div className=""></div>
+        <div className="followees-list">
+          <div className="followees-title">Following</div>
+          {Object.values(followees)?.map((followee) => (
+            <div className="followee-container" key={followee.id}>
+              {followee?.id}
+            </div>
+          ))}
+        </div>
       ) : (
         <div className="empty-following-list">
           {isCurrUser ? (
