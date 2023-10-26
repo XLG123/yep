@@ -74,11 +74,13 @@
   font-weight: bold;
 }
 
-.follow-btn {
+.follow-btn,
+.unfollow-btn {
   margin-bottom: 0.65em;
 }
 
-.follow-btn-text {
+.follow-btn-text,
+.unfollow-btn-text {
   color: #6E7072;
   font-weight: 500;
   font-size: 0.85vw;

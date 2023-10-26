@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
@@ -13,7 +13,7 @@ import Footer from "../Footer/Footer";
 import ReviewsList from "./ReviewsList";
 import FriendsList from "./FriendsList";
 import FollowingList from "./FollowingList";
-import { createFriendship } from '../../store/friendships';
+import { createFriendship } from "../../store/friendships";
 
 const UserDetailPage = () => {
   const userId = useParams().userId;
@@ -32,12 +32,12 @@ const UserDetailPage = () => {
   // console.log(listBtn);
 
   const followUser = () => {
-    const newFriendshipObj =  {
+    const newFriendshipObj = {
       follower_id: currUser?.id,
       followee_id: user?.id,
     };
     dispatch(createFriendship(newFriendshipObj));
-  }
+  };
 
   const dispatch = useDispatch();
 
@@ -88,23 +88,45 @@ const UserDetailPage = () => {
             </div>
 
             {user?.id !== currUser?.id ? (
-              <div className="follow-btn">
-                <PersonAddIcon
-                  sx={{
-                    width: "1.7vw",
-                    height: "1.7vw",
-                    color: "#777",
-                    cursor: "pointer",
-                    padding: "0.35vw",
-                    borderRadius: "50%",
-                    backgroundColor: "#EBEBEB",
-                    marginBottom: "0.1em",
-                    "&:hover": { color: "#2D2E2F" },
-                  }}
-                  onClick={(e) => followUser()}
-                />
-                <div className="follow-btn-text">Follow</div>
-              </div>
+              currUser?.followees &&
+              (Object.values(currUser?.followees).filter(
+                (followee) => followee?.id === user?.id
+              )?.length !== 0 ? (
+                <div className="follow-btn">
+                  <PersonAddIcon
+                    sx={{
+                      width: "1.7vw",
+                      height: "1.7vw",
+                      color: "#777",
+                      cursor: "pointer",
+                      padding: "0.35vw",
+                      borderRadius: "50%",
+                      backgroundColor: "#EBEBEB",
+                      marginBottom: "0.1em",
+                      "&:hover": { color: "#2D2E2F" },
+                    }}
+                    onClick={(e) => followUser()}
+                  />
+                  <div className="follow-btn-text">Follow</div>
+                </div>
+              ) : (
+                <div className="unfollow-btn">
+                  <PersonRemoveIcon
+                    sx={{
+                      width: "1.7vw",
+                      height: "1.7vw",
+                      color: "#777",
+                      cursor: "pointer",
+                      padding: "0.35vw",
+                      borderRadius: "50%",
+                      backgroundColor: "#EBEBEB",
+                      marginBottom: "0.1em",
+                      "&:hover": { color: "#2D2E2F" },
+                    }}
+                  />
+                  <div className="unfollow-btn-text">Unfollow</div>
+                </div>)
+              )
             ) : null}
           </div>
 
