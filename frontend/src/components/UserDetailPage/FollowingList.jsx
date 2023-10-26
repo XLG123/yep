@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import "./FollowingList.css";
 import Avatar from "@mui/material/Avatar";
 
 const FollowingList = ({ followees, isCurrUser }) => {
   // console.log(followees);
+  const navigate = useNavigate();
+
+  const goToFolloweeProfilePage = (userId) => {
+    navigate(`/user_details/${userId}`);
+  };
 
   return (
     <>
@@ -15,13 +21,22 @@ const FollowingList = ({ followees, isCurrUser }) => {
                 <div className="followee-avatar">
                   <Avatar
                     variant="rounded"
-                    sx={{ backgroundColor: "#BBB", width: "3.5vw", height: "3.5vw", fontSize: "1.4vw" }}
+                    sx={{
+                      backgroundColor: "#BBB",
+                      width: "3.5vw",
+                      height: "3.5vw",
+                      fontSize: "1.4vw",
+                    }}
+                    onClick={(_e) => goToFolloweeProfilePage(followee?.id)}
                   >
                     {followee ? followee?.firstName[0] : null}
                     {followee ? followee?.lastName[0] : null}
                   </Avatar>
                 </div>
-                <div className="followee-name">
+                <div
+                  className="followee-name"
+                  onClick={(_e) => goToFolloweeProfilePage(followee?.id)}
+                >
                   {followee ? followee?.firstName : null}{" "}
                   {followee ? followee?.lastName[0] : null}.
                 </div>
