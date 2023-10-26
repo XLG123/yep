@@ -16,7 +16,8 @@
 }
 
 .followee-container {
-
+  display: flex;
+  align-items: center;
 }
 
 .MuiAvatar-rounded {

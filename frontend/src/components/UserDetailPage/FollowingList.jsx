@@ -12,13 +12,19 @@ const FollowingList = ({ followees, isCurrUser }) => {
           <div className="followees-grid">
             {Object.values(followees)?.map((followee) => (
               <div className="followee-container" key={followee.id}>
-                <Avatar
-                  variant="rounded"
-                  sx={{ backgroundColor: "#BBB", width: "3vw", height: "3vw", fontSize: "1.2vw" }}
-                >
-                  {followee ? followee?.firstName[0] : null}
-                  {followee ? followee?.lastName[0] : null}
-                </Avatar>
+                <div className="followee-avatar">
+                  <Avatar
+                    variant="rounded"
+                    sx={{ backgroundColor: "#BBB", width: "3.5vw", height: "3.5vw", fontSize: "1.4vw" }}
+                  >
+                    {followee ? followee?.firstName[0] : null}
+                    {followee ? followee?.lastName[0] : null}
+                  </Avatar>
+                </div>
+                <div className="followee-name">
+                  {followee ? followee?.firstName : null}{" "}
+                  {followee ? followee?.lastName[0] : null}.
+                </div>
               </div>
             ))}
           </div>
