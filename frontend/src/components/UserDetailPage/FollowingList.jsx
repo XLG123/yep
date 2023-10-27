@@ -44,7 +44,7 @@ const FollowingList = ({ followees, followers, isCurrUser }) => {
           <div className="followees-title">Following</div>
           <div className="followees-grid">
             {Object.values(followees)
-              ?.filter((followee) => nonFriendIds.includes(followee?.id))
+              ?.filter((followee) => nonFriendIds?.includes(followee?.id))
               ?.reverse()
               ?.map((followee) => (
                 <div className="followee-container" key={followee.id}>

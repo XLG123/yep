@@ -1,15 +1,18 @@
-.followees-list-container {
+.followees-list-container,
+.friends-list-container {
   margin-top: 0.5em;
 }
 
-.followees-title {
+.followees-title,
+.friends-title {
   font-size: 3vw;
   font-weight: 900;
   color: #D32323;
   margin-bottom: 1.5vw;
 }
 
-.followees-grid {
+.followees-grid,
+.friends-grid {
   display: grid;
   grid-template-columns: auto auto auto;
   row-gap: 2.25vw;
@@ -38,7 +41,8 @@
   text-decoration: underline;
 }
 
-.empty-following-list {
+.empty-following-list,
+.empty-friends-list {
   margin-top: 0.5em;
   font-size: 1.2vw;
   line-height: 1.2em;
