@@ -15,15 +15,19 @@ const FollowingList = ({
   let nonFriendIds = [];
   let friendIds = [];
 
-  if (followees && followers) {
+  if (followees) {
     Object.values(followees)?.forEach((followee) =>
       followeeIds.push(followee?.id)
     );
+  }
 
+  if (followers) {
     Object.values(followers)?.forEach((follower) =>
       followerIds.push(follower?.id)
     );
+  }
 
+  if (followees && followers) {
     nonFriendIds = followeeIds.filter(
       (followeeId) => !followerIds.includes(followeeId)
     );
@@ -113,6 +117,7 @@ const FollowingList = ({
         </div>
       ) : (
         <div className="empty-following-list">
+          <div className="followees-title">Following</div>
           {isCurrUser ? (
             <div>
               <p>It's not too late to connect with people.</p>

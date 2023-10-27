@@ -60,3 +60,9 @@
   line-height: 1.2em;
   color: #2D2E2F;
 }
+
+/* .followees-list-container:has(.empty-following-list) {
+  .empty-following-list {
+    margin-top: 0;
+  }
+} */
