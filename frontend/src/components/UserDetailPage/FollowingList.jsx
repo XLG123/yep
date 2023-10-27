@@ -103,7 +103,7 @@ const FollowingList = ({
                 ) : (
                   <div>
                     This user is currently following{" "}
-                    <span className="followees-count">{followeesCount}</span> yepers and friends with all of
+                    <span className="followees-count">{followeesCount} yeper(s)</span> and friends with all of
                     them.
                   </div>
                 )}
