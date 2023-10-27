@@ -2,6 +2,7 @@ json.users do
   @users.each do |user|
     json.set! user.id do
       json.extract! user, :id, :first_name, :last_name, :created_at
+      json.reviews_count user.reviews.count
       json.followees_count user.followees.count
       json.followers_count user.followers.count
 

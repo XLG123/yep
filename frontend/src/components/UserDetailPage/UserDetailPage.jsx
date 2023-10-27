@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser, fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
@@ -132,6 +132,12 @@ const UserDetailPage = () => {
               </span>
             </div>
 
+            {user?.id === sessionUser?.id ? (
+              <div className="user-followship-status">
+                
+              </div>
+            ) : null}
+
             {/* If the current user is on another user's profile page, display either a follow button or an unfollow button. Otherwise, don't display any buttons. */}
 
             {/* If the current user has followees, check if the current profile's owner is being followed by the current user. */}
@@ -141,7 +147,7 @@ const UserDetailPage = () => {
                   (followee) => followee?.id === user?.id
                 )?.length === 0 ? (
                   <div className="follow-btn">
-                    <PersonAddIcon
+                    <PersonAddAlt1Icon
                       sx={{
                         width: "1.7vw",
                         height: "1.7vw",
@@ -151,9 +157,9 @@ const UserDetailPage = () => {
                         borderRadius: "50%",
                         backgroundColor: "#EBEBEB",
                         marginBottom: "0.1em",
-                        "&:hover": { color: "#2D2E2F" },
+                        "&:hover": { color: "#666" },
                       }}
-                      onClick={(e) => followUser()}
+                      onClick={(_e) => followUser()}
                     />
                     <div className="follow-btn-text">Follow</div>
                   </div>
@@ -169,9 +175,9 @@ const UserDetailPage = () => {
                         borderRadius: "50%",
                         backgroundColor: "#EBEBEB",
                         marginBottom: "0.1em",
-                        "&:hover": { color: "#2D2E2F" },
+                        "&:hover": { color: "#666" },
                       }}
-                      onClick={(e) =>
+                      onClick={(_e) =>
                         unfollowUser(
                           Object.values(
                             currUser?.followeeRelationships
@@ -186,7 +192,7 @@ const UserDetailPage = () => {
                   </div>
                 ) : (
                   <div className="follow-btn">
-                    <PersonAddIcon
+                    <PersonAddAlt1Icon
                       sx={{
                         width: "1.7vw",
                         height: "1.7vw",
@@ -196,16 +202,16 @@ const UserDetailPage = () => {
                         borderRadius: "50%",
                         backgroundColor: "#EBEBEB",
                         marginBottom: "0.1em",
-                        "&:hover": { color: "#2D2E2F" },
+                        "&:hover": { color: "#666" },
                       }}
-                      onClick={(e) => followUser()}
+                      onClick={(_e) => followUser()}
                     />
                     <div className="follow-btn-text">Follow</div>
                   </div>
                 )
               ) : (
                 <div className="follow-btn">
-                  <PersonAddIcon
+                  <PersonAddAlt1Icon
                     sx={{
                       width: "1.7vw",
                       height: "1.7vw",
@@ -215,9 +221,9 @@ const UserDetailPage = () => {
                       borderRadius: "50%",
                       backgroundColor: "#EBEBEB",
                       marginBottom: "0.1em",
-                      "&:hover": { color: "#2D2E2F" },
+                      "&:hover": { color: "#666" },
                     }}
-                    onClick={(e) => followUser()}
+                    onClick={(_e) => followUser()}
                   />
                   <div className="follow-btn-text">Follow</div>
                 </div>
@@ -270,13 +276,13 @@ const UserDetailPage = () => {
               currUserId={sessionUser?.id}
             />
           ) : listBtn === "friends" ? (
-            <FriendsList 
+            <FriendsList
               followees={user?.followees}
               followers={user?.followers}
               isCurrUser={user?.id === sessionUser?.id ? true : false}
             />
           ) : (
-            <FollowingList 
+            <FollowingList
               followees={user?.followees}
               followers={user?.followers}
               followeesCount={user?.followeesCount}
