@@ -44,6 +44,15 @@
   text-decoration: underline;
 }
 
+.following-list-msg {
+  color: #2D2E2F;
+  font-size: 1.2vw;
+}
+
+.followees-count {
+  font-weight: 600;
+}
+
 .empty-following-list,
 .empty-friends-list {
   margin-top: 0.5em;

@@ -275,6 +275,7 @@ const UserDetailPage = () => {
             <FollowingList 
               followees={user?.followees}
               followers={user?.followers}
+              followeesCount={user?.followeesCount}
               isCurrUser={user?.id === sessionUser?.id ? true : false}
             />
           )}
