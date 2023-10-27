@@ -8,6 +8,7 @@ const FollowingList = ({ followees, followers, isCurrUser }) => {
   let followeeIds = [];
   let followerIds = [];
   let nonFriendIds = [];
+  let friendIds = [];
 
   if (followees && followers) {
     Object.values(followees)?.forEach((followee) =>
@@ -21,15 +22,23 @@ const FollowingList = ({ followees, followers, isCurrUser }) => {
     nonFriendIds = followeeIds.filter(
       (followeeId) => !followerIds.includes(followeeId)
     );
+
+    friendIds = followeeIds.filter((followeeId) =>
+      followerIds.includes(followeeId)
+    );
   }
 
-  if (nonFriendIds.length === 0) {
+  // console.log(nonFriendIds);
+  // console.log(friendIds);
+
+  if (nonFriendIds.length === 0 && friendIds.length === 0) {
     nonFriendIds = followeeIds;
   }
 
   // console.log(followeeIds);
-  // console.log(followerIds);
+  // console.log(followerIds);  
   // console.log(nonFriendIds);
+  // console.log(friendIds);
 
   const navigate = useNavigate();
 
@@ -37,6 +46,9 @@ const FollowingList = ({ followees, followers, isCurrUser }) => {
     navigate(`/user_details/${userId}`);
   };
 
+  // TODO: Check the length of the array before map()
+  // when it's greater than 0, map it.
+  // else, display => check friends list.
   return (
     <>
       {followees ? (

@@ -4,8 +4,8 @@ import Avatar from "@mui/material/Avatar";
 // The CSS Styling for this file are written on the FollowingList.css file because all the stylings are the same.
 
 const FriendsList = ({ followees, followers, isCurrUser }) => {
-  console.log(followees);
-  console.log(followers);
+  // console.log(followees);
+  // console.log(followers);
   let followeeIds = [];
   let followerIds = [];
 
@@ -25,6 +25,10 @@ const FriendsList = ({ followees, followers, isCurrUser }) => {
     navigate(`/user_details/${userId}`);
   };
 
+
+  // TODO: Check the length of the array before map()
+  // when it's greater than 0, map it.
+  // else, display => check following list.
   return (
     <>
       {followees && followers ? (
