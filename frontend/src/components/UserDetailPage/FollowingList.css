@@ -12,6 +12,7 @@
 .followees-grid {
   display: grid;
   grid-template-columns: auto auto auto;
+  row-gap: 2.25vw;
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -30,6 +31,7 @@
   color: #0073BB;
   font-weight: bold;
   font-size: 1vw;
+  word-spacing: 0.1em;
 }
 
 .followee-name:hover {

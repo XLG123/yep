@@ -1,6 +1,8 @@
 json.user do
   json.extract! @user, :id, :first_name, :last_name, :email, :zip_code, :created_at
 
+  # json.followees_count @user.followees.count
+
   @user.followees.each do |followee|
     json.followees do
       json.set! followee.id do

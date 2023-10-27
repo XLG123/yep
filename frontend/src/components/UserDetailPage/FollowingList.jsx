@@ -16,7 +16,7 @@ const FollowingList = ({ followees, isCurrUser }) => {
         <div className="followees-list-container">
           <div className="followees-title">Following</div>
           <div className="followees-grid">
-            {Object.values(followees)?.map((followee) => (
+            {Object.values(followees)?.reverse()?.map((followee) => (
               <div className="followee-container" key={followee.id}>
                 <div className="followee-avatar">
                   <Avatar
