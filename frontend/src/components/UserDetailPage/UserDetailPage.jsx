@@ -267,7 +267,9 @@ const UserDetailPage = () => {
             />
           ) : listBtn === "friends" ? (
             <FriendsList 
-
+              followees={user?.followees}
+              followers={user?.followers}
+              isCurrUser={user?.id === sessionUser?.id ? true : false}
             />
           ) : (
             <FollowingList 
