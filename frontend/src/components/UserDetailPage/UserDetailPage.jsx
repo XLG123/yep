@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser, fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
@@ -65,6 +65,41 @@ const UserDetailPage = () => {
     dispatch(fetchFriendships());
   };
 
+  let followeeIds = [];
+  let followerIds = [];
+  let friendIds = [];
+  let nonFriendIds = [];
+  if (currUser?.followees) {
+    Object.values(currUser?.followees)?.forEach((followee) =>
+      followeeIds.push(followee?.id)
+    );
+  }
+
+  if (currUser?.followers) {
+    Object.values(currUser?.followers)?.forEach((follower) =>
+      followerIds.push(follower?.id)
+    );
+  }
+
+  if (followeeIds?.length > 0 && followerIds?.length > 0) {
+    for (let i = 0; i < followeeIds.length; ++i) {
+      if (followerIds.includes(followeeIds[i])) {
+        friendIds.push(followeeIds[i]);
+      }
+    }
+
+    for (let i = 0; i < followeeIds.length; ++i) {
+      if (!followerIds.includes(followeeIds[i])) {
+        nonFriendIds.push(followeeIds[i]);
+      }
+    }
+  }
+
+  // console.log(followeeIds);
+  // console.log(followerIds);
+  // console.log(friendIds);
+  // console.log(nonFriendIds);
+
   useEffect(() => {
     dispatch(fetchUsers());
     if (sessionUser) {
@@ -88,7 +123,7 @@ const UserDetailPage = () => {
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [friendships?.length])
+  }, [friendships?.length]);
 
   return (
     <>
@@ -133,8 +168,45 @@ const UserDetailPage = () => {
             </div>
 
             {user?.id === sessionUser?.id ? (
-              <div className="user-followship-status">
-                
+              <div className="user-profile-status-container">
+                <div className="user-review-status">
+                  <span className="status-icon">
+                    <StarsIcon sx={{ fontSize: "1.6vw" }}/>
+                  </span>
+                  <span className="status-description">
+                    {user?.reviewsCount}{" "}
+                  </span>
+                </div>
+
+                <div className="user-friends-status">
+                  <span className="status-icon">
+                    <Diversity3Icon sx={{ fontSize: "1.6vw" }}/>
+                  </span>
+                  <span className="status-description">
+                    {user?.followees && user?.followers ? (
+                      <div>{friendIds?.length > 0 ? friendIds?.length : 0}</div>
+                    ) : (
+                      0
+                    )}
+                  </span>
+                </div>
+
+                <div className="user-following-status">
+                  <span className="status-icon">
+                    <HowToRegIcon sx={{ fontSize: "1.6vw" }}/>
+                  </span>
+                  <span className="status-description">
+                    {followeeIds?.length === 0 && followerIds?.length === 0
+                      ? 0
+                      : followeeIds?.length > 0 && followerIds?.length === 0
+                      ? followeeIds?.length
+                      : followeeIds?.length === 0 && followerIds?.length > 0
+                      ? 0
+                      : followeeIds.length > 0 && followerIds?.length > 0
+                      ? nonFriendIds?.length
+                      : null}
+                  </span>
+                </div>
               </div>
             ) : null}
 
@@ -236,7 +308,7 @@ const UserDetailPage = () => {
             <div
               className="list-btn"
               id={listBtn === "reviews" ? "reviews-list-btn" : null}
-              onClick={(e) => setListBtn("reviews")}
+              onClick={(_e) => setListBtn("reviews")}
             >
               <span className="list-btn-icon">
                 <StarsIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
@@ -247,7 +319,7 @@ const UserDetailPage = () => {
             <div
               className="list-btn"
               id={listBtn === "friends" ? "friends-list-btn" : null}
-              onClick={(e) => setListBtn("friends")}
+              onClick={(_e) => setListBtn("friends")}
             >
               <span className="list-btn-icon">
                 <Diversity3Icon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />
@@ -258,7 +330,7 @@ const UserDetailPage = () => {
             <div
               className="list-btn"
               id={listBtn === "following" ? "following-list-btn" : null}
-              onClick={(e) => setListBtn("following")}
+              onClick={(_e) => setListBtn("following")}
             >
               <span className="list-btn-icon">
                 <HowToRegIcon sx={{ fontSize: "1.75vw", color: "#5A5C5E" }} />

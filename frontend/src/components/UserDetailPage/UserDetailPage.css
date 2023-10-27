@@ -111,6 +111,37 @@
   font-weight: bold;
 }
 
+.user-profile-status-container {
+  width: inherit;
+  margin-top: 1.1vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1vw;
+  color: #6E7072;
+  font-size: 1.1vw;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.user-review-status,
+.user-friends-status,
+.user-following-status {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  line-height: 1.3em;
+}
+
+.status-icon {
+  text-align: right;
+}
+
+.status-description {
+  text-align: left;
+  margin-left: 0.3em;
+  font-weight: 500;
+}
+
 .follow-btn,
 .unfollow-btn {
   margin-bottom: 0.65em;
