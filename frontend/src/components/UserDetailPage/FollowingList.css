@@ -61,6 +61,18 @@
   color: #2D2E2F;
 }
 
+.no-friends-msg {
+  font-size: 1.2vw;
+  line-height: 1.2em;
+  color: #2D2E2F;
+}
+
+.friends-list-container:has(.no-friends-msg) {
+  .friends-title {
+    margin-bottom: 1vw;
+  }
+}
+
 /* .followees-list-container:has(.empty-following-list) {
   .empty-following-list {
     margin-top: 0;

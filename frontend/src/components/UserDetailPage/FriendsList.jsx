@@ -9,11 +9,13 @@ const FriendsList = ({ followees, followers, isCurrUser }) => {
   let followeeIds = [];
   let followerIds = [];
 
-  if (followees && followers) {
+  if (followees) {
     Object.values(followees)?.forEach((followee) =>
       followeeIds.push(followee?.id)
     );
+  }
 
+  if (followers) {
     Object.values(followers)?.forEach((follower) =>
       followerIds.push(follower?.id)
     );
@@ -25,10 +27,6 @@ const FriendsList = ({ followees, followers, isCurrUser }) => {
     navigate(`/user_details/${userId}`);
   };
 
-
-  // TODO: Check the length of the array before map()
-  // when it's greater than 0, map it.
-  // else, display => check following list.
   return (
     <>
       {followees && followers ? (
@@ -41,37 +39,52 @@ const FriendsList = ({ followees, followers, isCurrUser }) => {
                   followeeIds?.includes(followee?.id) &&
                   followerIds?.includes(followee?.id)
               )
-              ?.reverse()
-              ?.map((followee) => (
-                <div className="friend-container" key={followee.id}>
-                  <div className="friend-avatar">
-                    <Avatar
-                      variant="rounded"
-                      sx={{
-                        backgroundColor: "#BBB",
-                        width: "3.5vw",
-                        height: "3.5vw",
-                        fontSize: "1.4vw",
-                      }}
+              ?.reverse()?.length > 0 ? (
+              Object.values(followees)
+                ?.filter(
+                  (followee) =>
+                    followeeIds?.includes(followee?.id) &&
+                    followerIds?.includes(followee?.id)
+                )
+                ?.reverse()
+                ?.map((followee) => (
+                  <div className="friend-container" key={followee.id}>
+                    <div className="friend-avatar">
+                      <Avatar
+                        variant="rounded"
+                        sx={{
+                          backgroundColor: "#BBB",
+                          width: "3.5vw",
+                          height: "3.5vw",
+                          fontSize: "1.4vw",
+                        }}
+                        onClick={(_e) => goToFriendProfilePage(followee?.id)}
+                      >
+                        {followee ? followee?.firstName[0] : null}
+                        {followee ? followee?.lastName[0] : null}
+                      </Avatar>
+                    </div>
+                    <div
+                      className="friend-name"
                       onClick={(_e) => goToFriendProfilePage(followee?.id)}
                     >
-                      {followee ? followee?.firstName[0] : null}
-                      {followee ? followee?.lastName[0] : null}
-                    </Avatar>
+                      {followee ? followee?.firstName : null}{" "}
+                      {followee ? followee?.lastName[0] : null}.
+                    </div>
                   </div>
-                  <div
-                    className="friend-name"
-                    onClick={(_e) => goToFriendProfilePage(followee?.id)}
-                  >
-                    {followee ? followee?.firstName : null}{" "}
-                    {followee ? followee?.lastName[0] : null}.
-                  </div>
-                </div>
-              ))}
+                ))
+            ) : (
+              <div className="no-friends-msg">
+                {isCurrUser
+                  ? "Connect with other yepers to discover more fun."
+                  : "This user has no friends on Yep."}
+              </div>
+            )}
           </div>
         </div>
       ) : (
         <div className="empty-friends-list">
+          <div className="friends-title">Friends</div>
           {isCurrUser
             ? "Connect with other yepers to discover more fun."
             : "This user has no friends on Yep."}
