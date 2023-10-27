@@ -40,7 +40,28 @@ const FriendsList = ({ followees, followers, isCurrUser }) => {
               ?.reverse()
               ?.map((followee) => (
                 <div className="friend-container" key={followee.id}>
-                  <Avatar variant="rounded"></Avatar>
+                  <div className="friend-avatar">
+                    <Avatar
+                      variant="rounded"
+                      sx={{
+                        backgroundColor: "#BBB",
+                        width: "3.5vw",
+                        height: "3.5vw",
+                        fontSize: "1.4vw",
+                      }}
+                      onClick={(_e) => goToFriendProfilePage(followee?.id)}
+                    >
+                      {followee ? followee?.firstName[0] : null}
+                      {followee ? followee?.lastName[0] : null}
+                    </Avatar>
+                  </div>
+                  <div
+                    className="friend-name"
+                    onClick={(_e) => goToFriendProfilePage(followee?.id)}
+                  >
+                    {followee ? followee?.firstName : null}{" "}
+                    {followee ? followee?.lastName[0] : null}.
+                  </div>
                 </div>
               ))}
           </div>

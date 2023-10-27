@@ -19,7 +19,8 @@
   font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.followee-container {
+.followee-container,
+.friend-container {
   display: flex;
   align-items: center;
 }
@@ -28,7 +29,8 @@
   cursor: pointer;
 }
 
-.followee-name {
+.followee-name,
+.friend-name {
   cursor: pointer;
   margin-left: 0.7em;
   color: #0073BB;
@@ -37,7 +39,8 @@
   word-spacing: 0.1em;
 }
 
-.followee-name:hover {
+.followee-name:hover,
+.friend-name:hover {
   text-decoration: underline;
 }
 
