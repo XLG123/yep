@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./UserDetailPage.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, getUsers } from "../../store/users";
+import { fetchUser, fetchUsers, getUsers } from "../../store/users";
 import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import StarsIcon from "@mui/icons-material/Stars";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
@@ -12,27 +13,82 @@ import Footer from "../Footer/Footer";
 import ReviewsList from "./ReviewsList";
 import FriendsList from "./FriendsList";
 import FollowingList from "./FollowingList";
+import {
+  createFriendship,
+  deleteFriendship,
+  fetchFriendships,
+  getFriendships,
+} from "../../store/friendships";
 
 const UserDetailPage = () => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const location_path = useLocation().pathname;
+  // console.log(location_path);
+
   const userId = useParams().userId;
   // console.log(userId);
 
   const users = useSelector(getUsers);
   const user = users?.filter((user) => user.id === parseInt(userId))[0];
 
-  const currUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   // console.log(user);
+  // console.log(sessionUser);
 
   const [listBtn, setListBtn] = useState("reviews");
 
   // console.log(listBtn);
 
-  const dispatch = useDispatch();
+  const currUser = useSelector((state) => state.users.currentUser);
+  // console.log(currUser);
+
+  const friendships = useSelector(getFriendships);
+
+  const followUser = () => {
+    if (sessionUser) {
+      const newFriendshipObj = {
+        follower_id: sessionUser?.id,
+        followee_id: user?.id,
+      };
+      dispatch(createFriendship(newFriendshipObj));
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const unfollowUser = (friendshipId) => {
+    dispatch(deleteFriendship(friendshipId));
+    dispatch(fetchFriendships());
+  };
 
   useEffect(() => {
     dispatch(fetchUsers());
+    if (sessionUser) {
+      dispatch(fetchUser(sessionUser?.id));
+    }
   }, [userId, dispatch]);
+
+  useEffect(() => {
+    if (sessionUser) {
+      dispatch(fetchUser(sessionUser?.id));
+    }
+  }, [friendships?.length]);
+
+  useEffect(() => {
+    dispatch(fetchFriendships());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setListBtn("reviews");
+  }, [location_path]);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [friendships?.length])
 
   return (
     <>
@@ -76,24 +132,96 @@ const UserDetailPage = () => {
               </span>
             </div>
 
-            {user?.id !== currUser?.id ? (
-              <div className="follow-btn">
-                <PersonAddIcon
-                  sx={{
-                    width: "1.7vw",
-                    height: "1.7vw",
-                    color: "#777",
-                    cursor: "pointer",
-                    padding: "0.35vw",
-                    borderRadius: "50%",
-                    backgroundColor: "#EBEBEB",
-                    marginBottom: "0.1em",
-                    "&:hover": { color: "#2D2E2F" },
-                  }}
-                  onClick={(e) => {}}
-                />
-                <div className="follow-btn-text">Follow</div>
-              </div>
+            {/* If the current user is on another user's profile page, display either a follow button or an unfollow button. Otherwise, don't display any buttons. */}
+
+            {/* If the current user has followees, check if the current profile's owner is being followed by the current user. */}
+            {user?.id !== sessionUser?.id ? (
+              currUser?.followees ? (
+                Object.values(currUser?.followees)?.filter(
+                  (followee) => followee?.id === user?.id
+                )?.length === 0 ? (
+                  <div className="follow-btn">
+                    <PersonAddIcon
+                      sx={{
+                        width: "1.7vw",
+                        height: "1.7vw",
+                        color: "#777",
+                        cursor: "pointer",
+                        padding: "0.35vw",
+                        borderRadius: "50%",
+                        backgroundColor: "#EBEBEB",
+                        marginBottom: "0.1em",
+                        "&:hover": { color: "#2D2E2F" },
+                      }}
+                      onClick={(e) => followUser()}
+                    />
+                    <div className="follow-btn-text">Follow</div>
+                  </div>
+                ) : sessionUser ? (
+                  <div className="unfollow-btn">
+                    <PersonRemoveIcon
+                      sx={{
+                        width: "1.7vw",
+                        height: "1.7vw",
+                        color: "#777",
+                        cursor: "pointer",
+                        padding: "0.35vw",
+                        borderRadius: "50%",
+                        backgroundColor: "#EBEBEB",
+                        marginBottom: "0.1em",
+                        "&:hover": { color: "#2D2E2F" },
+                      }}
+                      onClick={(e) =>
+                        unfollowUser(
+                          Object.values(
+                            currUser?.followeeRelationships
+                          )?.filter(
+                            (followeeRelationship) =>
+                              followeeRelationship.followeeId === user?.id
+                          )[0]?.id
+                        )
+                      }
+                    />
+                    <div className="unfollow-btn-text">Unfollow</div>
+                  </div>
+                ) : (
+                  <div className="follow-btn">
+                    <PersonAddIcon
+                      sx={{
+                        width: "1.7vw",
+                        height: "1.7vw",
+                        color: "#777",
+                        cursor: sessionUser ? "pointer" : "not-allowed",
+                        padding: "0.35vw",
+                        borderRadius: "50%",
+                        backgroundColor: "#EBEBEB",
+                        marginBottom: "0.1em",
+                        "&:hover": { color: "#2D2E2F" },
+                      }}
+                      onClick={(e) => followUser()}
+                    />
+                    <div className="follow-btn-text">Follow</div>
+                  </div>
+                )
+              ) : (
+                <div className="follow-btn">
+                  <PersonAddIcon
+                    sx={{
+                      width: "1.7vw",
+                      height: "1.7vw",
+                      color: "#777",
+                      cursor: sessionUser ? "pointer" : "not-allowed",
+                      padding: "0.35vw",
+                      borderRadius: "50%",
+                      backgroundColor: "#EBEBEB",
+                      marginBottom: "0.1em",
+                      "&:hover": { color: "#2D2E2F" },
+                    }}
+                    onClick={(e) => followUser()}
+                  />
+                  <div className="follow-btn-text">Follow</div>
+                </div>
+              )
             ) : null}
           </div>
 
@@ -138,13 +266,22 @@ const UserDetailPage = () => {
           {listBtn === "reviews" ? (
             <ReviewsList
               reviews={user?.reviews}
-              isCurrUser={user?.id === currUser?.id ? true : false}
-              currUserId={currUser?.id}
+              isCurrUser={user?.id === sessionUser?.id ? true : false}
+              currUserId={sessionUser?.id}
             />
           ) : listBtn === "friends" ? (
-            <FriendsList />
+            <FriendsList 
+              followees={user?.followees}
+              followers={user?.followers}
+              isCurrUser={user?.id === sessionUser?.id ? true : false}
+            />
           ) : (
-            <FollowingList />
+            <FollowingList 
+              followees={user?.followees}
+              followers={user?.followers}
+              followeesCount={user?.followeesCount}
+              isCurrUser={user?.id === sessionUser?.id ? true : false}
+            />
           )}
         </div>
       </div>

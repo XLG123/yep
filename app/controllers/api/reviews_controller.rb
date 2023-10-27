@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
       @review.business.update_rating
       render json: @review
     else
-      render json: @review.errors.full_messages, status: 422
+      render json: {errors: @review.errors.full_messages}, status: 422
     end
   end
 

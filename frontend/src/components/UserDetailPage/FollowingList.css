@@ -1,0 +1,74 @@
+.followees-list-container,
+.friends-list-container {
+  margin-top: 0.5em;
+}
+
+.followees-title,
+.friends-title {
+  font-size: 3vw;
+  font-weight: 900;
+  color: #D32323;
+  margin-bottom: 1.5vw;
+}
+
+.followees-grid,
+.friends-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 2.25vw;
+  font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.followee-container,
+.friend-container {
+  display: flex;
+  align-items: center;
+}
+
+.MuiAvatar-rounded {
+  cursor: pointer;
+}
+
+.followee-name,
+.friend-name {
+  cursor: pointer;
+  margin-left: 0.7em;
+  color: #0073BB;
+  font-weight: bold;
+  font-size: 1vw;
+  word-spacing: 0.1em;
+}
+
+.followee-name:hover,
+.friend-name:hover {
+  text-decoration: underline;
+}
+
+.following-list-msg {
+  color: #2D2E2F;
+  font-size: 1.2vw;
+}
+
+.followees-count {
+  font-weight: 600;
+}
+
+.empty-following-list,
+.empty-friends-list {
+  margin-top: 0.5em;
+  font-size: 1.2vw;
+  line-height: 1.2em;
+  color: #2D2E2F;
+}
+
+.no-friends-msg {
+  font-size: 1.2vw;
+  line-height: 1.2em;
+  color: #2D2E2F;
+}
+
+.friends-list-container:has(.no-friends-msg) {
+  .friends-title {
+    margin-bottom: 1vw;
+  }
+}

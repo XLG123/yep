@@ -2,6 +2,8 @@ json.users do
   @users.each do |user|
     json.set! user.id do
       json.extract! user, :id, :first_name, :last_name, :created_at
+      json.followees_count user.followees.count
+      json.followers_count user.followers.count
 
       user.reviews.includes(:business).each do |review|
         json.reviews do
@@ -22,6 +24,22 @@ json.users do
                 end
               end
             end
+          end
+        end
+      end
+
+      user.followees.each do |followee|
+        json.followees do
+          json.set! followee.id do
+            json.extract! followee, :id, :first_name, :last_name
+          end
+        end
+      end
+
+      user.followers.each do |follower|
+        json.followers do
+          json.set! follower.id do
+            json.extract! follower, :id, :first_name, :last_name
           end
         end
       end

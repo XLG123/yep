@@ -27,29 +27,65 @@
   border-top-left-radius: 8px;
 }
 
-@media screen and (width <= 1440px) {
+@media screen and (width <= 1600px) and (height <= 900px) {
+  .bg-red-banner {
+    width: 22.6vw;
+  }
+}
+
+@media screen and (width <= 1440px) and (height: 916px) {
+  .bg-red-banner {
+    width: 22.6vw;
+  }
+}
+
+@media screen and (width <= 1440px) and (height: 815px) {
+  .bg-red-banner {
+    width: 22.6vw;
+  }
+}
+
+@media screen and (width <= 1450px) and (height < 700px) {
   .bg-red-banner {
     width: 22.3vw;
   }
 }
 
-@media screen and (width <= 1000px) {
+@media screen and (width <= 1450px) and (height < 700px) {
+  .bg-red-banner {
+    width: 22.3vw;
+  }
+}
+
+@media screen and (width <= 800px) and (height < 400px) {
   .bg-red-banner {
     width: 22.2vw;
   }
 }
 
-@media screen and (width < 800px) {
+@media screen and (width <= 600px) and (height < 400px) {
   .bg-red-banner {
     width: 22.1vw;
   }
 }
 
-@media screen and (width < 600px) {
+/* @media screen and (width <= 1000px) {
   .bg-red-banner {
-    width: 22vw;
+    width: 22.6vw;
   }
 }
+
+@media screen and (width < 800px) {
+  .bg-red-banner {
+    width: 22.5vw;
+  }
+}
+
+@media screen and (width < 600px) {
+  .bg-red-banner {
+    width: 22.6vw;
+  }
+} */
 
 .username-container,
 .user-joined-time-container {
@@ -74,11 +110,13 @@
   font-weight: bold;
 }
 
-.follow-btn {
+.follow-btn,
+.unfollow-btn {
   margin-bottom: 0.65em;
 }
 
-.follow-btn-text {
+.follow-btn-text,
+.unfollow-btn-text {
   color: #6E7072;
   font-weight: 500;
   font-size: 0.85vw;

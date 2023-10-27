@@ -34,9 +34,29 @@ class User < ApplicationRecord
     class_name: :Reaction,
     dependent: :destroy
 
-  has_many :reviewed_businesses,
-    through: :reviews,
-    source: :business
+  # has_many :reviewed_businesses,
+  #   through: :reviews,
+  #   source: :business
+
+  has_many :followed_users,
+    primary_key: :id,
+    foreign_key: :follower_id,
+    class_name: :Friendship,
+    dependent: :destroy
+
+  has_many :following_users,
+    primary_key: :id,
+    foreign_key: :followee_id,
+    class_name: :Friendship,
+    dependent: :destroy
+
+  has_many :followees, 
+    through: :followed_users, 
+    dependent: :destroy
+    
+  has_many :followers, 
+    through: :following_users, 
+    dependent: :destroy
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_193154) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_021449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_193154) do
     t.string "sun_optional"
     t.boolean "claimed", null: false
     t.integer "total_reviews"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_friendships_on_followee_id"
+    t.index ["follower_id", "followee_id"], name: "index_friendships_on_follower_id_and_followee_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
   create_table "reactions", force: :cascade do |t|

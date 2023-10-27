@@ -85,8 +85,8 @@ const Activity = () => {
                             fontSize: "0.9vw",
                           }}
                         >
-                          {review?.reviewerFn[0]}
-                          {review?.reviewerLn[0]}
+                          {review?.reviewerFn ? review?.reviewerFn[0] : null}
+                          {review?.reviewerLn ? review?.reviewerLn[0] : null}
                         </Avatar>
                       </div>
                       <div className="recent-review-reviewer">

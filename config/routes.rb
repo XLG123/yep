@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:create, :index]
+    resources :users, only: [:create, :index, :show]
     resource :session, only: [:create, :show, :destroy]
     resources :restaurants, only: [:index, :show]
     resources :reviews, only: [:index, :create, :show, :update, :destroy]
     resources :reactions, only: [:index, :create, :destroy]
+    resources :friendships, only: [:index, :create, :destroy]
     get 'businesses/search', to: 'restaurants#search', as: 'search'
   end
 
