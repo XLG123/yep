@@ -86,6 +86,10 @@ const UserDetailPage = () => {
     setListBtn("reviews");
   }, [location_path]);
 
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [friendships?.length])
+
   return (
     <>
       <div className="user-detail-page-line-break"></div>

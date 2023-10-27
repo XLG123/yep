@@ -55,9 +55,6 @@ const FollowingList = ({
     navigate(`/user_details/${userId}`);
   };
 
-  // TODO: Check the length of the array before map()
-  // when it's greater than 0, map it.
-  // else, display => check friends list.
   return (
     <>
       {followees ? (
