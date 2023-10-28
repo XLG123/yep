@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./UserProfile.css";
 import { useNavigate } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
 // import Avatar from "@mui/material/Avatar"; //avatar for users
 
 const UserProfile = ({ user }) => {
@@ -40,14 +43,30 @@ const UserProfile = ({ user }) => {
     navigate("/seeyousoon");
   };
 
+  const username = user?.firstName + " " + user?.lastName[0] + ".";
+
   return (
     <>
       <span ref={ref}>
-        <button id="user-pic" onClick={() => setUserProfile((show) => !show)}>
-          <div>
-            <i className="fa fa-user"></i>
-          </div>
-        </button>
+        <Tooltip
+          title={username}
+          placement="bottom"
+          componentsProps={{
+            tooltip: {
+              sx: {
+                fontSize: "0.85vw",
+                wordSpacing: "0.2em",
+              },
+            },
+          }}
+          arrow
+        >
+          <button id="user-pic" onClick={() => setUserProfile((show) => !show)}>
+            <div>
+              <i className="fa fa-user"></i>
+            </div>
+          </button>
+        </Tooltip>
 
         {userProfile && (
           <ul
@@ -69,12 +88,14 @@ const UserProfile = ({ user }) => {
                 className="about-me-btn"
                 onClick={(e) => goToProfilePage(e)}
               >
-                About Me
+                <AccountCircleIcon sx={{ color: "#2D2E2F", fontSize: "1vw" }} />
+                <span className="about-me-btn-text">About Me</span>
               </button>
             </li>
             <li>
               <button className="logout-btn" onClick={logout}>
-                Log Out
+                <LogoutIcon sx={{ color: "#101111", fontSize: "1vw" }} />
+                <span className="logout-btn-text">Log Out</span>
               </button>
             </li>
           </ul>

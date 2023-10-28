@@ -1,6 +1,7 @@
 json.user do
   json.extract! @user, :id, :first_name, :last_name, :email, :zip_code, :created_at
 
+  json.reviews_count @user.reviews.count
   json.followees_count @user.followees.count
   json.followers_count @user.followers.count
 
